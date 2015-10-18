@@ -44,6 +44,8 @@ Temporary Items
 
 SwingEngine/ThirdPartyLibs/Lib/Debug/*.lib
 SwingEngine/ThirdPartyLibs/Lib/Release/*.lib
+SwingEngine/GUIFramework/Debug/*.*
+SwingEngine/GUIFramework/Release/*.*
 SwingEngine/ThirdPartyLibs/zlib/Temp
 SwingEngine/SDK/Include/*.h
 SwingEngine/SDK/Include/*.inl
@@ -59,8 +61,8 @@ SwingEngine/SDK/Lib/ReleaseMemory/*.*
 *.log
 *.pdb
 *.obj
-!SwingEngine/RTGI/Bin/OBJ/dabrovic-sponza/*.obj
-!SwingEngine/RTGI/Bin/OBJ/crytek-sponza/*.obj
+!SwingEngine/Bin/OBJ/dabrovic-sponza/*.obj
+!SwingEngine/Bin/OBJ/crytek-sponza/*.obj
 *.tlog
 *.ipch
 *.pch
