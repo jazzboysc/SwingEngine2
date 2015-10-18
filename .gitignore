@@ -41,3 +41,35 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+SwingEngine/ThirdPartyLibs/Lib/Debug/*.lib
+SwingEngine/ThirdPartyLibs/Lib/Release/*.lib
+SwingEngine/ThirdPartyLibs/zlib/Temp
+SwingEngine/SDK/Include/*.h
+SwingEngine/SDK/Include/*.inl
+SwingEngine/SDK/Lib/Debug/*.*
+SwingEngine/SDK/Lib/DebugDLL/*.*
+SwingEngine/SDK/Lib/DebugMemory/*.*
+SwingEngine/SDK/Lib/Release/*.*
+SwingEngine/SDK/Lib/ReleaseDLL/*.*
+SwingEngine/SDK/Lib/ReleaseMemory/*.*
+*.exe
+*.idb
+*.ilk
+*.log
+*.pdb
+*.obj
+!SwingEngine/RTGI/Bin/OBJ/dabrovic-sponza/*.obj
+!SwingEngine/RTGI/Bin/OBJ/crytek-sponza/*.obj
+*.tlog
+*.ipch
+*.pch
+*.sdf
+*.suo
+*.user
+*.exp
+*.opensdf
+*.metagen
+*.cso
+*.cache
+SwingEngine/Bin/GUIFramework.dll
