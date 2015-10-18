@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Spectrum">
+      <UniqueIdentifier>{dafcc5e3-ffb5-4f66-aac9-cb9d2a99ae93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering">
+      <UniqueIdentifier>{4a11695b-f300-4753-9e8c-464afb2b789e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{3cff3398-bd06-4837-ab28-f5e723877f48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Materials">
+      <UniqueIdentifier>{236c8ba5-1b36-4ef6-84b2-e78451d8775f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BSDFs">
+      <UniqueIdentifier>{ecc98871-6b0f-47ec-a177-76dc94c19544}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cameras">
+      <UniqueIdentifier>{8e98c464-86bb-4f14-b894-d0323ba79585}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Samplers">
+      <UniqueIdentifier>{272fea87-df39-4b5a-b0bb-18f9bda153a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{4764c4b4-257c-49d4-8db5-193e168275b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Filters">
+      <UniqueIdentifier>{9f0b5a0f-3737-4c22-93af-d893fc9194bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Textures">
+      <UniqueIdentifier>{ca65140c-a225-4fb6-b80d-7bf9fc2ea20d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lights">
+      <UniqueIdentifier>{71c9b06d-90af-4062-919c-f17f00cc8be9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Spectrum\SECoefficientSpectrum.h">
+      <Filter>Spectrum</Filter>
+    </ClInclude>
+    <ClInclude Include="Spectrum\SERGBSpectrum.h">
+      <Filter>Spectrum</Filter>
+    </ClInclude>
+    <ClInclude Include="Spectrum\SESampledSpectrum.h">
+      <Filter>Spectrum</Filter>
+    </ClInclude>
+    <ClInclude Include="Spectrum\SESpectrum.h">
+      <Filter>Spectrum</Filter>
+    </ClInclude>
+    <ClInclude Include="Spectrum\SESpectrumUtility.h">
+      <Filter>Spectrum</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\SEBNRenderer.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\SESamplerRenderer.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEBNAggregate.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEBNGeometricPrimitive.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEBNInstancedPrimitive.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEBNIntersection.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEBNKdTree.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEBNPrimitive.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEBNScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEBNShape.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEBNTriangle.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEBNTriangleMesh.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEBNVolumeRegion.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SEDifferentialGeometry.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials\SEBNMaterial.h">
+      <Filter>Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials\SEBNMatteMaterial.h">
+      <Filter>Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SEBRDFToBTDF.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SEBSDF.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SEBSDFSample.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SEBSDFUtility.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SEBSSRDF.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SEBxDF.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SEFresnel.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SEFresnelConductor.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SEFresnelDielectric.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SELambertian.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SEScaledBxDF.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SESpecularReflection.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BSDFs\SESpecularTransmission.h">
+      <Filter>BSDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="Cameras\SEBNCamera.h">
+      <Filter>Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="Cameras\SEBNPerspectiveCamera.h">
+      <Filter>Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="Cameras\SEBNProjectiveCamera.h">
+      <Filter>Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="Cameras\SEFilm.h">
+      <Filter>Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="Cameras\SEImageFilm.h">
+      <Filter>Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="Samplers\SEBNSampler.h">
+      <Filter>Samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="Samplers\SEBNStratifiedSampler.h">
+      <Filter>Samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEBNDirectLightingShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEBNPathTracingShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEBNPhotonMapShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEBNShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEBNSurfaceShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEBNVolumeShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\SEBoxFilter.h">
+      <Filter>Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\SEFilter.h">
+      <Filter>Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\SEGaussianFilter.h">
+      <Filter>Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\SEMitchellFilter.h">
+      <Filter>Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\SETriangleFilter.h">
+      <Filter>Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SEBNConstantTexture.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SEBNTexture.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\SEBNAreaLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\SEBNDiffuseAreaLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\SEBNLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\SEBNLightSample.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\SEBNShapeSet.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\SEVisibilityTester.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="SEBossaNovaHeaders.h" />
+    <ClInclude Include="SEBossaNovaLIB.h" />
+    <ClInclude Include="SEBossaNovaPCH.h" />
+    <ClInclude Include="SEBossaNovaRegister.h" />
+    <ClInclude Include="SwingEngineBossaNova.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Spectrum\SECoefficientSpectrum.inl">
+      <Filter>Spectrum</Filter>
+    </None>
+    <None Include="BSDFs\SEBSDF.inl">
+      <Filter>BSDFs</Filter>
+    </None>
+    <None Include="BSDFs\SEBSDFUtility.inl">
+      <Filter>BSDFs</Filter>
+    </None>
+    <None Include="Cameras\SEBNCamera.inl">
+      <Filter>Cameras</Filter>
+    </None>
+    <None Include="Cameras\SEBNProjectiveCamera.inl">
+      <Filter>Cameras</Filter>
+    </None>
+    <None Include="Textures\SEBNConstantTexture.inl">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\SEBNTexture.inl">
+      <Filter>Textures</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Spectrum\SERGBSpectrum.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectrum\SESampledSpectrum.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectrum\SESpectrumUtility.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\SEBNRenderer.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\SESamplerRenderer.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEBNAggregate.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEBNGeometricPrimitive .cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEBNInstancedPrimitive.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEBNIntersection.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEBNKdTree.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEBNPrimitive.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEBNScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEBNShape.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEBNTriangle.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEBNTriangleMesh.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEBNVolumeRegion.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SEDifferentialGeometry.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Materials\SEBNMaterial.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="Materials\SEBNMatteMaterial.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SEBRDFToBTDF.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SEBSDF.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SEBSDFSample.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SEBSDFUtility.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SEBSSRDF.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SEBxDF.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SEFresnel.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SEFresnelConductor.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SEFresnelDielectric.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SELambertian.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SEScaledBxDF.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SESpecularReflection.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BSDFs\SESpecularTransmission.cpp">
+      <Filter>BSDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="Cameras\SEBNCamera.cpp">
+      <Filter>Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="Cameras\SEBNPerspectiveCamera.cpp">
+      <Filter>Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="Cameras\SEBNProjectiveCamera.cpp">
+      <Filter>Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="Cameras\SEFilm.cpp">
+      <Filter>Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="Cameras\SEImageFilm.cpp">
+      <Filter>Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="Samplers\SEBNSampler.cpp">
+      <Filter>Samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="Samplers\SEBNStratifiedSampler.cpp">
+      <Filter>Samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEBNDirectLightingShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEBNPathTracingShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEBNPhotonMapShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEBNShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEBNSurfaceShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEBNVolumeShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Filters\SEBoxFilter.cpp">
+      <Filter>Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="Filters\SEFilter.cpp">
+      <Filter>Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="Filters\SEGaussianFilter.cpp">
+      <Filter>Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="Filters\SEMitchellFilter.cpp">
+      <Filter>Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="Filters\SETriangleFilter.cpp">
+      <Filter>Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\SEBNAreaLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\SEBNDiffuseAreaLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\SEBNLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\SEBNLightSample.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\SEBNShapeSet.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\SEVisibilityTester.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="SEBossaNovaPCH.cpp" />
+    <ClCompile Include="SEBossaNovaRegister.cpp" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug DLL|Win32">
+      <Configuration>Debug DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Memory|Win32">
+      <Configuration>Debug Memory</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DLL|Win32">
+      <Configuration>Release DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Memory|Win32">
+      <Configuration>Release Memory</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C5A06471-1CF8-435D-B9F2-6B6CB60C8C73}</ProjectGuid>
+    <RootNamespace>SERenderingEngine</RootNamespace>
+    <SccProjectName>
+    </SccProjectName>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\SDK\Lib\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Temp\Debug\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\SDK\Lib\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Temp\Release\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">..\SDK\Lib\DebugDLL\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Temp\DebugDLL\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">..\SDK\Lib\DebugMemory\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">Temp\DebugMemory\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">..\SDK\Lib\ReleaseDLL\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Temp\ReleaseDLL\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">..\SDK\Lib\ReleaseMemory\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">Temp\ReleaseMemory\VC110\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SERenderingEngined</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath)</LibraryPath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SERenderingEngine</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">SERenderingEngined</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">SERenderingEngine</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">SERenderingEngined</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">SERenderingEngine</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;.\Buffers;.\Textures;.\Device;.\ThinDevice;.\GPGPU;.\Renderers;.\SceneGraph;.\SceneObjects;.\ShaderFloats;.\Shaders;.\Utils;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SERenderingEnginePCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4127;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Buffers\*.h ..\SDK\Include
+copy /y Buffers\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Device\*.h ..\SDK\Include
+copy /y Device\*.inl ..\SDK\Include
+copy /y ThinDevice\*.h ..\SDK\Include
+copy /y ThinDevice\*.inl ..\SDK\Include
+copy /y GPGPU\*.h ..\SDK\Include
+copy /y GPGPU\*.inl ..\SDK\Include
+copy /y Renderers\*.h ..\SDK\Include
+copy /y Renderers\*.inl ..\SDK\Include
+copy /y SceneGraph\*.h ..\SDK\Include
+copy /y SceneGraph\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
+copy /y ShaderFloats\*.h ..\SDK\Include
+copy /y ShaderFloats\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Utils\*.h ..\SDK\Include
+copy /y Utils\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\;.\Buffers;.\Textures;.\Device;.\ThinDevice;.\GPGPU;.\Renderers;.\SceneGraph;.\SceneObjects;.\ShaderFloats;.\Shaders;.\Utils;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SERenderingEnginePCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4127;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Buffers\*.h ..\SDK\Include
+copy /y Buffers\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Device\*.h ..\SDK\Include
+copy /y Device\*.inl ..\SDK\Include
+copy /y ThinDevice\*.h ..\SDK\Include
+copy /y ThinDevice\*.inl ..\SDK\Include
+copy /y GPGPU\*.h ..\SDK\Include
+copy /y GPGPU\*.inl ..\SDK\Include
+copy /y Renderers\*.h ..\SDK\Include
+copy /y Renderers\*.inl ..\SDK\Include
+copy /y SceneGraph\*.h ..\SDK\Include
+copy /y SceneGraph\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
+copy /y ShaderFloats\*.h ..\SDK\Include
+copy /y ShaderFloats\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Utils\*.h ..\SDK\Include
+copy /y Utils\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;.\Buffers;.\Textures;.\Device;.\ThinDevice;.\GPGPU;.\Renderers;.\SceneGraph;.\SceneObjects;.\ShaderFloats;.\Shaders;.\Utils;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_CORE_DLL_IMPORT;SE_GEOMETRICTOOLS_DLL_IMPORT;SE_RENDERING_ENGINE_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SERenderingEnginePCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4127;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SECored.lib;SEGeometricToolsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName).dll</OutputFile>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y Buffers\*.h ..\SDK\Include
+copy /y Buffers\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Device\*.h ..\SDK\Include
+copy /y Device\*.inl ..\SDK\Include
+copy /y ThinDevice\*.h ..\SDK\Include
+copy /y ThinDevice\*.inl ..\SDK\Include
+copy /y GPGPU\*.h ..\SDK\Include
+copy /y GPGPU\*.inl ..\SDK\Include
+copy /y Renderers\*.h ..\SDK\Include
+copy /y Renderers\*.inl ..\SDK\Include
+copy /y SceneGraph\*.h ..\SDK\Include
+copy /y SceneGraph\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
+copy /y ShaderFloats\*.h ..\SDK\Include
+copy /y ShaderFloats\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Utils\*.h ..\SDK\Include
+copy /y Utils\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;.\Buffers;.\Textures;.\Device;.\ThinDevice;.\GPGPU;.\Renderers;.\SceneGraph;.\SceneObjects;.\ShaderFloats;.\Shaders;.\Utils;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SERenderingEnginePCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4127;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Buffers\*.h ..\SDK\Include
+copy /y Buffers\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Device\*.h ..\SDK\Include
+copy /y Device\*.inl ..\SDK\Include
+copy /y ThinDevice\*.h ..\SDK\Include
+copy /y ThinDevice\*.inl ..\SDK\Include
+copy /y GPGPU\*.h ..\SDK\Include
+copy /y GPGPU\*.inl ..\SDK\Include
+copy /y Renderers\*.h ..\SDK\Include
+copy /y Renderers\*.inl ..\SDK\Include
+copy /y SceneGraph\*.h ..\SDK\Include
+copy /y SceneGraph\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
+copy /y ShaderFloats\*.h ..\SDK\Include
+copy /y ShaderFloats\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Utils\*.h ..\SDK\Include
+copy /y Utils\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;.\Buffers;.\Textures;.\Device;.\ThinDevice;.\GPGPU;.\Renderers;.\SceneGraph;.\SceneObjects;.\ShaderFloats;.\Shaders;.\Utils;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_CORE_DLL_IMPORT;SE_GEOMETRICTOOLS_DLL_IMPORT;SE_RENDERING_ENGINE_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SERenderingEnginePCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4127;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SECore.lib;SEGeometricTools.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName).dll</OutputFile>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y Buffers\*.h ..\SDK\Include
+copy /y Buffers\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Device\*.h ..\SDK\Include
+copy /y Device\*.inl ..\SDK\Include
+copy /y ThinDevice\*.h ..\SDK\Include
+copy /y ThinDevice\*.inl ..\SDK\Include
+copy /y GPGPU\*.h ..\SDK\Include
+copy /y GPGPU\*.inl ..\SDK\Include
+copy /y Renderers\*.h ..\SDK\Include
+copy /y Renderers\*.inl ..\SDK\Include
+copy /y SceneGraph\*.h ..\SDK\Include
+copy /y SceneGraph\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
+copy /y ShaderFloats\*.h ..\SDK\Include
+copy /y ShaderFloats\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Utils\*.h ..\SDK\Include
+copy /y Utils\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;.\Buffers;.\Textures;.\Device;.\ThinDevice;.\GPGPU;.\Renderers;.\SceneGraph;.\SceneObjects;.\ShaderFloats;.\Shaders;.\Utils;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SERenderingEnginePCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4127;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Buffers\*.h ..\SDK\Include
+copy /y Buffers\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Device\*.h ..\SDK\Include
+copy /y Device\*.inl ..\SDK\Include
+copy /y ThinDevice\*.h ..\SDK\Include
+copy /y ThinDevice\*.inl ..\SDK\Include
+copy /y GPGPU\*.h ..\SDK\Include
+copy /y GPGPU\*.inl ..\SDK\Include
+copy /y Renderers\*.h ..\SDK\Include
+copy /y Renderers\*.inl ..\SDK\Include
+copy /y SceneGraph\*.h ..\SDK\Include
+copy /y SceneGraph\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
+copy /y ShaderFloats\*.h ..\SDK\Include
+copy /y ShaderFloats\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Utils\*.h ..\SDK\Include
+copy /y Utils\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Buffers\SEAtomicCounterBuffer.cpp" />
+    <ClCompile Include="Buffers\SEBuffer.cpp" />
+    <ClCompile Include="Buffers\SEBufferBase.cpp" />
+    <ClCompile Include="Buffers\SEBufferView.cpp" />
+    <ClCompile Include="Buffers\SEDispatchIndirectBuffer.cpp" />
+    <ClCompile Include="Buffers\SEIndexableBuffer.cpp" />
+    <ClCompile Include="Buffers\SEIndexBuffer.cpp" />
+    <ClCompile Include="Buffers\SEPixelBuffer.cpp" />
+    <ClCompile Include="Buffers\SEStructuredBuffer.cpp" />
+    <ClCompile Include="Buffers\SETextureBuffer.cpp" />
+    <ClCompile Include="Buffers\SEUniformBuffer.cpp" />
+    <ClCompile Include="Buffers\SEVertexBuffer.cpp" />
+    <ClCompile Include="Device\SEGPUDevice.cpp" />
+    <ClCompile Include="Device\SEGPUDeviceInspector.cpp" />
+    <ClCompile Include="Device\SEGPUDeviceResident.cpp" />
+    <ClCompile Include="Device\SEGPUResource.cpp" />
+    <ClCompile Include="GPGPU\SEComputePass.cpp" />
+    <ClCompile Include="GPGPU\SEComputeTask.cpp" />
+    <ClCompile Include="Renderers\SEGBufferRenderer.cpp" />
+    <ClCompile Include="Renderers\SEPipelineStateBlock.cpp" />
+    <ClCompile Include="Renderers\SERendererInput.cpp" />
+    <ClCompile Include="Renderers\SERendererOutput.cpp" />
+    <ClCompile Include="Renderers\SEShadowMapRenderer.cpp" />
+    <ClCompile Include="Renderers\SESubRenderer.cpp" />
+    <ClCompile Include="Renderers\SEVoxelizer.cpp" />
+    <ClCompile Include="SceneGraph\SEBoundingVolume.cpp" />
+    <ClCompile Include="SceneGraph\SEBoxBV.cpp" />
+    <ClCompile Include="SceneGraph\SECamera.cpp" />
+    <ClCompile Include="SceneGraph\SECameraNode.cpp" />
+    <ClCompile Include="SceneGraph\SECuller.cpp" />
+    <ClCompile Include="SceneGraph\SELight.cpp" />
+    <ClCompile Include="SceneGraph\SELightNode.cpp" />
+    <ClCompile Include="SceneGraph\SENode.cpp" />
+    <ClCompile Include="SceneGraph\SESpatial.cpp" />
+    <ClCompile Include="SceneGraph\SESphereBV.cpp" />
+    <ClCompile Include="SceneGraph\SEUnculledSet.cpp" />
+    <ClCompile Include="SceneObjects\SEFog.cpp" />
+    <ClCompile Include="SceneObjects\SEGeometryAttributes.cpp" />
+    <ClCompile Include="SceneObjects\SELightManager.cpp" />
+    <ClCompile Include="SceneObjects\SELightMesh.cpp" />
+    <ClCompile Include="SceneObjects\SEPointSet.cpp" />
+    <ClCompile Include="SceneObjects\SEPrimitive.cpp" />
+    <ClCompile Include="SceneObjects\SEQuadMesh.cpp" />
+    <ClCompile Include="SceneObjects\SERenderCache.cpp" />
+    <ClCompile Include="SceneObjects\SERenderObject.cpp" />
+    <ClCompile Include="SceneObjects\SERenderSequence.cpp" />
+    <ClCompile Include="SceneObjects\SERenderSet.cpp" />
+    <ClCompile Include="SceneObjects\SERTGICamera.cpp" />
+    <ClCompile Include="SceneObjects\SERTGILight.cpp" />
+    <ClCompile Include="SceneObjects\SEScreenQuad.cpp" />
+    <ClCompile Include="SceneObjects\SESpatialInfo.cpp" />
+    <ClCompile Include="SceneObjects\SETriangleMesh.cpp" />
+    <ClCompile Include="ShaderFloats\SEShaderFloat.cpp" />
+    <ClCompile Include="SERenderingEnginePCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SERenderingEngineRegister.cpp" />
+    <ClCompile Include="Shaders\SEComputeShader.cpp" />
+    <ClCompile Include="Shaders\SEFragmentShader.cpp" />
+    <ClCompile Include="Shaders\SEGeometryShader.cpp" />
+    <ClCompile Include="Shaders\SEMaterial.cpp" />
+    <ClCompile Include="Shaders\SEMaterialTemplate.cpp" />
+    <ClCompile Include="Shaders\SEPass.cpp" />
+    <ClCompile Include="Shaders\SEPassBase.cpp" />
+    <ClCompile Include="Shaders\SEPassInfo.cpp" />
+    <ClCompile Include="Shaders\SEPassManager.cpp" />
+    <ClCompile Include="Shaders\SEShader.cpp" />
+    <ClCompile Include="Shaders\SEShaderProgram.cpp" />
+    <ClCompile Include="Shaders\SEShaderUniform.cpp" />
+    <ClCompile Include="Shaders\SETechnique.cpp" />
+    <ClCompile Include="Shaders\SETechniqueInfo.cpp" />
+    <ClCompile Include="Shaders\SETessellationControlShader.cpp" />
+    <ClCompile Include="Shaders\SETessellationEvaluationShader.cpp" />
+    <ClCompile Include="Shaders\SEVertexShader.cpp" />
+    <ClCompile Include="Textures\SEBufferTexture.cpp" />
+    <ClCompile Include="Textures\SEFrameBuffer.cpp" />
+    <ClCompile Include="Textures\SETexture.cpp" />
+    <ClCompile Include="Textures\SETexture1D.cpp" />
+    <ClCompile Include="Textures\SETexture2D.cpp" />
+    <ClCompile Include="Textures\SETexture2DArray.cpp" />
+    <ClCompile Include="Textures\SETexture3D.cpp" />
+    <ClCompile Include="Textures\SETextureCube.cpp" />
+    <ClCompile Include="Textures\SETextureManager.cpp" />
+    <ClCompile Include="Textures\SETextureSampler.cpp" />
+    <ClCompile Include="ThinDevice\SEThinGPUDevice.cpp" />
+    <ClCompile Include="Utils\SEGPUTimer.cpp" />
+    <ClCompile Include="Utils\SETerminal.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Buffers\SEAtomicCounterBuffer.h" />
+    <ClInclude Include="Buffers\SEBuffer.h" />
+    <ClInclude Include="Buffers\SEBufferBase.h" />
+    <ClInclude Include="Buffers\SEBufferView.h" />
+    <ClInclude Include="Buffers\SEDispatchIndirectBuffer.h" />
+    <ClInclude Include="Buffers\SEIndexableBuffer.h" />
+    <ClInclude Include="Buffers\SEIndexBuffer.h" />
+    <ClInclude Include="Buffers\SEPixelBuffer.h" />
+    <ClInclude Include="Buffers\SEStructuredBuffer.h" />
+    <ClInclude Include="Buffers\SETextureBuffer.h" />
+    <ClInclude Include="Buffers\SEUniformBuffer.h" />
+    <ClInclude Include="Buffers\SEVertexBuffer.h" />
+    <ClInclude Include="Device\SEGPUDevice.h" />
+    <ClInclude Include="Device\SEGPUDeviceInspector.h" />
+    <ClInclude Include="Device\SEGPUDeviceResident.h" />
+    <ClInclude Include="Device\SEGPUResource.h" />
+    <ClInclude Include="GPGPU\SEComputePass.h" />
+    <ClInclude Include="GPGPU\SEComputeTask.h" />
+    <ClInclude Include="Renderers\SEGBufferRenderer.h" />
+    <ClInclude Include="Renderers\SEPipelineStateBlock.h" />
+    <ClInclude Include="Renderers\SERendererInput.h" />
+    <ClInclude Include="Renderers\SERendererOutput.h" />
+    <ClInclude Include="Renderers\SEShadowMapRenderer.h" />
+    <ClInclude Include="Renderers\SESubRenderer.h" />
+    <ClInclude Include="Renderers\SEVoxelizer.h" />
+    <ClInclude Include="SceneGraph\SEBoundingVolume.h" />
+    <ClInclude Include="SceneGraph\SEBoxBV.h" />
+    <ClInclude Include="SceneGraph\SECamera.h" />
+    <ClInclude Include="SceneGraph\SECameraNode.h" />
+    <ClInclude Include="SceneGraph\SECuller.h" />
+    <ClInclude Include="SceneGraph\SELight.h" />
+    <ClInclude Include="SceneGraph\SELightNode.h" />
+    <ClInclude Include="SceneGraph\SENode.h" />
+    <ClInclude Include="SceneGraph\SESpatial.h" />
+    <ClInclude Include="SceneGraph\SESphereBV.h" />
+    <ClInclude Include="SceneGraph\SEUnculledObject.h" />
+    <ClInclude Include="SceneGraph\SEUnculledSet.h" />
+    <ClInclude Include="SceneObjects\SEFog.h" />
+    <ClInclude Include="SceneObjects\SEGeometryAttributes.h" />
+    <ClInclude Include="SceneObjects\SELightManager.h" />
+    <ClInclude Include="SceneObjects\SELightMesh.h" />
+    <ClInclude Include="SceneObjects\SEPointSet.h" />
+    <ClInclude Include="SceneObjects\SEPrimitive.h" />
+    <ClInclude Include="SceneObjects\SEQuadMesh.h" />
+    <ClInclude Include="SceneObjects\SERenderCache.h" />
+    <ClInclude Include="SceneObjects\SERenderObject.h" />
+    <ClInclude Include="SceneObjects\SERenderSequence.h" />
+    <ClInclude Include="SceneObjects\SERenderSet.h" />
+    <ClInclude Include="SceneObjects\SERTGICamera.h" />
+    <ClInclude Include="SceneObjects\SERTGILight.h" />
+    <ClInclude Include="SceneObjects\SEScreenQuad.h" />
+    <ClInclude Include="SceneObjects\SESpatialInfo.h" />
+    <ClInclude Include="SceneObjects\SETriangleMesh.h" />
+    <ClInclude Include="ShaderFloats\SEShaderFloat.h" />
+    <ClInclude Include="SERenderingEngineHeaders.h" />
+    <ClInclude Include="SERenderingEngineLIB.h" />
+    <ClInclude Include="SERenderingEnginePCH.h" />
+    <ClInclude Include="SERenderingEngineRegister.h" />
+    <ClInclude Include="Shaders\SEComputeShader.h" />
+    <ClInclude Include="Shaders\SEFragmentShader.h" />
+    <ClInclude Include="Shaders\SEGeometryShader.h" />
+    <ClInclude Include="Shaders\SEMaterial.h" />
+    <ClInclude Include="Shaders\SEMaterialTemplate.h" />
+    <ClInclude Include="Shaders\SEPass.h" />
+    <ClInclude Include="Shaders\SEPassBase.h" />
+    <ClInclude Include="Shaders\SEPassInfo.h" />
+    <ClInclude Include="Shaders\SEPassManager.h" />
+    <ClInclude Include="Shaders\SEShader.h" />
+    <ClInclude Include="Shaders\SEShaderProgram.h" />
+    <ClInclude Include="Shaders\SEShaderUniform.h" />
+    <ClInclude Include="Shaders\SETechnique.h" />
+    <ClInclude Include="Shaders\SETechniqueInfo.h" />
+    <ClInclude Include="Shaders\SETessellationControlShader.h" />
+    <ClInclude Include="Shaders\SETessellationEvaluationShader.h" />
+    <ClInclude Include="Shaders\SEVertexShader.h" />
+    <ClInclude Include="SwingEngineRenderingEngine.h" />
+    <ClInclude Include="Textures\SEBufferTexture.h" />
+    <ClInclude Include="Textures\SEFrameBuffer.h" />
+    <ClInclude Include="Textures\SETexture.h" />
+    <ClInclude Include="Textures\SETexture1D.h" />
+    <ClInclude Include="Textures\SETexture2D.h" />
+    <ClInclude Include="Textures\SETexture2DArray.h" />
+    <ClInclude Include="Textures\SETexture3D.h" />
+    <ClInclude Include="Textures\SETextureCube.h" />
+    <ClInclude Include="Textures\SETextureManager.h" />
+    <ClInclude Include="Textures\SETextureSampler.h" />
+    <ClInclude Include="ThinDevice\SEThinGPUDevice.h" />
+    <ClInclude Include="Utils\SEGPUTimer.h" />
+    <ClInclude Include="Utils\SETerminal.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Device\SEGPUDevice.inl" />
+    <None Include="Renderers\SEVoxelizer.inl" />
+    <None Include="SceneGraph\SEBoxBV.inl" />
+    <None Include="SceneGraph\SECamera.inl" />
+    <None Include="SceneGraph\SECameraNode.inl" />
+    <None Include="SceneGraph\SECuller.inl" />
+    <None Include="SceneGraph\SELightNode.inl" />
+    <None Include="SceneGraph\SENode.inl" />
+    <None Include="SceneGraph\SESpatial.inl" />
+    <None Include="SceneGraph\SESphereBV.inl" />
+    <None Include="SceneGraph\SEUnculledObject.inl" />
+    <None Include="SceneGraph\SEUnculledSet.inl" />
+    <None Include="SceneObjects\SEPrimitive.inl" />
+    <None Include="SceneObjects\SERenderCache.inl" />
+    <None Include="SceneObjects\SERenderObject.inl" />
+    <None Include="SceneObjects\SERTGICamera.inl" />
+    <None Include="SceneObjects\SESpatialInfo.inl" />
+    <None Include="ShaderFloats\SEShaderFloat.inl" />
+    <None Include="ThinDevice\SEThinGPUDevice.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SEBossaNova\SEBossaNova.vcxproj">
+      <Project>{6f4d3575-761d-4f40-ab0b-f96e5b4937ca}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\SECore\SECore.vcxproj">
+      <Project>{0e097aab-f334-498a-901a-ced25af812be}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\SEGeometricTools\SEGeometricTools.vcxproj">
+      <Project>{e41f92ea-6514-4ccc-933e-b59899238ba6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

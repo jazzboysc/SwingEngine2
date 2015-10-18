@@ -1,0 +1,71 @@
+// Swing Engine Version 2 Source Code 
+// Copyright (c) 2007-2015
+//
+// This part of Swing Engine is based on PBRT.
+/*
+    pbrt source code Copyright(c) 1998-2012 Matt Pharr and Greg Humphreys.
+
+    This file is part of pbrt.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are
+    met:
+
+    - Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+    - Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+    IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+    TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+    PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+    HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+ */
+
+#ifndef Swing_MemoryArena_H
+#define Swing_MemoryArena_H
+
+#include "SECoreLIB.h"
+#include "SEPlatforms.h"
+#include "SEMemory.h"
+#include "SEMath.h"
+#include <vector>
+
+namespace Swing
+{
+
+//----------------------------------------------------------------------------
+// Description:
+// Date:20130415
+//----------------------------------------------------------------------------
+class SE_CORE_API SEMemoryArena
+{
+public:
+    SEMemoryArena(SE_UInt32 uiBlockSize = 32768);
+    ~SEMemoryArena();
+
+    void* Alloc(SE_UInt32 uiSize);
+    template<typename T> T* Alloc(SE_UInt32 uiCount = 1);
+    void FreeAll();
+
+private:
+    SE_UInt32 m_uiCurBlockPos, m_uiBlockSize;
+    char* m_pCurrentBlock;
+    std::vector<char*> m_UsedBlocks, m_AvailableBlocks;
+};
+
+#include "SEMemoryArena.inl"
+
+}
+
+#endif

@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{62a796e6-c772-404f-96f6-f3c99056e0a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneGraph">
+      <UniqueIdentifier>{29621253-1cbd-4677-b66c-d480304eea43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderFloats">
+      <UniqueIdentifier>{7641cd31-ead0-491f-be09-a39da90f38f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Device">
+      <UniqueIdentifier>{5e581106-a698-4fef-9111-d41a6144e8f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderers">
+      <UniqueIdentifier>{46836b2d-f2cd-44be-880b-a6b474265161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buffers">
+      <UniqueIdentifier>{ddd4cd26-a79f-4eea-87a2-b3e1733ccf9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GPGPU">
+      <UniqueIdentifier>{c3f9ef06-df07-4c7b-9861-7676f58f6b9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Textures">
+      <UniqueIdentifier>{062264b4-09a3-4967-9d26-13d38508b6ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{dfe0287e-712d-42f0-a49f-14a4af123883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneObjects">
+      <UniqueIdentifier>{627d9c6a-62eb-4a63-b411-895a1121a69c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SceneGraph\SEBoundingVolume.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\SEBoxBV.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\SECamera.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\SECameraNode.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\SECuller.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\SELight.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\SELightNode.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\SENode.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\SESpatial.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\SESphereBV.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\SEUnculledSet.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderFloats\SEShaderFloat.cpp">
+      <Filter>ShaderFloats</Filter>
+    </ClCompile>
+    <ClCompile Include="SERenderingEnginePCH.cpp" />
+    <ClCompile Include="SERenderingEngineRegister.cpp" />
+    <ClCompile Include="Shaders\SEComputeShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEFragmentShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEGeometryShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEMaterial.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEMaterialTemplate.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEPass.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEPassBase.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEPassInfo.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEPassManager.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEShaderProgram.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEShaderUniform.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SETechnique.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SETechniqueInfo.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SETessellationControlShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SETessellationEvaluationShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\SEVertexShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\SEGPUDevice.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\SEGPUDeviceInspector.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\SEGPUDeviceResident.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\SEGPUResource.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SEAtomicCounterBuffer.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SEBuffer.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SEBufferBase.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SEBufferView.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SEDispatchIndirectBuffer.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SEIndexableBuffer.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SEIndexBuffer.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SEPixelBuffer.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SEStructuredBuffer.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SETextureBuffer.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SEUniformBuffer.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffers\SEVertexBuffer.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="GPGPU\SEComputePass.cpp">
+      <Filter>GPGPU</Filter>
+    </ClCompile>
+    <ClCompile Include="GPGPU\SEComputeTask.cpp">
+      <Filter>GPGPU</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderers\SEGBufferRenderer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderers\SEPipelineStateBlock.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderers\SERendererInput.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderers\SERendererOutput.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderers\SEShadowMapRenderer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderers\SESubRenderer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderers\SEVoxelizer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\SEBufferTexture.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\SEFrameBuffer.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\SETexture.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\SETexture1D.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\SETexture2D.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\SETexture2DArray.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\SETexture3D.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\SETextureCube.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\SETextureManager.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\SETextureSampler.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\SEGPUTimer.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\SETerminal.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SEFog.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SEGeometryAttributes.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SELightManager.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SELightMesh.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SEPointSet.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SEPrimitive.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SEQuadMesh.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SERenderCache.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SERenderObject.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SERenderSequence.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SERenderSet.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SERTGICamera.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SERTGILight.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SEScreenQuad.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SESpatialInfo.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SETriangleMesh.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ThinDevice\SEThinGPUDevice.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SceneGraph\SEBoundingVolume.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\SEBoxBV.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\SECamera.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\SECameraNode.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\SECuller.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\SELight.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\SELightNode.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\SENode.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\SESpatial.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\SESphereBV.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\SEUnculledObject.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\SEUnculledSet.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderFloats\SEShaderFloat.h">
+      <Filter>ShaderFloats</Filter>
+    </ClInclude>
+    <ClInclude Include="SERenderingEngineHeaders.h" />
+    <ClInclude Include="SERenderingEngineLIB.h" />
+    <ClInclude Include="SERenderingEnginePCH.h" />
+    <ClInclude Include="SERenderingEngineRegister.h" />
+    <ClInclude Include="SwingEngineRenderingEngine.h" />
+    <ClInclude Include="Shaders\SEComputeShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEFragmentShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEGeometryShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEMaterial.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEMaterialTemplate.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEPass.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEPassBase.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEPassInfo.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEPassManager.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEShaderProgram.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEShaderUniform.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SETechnique.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SETechniqueInfo.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SETessellationControlShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SETessellationEvaluationShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\SEVertexShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\SEGPUDevice.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\SEGPUDeviceInspector.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\SEGPUDeviceResident.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\SEGPUResource.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SEAtomicCounterBuffer.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SEBuffer.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SEBufferBase.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SEBufferView.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SEDispatchIndirectBuffer.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SEIndexableBuffer.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SEIndexBuffer.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SEPixelBuffer.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SEStructuredBuffer.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SETextureBuffer.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SEUniformBuffer.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffers\SEVertexBuffer.h">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="GPGPU\SEComputePass.h">
+      <Filter>GPGPU</Filter>
+    </ClInclude>
+    <ClInclude Include="GPGPU\SEComputeTask.h">
+      <Filter>GPGPU</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderers\SEGBufferRenderer.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderers\SEPipelineStateBlock.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderers\SERendererInput.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderers\SERendererOutput.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderers\SEShadowMapRenderer.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderers\SESubRenderer.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderers\SEVoxelizer.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SEBufferTexture.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SEFrameBuffer.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SETexture.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SETexture1D.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SETexture2D.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SETexture2DArray.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SETexture3D.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SETextureCube.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SETextureManager.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SETextureSampler.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\SEGPUTimer.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\SETerminal.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SEFog.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SEGeometryAttributes.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SELightManager.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SELightMesh.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SEPointSet.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SEPrimitive.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SEQuadMesh.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SERenderCache.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SERenderObject.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SERenderSequence.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SERenderSet.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SERTGICamera.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SERTGILight.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SEScreenQuad.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SESpatialInfo.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjects\SETriangleMesh.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ThinDevice\SEThinGPUDevice.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SceneGraph\SEBoxBV.inl">
+      <Filter>SceneGraph</Filter>
+    </None>
+    <None Include="SceneGraph\SECamera.inl">
+      <Filter>SceneGraph</Filter>
+    </None>
+    <None Include="SceneGraph\SECameraNode.inl">
+      <Filter>SceneGraph</Filter>
+    </None>
+    <None Include="SceneGraph\SECuller.inl">
+      <Filter>SceneGraph</Filter>
+    </None>
+    <None Include="SceneGraph\SELightNode.inl">
+      <Filter>SceneGraph</Filter>
+    </None>
+    <None Include="SceneGraph\SENode.inl">
+      <Filter>SceneGraph</Filter>
+    </None>
+    <None Include="SceneGraph\SESpatial.inl">
+      <Filter>SceneGraph</Filter>
+    </None>
+    <None Include="SceneGraph\SESphereBV.inl">
+      <Filter>SceneGraph</Filter>
+    </None>
+    <None Include="SceneGraph\SEUnculledObject.inl">
+      <Filter>SceneGraph</Filter>
+    </None>
+    <None Include="SceneGraph\SEUnculledSet.inl">
+      <Filter>SceneGraph</Filter>
+    </None>
+    <None Include="ShaderFloats\SEShaderFloat.inl">
+      <Filter>ShaderFloats</Filter>
+    </None>
+    <None Include="Device\SEGPUDevice.inl">
+      <Filter>Device</Filter>
+    </None>
+    <None Include="Renderers\SEVoxelizer.inl">
+      <Filter>Renderers</Filter>
+    </None>
+    <None Include="SceneObjects\SEPrimitive.inl">
+      <Filter>SceneObjects</Filter>
+    </None>
+    <None Include="SceneObjects\SERenderCache.inl">
+      <Filter>SceneObjects</Filter>
+    </None>
+    <None Include="SceneObjects\SERenderObject.inl">
+      <Filter>SceneObjects</Filter>
+    </None>
+    <None Include="SceneObjects\SERTGICamera.inl">
+      <Filter>SceneObjects</Filter>
+    </None>
+    <None Include="SceneObjects\SESpatialInfo.inl">
+      <Filter>SceneObjects</Filter>
+    </None>
+    <None Include="ThinDevice\SEThinGPUDevice.inl" />
+  </ItemGroup>
+</Project>

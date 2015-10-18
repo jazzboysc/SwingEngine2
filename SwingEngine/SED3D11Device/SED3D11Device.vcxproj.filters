@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="SED3D11DevicePCH.cpp" />
+    <ClCompile Include="SED3D11DeviceRegister.cpp" />
+    <ClCompile Include="SED3D11Device.cpp">
+      <Filter>GPU</Filter>
+    </ClCompile>
+    <ClCompile Include="SED3D11GPUResources.cpp">
+      <Filter>GPU</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SED3D11DeviceHeaders.h" />
+    <ClInclude Include="SED3D11DeviceLIB.h" />
+    <ClInclude Include="SED3D11DevicePCH.h" />
+    <ClInclude Include="SED3D11DeviceRegister.h" />
+    <ClInclude Include="SwingEngineD3D11Device.h" />
+    <ClInclude Include="SED3D11Device.h">
+      <Filter>GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="SED3D11Common.h" />
+    <ClInclude Include="SED3D11GPUResources.h">
+      <Filter>GPU</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="GPU">
+      <UniqueIdentifier>{ab3c7ce2-9e4c-4359-aa88-25fffad6550c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

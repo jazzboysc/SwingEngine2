@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Approximation">
+      <UniqueIdentifier>{b12f728c-b755-49f8-b128-be766538ea42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Distance">
+      <UniqueIdentifier>{b091e444-09a9-47fe-9e68-662c53797370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Intersection">
+      <UniqueIdentifier>{40a73c76-5c49-4bf6-baf5-4aa552736560}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Containment">
+      <UniqueIdentifier>{4ce0596d-2cba-447e-9f98-b8ae34e43915}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision">
+      <UniqueIdentifier>{07dae230-6020-4d9a-b557-28160a064a0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NumericalAnalysis">
+      <UniqueIdentifier>{82ac1f08-af03-47d8-8239-4405b5caef19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ComputationalGeometry">
+      <UniqueIdentifier>{7e689456-9213-484b-b69e-cdf1b299d6b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ComputationalGeometry\ConvexHull">
+      <UniqueIdentifier>{e235abcf-1196-4fbe-becb-669a7139ed6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ComputationalGeometry\Query">
+      <UniqueIdentifier>{2a668764-7585-4f58-a502-9162861416c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ComputationalGeometry\RationalArithmetic">
+      <UniqueIdentifier>{e870c7cd-0ddc-4dfe-bd69-c9f78576a7b9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Approximation\SEApprGaussPointsFit3.cpp">
+      <Filter>Approximation</Filter>
+    </ClCompile>
+    <ClCompile Include="Approximation\SEApprLineFit3.cpp">
+      <Filter>Approximation</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistance.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistLine2Line2.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistLine2Ray2.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistLine2Segment2.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistLine3Box3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistLine3Line3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistLine3Ray3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistLine3Rectangle3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistLine3Segment3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistLine3Triangle3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistRay2Ray2.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistRay2Segment2.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistRay3Box3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistRay3Ray3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistRay3Rectangle3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistRay3Segment3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistRay3Triangle3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistRectangle3Rectangle3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistSegment2Segment2.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistSegment3Box3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistSegment3Rectangle3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistSegment3Segment3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistSegment3Triangle3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistTriangle3Rectangle3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistTriangle3Triangle3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector2Box2.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector2Line2.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector2Ray2.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector2Segment2.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector3Box3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector3Frustum3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector3Line3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector3Plane3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector3Ray3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector3Rectangle3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector3Segment3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Distance\SEDistVector3Triangle3.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntersector.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntersector1.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntrBox3Box3.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntrLine3Box3.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntrLine3Sphere3.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntrRay3Box3.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntrRay3Sphere3.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntrRay3Triangle3.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntrSegment3Box3.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntrSegment3Sphere3.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntrSphere3Sphere3.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntrTriangle2Triangle2.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection\SEIntrTriangle3Triangle3.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="Containment\SEContBox3.cpp">
+      <Filter>Containment</Filter>
+    </ClCompile>
+    <ClCompile Include="Containment\SEContSphere3.cpp">
+      <Filter>Containment</Filter>
+    </ClCompile>
+    <ClCompile Include="NumericalAnalysis\SEEigen.cpp">
+      <Filter>NumericalAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="NumericalAnalysis\SELinearSystem.cpp">
+      <Filter>NumericalAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEConvexHull.cpp">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEConvexHull1.cpp">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEConvexHull2.cpp">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEConvexHull3.cpp">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEHullEdge2.cpp">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEHullTriangle3.cpp">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEQuery2.cpp">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEQuery2Filtered.cpp">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEQuery2Int64.cpp">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEQuery2TInteger.cpp">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEQuery2TRational.cpp">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEQuery3.cpp">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEQuery3Filtered.cpp">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEQuery3Int64.cpp">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEQuery3TInteger.cpp">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputationalGeometry\SEQuery3TRational.cpp">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClCompile>
+    <ClCompile Include="SEGeometricToolsPCH.cpp" />
+    <ClCompile Include="SEGeometricToolsRegister.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Approximation\SEApprGaussPointsFit3.h">
+      <Filter>Approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\SEApprLineFit3.h">
+      <Filter>Approximation</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistance.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistLine2Line2.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistLine2Ray2.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistLine2Segment2.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistLine3Box3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistLine3Line3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistLine3Ray3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistLine3Rectangle3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistLine3Segment3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistLine3Triangle3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistRay2Ray2.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistRay2Segment2.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistRay3Box3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistRay3Ray3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistRay3Rectangle3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistRay3Segment3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistRay3Triangle3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistRectangle3Rectangle3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistSegment2Segment2.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistSegment3Box3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistSegment3Rectangle3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistSegment3Segment3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistSegment3Triangle3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistTriangle3Rectangle3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistTriangle3Triangle3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector2Box2.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector2Line2.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector2Ray2.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector2Segment2.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector3Box3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector3Frustum3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector3Line3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector3Plane3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector3Ray3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector3Rectangle3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector3Segment3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\SEDistVector3Triangle3.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntersector.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntersector1.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntrBox3Box3.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntrLine3Box3.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntrLine3Sphere3.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntrRay3Box3.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntrRay3Sphere3.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntrRay3Triangle3.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntrSegment3Box3.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntrSegment3Sphere3.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntrSphere3Sphere3.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntrTriangle2Triangle2.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\SEIntrTriangle3Triangle3.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\SEContBox3.h">
+      <Filter>Containment</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\SEContSphere3.h">
+      <Filter>Containment</Filter>
+    </ClInclude>
+    <ClInclude Include="NumericalAnalysis\SEEigen.h">
+      <Filter>NumericalAnalysis</Filter>
+    </ClInclude>
+    <ClInclude Include="NumericalAnalysis\SELinearSystem.h">
+      <Filter>NumericalAnalysis</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEConvexHull.h">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEConvexHull1.h">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEConvexHull2.h">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEConvexHull3.h">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEHullEdge2.h">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEHullTriangle3.h">
+      <Filter>ComputationalGeometry\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEQuery.h">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEQuery2.h">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEQuery2Filtered.h">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEQuery2Int64.h">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEQuery2TInteger.h">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEQuery2TRational.h">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEQuery3.h">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEQuery3Filtered.h">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEQuery3Int64.h">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEQuery3TInteger.h">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEQuery3TRational.h">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEIVector2.h">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SEIVector3.h">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SERVector2.h">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SERVector3.h">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SETInteger.h">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SETIVector.h">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SETRational.h">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputationalGeometry\SETRVector.h">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </ClInclude>
+    <ClInclude Include="SEGeometricToolsHeaders.h" />
+    <ClInclude Include="SEGeometricToolsLIB.h" />
+    <ClInclude Include="SEGeometricToolsPCH.h" />
+    <ClInclude Include="SEGeometricToolsRegister.h" />
+    <ClInclude Include="SwingEngineGeometricTools.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ComputationalGeometry\SEQuery.inl">
+      <Filter>ComputationalGeometry\Query</Filter>
+    </None>
+    <None Include="ComputationalGeometry\SEIVector2.inl">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </None>
+    <None Include="ComputationalGeometry\SEIVector3.inl">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </None>
+    <None Include="ComputationalGeometry\SERVector2.inl">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </None>
+    <None Include="ComputationalGeometry\SERVector3.inl">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </None>
+    <None Include="ComputationalGeometry\SETInteger.inl">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </None>
+    <None Include="ComputationalGeometry\SETIVector.inl">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </None>
+    <None Include="ComputationalGeometry\SETRational.inl">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </None>
+    <None Include="ComputationalGeometry\SETRVector.inl">
+      <Filter>ComputationalGeometry\RationalArithmetic</Filter>
+    </None>
+  </ItemGroup>
+</Project>

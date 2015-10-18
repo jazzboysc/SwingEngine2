@@ -1,0 +1,696 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Base">
+      <UniqueIdentifier>{0110032b-dc9a-4659-8265-e8287c444a24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{4f474e0c-9549-414e-9699-e8253794af76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Threading">
+      <UniqueIdentifier>{6b5bf1df-85d4-4aca-9bf9-8ad3b0116ac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectSystem">
+      <UniqueIdentifier>{ca599e25-c2cb-45cf-83d6-10c066c413dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{358e6865-949d-4125-b98c-74302c6d416a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SharedArrays">
+      <UniqueIdentifier>{c5ef8133-d899-4f1b-ad8a-63ba9caabf67}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Base\SEBlockedArray.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\SEHashSet.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\SEHashTable.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\SEKdTree.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\SEPriorityQueue.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\SEStringHashTable.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\SETuple.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="System\SEAssert.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\SECommand.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\SEMemory.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\SEMemoryArena.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\SEPlatforms.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\SEProgressReporter.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\SESystem.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\SETimer.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SEAtomicOperation.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SEConditionVariable.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SEConditionVariableType.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SEMutex.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SEMutexType.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SERWMutex.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SERWMutexType.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SESemaphore.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SESemaphoreType.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SETask.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SETaskManager.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SETaskWorkerThread.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SEThread.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\SEThreadType.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SEAdvancedObject.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SEController.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SEMain.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SEMainMCR.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SENameIdMCR.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SEObject.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SERTTI.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SERTTIMCR.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SESmartPointer.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SEStream.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SEStreamMCR.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSystem\SEStreamVersion.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEAxisAlignedBox2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEAxisAlignedBox3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEBitHacks.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEBox2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEBox3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEColor.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEColorRGB.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEColorRGBA.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEConvexPolyhedron3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEDistribution1D.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEDistribution2D.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEFloat1.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEFloat2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEFloat3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEFloat4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEFrustum3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEHalfFloat.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SELinComp.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SELine2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SELine3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEMapper2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEMapper3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEMath.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEMatrix2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEMatrix3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEMatrix4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEMatrixMN.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEMonteCarlo.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEPermutedHalton.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEPlane3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEPolyhedron3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEQuaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SERandomNumberGenerator.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SERay2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SERay3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SERayDifferential.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SERectangle3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SESegment2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SESegment3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SESphere3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SETransformation.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SETriangle2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SETriangle3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEVector2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEVector3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEVector4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SEVectorN.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEColorRGBAArray.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEColorRGBArray.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEDoubleArray.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEFloatArray.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEIntArray.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEMatrix2Array.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEMatrix3Array.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEMatrix4Array.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEPlaneArray.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEQuaternionArray.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SESharedArray.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEVector2Array.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEVector3Array.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedArrays\SEVector4Array.h">
+      <Filter>SharedArrays</Filter>
+    </ClInclude>
+    <ClInclude Include="SECoreHeaders.h" />
+    <ClInclude Include="SECoreLIB.h" />
+    <ClInclude Include="SECorePCH.h" />
+    <ClInclude Include="SECoreRegister.h" />
+    <ClInclude Include="SwingEngineCore.h" />
+    <ClInclude Include="ObjectSystem\SEReferencable.h">
+      <Filter>ObjectSystem</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Base\SEBlockedArray.inl">
+      <Filter>Base</Filter>
+    </None>
+    <None Include="Base\SEHashSet.inl">
+      <Filter>Base</Filter>
+    </None>
+    <None Include="Base\SEHashTable.inl">
+      <Filter>Base</Filter>
+    </None>
+    <None Include="Base\SEKdTree.inl">
+      <Filter>Base</Filter>
+    </None>
+    <None Include="Base\SEStringHashTable.inl">
+      <Filter>Base</Filter>
+    </None>
+    <None Include="Base\SETuple.inl">
+      <Filter>Base</Filter>
+    </None>
+    <None Include="System\SEMemory.inl">
+      <Filter>System</Filter>
+    </None>
+    <None Include="System\SEMemoryArena.inl">
+      <Filter>System</Filter>
+    </None>
+    <None Include="System\SESystem.inl">
+      <Filter>System</Filter>
+    </None>
+    <None Include="ObjectSystem\SEAdvancedObject.inl">
+      <Filter>ObjectSystem</Filter>
+    </None>
+    <None Include="ObjectSystem\SEController.inl">
+      <Filter>ObjectSystem</Filter>
+    </None>
+    <None Include="ObjectSystem\SEObject.inl">
+      <Filter>ObjectSystem</Filter>
+    </None>
+    <None Include="ObjectSystem\SERTTI.inl">
+      <Filter>ObjectSystem</Filter>
+    </None>
+    <None Include="ObjectSystem\SESmartPointer.inl">
+      <Filter>ObjectSystem</Filter>
+    </None>
+    <None Include="ObjectSystem\SEStream.inl">
+      <Filter>ObjectSystem</Filter>
+    </None>
+    <None Include="Math\SEBitHacks.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEColor.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEColorRGB.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEColorRGBA.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SELinComp.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEMath.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEMatrix2.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEMatrix3.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEMatrix4.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEMatrixMN.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEMonteCarlo.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEPlane3.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEQuaternion.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SESphere3.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SETransformation.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEVector2.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEVector3.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEVector4.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\SEVectorN.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="SharedArrays\SESharedArray.inl">
+      <Filter>SharedArrays</Filter>
+    </None>
+    <None Include="ObjectSystem\SEReferencable.inl">
+      <Filter>ObjectSystem</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="System\SECommand.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\SEMemory.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\SEMemoryArena.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\SEProgressReporter.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\SESystem.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\SETimer.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Threading\SEAtomicOperation.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="Threading\SEConditionVariable.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="Threading\SEMutex.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="Threading\SERWMutex.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="Threading\SESemaphore.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="Threading\SETask.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="Threading\SETaskManager.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="Threading\SETaskWorkerThread.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="Threading\SEThread.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectSystem\SEAdvancedObject.cpp">
+      <Filter>ObjectSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectSystem\SEController.cpp">
+      <Filter>ObjectSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectSystem\SEMain.cpp">
+      <Filter>ObjectSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectSystem\SEObject.cpp">
+      <Filter>ObjectSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectSystem\SERTTI.cpp">
+      <Filter>ObjectSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectSystem\SEStream.cpp">
+      <Filter>ObjectSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectSystem\SEStreamVersion.cpp">
+      <Filter>ObjectSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEAxisAlignedBox2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEAxisAlignedBox3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEBox2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEBox3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEColor.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEColorRGB.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEColorRGBA.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEConvexPolyhedron3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEDistribution1D.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEDistribution2D.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEFloat1.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEFloat2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEFloat3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEFloat4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEFrustum3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEHalfFloat.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SELine2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SELine3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEMapper2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEMapper3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEMath.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEMatrix2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEMatrix3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEMatrix4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEMatrixMN.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEMonteCarlo.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEPermutedHalton.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEPlane3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEPolyhedron3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEQuaternion.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SERandomNumberGenerator.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SERay2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SERay3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SERayDifferential.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SERectangle3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SESegment2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SESegment3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SESphere3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SETransformation.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SETriangle2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SETriangle3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEVector2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEVector3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEVector4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SEVectorN.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEColorRGBAArray.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEColorRGBArray.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEDoubleArray.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEFloatArray.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEIntArray.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEMatrix2Array.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEMatrix3Array.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEMatrix4Array.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEPlaneArray.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEQuaternionArray.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEVector2Array.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEVector3Array.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedArrays\SEVector4Array.cpp">
+      <Filter>SharedArrays</Filter>
+    </ClCompile>
+    <ClCompile Include="SECorePCH.cpp" />
+    <ClCompile Include="SECoreRegister.cpp" />
+    <ClCompile Include="ObjectSystem\SEReferencable.cpp">
+      <Filter>ObjectSystem</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Image">
+      <UniqueIdentifier>{5b325fc1-a8c2-4181-84c5-dec00914ceba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Image\png">
+      <UniqueIdentifier>{e0228ae5-eb79-47b1-af13-58d875f70221}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Image\bmp">
+      <UniqueIdentifier>{8012c014-ea9b-4dc8-b788-6250c3f793b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Image\tga">
+      <UniqueIdentifier>{875776f0-84dc-4371-a928-bf6634e0f630}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Meta">
+      <UniqueIdentifier>{324cc08c-89b2-45de-ace4-41a8ff2fc7e8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Image\SEImageIO.cpp">
+      <Filter>Image</Filter>
+    </ClCompile>
+    <ClCompile Include="SEAssetUtilityPCH.cpp" />
+    <ClCompile Include="SEAssetUtilityRegister.cpp" />
+    <ClCompile Include="Image\png.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngerror.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngget.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngmem.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngpread.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngread.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngrio.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngrtran.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngrutil.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngset.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngtest.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngtrans.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngwio.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngwrite.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngwtran.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\pngwutil.c">
+      <Filter>Image\png</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\SETarga.c">
+      <Filter>Image\tga</Filter>
+    </ClCompile>
+    <ClCompile Include="Image\bmpread.c">
+      <Filter>Image\bmp</Filter>
+    </ClCompile>
+    <ClCompile Include="Meta\SEObjLoader.cpp">
+      <Filter>Meta</Filter>
+    </ClCompile>
+    <ClCompile Include="Meta\SEObjMetaMaterial.cpp">
+      <Filter>Meta</Filter>
+    </ClCompile>
+    <ClCompile Include="Meta\SEObjMetaMesh.cpp">
+      <Filter>Meta</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Image\SEImageIO.h">
+      <Filter>Image</Filter>
+    </ClInclude>
+    <ClInclude Include="SEAssetUtilityHeaders.h" />
+    <ClInclude Include="SEAssetUtilityLIB.h" />
+    <ClInclude Include="SEAssetUtilityPCH.h" />
+    <ClInclude Include="SEAssetUtilityRegister.h" />
+    <ClInclude Include="SwingEngineAssetUtility.h" />
+    <ClInclude Include="Image\png.h">
+      <Filter>Image\png</Filter>
+    </ClInclude>
+    <ClInclude Include="Image\pngconf.h">
+      <Filter>Image\png</Filter>
+    </ClInclude>
+    <ClInclude Include="Image\pngdebug.h">
+      <Filter>Image\png</Filter>
+    </ClInclude>
+    <ClInclude Include="Image\pnginfo.h">
+      <Filter>Image\png</Filter>
+    </ClInclude>
+    <ClInclude Include="Image\pnglibconf.h">
+      <Filter>Image\png</Filter>
+    </ClInclude>
+    <ClInclude Include="Image\pngpriv.h">
+      <Filter>Image\png</Filter>
+    </ClInclude>
+    <ClInclude Include="Image\pngstruct.h">
+      <Filter>Image\png</Filter>
+    </ClInclude>
+    <ClInclude Include="Image\SETarga.h">
+      <Filter>Image\tga</Filter>
+    </ClInclude>
+    <ClInclude Include="Image\bmpread.h">
+      <Filter>Image\bmp</Filter>
+    </ClInclude>
+    <ClInclude Include="Meta\SEObjLoader.h">
+      <Filter>Meta</Filter>
+    </ClInclude>
+    <ClInclude Include="Meta\SEObjMetaMaterial.h">
+      <Filter>Meta</Filter>
+    </ClInclude>
+    <ClInclude Include="Meta\SEObjMetaMesh.h">
+      <Filter>Meta</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Meta\SEObjMetaMesh.inl">
+      <Filter>Meta</Filter>
+    </None>
+  </ItemGroup>
+</Project>

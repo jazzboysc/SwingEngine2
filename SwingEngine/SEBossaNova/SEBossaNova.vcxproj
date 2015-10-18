@@ -1,0 +1,586 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug DLL|Win32">
+      <Configuration>Debug DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Memory|Win32">
+      <Configuration>Debug Memory</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DLL|Win32">
+      <Configuration>Release DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Memory|Win32">
+      <Configuration>Release Memory</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6F4D3575-761D-4F40-AB0B-F96E5B4937CA}</ProjectGuid>
+    <RootNamespace>SEBossaNova</RootNamespace>
+    <SccProjectName>
+    </SccProjectName>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\SDK\Lib\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Temp\Debug\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\SDK\Lib\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Temp\Release\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">..\SDK\Lib\DebugDLL\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Temp\DebugDLL\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">..\SDK\Lib\DebugMemory\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">Temp\DebugMemory\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">..\SDK\Lib\ReleaseDLL\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Temp\ReleaseDLL\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">..\SDK\Lib\ReleaseMemory\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">Temp\ReleaseMemory\VC110\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SEBossaNovad</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SEBossaNova</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">SEBossaNovad</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">SEBossaNova</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">SEBossaNovad</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">SEBossaNova</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;.\Spectrum;.\Rendering;.\Scene;.\BSDFs;.\Materials;.\Cameras;.\Samplers;.\Shaders;.\Filters;.\Textures;.\Lights;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SEBossaNovaPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Spectrum\*.h ..\SDK\Include
+copy /y Spectrum\*.inl ..\SDK\Include
+copy /y Rendering\*.h ..\SDK\Include
+copy /y Rendering\*.inl ..\SDK\Include
+copy /y Scene\*.h ..\SDK\Include
+copy /y Scene\*.inl ..\SDK\Include
+copy /y BSDFs\*.h ..\SDK\Include
+copy /y BSDFs\*.inl ..\SDK\Include
+copy /y Materials\*.h ..\SDK\Include
+copy /y Materials\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
+copy /y Samplers\*.h ..\SDK\Include
+copy /y Samplers\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Filters\*.h ..\SDK\Include
+copy /y Filters\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Lights\*.h ..\SDK\Include
+copy /y Lights\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\;.\Spectrum;.\Rendering;.\Scene;.\BSDFs;.\Materials;.\Cameras;.\Samplers;.\Shaders;.\Filters;.\Textures;.\Lights;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SEBossaNovaPCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Spectrum\*.h ..\SDK\Include
+copy /y Spectrum\*.inl ..\SDK\Include
+copy /y Rendering\*.h ..\SDK\Include
+copy /y Rendering\*.inl ..\SDK\Include
+copy /y Scene\*.h ..\SDK\Include
+copy /y Scene\*.inl ..\SDK\Include
+copy /y BSDFs\*.h ..\SDK\Include
+copy /y BSDFs\*.inl ..\SDK\Include
+copy /y Materials\*.h ..\SDK\Include
+copy /y Materials\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
+copy /y Samplers\*.h ..\SDK\Include
+copy /y Samplers\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Filters\*.h ..\SDK\Include
+copy /y Filters\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Lights\*.h ..\SDK\Include
+copy /y Lights\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;.\Spectrum;.\Rendering;.\Scene;.\BSDFs;.\Materials;.\Cameras;.\Samplers;.\Shaders;.\Filters;.\Textures;.\Lights;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_ASSET_UTILITY_DLL_IMPORT;SE_CORE_DLL_IMPORT;SE_GEOMETRICTOOLS_DLL_IMPORT;SE_BOSSA_NOVA_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SEBossaNovaPCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName).dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SEAssetUtilityd.lib;SECored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y Spectrum\*.h ..\SDK\Include
+copy /y Spectrum\*.inl ..\SDK\Include
+copy /y Rendering\*.h ..\SDK\Include
+copy /y Rendering\*.inl ..\SDK\Include
+copy /y Scene\*.h ..\SDK\Include
+copy /y Scene\*.inl ..\SDK\Include
+copy /y BSDFs\*.h ..\SDK\Include
+copy /y BSDFs\*.inl ..\SDK\Include
+copy /y Materials\*.h ..\SDK\Include
+copy /y Materials\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
+copy /y Samplers\*.h ..\SDK\Include
+copy /y Samplers\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Filters\*.h ..\SDK\Include
+copy /y Filters\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Lights\*.h ..\SDK\Include
+copy /y Lights\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;.\Spectrum;.\Rendering;.\Scene;.\BSDFs;.\Materials;.\Cameras;.\Samplers;.\Shaders;.\Filters;.\Textures;.\Lights;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SEBossaNovaPCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Spectrum\*.h ..\SDK\Include
+copy /y Spectrum\*.inl ..\SDK\Include
+copy /y Rendering\*.h ..\SDK\Include
+copy /y Rendering\*.inl ..\SDK\Include
+copy /y Scene\*.h ..\SDK\Include
+copy /y Scene\*.inl ..\SDK\Include
+copy /y BSDFs\*.h ..\SDK\Include
+copy /y BSDFs\*.inl ..\SDK\Include
+copy /y Materials\*.h ..\SDK\Include
+copy /y Materials\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
+copy /y Samplers\*.h ..\SDK\Include
+copy /y Samplers\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Filters\*.h ..\SDK\Include
+copy /y Filters\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Lights\*.h ..\SDK\Include
+copy /y Lights\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;.\Spectrum;.\Rendering;.\Scene;.\BSDFs;.\Materials;.\Cameras;.\Samplers;.\Shaders;.\Filters;.\Textures;.\Lights;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_ASSET_UTILITY_DLL_IMPORT;SE_CORE_DLL_IMPORT;SE_GEOMETRICTOOLS_DLL_IMPORT;SE_BOSSA_NOVA_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SEBossaNovaPCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName).dll</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>SEAssetUtility.lib;SECore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y Spectrum\*.h ..\SDK\Include
+copy /y Spectrum\*.inl ..\SDK\Include
+copy /y Rendering\*.h ..\SDK\Include
+copy /y Rendering\*.inl ..\SDK\Include
+copy /y Scene\*.h ..\SDK\Include
+copy /y Scene\*.inl ..\SDK\Include
+copy /y BSDFs\*.h ..\SDK\Include
+copy /y BSDFs\*.inl ..\SDK\Include
+copy /y Materials\*.h ..\SDK\Include
+copy /y Materials\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
+copy /y Samplers\*.h ..\SDK\Include
+copy /y Samplers\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Filters\*.h ..\SDK\Include
+copy /y Filters\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Lights\*.h ..\SDK\Include
+copy /y Lights\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;.\Spectrum;.\Rendering;.\Scene;.\BSDFs;.\Materials;.\Cameras;.\Samplers;.\Shaders;.\Filters;.\Textures;.\Lights;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SEBossaNovaPCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Spectrum\*.h ..\SDK\Include
+copy /y Spectrum\*.inl ..\SDK\Include
+copy /y Rendering\*.h ..\SDK\Include
+copy /y Rendering\*.inl ..\SDK\Include
+copy /y Scene\*.h ..\SDK\Include
+copy /y Scene\*.inl ..\SDK\Include
+copy /y BSDFs\*.h ..\SDK\Include
+copy /y BSDFs\*.inl ..\SDK\Include
+copy /y Materials\*.h ..\SDK\Include
+copy /y Materials\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
+copy /y Samplers\*.h ..\SDK\Include
+copy /y Samplers\*.inl ..\SDK\Include
+copy /y Shaders\*.h ..\SDK\Include
+copy /y Shaders\*.inl ..\SDK\Include
+copy /y Filters\*.h ..\SDK\Include
+copy /y Filters\*.inl ..\SDK\Include
+copy /y Textures\*.h ..\SDK\Include
+copy /y Textures\*.inl ..\SDK\Include
+copy /y Lights\*.h ..\SDK\Include
+copy /y Lights\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Spectrum\SECoefficientSpectrum.h" />
+    <ClInclude Include="Spectrum\SERGBSpectrum.h" />
+    <ClInclude Include="Spectrum\SESampledSpectrum.h" />
+    <ClInclude Include="Spectrum\SESpectrum.h" />
+    <ClInclude Include="Spectrum\SESpectrumUtility.h" />
+    <ClInclude Include="Rendering\SEBNRenderer.h" />
+    <ClInclude Include="Rendering\SESamplerRenderer.h" />
+    <ClInclude Include="Scene\SEBNAggregate.h" />
+    <ClInclude Include="Scene\SEBNGeometricPrimitive.h" />
+    <ClInclude Include="Scene\SEBNInstancedPrimitive.h" />
+    <ClInclude Include="Scene\SEBNIntersection.h" />
+    <ClInclude Include="Scene\SEBNKdTree.h" />
+    <ClInclude Include="Scene\SEBNPrimitive.h" />
+    <ClInclude Include="Scene\SEBNScene.h" />
+    <ClInclude Include="Scene\SEBNShape.h" />
+    <ClInclude Include="Scene\SEBNTriangle.h" />
+    <ClInclude Include="Scene\SEBNTriangleMesh.h" />
+    <ClInclude Include="Scene\SEBNVolumeRegion.h" />
+    <ClInclude Include="Scene\SEDifferentialGeometry.h" />
+    <ClInclude Include="Materials\SEBNMaterial.h" />
+    <ClInclude Include="Materials\SEBNMatteMaterial.h" />
+    <ClInclude Include="BSDFs\SEBRDFToBTDF.h" />
+    <ClInclude Include="BSDFs\SEBSDF.h" />
+    <ClInclude Include="BSDFs\SEBSDFSample.h" />
+    <ClInclude Include="BSDFs\SEBSDFUtility.h" />
+    <ClInclude Include="BSDFs\SEBSSRDF.h" />
+    <ClInclude Include="BSDFs\SEBxDF.h" />
+    <ClInclude Include="BSDFs\SEFresnel.h" />
+    <ClInclude Include="BSDFs\SEFresnelConductor.h" />
+    <ClInclude Include="BSDFs\SEFresnelDielectric.h" />
+    <ClInclude Include="BSDFs\SELambertian.h" />
+    <ClInclude Include="BSDFs\SEScaledBxDF.h" />
+    <ClInclude Include="BSDFs\SESpecularReflection.h" />
+    <ClInclude Include="BSDFs\SESpecularTransmission.h" />
+    <ClInclude Include="Cameras\SEBNCamera.h" />
+    <ClInclude Include="Cameras\SEBNPerspectiveCamera.h" />
+    <ClInclude Include="Cameras\SEBNProjectiveCamera.h" />
+    <ClInclude Include="Cameras\SEFilm.h" />
+    <ClInclude Include="Cameras\SEImageFilm.h" />
+    <ClInclude Include="Samplers\SEBNSampler.h" />
+    <ClInclude Include="Samplers\SEBNStratifiedSampler.h" />
+    <ClInclude Include="Shaders\SEBNDirectLightingShader.h" />
+    <ClInclude Include="Shaders\SEBNPathTracingShader.h" />
+    <ClInclude Include="Shaders\SEBNPhotonMapShader.h" />
+    <ClInclude Include="Shaders\SEBNShader.h" />
+    <ClInclude Include="Shaders\SEBNSurfaceShader.h" />
+    <ClInclude Include="Shaders\SEBNVolumeShader.h" />
+    <ClInclude Include="Filters\SEBoxFilter.h" />
+    <ClInclude Include="Filters\SEFilter.h" />
+    <ClInclude Include="Filters\SEGaussianFilter.h" />
+    <ClInclude Include="Filters\SEMitchellFilter.h" />
+    <ClInclude Include="Filters\SETriangleFilter.h" />
+    <ClInclude Include="Textures\SEBNConstantTexture.h" />
+    <ClInclude Include="Textures\SEBNTexture.h" />
+    <ClInclude Include="Lights\SEBNAreaLight.h" />
+    <ClInclude Include="Lights\SEBNDiffuseAreaLight.h" />
+    <ClInclude Include="Lights\SEBNLight.h" />
+    <ClInclude Include="Lights\SEBNLightSample.h" />
+    <ClInclude Include="Lights\SEBNShapeSet.h" />
+    <ClInclude Include="Lights\SEVisibilityTester.h" />
+    <ClInclude Include="SEBossaNovaHeaders.h" />
+    <ClInclude Include="SEBossaNovaLIB.h" />
+    <ClInclude Include="SEBossaNovaPCH.h" />
+    <ClInclude Include="SEBossaNovaRegister.h" />
+    <ClInclude Include="SwingEngineBossaNova.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Spectrum\SECoefficientSpectrum.inl" />
+    <None Include="BSDFs\SEBSDF.inl" />
+    <None Include="BSDFs\SEBSDFUtility.inl" />
+    <None Include="Cameras\SEBNCamera.inl" />
+    <None Include="Cameras\SEBNProjectiveCamera.inl" />
+    <None Include="Textures\SEBNConstantTexture.inl" />
+    <None Include="Textures\SEBNTexture.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Spectrum\SERGBSpectrum.cpp" />
+    <ClCompile Include="Spectrum\SESampledSpectrum.cpp" />
+    <ClCompile Include="Spectrum\SESpectrumUtility.cpp" />
+    <ClCompile Include="Rendering\SEBNRenderer.cpp" />
+    <ClCompile Include="Rendering\SESamplerRenderer.cpp" />
+    <ClCompile Include="Scene\SEBNAggregate.cpp" />
+    <ClCompile Include="Scene\SEBNGeometricPrimitive .cpp" />
+    <ClCompile Include="Scene\SEBNInstancedPrimitive.cpp" />
+    <ClCompile Include="Scene\SEBNIntersection.cpp" />
+    <ClCompile Include="Scene\SEBNKdTree.cpp" />
+    <ClCompile Include="Scene\SEBNPrimitive.cpp" />
+    <ClCompile Include="Scene\SEBNScene.cpp" />
+    <ClCompile Include="Scene\SEBNShape.cpp" />
+    <ClCompile Include="Scene\SEBNTriangle.cpp" />
+    <ClCompile Include="Scene\SEBNTriangleMesh.cpp" />
+    <ClCompile Include="Scene\SEBNVolumeRegion.cpp" />
+    <ClCompile Include="Scene\SEDifferentialGeometry.cpp" />
+    <ClCompile Include="Materials\SEBNMaterial.cpp" />
+    <ClCompile Include="Materials\SEBNMatteMaterial.cpp" />
+    <ClCompile Include="BSDFs\SEBRDFToBTDF.cpp" />
+    <ClCompile Include="BSDFs\SEBSDF.cpp" />
+    <ClCompile Include="BSDFs\SEBSDFSample.cpp" />
+    <ClCompile Include="BSDFs\SEBSDFUtility.cpp" />
+    <ClCompile Include="BSDFs\SEBSSRDF.cpp" />
+    <ClCompile Include="BSDFs\SEBxDF.cpp" />
+    <ClCompile Include="BSDFs\SEFresnel.cpp" />
+    <ClCompile Include="BSDFs\SEFresnelConductor.cpp" />
+    <ClCompile Include="BSDFs\SEFresnelDielectric.cpp" />
+    <ClCompile Include="BSDFs\SELambertian.cpp" />
+    <ClCompile Include="BSDFs\SEScaledBxDF.cpp" />
+    <ClCompile Include="BSDFs\SESpecularReflection.cpp" />
+    <ClCompile Include="BSDFs\SESpecularTransmission.cpp" />
+    <ClCompile Include="Cameras\SEBNCamera.cpp" />
+    <ClCompile Include="Cameras\SEBNPerspectiveCamera.cpp" />
+    <ClCompile Include="Cameras\SEBNProjectiveCamera.cpp" />
+    <ClCompile Include="Cameras\SEFilm.cpp" />
+    <ClCompile Include="Cameras\SEImageFilm.cpp" />
+    <ClCompile Include="Samplers\SEBNSampler.cpp" />
+    <ClCompile Include="Samplers\SEBNStratifiedSampler.cpp" />
+    <ClCompile Include="Shaders\SEBNDirectLightingShader.cpp" />
+    <ClCompile Include="Shaders\SEBNPathTracingShader.cpp" />
+    <ClCompile Include="Shaders\SEBNPhotonMapShader.cpp" />
+    <ClCompile Include="Shaders\SEBNShader.cpp" />
+    <ClCompile Include="Shaders\SEBNSurfaceShader.cpp" />
+    <ClCompile Include="Shaders\SEBNVolumeShader.cpp" />
+    <ClCompile Include="Filters\SEBoxFilter.cpp" />
+    <ClCompile Include="Filters\SEFilter.cpp" />
+    <ClCompile Include="Filters\SEGaussianFilter.cpp" />
+    <ClCompile Include="Filters\SEMitchellFilter.cpp" />
+    <ClCompile Include="Filters\SETriangleFilter.cpp" />
+    <ClCompile Include="Lights\SEBNAreaLight.cpp" />
+    <ClCompile Include="Lights\SEBNDiffuseAreaLight.cpp" />
+    <ClCompile Include="Lights\SEBNLight.cpp" />
+    <ClCompile Include="Lights\SEBNLightSample.cpp" />
+    <ClCompile Include="Lights\SEBNShapeSet.cpp" />
+    <ClCompile Include="Lights\SEVisibilityTester.cpp" />
+    <ClCompile Include="SEBossaNovaPCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SEBossaNovaRegister.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SEAssetUtility\SEAssetUtility.vcxproj">
+      <Project>{52944d3c-d07c-412a-95ab-43d140642a52}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\SECore\SECore.vcxproj">
+      <Project>{0e097aab-f334-498a-901a-ced25af812be}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\SEGeometricTools\SEGeometricTools.vcxproj">
+      <Project>{e41f92ea-6514-4ccc-933e-b59899238ba6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

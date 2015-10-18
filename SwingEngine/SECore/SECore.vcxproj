@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug DLL|Win32">
+      <Configuration>Debug DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Memory|Win32">
+      <Configuration>Debug Memory</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DLL|Win32">
+      <Configuration>Release DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Memory|Win32">
+      <Configuration>Release Memory</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0E097AAB-F334-498A-901A-CED25AF812BE}</ProjectGuid>
+    <RootNamespace>SECore</RootNamespace>
+    <SccProjectName>
+    </SccProjectName>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\SDK\Lib\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Temp\Debug\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\SDK\Lib\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Temp\Release\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">..\SDK\Lib\DebugDLL\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Temp\DebugDLL\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">..\SDK\Lib\DebugMemory\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">Temp\DebugMemory\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">..\SDK\Lib\ReleaseDLL\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Temp\ReleaseDLL\VC110\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">..\SDK\Lib\ReleaseMemory\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">Temp\ReleaseMemory\VC110\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SECored</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SECore</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">SECored</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">SECore</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">SECored</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">SECore</TargetName>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SECorePCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Base\*.h ..\SDK\Include
+copy /y Base\*.inl ..\SDK\Include
+copy /y Math\*.h ..\SDK\Include
+copy /y Math\*.inl ..\SDK\Include
+copy /y ObjectSystem\*.h ..\SDK\Include
+copy /y ObjectSystem\*.inl ..\SDK\Include
+copy /y Threading\*.h ..\SDK\Include
+copy /y Threading\*.inl ..\SDK\Include
+copy /y System\*.h ..\SDK\Include
+copy /y System\*.inl ..\SDK\Include
+copy /y SharedArrays\*.h ..\SDK\Include
+copy /y SharedArrays\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SECorePCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Base\*.h ..\SDK\Include
+copy /y Base\*.inl ..\SDK\Include
+copy /y Math\*.h ..\SDK\Include
+copy /y Math\*.inl ..\SDK\Include
+copy /y ObjectSystem\*.h ..\SDK\Include
+copy /y ObjectSystem\*.inl ..\SDK\Include
+copy /y Threading\*.h ..\SDK\Include
+copy /y Threading\*.inl ..\SDK\Include
+copy /y System\*.h ..\SDK\Include
+copy /y System\*.inl ..\SDK\Include
+copy /y SharedArrays\*.h ..\SDK\Include
+copy /y SharedArrays\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_CORE_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SECorePCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName).dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y Base\*.h ..\SDK\Include
+copy /y Base\*.inl ..\SDK\Include
+copy /y Math\*.h ..\SDK\Include
+copy /y Math\*.inl ..\SDK\Include
+copy /y ObjectSystem\*.h ..\SDK\Include
+copy /y ObjectSystem\*.inl ..\SDK\Include
+copy /y Threading\*.h ..\SDK\Include
+copy /y Threading\*.inl ..\SDK\Include
+copy /y System\*.h ..\SDK\Include
+copy /y System\*.inl ..\SDK\Include
+copy /y SharedArrays\*.h ..\SDK\Include
+copy /y SharedArrays\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SECorePCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Base\*.h ..\SDK\Include
+copy /y Base\*.inl ..\SDK\Include
+copy /y Math\*.h ..\SDK\Include
+copy /y Math\*.inl ..\SDK\Include
+copy /y ObjectSystem\*.h ..\SDK\Include
+copy /y ObjectSystem\*.inl ..\SDK\Include
+copy /y Threading\*.h ..\SDK\Include
+copy /y Threading\*.inl ..\SDK\Include
+copy /y System\*.h ..\SDK\Include
+copy /y System\*.inl ..\SDK\Include
+copy /y SharedArrays\*.h ..\SDK\Include
+copy /y SharedArrays\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_CORE_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SECorePCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName).dll</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y Base\*.h ..\SDK\Include
+copy /y Base\*.inl ..\SDK\Include
+copy /y Math\*.h ..\SDK\Include
+copy /y Math\*.inl ..\SDK\Include
+copy /y ObjectSystem\*.h ..\SDK\Include
+copy /y ObjectSystem\*.inl ..\SDK\Include
+copy /y Threading\*.h ..\SDK\Include
+copy /y Threading\*.inl ..\SDK\Include
+copy /y System\*.h ..\SDK\Include
+copy /y System\*.inl ..\SDK\Include
+copy /y SharedArrays\*.h ..\SDK\Include
+copy /y SharedArrays\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>SECorePCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Command>copy /y Base\*.h ..\SDK\Include
+copy /y Base\*.inl ..\SDK\Include
+copy /y Math\*.h ..\SDK\Include
+copy /y Math\*.inl ..\SDK\Include
+copy /y ObjectSystem\*.h ..\SDK\Include
+copy /y ObjectSystem\*.inl ..\SDK\Include
+copy /y Threading\*.h ..\SDK\Include
+copy /y Threading\*.inl ..\SDK\Include
+copy /y System\*.h ..\SDK\Include
+copy /y System\*.inl ..\SDK\Include
+copy /y SharedArrays\*.h ..\SDK\Include
+copy /y SharedArrays\*.inl ..\SDK\Include
+
+copy /y *.h ..\SDK\Include
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Base\SEBlockedArray.h" />
+    <ClInclude Include="Base\SEHashSet.h" />
+    <ClInclude Include="Base\SEHashTable.h" />
+    <ClInclude Include="Base\SEKdTree.h" />
+    <ClInclude Include="Base\SEPriorityQueue.h" />
+    <ClInclude Include="Base\SEStringHashTable.h" />
+    <ClInclude Include="Base\SETuple.h" />
+    <ClInclude Include="ObjectSystem\SEReferencable.h" />
+    <ClInclude Include="System\SEAssert.h" />
+    <ClInclude Include="System\SECommand.h" />
+    <ClInclude Include="System\SEMemory.h" />
+    <ClInclude Include="System\SEMemoryArena.h" />
+    <ClInclude Include="System\SEPlatforms.h" />
+    <ClInclude Include="System\SEProgressReporter.h" />
+    <ClInclude Include="System\SESystem.h" />
+    <ClInclude Include="System\SETimer.h" />
+    <ClInclude Include="Threading\SEAtomicOperation.h" />
+    <ClInclude Include="Threading\SEConditionVariable.h" />
+    <ClInclude Include="Threading\SEConditionVariableType.h" />
+    <ClInclude Include="Threading\SEMutex.h" />
+    <ClInclude Include="Threading\SEMutexType.h" />
+    <ClInclude Include="Threading\SERWMutex.h" />
+    <ClInclude Include="Threading\SERWMutexType.h" />
+    <ClInclude Include="Threading\SESemaphore.h" />
+    <ClInclude Include="Threading\SESemaphoreType.h" />
+    <ClInclude Include="Threading\SETask.h" />
+    <ClInclude Include="Threading\SETaskManager.h" />
+    <ClInclude Include="Threading\SETaskWorkerThread.h" />
+    <ClInclude Include="Threading\SEThread.h" />
+    <ClInclude Include="Threading\SEThreadType.h" />
+    <ClInclude Include="ObjectSystem\SEAdvancedObject.h" />
+    <ClInclude Include="ObjectSystem\SEController.h" />
+    <ClInclude Include="ObjectSystem\SEMain.h" />
+    <ClInclude Include="ObjectSystem\SEMainMCR.h" />
+    <ClInclude Include="ObjectSystem\SENameIdMCR.h" />
+    <ClInclude Include="ObjectSystem\SEObject.h" />
+    <ClInclude Include="ObjectSystem\SERTTI.h" />
+    <ClInclude Include="ObjectSystem\SERTTIMCR.h" />
+    <ClInclude Include="ObjectSystem\SESmartPointer.h" />
+    <ClInclude Include="ObjectSystem\SEStream.h" />
+    <ClInclude Include="ObjectSystem\SEStreamMCR.h" />
+    <ClInclude Include="ObjectSystem\SEStreamVersion.h" />
+    <ClInclude Include="Math\SEAxisAlignedBox2.h" />
+    <ClInclude Include="Math\SEAxisAlignedBox3.h" />
+    <ClInclude Include="Math\SEBitHacks.h" />
+    <ClInclude Include="Math\SEBox2.h" />
+    <ClInclude Include="Math\SEBox3.h" />
+    <ClInclude Include="Math\SEColor.h" />
+    <ClInclude Include="Math\SEColorRGB.h" />
+    <ClInclude Include="Math\SEColorRGBA.h" />
+    <ClInclude Include="Math\SEConvexPolyhedron3.h" />
+    <ClInclude Include="Math\SEDistribution1D.h" />
+    <ClInclude Include="Math\SEDistribution2D.h" />
+    <ClInclude Include="Math\SEFloat1.h" />
+    <ClInclude Include="Math\SEFloat2.h" />
+    <ClInclude Include="Math\SEFloat3.h" />
+    <ClInclude Include="Math\SEFloat4.h" />
+    <ClInclude Include="Math\SEFrustum3.h" />
+    <ClInclude Include="Math\SEHalfFloat.h" />
+    <ClInclude Include="Math\SELinComp.h" />
+    <ClInclude Include="Math\SELine2.h" />
+    <ClInclude Include="Math\SELine3.h" />
+    <ClInclude Include="Math\SEMapper2.h" />
+    <ClInclude Include="Math\SEMapper3.h" />
+    <ClInclude Include="Math\SEMath.h" />
+    <ClInclude Include="Math\SEMatrix2.h" />
+    <ClInclude Include="Math\SEMatrix3.h" />
+    <ClInclude Include="Math\SEMatrix4.h" />
+    <ClInclude Include="Math\SEMatrixMN.h" />
+    <ClInclude Include="Math\SEMonteCarlo.h" />
+    <ClInclude Include="Math\SEPermutedHalton.h" />
+    <ClInclude Include="Math\SEPlane3.h" />
+    <ClInclude Include="Math\SEPolyhedron3.h" />
+    <ClInclude Include="Math\SEQuaternion.h" />
+    <ClInclude Include="Math\SERandomNumberGenerator.h" />
+    <ClInclude Include="Math\SERay2.h" />
+    <ClInclude Include="Math\SERay3.h" />
+    <ClInclude Include="Math\SERayDifferential.h" />
+    <ClInclude Include="Math\SERectangle3.h" />
+    <ClInclude Include="Math\SESegment2.h" />
+    <ClInclude Include="Math\SESegment3.h" />
+    <ClInclude Include="Math\SESphere3.h" />
+    <ClInclude Include="Math\SETransformation.h" />
+    <ClInclude Include="Math\SETriangle2.h" />
+    <ClInclude Include="Math\SETriangle3.h" />
+    <ClInclude Include="Math\SEVector2.h" />
+    <ClInclude Include="Math\SEVector3.h" />
+    <ClInclude Include="Math\SEVector4.h" />
+    <ClInclude Include="Math\SEVectorN.h" />
+    <ClInclude Include="SharedArrays\SEColorRGBAArray.h" />
+    <ClInclude Include="SharedArrays\SEColorRGBArray.h" />
+    <ClInclude Include="SharedArrays\SEDoubleArray.h" />
+    <ClInclude Include="SharedArrays\SEFloatArray.h" />
+    <ClInclude Include="SharedArrays\SEIntArray.h" />
+    <ClInclude Include="SharedArrays\SEMatrix2Array.h" />
+    <ClInclude Include="SharedArrays\SEMatrix3Array.h" />
+    <ClInclude Include="SharedArrays\SEMatrix4Array.h" />
+    <ClInclude Include="SharedArrays\SEPlaneArray.h" />
+    <ClInclude Include="SharedArrays\SEQuaternionArray.h" />
+    <ClInclude Include="SharedArrays\SESharedArray.h" />
+    <ClInclude Include="SharedArrays\SEVector2Array.h" />
+    <ClInclude Include="SharedArrays\SEVector3Array.h" />
+    <ClInclude Include="SharedArrays\SEVector4Array.h" />
+    <ClInclude Include="SECoreHeaders.h" />
+    <ClInclude Include="SECoreLIB.h" />
+    <ClInclude Include="SECorePCH.h" />
+    <ClInclude Include="SECoreRegister.h" />
+    <ClInclude Include="SwingEngineCore.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Base\SEBlockedArray.inl" />
+    <None Include="Base\SEHashSet.inl" />
+    <None Include="Base\SEHashTable.inl" />
+    <None Include="Base\SEKdTree.inl" />
+    <None Include="Base\SEStringHashTable.inl" />
+    <None Include="Base\SETuple.inl" />
+    <None Include="ObjectSystem\SEReferencable.inl" />
+    <None Include="System\SEMemory.inl" />
+    <None Include="System\SEMemoryArena.inl" />
+    <None Include="System\SESystem.inl" />
+    <None Include="ObjectSystem\SEAdvancedObject.inl" />
+    <None Include="ObjectSystem\SEController.inl" />
+    <None Include="ObjectSystem\SEObject.inl" />
+    <None Include="ObjectSystem\SERTTI.inl" />
+    <None Include="ObjectSystem\SESmartPointer.inl" />
+    <None Include="ObjectSystem\SEStream.inl" />
+    <None Include="Math\SEBitHacks.inl" />
+    <None Include="Math\SEColor.inl" />
+    <None Include="Math\SEColorRGB.inl" />
+    <None Include="Math\SEColorRGBA.inl" />
+    <None Include="Math\SELinComp.inl" />
+    <None Include="Math\SEMath.inl" />
+    <None Include="Math\SEMatrix2.inl" />
+    <None Include="Math\SEMatrix3.inl" />
+    <None Include="Math\SEMatrix4.inl" />
+    <None Include="Math\SEMatrixMN.inl" />
+    <None Include="Math\SEMonteCarlo.inl" />
+    <None Include="Math\SEPlane3.inl" />
+    <None Include="Math\SEQuaternion.inl" />
+    <None Include="Math\SESphere3.inl" />
+    <None Include="Math\SETransformation.inl" />
+    <None Include="Math\SEVector2.inl" />
+    <None Include="Math\SEVector3.inl" />
+    <None Include="Math\SEVector4.inl" />
+    <None Include="Math\SEVectorN.inl" />
+    <None Include="SharedArrays\SESharedArray.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ObjectSystem\SEReferencable.cpp" />
+    <ClCompile Include="System\SECommand.cpp" />
+    <ClCompile Include="System\SEMemory.cpp" />
+    <ClCompile Include="System\SEMemoryArena.cpp" />
+    <ClCompile Include="System\SEProgressReporter.cpp" />
+    <ClCompile Include="System\SESystem.cpp" />
+    <ClCompile Include="System\SETimer.cpp" />
+    <ClCompile Include="Threading\SEAtomicOperation.cpp" />
+    <ClCompile Include="Threading\SEConditionVariable.cpp" />
+    <ClCompile Include="Threading\SEMutex.cpp" />
+    <ClCompile Include="Threading\SERWMutex.cpp" />
+    <ClCompile Include="Threading\SESemaphore.cpp" />
+    <ClCompile Include="Threading\SETask.cpp" />
+    <ClCompile Include="Threading\SETaskManager.cpp" />
+    <ClCompile Include="Threading\SETaskWorkerThread.cpp" />
+    <ClCompile Include="Threading\SEThread.cpp" />
+    <ClCompile Include="ObjectSystem\SEAdvancedObject.cpp" />
+    <ClCompile Include="ObjectSystem\SEController.cpp" />
+    <ClCompile Include="ObjectSystem\SEMain.cpp" />
+    <ClCompile Include="ObjectSystem\SEObject.cpp" />
+    <ClCompile Include="ObjectSystem\SERTTI.cpp" />
+    <ClCompile Include="ObjectSystem\SEStream.cpp" />
+    <ClCompile Include="ObjectSystem\SEStreamVersion.cpp" />
+    <ClCompile Include="Math\SEAxisAlignedBox2.cpp" />
+    <ClCompile Include="Math\SEAxisAlignedBox3.cpp" />
+    <ClCompile Include="Math\SEBox2.cpp" />
+    <ClCompile Include="Math\SEBox3.cpp" />
+    <ClCompile Include="Math\SEColor.cpp" />
+    <ClCompile Include="Math\SEColorRGB.cpp" />
+    <ClCompile Include="Math\SEColorRGBA.cpp" />
+    <ClCompile Include="Math\SEConvexPolyhedron3.cpp" />
+    <ClCompile Include="Math\SEDistribution1D.cpp" />
+    <ClCompile Include="Math\SEDistribution2D.cpp" />
+    <ClCompile Include="Math\SEFloat1.cpp" />
+    <ClCompile Include="Math\SEFloat2.cpp" />
+    <ClCompile Include="Math\SEFloat3.cpp" />
+    <ClCompile Include="Math\SEFloat4.cpp" />
+    <ClCompile Include="Math\SEFrustum3.cpp" />
+    <ClCompile Include="Math\SEHalfFloat.cpp" />
+    <ClCompile Include="Math\SELine2.cpp" />
+    <ClCompile Include="Math\SELine3.cpp" />
+    <ClCompile Include="Math\SEMapper2.cpp" />
+    <ClCompile Include="Math\SEMapper3.cpp" />
+    <ClCompile Include="Math\SEMath.cpp" />
+    <ClCompile Include="Math\SEMatrix2.cpp" />
+    <ClCompile Include="Math\SEMatrix3.cpp" />
+    <ClCompile Include="Math\SEMatrix4.cpp" />
+    <ClCompile Include="Math\SEMatrixMN.cpp" />
+    <ClCompile Include="Math\SEMonteCarlo.cpp" />
+    <ClCompile Include="Math\SEPermutedHalton.cpp" />
+    <ClCompile Include="Math\SEPlane3.cpp" />
+    <ClCompile Include="Math\SEPolyhedron3.cpp" />
+    <ClCompile Include="Math\SEQuaternion.cpp" />
+    <ClCompile Include="Math\SERandomNumberGenerator.cpp" />
+    <ClCompile Include="Math\SERay2.cpp" />
+    <ClCompile Include="Math\SERay3.cpp" />
+    <ClCompile Include="Math\SERayDifferential.cpp" />
+    <ClCompile Include="Math\SERectangle3.cpp" />
+    <ClCompile Include="Math\SESegment2.cpp" />
+    <ClCompile Include="Math\SESegment3.cpp" />
+    <ClCompile Include="Math\SESphere3.cpp" />
+    <ClCompile Include="Math\SETransformation.cpp" />
+    <ClCompile Include="Math\SETriangle2.cpp" />
+    <ClCompile Include="Math\SETriangle3.cpp" />
+    <ClCompile Include="Math\SEVector2.cpp" />
+    <ClCompile Include="Math\SEVector3.cpp" />
+    <ClCompile Include="Math\SEVector4.cpp" />
+    <ClCompile Include="Math\SEVectorN.cpp" />
+    <ClCompile Include="SharedArrays\SEColorRGBAArray.cpp" />
+    <ClCompile Include="SharedArrays\SEColorRGBArray.cpp" />
+    <ClCompile Include="SharedArrays\SEDoubleArray.cpp" />
+    <ClCompile Include="SharedArrays\SEFloatArray.cpp" />
+    <ClCompile Include="SharedArrays\SEIntArray.cpp" />
+    <ClCompile Include="SharedArrays\SEMatrix2Array.cpp" />
+    <ClCompile Include="SharedArrays\SEMatrix3Array.cpp" />
+    <ClCompile Include="SharedArrays\SEMatrix4Array.cpp" />
+    <ClCompile Include="SharedArrays\SEPlaneArray.cpp" />
+    <ClCompile Include="SharedArrays\SEQuaternionArray.cpp" />
+    <ClCompile Include="SharedArrays\SEVector2Array.cpp" />
+    <ClCompile Include="SharedArrays\SEVector3Array.cpp" />
+    <ClCompile Include="SharedArrays\SEVector4Array.cpp" />
+    <ClCompile Include="SECorePCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SECoreRegister.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

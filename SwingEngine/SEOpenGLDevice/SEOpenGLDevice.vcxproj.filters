@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="SEOpenGLDevicePCH.cpp" />
+    <ClCompile Include="SEOpenGLDeviceRegister.cpp" />
+    <ClCompile Include="SEOpenGLDevice.cpp">
+      <Filter>GPU</Filter>
+    </ClCompile>
+    <ClCompile Include="SEOpenGLResource.cpp">
+      <Filter>GPU</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SEOpenGLDeviceHeaders.h" />
+    <ClInclude Include="SEOpenGLDeviceLIB.h" />
+    <ClInclude Include="SEOpenGLDevicePCH.h" />
+    <ClInclude Include="SEOpenGLDeviceRegister.h" />
+    <ClInclude Include="SwingEngineOpenGLDevice.h" />
+    <ClInclude Include="SEOpenGLDevice.h">
+      <Filter>GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="SEOpenGLResource.h">
+      <Filter>GPU</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="GPU">
+      <UniqueIdentifier>{2ba1c81c-684d-4aa5-98e5-1d313b07e0cb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

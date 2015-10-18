@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="VPLviaSVOGI.pch.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="SceneMesh.cpp" />
+    <ClCompile Include="VPLviaSVOGIApp.cpp" />
+    <ClCompile Include="DirectLightingRenderer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="GridVoxelizer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="IndirectLightingRenderer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="RSMRenderer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="ShadowMapsGenerator.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="SVOVoxelizer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Visualizer.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="VPLGenerator.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="GBufferSplitter.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="SplittedBufferMerger.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="GAwareFilter.cpp">
+      <Filter>Renderers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="VPLviaSVOGI.pch.h" />
+    <ClInclude Include="SceneMesh.h" />
+    <ClInclude Include="VPLviaSVOGIApp.h" />
+    <ClInclude Include="DirectLightingRenderer.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="GridVoxelizer.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="IndirectLightingRenderer.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="RSMRenderer.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadowMapsGenerator.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="SVOVoxelizer.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Visualizer.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="VPLGenerator.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="GBufferSplitter.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="SplittedBufferMerger.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="GAwareFilter.h">
+      <Filter>Renderers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{ebd1cd9c-f508-49b2-96f3-8ee48d44d498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderers">
+      <UniqueIdentifier>{8f29ccfa-a730-4f79-976b-db9aa7f388e6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\cGatherVoxelBuffer.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\cGatherVoxelFragmentListInfo.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\cResetVoxelBuffer.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\cSampleRSM.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fDirectLighting.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fGBuffer.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fGBufferRPC.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fGridIndirectLighting.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fLightMesh.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fPointLightRSM.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fPointLightShadow.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fShowSVO.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fShowVoxelGrid.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fShowVPL.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fSpotLightRSM.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fSpotLightShadow.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fSVOIndirectLighting.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fSVOIndirectLightingTC.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fSVOVoxelization.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fTempResultSM0.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fTempResultSM1.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fTempResultSM2.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fTempResultSM3.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fTempResultSM4.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fVoxelization.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\gPointLightRSM.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\gPointLightShadow.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\gSpotLightRSM.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\gSpotLightShadow.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\gVoxelization.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\sSceneLight.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\sSparseVoxelOctree.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\sTempResult.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\sVirtualPointLight.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\tcPointLightShadow.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\tePointLightShadow.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vBuildSVOAllocateNodes.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vBuildSVOFlagNodes.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vBuildSVOInitNodes.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vBuildSVOInitRoot.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vBuildSVOPostAllocateNodes.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vBuildSVOSplatLeafNodes.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vDirectLighting.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vGBuffer.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vGBufferRPC.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vIndirectLighting.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vLightMesh.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vPointLightRSM.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vPointLightShadow.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vShowSVO.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vShowVoxelGrid.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vShowVPL.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vSpotLightRSM.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vSpotLightShadow.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vTempResult.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vVoxelization.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vSampleRSM.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fGBufferSplitter.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vGBufferSplitter.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fSplittedBufferMerger.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vSplittedBufferMerger.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\fGAwareFilter.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Bin\Shaders\VPLviaSVOGI\vGAwareFilter.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
