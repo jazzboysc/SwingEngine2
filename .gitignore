@@ -63,6 +63,8 @@ SwingEngine/SDK/Lib/ReleaseMemory/*.*
 *.obj
 !SwingEngine/Bin/OBJ/dabrovic-sponza/*.obj
 !SwingEngine/Bin/OBJ/crytek-sponza/*.obj
+!SwingEngine/Bin/OBJ/elephant-gallop/*.obj
+!SwingEngine/Bin/OBJ/sibenik/*.obj
 *.tlog
 *.ipch
 *.pch
