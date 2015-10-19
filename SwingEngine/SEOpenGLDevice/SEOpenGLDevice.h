@@ -43,7 +43,7 @@ private:
     void __SetProgramParameterInt(SEShaderProgram* program, 
         SEShaderProgramParameter pname, int value);
 
-    // SEPass info stuff.
+    // Pass info stuff.
     SEPassInfoHandle* __CreatePassInfo(SEPassInfo* passInfo, SEShaderProgram* program, 
         SEPrimitive* primitive, bool hasNormal, bool hasTCoord, 
         int vertexComponentCount);
@@ -62,7 +62,7 @@ private:
     void __SetUniformValueFloat(SEShaderUniform* uniform, float value);
     void __SetUniformValueFloat2(SEShaderUniform* uniform, const float* value);
 
-    // SETexture.
+    // Texture.
     void __DeleteTexture(SETexture* texture);
     SETextureHandle* __Texture1DLoadFromSystemMemory(SETexture* texture,
         SEBufferInternalFormat internalFormat, int width, SEBufferFormat format, 
@@ -95,7 +95,7 @@ private:
     SETextureHandle* __BufferTextureLoadFromTextureBuffer(SETexture* texture, 
         SETextureBuffer* textureBuffer, SEBufferInternalFormat internalFormat);
 
-    // SEFrameBuffer.
+    // FrameBuffer.
     SEFBOHandle* __CreateFrameBuffer(SEFrameBuffer* frameBuffer);
     void __DeleteFrameBuffer(SEFrameBuffer* frameBuffer);
     void __FrameBufferSetRenderTargets(SEFrameBuffer* frameBuffer, 
@@ -117,7 +117,7 @@ private:
 	void __DispatchVertex(unsigned int threadCount);
     void __DispatchVertexIndirect(void* indirect);
 
-    // SEBuffer.
+    // Buffer.
     void __DeleteBuffer(SEBuffer* buffer);
     void* __BufferMap(SEBuffer* buffer, SEBufferAccess access);
     void __BufferUnmap(SEBuffer* buffer);

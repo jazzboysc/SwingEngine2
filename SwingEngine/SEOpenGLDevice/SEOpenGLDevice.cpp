@@ -844,7 +844,7 @@ void SEOpenGLDevice::__TextureBindToSampler(SETexture* texture,
 
         OPENGL_DEVICE_CHECK_ERROR;
 
-        // SETexture coordinates wrapping.
+        // Texture coordinates wrapping.
         glTexParameteri(target, GL_TEXTURE_WRAP_S,
             gsWrapType[(int)sampler->WrapS]);
 
@@ -933,7 +933,7 @@ SETextureHandle* SEOpenGLDevice::__Texture2DLoadFromSystemMemory(SETexture* text
 
             OPENGL_DEVICE_CHECK_ERROR;
 
-            // SETexture coordinates wrapping.
+            // Texture coordinates wrapping.
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
                 gsWrapType[(int)sampler->WrapS]);
 

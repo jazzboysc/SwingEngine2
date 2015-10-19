@@ -234,7 +234,7 @@ public:
     inline 	void EnableProgram(SEShaderProgram* program);
     inline 	void DisableProgram(SEShaderProgram* program);
 
-    // SEPass info stuff.
+    // Pass info stuff.
     inline 	SEPassInfoHandle* CreatePassInfo(SEPassInfo* passInfo, 
         SEShaderProgram* program, SEPrimitive* primitive, bool hasNormal, 
         bool hasTCoord, int vertexComponentCount);
@@ -262,7 +262,7 @@ public:
     inline 	void SetProgramParameterInt(SEShaderProgram* program, 
         SEShaderProgramParameter pname, int value);
 
-    // SETexture stuff.
+    // Texture stuff.
     inline 	void DeleteTexture(SETexture* texture);
     inline SETextureHandle* Texture1DLoadFromSystemMemory(SETexture* texture, 
         SEBufferInternalFormat internalFormat, int width, SEBufferFormat format, 
@@ -326,7 +326,7 @@ public:
     inline 	void DispatchVertex(unsigned int threadCount);
     inline 	void DispatchVertexIndirect(void* indirect);
 
-    // SEBuffer stuff.
+    // Buffer stuff.
     inline 	void DeleteBuffer(SEBuffer* buffer);
     inline 	void* BufferMap(SEBuffer* buffer, SEBufferAccess access);
     inline 	void BufferUnmap(SEBuffer* buffer);
