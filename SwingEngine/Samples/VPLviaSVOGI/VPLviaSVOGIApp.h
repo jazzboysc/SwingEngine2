@@ -1,7 +1,7 @@
 #ifndef RTGI_VPLviaSVOGIApp_H
 #define RTGI_VPLviaSVOGIApp_H
 
-#include "SEApplication.h"
+#include "SEWglApplication.h"
 #include "SELightManager.h"
 #include "SceneMesh.h"
 #include "SEGPUTimer.h"
@@ -32,17 +32,19 @@ namespace Swing
 // Author: Che Sun
 // Date: 11/29/2014
 //----------------------------------------------------------------------------
-class VPLviaSVOGI : public SEApplication, GUIFramework::FormEventListener
+class VPLviaSVOGI : public SEWglApplication, GUIFramework::FormEventListener
 {
 public:
 	VPLviaSVOGI(int width = 768, int height = 768);
 	~VPLviaSVOGI();
 
+    // Override SEWglApplication interface.
 	void Initialize(SEGPUDevice* device) override;
 	void ProcessInput() override;
 	void FrameFunc() override;
 	void Terminate() override;
 
+    // Override FormEventListener interface.
     void OnRadioButtonClick(System::Object^  sender, System::EventArgs^  e) override;
     void OnCheckBoxClick(System::Object^  sender, System::EventArgs^  e) override;
     void OnButtonClick(System::Object^  sender, System::EventArgs^  e) override;

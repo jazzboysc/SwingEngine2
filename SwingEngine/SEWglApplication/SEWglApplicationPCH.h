@@ -1,12 +1,12 @@
 // Swing Engine Version 2 Source Code 
 // Copyright (c) 2007-2015
 
-#ifndef Swing_ApplicationPCH_H
-#define Swing_ApplicationPCH_H
+#ifndef Swing_WglApplicationPCH_H
+#define Swing_WglApplicationPCH_H
 
 #ifdef SE_USE_PRECOMPILED_HEADERS
 
-#include "SEApplicationHeaders.h"
+#include "SEWglApplicationHeaders.h"
 
 #endif
 

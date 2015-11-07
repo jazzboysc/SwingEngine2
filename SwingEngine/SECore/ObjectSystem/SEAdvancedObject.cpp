@@ -125,7 +125,7 @@ SEObject* SEAdvancedObject::GetObjectByName(const std::string& rName)
     {
         if( m_Controllers[i] )
         {
-            SEObject* pFound = m_Controllers[i]->GetObjectByName(rName);
+            pFound = m_Controllers[i]->GetObjectByName(rName);
             if( pFound )
             {
                 return pFound;
@@ -162,7 +162,7 @@ SEObject* SEAdvancedObject::GetObjectByID(unsigned int uiID)
     {
         if( m_Controllers[i] )
         {
-            SEObject* pFound = m_Controllers[i]->GetObjectByID(uiID);
+            pFound = m_Controllers[i]->GetObjectByID(uiID);
             if( pFound )
             {
                 return pFound;

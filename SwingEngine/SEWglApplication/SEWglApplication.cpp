@@ -17,32 +17,22 @@
 
 using namespace Swing;
 
-SEApplication* SEApplication::mInstance = 0;
-
 void KeyboardCallbackWrapper(GLFWwindow*, int, int, int, int)
 {
 }
 
 //----------------------------------------------------------------------------
-SEApplication::SEApplication()
-	:
-	mMainCameraSpeed(5.0f)
+SEWglApplication::SEWglApplication()
 {
-    FrameCounter = 0;
 	mOpenGLContext = wglGetCurrentContext();
 	mWindowsDeviceContext = wglGetCurrentDC();
-
-    SE_ASSERT( mInstance == 0 );
-    mInstance = this;
 }
 //----------------------------------------------------------------------------
-SEApplication::~SEApplication()
+SEWglApplication::~SEWglApplication()
 {
-	mDevice->Terminate();
-    mDevice = 0;
 }
 //----------------------------------------------------------------------------
-void SEApplication::Initialize(SEGPUDevice* device)
+void SEWglApplication::Initialize(SEGPUDevice* device)
 {
     // Set working directory to resource folder.
     chdir("..\\..\\Bin\\");
@@ -111,7 +101,7 @@ void SEApplication::Initialize(SEGPUDevice* device)
 	this->mInitialized = true;
 }
 //----------------------------------------------------------------------------
-void SEApplication::UpdateMainCamera()
+void SEWglApplication::UpdateMainCamera()
 {
 	static auto lastFrame = 0.0;
 	auto currentFrame = glfwGetTime();
@@ -207,7 +197,7 @@ void SEApplication::UpdateMainCamera()
 	mMainCamera->SetLocation(camPos);
 }
 //----------------------------------------------------------------------------
-void SEApplication::ProcessInput()
+void SEWglApplication::ProcessInput()
 {
 	glfwGetWindowSize(Window, &Width, &Height);
 	UpdateMainCamera();
@@ -218,16 +208,16 @@ void SEApplication::ProcessInput()
 	this->ProcessInput();
 }
 //----------------------------------------------------------------------------
-void SEApplication::Run()
+void SEWglApplication::Run()
 {
 	while (!glfwWindowShouldClose(Window))
 	{
-		this->SEApplication::ProcessInput();
-		this->SEApplication::FrameFunc();
+		this->SEWglApplication::ProcessInput();
+		this->SEWglApplication::FrameFunc();
 	}
 }
 //----------------------------------------------------------------------------
-void SEApplication::FrameFunc()
+void SEWglApplication::FrameFunc()
 {
     // Update frame status.
     ++FrameCounter;
@@ -239,7 +229,7 @@ void SEApplication::FrameFunc()
 	glfwPollEvents();
 }
 //----------------------------------------------------------------------------
-void SEApplication::Terminate()
+void SEWglApplication::Terminate()
 {
 	this->Terminate();
 	delete mMainCamera;
@@ -253,12 +243,7 @@ void SEApplication::Terminate()
 	glfwTerminate();
 }
 //----------------------------------------------------------------------------
-SEApplication* SEApplication::GetInstance()
-{
-    return mInstance;
-}
-//----------------------------------------------------------------------------
-void SEApplication::ProcessInput(int, int, int, int)
+void SEWglApplication::ProcessInput(int, int, int, int)
 {
 }
 //----------------------------------------------------------------------------

@@ -4,7 +4,7 @@
 
 using namespace Swing;
 
-Swing::SEApplication* app = 0;
+Swing::SEWglApplication* app = 0;
 //----------------------------------------------------------------------------
 int main(int, char **)
 {
@@ -22,9 +22,9 @@ int main(int, char **)
 
 	// Initialize application.
 	app = new VPLviaSVOGI(width, height);
-    app->Swing::SEApplication::Initialize(gpuDevice);
-    app->Swing::SEApplication::Run();
-    app->Swing::SEApplication::Terminate();
+    app->Swing::SEWglApplication::Initialize(gpuDevice);
+    app->Swing::SEWglApplication::Run();
+    app->Swing::SEWglApplication::Terminate();
 	delete app;
 
 	return 0;

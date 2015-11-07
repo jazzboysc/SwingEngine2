@@ -1,15 +1,15 @@
 // Swing Engine Version 2 Source Code 
 // Copyright (c) 2007-2015
 
-#ifndef Swing_ApplicationRegister_H
-#define Swing_ApplicationRegister_H
+#ifndef Swing_WglApplicationRegister_H
+#define Swing_WglApplicationRegister_H
 
-#include "SEApplicationLIB.h"
+#include "SEWglApplicationLIB.h"
 
 namespace Swing
 {
 
-SE_APPLICATION_API void SE_Application_Register(void);
+SE_WGL_APPLICATION_API void SE_WglApplication_Register();
 
 }
 

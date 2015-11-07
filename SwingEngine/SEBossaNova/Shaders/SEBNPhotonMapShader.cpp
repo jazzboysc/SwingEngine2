@@ -450,17 +450,17 @@ void SEPhotonShootingTask::DoWork()
 
                     // Sample new photon ray direction.
                     SEVector3f wi;
-                    float pdf;
+                    float _pdf;
                     SEBxDF::BxDFType flags;
                     SESpectrum fr = photonBSDF->Sample_f(wo, &wi, 
-                        SEBSDFSample(rng), &pdf, SEBxDF::BSDF_ALL, &flags);
-                    if( fr.IsBlack() || pdf == 0.0f )
+                        SEBSDFSample(rng), &_pdf, SEBxDF::BSDF_ALL, &flags);
+                    if( fr.IsBlack() || _pdf == 0.0f )
                     {
                         break;
                     }
 
                     float absCosi = fabsf(wi.Dot(photonBSDF->DGShading.nn));
-                    SESpectrum anew = alpha * fr * (absCosi / pdf);
+                    SESpectrum anew = alpha * fr * (absCosi / _pdf);
 
                     // Possibly terminate photon path with Russian roulette.
                     float luminanceRatio = anew.y() / alpha.y();
@@ -955,12 +955,12 @@ SESpectrum SEBNPhotonMapShader::Li(const SEBNScene* scene,
                     SEVector3f gatherNormal = gatherIsect.DG.nn;
                     SEVector3f::Faceforward(gatherNormal, 
                         -bounceRay.Direction, gatherNormal);
-                    SEBNRadiancePhotonProcess proc(gatherNormal);
+                    SEBNRadiancePhotonProcess _proc(gatherNormal);
                     float md2 = SEMathf::MAX_REAL;
-                    RadianceMap->Lookup(gatherIsect.DG.p, proc, md2);
-                    if( proc.Photon != 0 )
+                    RadianceMap->Lookup(gatherIsect.DG.p, _proc, md2);
+                    if( _proc.Photon != 0 )
                     {
-                        Lindir = proc.Photon->Lo;
+                        Lindir = _proc.Photon->Lo;
                     }
                     Lindir *= renderer->Transmittance(scene, bounceRay, 0, 
                         rng, arena);
@@ -1025,12 +1025,12 @@ SESpectrum SEBNPhotonMapShader::Li(const SEBNScene* scene,
                     SEVector3f gatherNormal = gatherIsect.DG.nn;
                     SEVector3f::Faceforward(gatherNormal, 
                         -bounceRay.Direction, gatherNormal);
-                    SEBNRadiancePhotonProcess proc(gatherNormal);
+                    SEBNRadiancePhotonProcess _proc(gatherNormal);
                     float md2 = SEMathf::MAX_REAL;
-                    RadianceMap->Lookup(gatherIsect.DG.p, proc, md2);
-                    if( proc.Photon != 0 )
+                    RadianceMap->Lookup(gatherIsect.DG.p, _proc, md2);
+                    if( _proc.Photon != 0 )
                     {
-                        Lindir = proc.Photon->Lo;
+                        Lindir = _proc.Photon->Lo;
                     }
                     Lindir *= renderer->Transmittance(scene, bounceRay, 0, 
                         rng, arena);

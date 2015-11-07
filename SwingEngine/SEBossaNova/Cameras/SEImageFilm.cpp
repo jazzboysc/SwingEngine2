@@ -134,14 +134,14 @@ void SEImageFilm::AddSample(const SEBNCameraSample& sample,
     for( int x = x0; x <= x1; ++x )
     {
         float fx = fabsf((x - dimageX)*Filter->InvXWidth*FILTER_TABLE_SIZE);
-        int tempValue = SE_FloorToInt(fx);
+        tempValue = SE_FloorToInt(fx);
         ifx[x - x0] = SE_MIN(tempValue, FILTER_TABLE_SIZE_MINUS_ONE);
     }
     int* ify = SE_ALLOCA(int, y1 - y0 + 1);
     for( int y = y0; y <= y1; ++y )
     {
         float fy = fabsf((y - dimageY)*Filter->InvYWidth*FILTER_TABLE_SIZE);
-        int tempValue = SE_FloorToInt(fy);
+        tempValue = SE_FloorToInt(fy);
         ify[y - y0] = SE_MIN(tempValue, FILTER_TABLE_SIZE_MINUS_ONE);
     }
 

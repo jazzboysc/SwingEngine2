@@ -125,7 +125,7 @@ SESpectrum Swing::SE_EstimateDirectLighting(const SEBNScene* scene,
 
             // Add light contribution from BSDF sampling.
             SEBNIntersection lightIsect;
-            SESpectrum Li(0.0f);
+            SESpectrum _Li(0.0f);
             SERayDifferential ray(p, wi, rayEpsilon, SEMathf::MAX_REAL, 
                 time);
             if( scene->Intersect(ray, &lightIsect) )
@@ -133,18 +133,18 @@ SESpectrum Swing::SE_EstimateDirectLighting(const SEBNScene* scene,
                 if( (const SEBNLight*)lightIsect.Primitive->GetAreaLight() 
                     == light )
                 {
-                    Li = lightIsect.Le(-wi);
+                    _Li = lightIsect.Le(-wi);
                 }
             }
             else
             {
-                Li = light->Le(ray);
+                _Li = light->Le(ray);
             }
-            if( !Li.IsBlack() )
+            if( !_Li.IsBlack() )
             {
-                Li *= renderer->Transmittance(scene, ray, 0, rng, arena);
+                _Li *= renderer->Transmittance(scene, ray, 0, rng, arena);
                 float absCostheta = fabsf(wi.Dot(n));
-                Ld += f * Li * absCostheta * weight / bsdfPdf;
+                Ld += f * _Li * absCostheta * weight / bsdfPdf;
             }
         }
     }

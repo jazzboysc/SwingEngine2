@@ -208,7 +208,7 @@ void SVOVoxelizer::Initialize(SEGPUDevice*, int voxelGridDim,
     bufferSize = sizeof(unsigned int) * 2;
     mSVOUniformBuffer->ReserveMutableDeviceResource(mDevice, bufferSize, 
         BU_Dynamic_Draw);
-    unsigned int svoUniformBufferData[2] = { 0, VoxelGridDim };
+    unsigned int svoUniformBufferData[2] = { 0, (unsigned int)VoxelGridDim };
     mSVOUniformBuffer->UpdateSubData(0, 0, sizeof(unsigned int) * 2, 
         (void*)svoUniformBufferData);
 

@@ -1,13 +1,9 @@
 // Swing Engine Version 2 Source Code 
 // Copyright (c) 2007-2015
 
-//TODO: it is technically windows appication right now
 #include "SEApplicationPCH.h"
 #include "SEApplication.h"
 #include "SERTGICamera.h"
-#include "SETextureManager.h"
-#include "SEVector2.h"
-#include "SEVector3.h"
 
 using namespace Swing;
 

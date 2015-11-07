@@ -16,13 +16,13 @@ struct GLFWwindow;
 namespace Swing
 {
 
-class SERTGICamera;
 class SE_WGL_APPLICATION_API SEWglApplication : public SEApplication
 {
 public:
 	SEWglApplication();
 	virtual ~SEWglApplication();
 
+    // Implement base class interface.
 	virtual void Initialize(SEGPUDevice* device);
 	virtual void Run();
 	virtual void Terminate();
@@ -44,8 +44,6 @@ protected:
 	CGLShareGroupObj mShareGroup;
 #endif
 #endif
-
-	static SEApplication* mInstance;
 };
 
 }
