@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SwingEngine", "SwingEngine", "{5937E8BD-BA18-4AE7-9CF7-98A0B3C6C760}"
 EndProject
@@ -99,6 +99,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ObjLoadingTest", "Samples\O
 		{0E097AAB-F334-498A-901A-CED25AF812BE} = {0E097AAB-F334-498A-901A-CED25AF812BE}
 		{FFEB73F5-3F9C-4EEA-8C46-7B983FFF8C58} = {FFEB73F5-3F9C-4EEA-8C46-7B983FFF8C58}
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SwingEngine App Layers", "SwingEngine App Layers", "{E6B6EBA4-8D0C-43E5-8C1C-67C3787C0627}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEWglApplication", "SEWglApplication\SEWglApplication.vcxproj", "{2E86C87A-917E-46EC-B99D-7B1A46616AD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -298,6 +302,18 @@ Global
 		{2041FDDB-685E-4F7D-8AE4-B9DDD9F37D83}.Release Memory|Win32.Build.0 = Release|Win32
 		{2041FDDB-685E-4F7D-8AE4-B9DDD9F37D83}.Release|Win32.ActiveCfg = Release|Win32
 		{2041FDDB-685E-4F7D-8AE4-B9DDD9F37D83}.Release|Win32.Build.0 = Release|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Debug DLL|Win32.ActiveCfg = Debug DLL|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Debug DLL|Win32.Build.0 = Debug DLL|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Debug Memory|Win32.ActiveCfg = Debug Memory|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Debug Memory|Win32.Build.0 = Debug Memory|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Debug|Win32.Build.0 = Debug|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Release DLL|Win32.ActiveCfg = Release DLL|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Release DLL|Win32.Build.0 = Release DLL|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Release Memory|Win32.ActiveCfg = Release Memory|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Release Memory|Win32.Build.0 = Release Memory|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Release|Win32.ActiveCfg = Release|Win32
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -321,5 +337,6 @@ Global
 		{4DBAFF2F-FAE5-4DDE-BC22-5973CEF436E4} = {58480745-332F-4323-B0F0-3038BF353E73}
 		{4548BFBA-8DDA-43A2-8ECF-73E07ADABE3A} = {9D9BCC5C-B1AA-419D-B65E-13CF51482F3C}
 		{2041FDDB-685E-4F7D-8AE4-B9DDD9F37D83} = {9D9BCC5C-B1AA-419D-B65E-13CF51482F3C}
+		{2E86C87A-917E-46EC-B99D-7B1A46616AD3} = {E6B6EBA4-8D0C-43E5-8C1C-67C3787C0627}
 	EndGlobalSection
 EndGlobal

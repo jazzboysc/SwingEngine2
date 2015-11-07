@@ -7,11 +7,6 @@
 #include "SEApplicationLIB.h"
 #include "SEGPUDevice.h"
 
-// TODO split window specific impl into windowsApplication class
-#define WIN32_LEAN_AND_MEAN 1
-#include <windows.h>
-struct GLFWwindow;
-
 #include <string>
 
 namespace Swing
@@ -27,20 +22,16 @@ public:
 	SEApplication();
 	virtual ~SEApplication();
 
-	virtual void Initialize(SEGPUDevice* device);
-	virtual void Run();
-	virtual void Terminate();
-	virtual void ProcessInput();
-	virtual void FrameFunc();
-	void UpdateMainCamera();
-
-	virtual void ProcessInput(int key, int scancode, int action, int mods);
-	static void KeyboardCallbackWrapper(
-		GLFWwindow* window, int key, int scancode, int action, int mods);
+	virtual void Initialize(SEGPUDevice* device) = 0;
+	virtual void Run() = 0;
+	virtual void Terminate() = 0;
+	virtual void ProcessInput() = 0;
+	virtual void FrameFunc() = 0;
+    virtual void UpdateMainCamera() = 0;
+	virtual void ProcessInput(int key, int scancode, int action, int mods) = 0;
 
 	static SEApplication* GetInstance();
 
-	GLFWwindow* Window;
 	int Width = 1024, Height = 768;
 	std::string Title = "Default Application";
     unsigned int FrameCounter;
@@ -50,16 +41,6 @@ protected:
 	SERTGICamera* mMainCamera;
 	float mMainCameraSpeed;
 	bool mInitialized = false;
-
-#ifdef _WIN32
-	HGLRC mOpenGLContext;
-	HDC mWindowsDeviceContext;
-#else
-#ifdef __APPLE__
-	CGLContextObj mOpenGLContext;
-	CGLShareGroupObj mShareGroup;
-#endif
-#endif
 
 	static SEApplication* mInstance;
 };
