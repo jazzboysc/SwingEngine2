@@ -27,7 +27,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2E86C87A-917E-46EC-B99D-7B1A46616AD3}</ProjectGuid>
+    <ProjectGuid>{45284079-2540-4975-92F7-97B636347F8A}</ProjectGuid>
     <RootNamespace>SEAssetUtility</RootNamespace>
     <SccProjectName>
     </SccProjectName>
@@ -37,7 +37,7 @@
     </SccLocalPath>
     <SccProvider>
     </SccProvider>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'" Label="Configuration">
@@ -127,33 +127,33 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath)</LibraryPath>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SEWglApplicationd</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SED3D12Deviced</TargetName>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath)</LibraryPath>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SEWglApplication</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SED3D12Device</TargetName>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">$(LibraryPath)</LibraryPath>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">SEWglApplicationd</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">SEWglApplication</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">SED3D12Deviced</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">SED3D12Device</TargetName>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">$(LibraryPath)</LibraryPath>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">$(LibraryPath)</LibraryPath>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">$(LibraryPath)</LibraryPath>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">SEWglApplicationd</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">SEWglApplication</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">SED3D12Deviced</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">SED3D12Device</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;..\SDK\Include;..\ThirdPartyLibs\glfw\include;..\ThirdPartyLibs\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;GLEW_STATIC;_GLFW_WIN32;_GLFW_WGL;_GLFW_USE_OPENGL;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>SEWglApplicationPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>SED3D12DevicePCH.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
@@ -163,19 +163,20 @@
       <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
     </Lib>
     <PostBuildEvent>
-      <Command>copy /y *.h ..\SDK\Include</Command>
+      <Command>copy /y *.h ..\SDK\Include
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>false</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>.\;..\SDK\Include;..\ThirdPartyLibs\glfw\include;..\ThirdPartyLibs\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;GLEW_STATIC;_GLFW_WIN32;_GLFW_WGL;_GLFW_USE_OPENGL;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>SEWglApplicationPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>SED3D12DevicePCH.h</PrecompiledHeaderFile>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -184,19 +185,21 @@
       <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
     </Lib>
     <PostBuildEvent>
-      <Command>copy /y *.h ..\SDK\Include</Command>
+      <Command>copy /y *.h ..\SDK\Include
+
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;..\SDK\Include;..\ThirdPartyLibs\glfw\include;..\ThirdPartyLibs\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;GLEW_STATIC;_GLFW_WIN32;_GLFW_WGL;_GLFW_USE_OPENGL;SE_USE_PRECOMPILED_HEADERS;SE_WGL_APPLICATION_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_D3D12_DEVICE_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>SEWglApplicationPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>SED3D12DevicePCH.h</PrecompiledHeaderFile>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -211,19 +214,21 @@
       <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y *.h ..\SDK\Include</Command>
+      <Command>copy /y *.h ..\SDK\Include
+
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;..\SDK\Include;..\ThirdPartyLibs\glfw\include;..\ThirdPartyLibs\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;GLEW_STATIC;_GLFW_WIN32;_GLFW_WGL;_GLFW_USE_OPENGL;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>SEWglApplicationPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>SED3D12DevicePCH.h</PrecompiledHeaderFile>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -232,16 +237,18 @@
       <OutputFile>$(OutDir)$(TargetName).lib</OutputFile>
     </Lib>
     <PostBuildEvent>
-      <Command>copy /y *.h ..\SDK\Include</Command>
+      <Command>copy /y *.h ..\SDK\Include
+
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;..\SDK\Include;..\ThirdPartyLibs\glfw\include;..\ThirdPartyLibs\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;GLEW_STATIC;_GLFW_WIN32;_GLFW_WGL;_GLFW_USE_OPENGL;SE_USE_PRECOMPILED_HEADERS;SE_WGL_APPLICATION_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_D3D12_DEVICE_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>SEWglApplicationPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>SED3D12DevicePCH.h</PrecompiledHeaderFile>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -256,16 +263,18 @@
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y *.h ..\SDK\Include</Command>
+      <Command>copy /y *.h ..\SDK\Include
+
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;..\SDK\Include;..\ThirdPartyLibs\glfw\include;..\ThirdPartyLibs\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;GLEW_STATIC;_GLFW_WIN32;_GLFW_WGL;_GLFW_USE_OPENGL;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>SEWglApplicationPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>SED3D12DevicePCH.h</PrecompiledHeaderFile>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -275,7 +284,6 @@
     </Lib>
     <PostBuildEvent>
       <Command>copy /y *.h ..\SDK\Include
-
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -286,8 +294,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SEWglApplication.cpp" />
-    <ClCompile Include="SEWglApplicationPCH.cpp">
+    <ClInclude Include="SED3D12Common.h" />
+    <ClInclude Include="SED3D12Device.h" />
+    <ClInclude Include="SED3D12DeviceHeaders.h" />
+    <ClInclude Include="SED3D12DeviceLIB.h" />
+    <ClInclude Include="SED3D12DevicePCH.h" />
+    <ClInclude Include="SED3D12DeviceRegister.h" />
+    <ClInclude Include="SED3D12GPUResources.h" />
+    <ClInclude Include="SwingEngineD3D12Device.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SED3D12Device.cpp" />
+    <ClCompile Include="SED3D12DevicePCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">Create</PrecompiledHeader>
@@ -295,15 +313,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="SEWglApplicationRegister.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="SEWglApplication.h" />
-    <ClInclude Include="SEWglApplicationHeaders.h" />
-    <ClInclude Include="SEWglApplicationLIB.h" />
-    <ClInclude Include="SEWglApplicationPCH.h" />
-    <ClInclude Include="SEWglApplicationRegister.h" />
-    <ClInclude Include="SwingEngineWglApplication.h" />
+    <ClCompile Include="SED3D12DeviceRegister.cpp" />
+    <ClCompile Include="SED3D12GPUResources.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
