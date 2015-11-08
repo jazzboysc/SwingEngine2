@@ -9,7 +9,6 @@
 
 #define WIN32_LEAN_AND_MEAN 1
 #include <windows.h>
-
 #include <string>
 
 namespace Swing
@@ -18,7 +17,8 @@ namespace Swing
 class SE_D3D12_APPLICATION_API SED3D12Application : public SEApplication
 {
 public:
-    SED3D12Application();
+    SED3D12Application(HINSTANCE instance, HINSTANCE prevInstance,
+        PSTR cmdLine, int showCmd);
 	virtual ~SED3D12Application();
 
     // Implement base class interface.
@@ -31,7 +31,8 @@ public:
 	virtual void ProcessInput(int key, int scancode, int action, int mods);
 
 protected:
-
+    HINSTANCE mAppInstance;
+    HWND mhMainWnd;
 };
 
 }

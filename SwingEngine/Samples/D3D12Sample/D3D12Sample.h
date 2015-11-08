@@ -11,8 +11,15 @@ namespace Swing
 class D3D12Sample : public SED3D12Application
 {
 public:
-    D3D12Sample(int width = 768, int height = 768);
+    D3D12Sample(HINSTANCE instance, HINSTANCE prevInstance,
+        PSTR cmdLine, int showCmd, int width = 768, int height = 768);
     ~D3D12Sample();
+
+    // Override SED3D12Application interface.
+    void Initialize(SEGPUDevice* device) override;
+    void ProcessInput() override;
+    void FrameFunc() override;
+    void Terminate() override;
 };
 
 }

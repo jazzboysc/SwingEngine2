@@ -6,7 +6,8 @@ using namespace Swing;
 SED3D12Application* app = 0;
 
 //----------------------------------------------------------------------------
-int main(int, char **)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
+    PSTR cmdLine, int showCmd)
 {
     unsigned int width, height;
     width = 1280;
@@ -16,7 +17,8 @@ int main(int, char **)
     SED3D12Device* gpuDevice = new SED3D12Device(0);
 
     // Initialize application.
-    app = new D3D12Sample(width, height);
+    app = new D3D12Sample(hInstance, prevInstance, cmdLine, showCmd, width, 
+        height);
     app->Swing::SED3D12Application::Initialize(gpuDevice);
     app->Swing::SED3D12Application::Run();
     app->Swing::SED3D12Application::Terminate();

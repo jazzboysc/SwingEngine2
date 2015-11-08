@@ -23,11 +23,7 @@ SEApplication::SEApplication()
 //----------------------------------------------------------------------------
 SEApplication::~SEApplication()
 {
-    if( mDevice )
-    {
-        mDevice->Terminate();
-        mDevice = 0;
-    }
+    mDevice = 0;
 }
 //----------------------------------------------------------------------------
 SEApplication* SEApplication::GetInstance()

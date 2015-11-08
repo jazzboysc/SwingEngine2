@@ -83,7 +83,7 @@
       <AdditionalDependencies>SECored.lib;SEGeometricToolsd.lib;SERenderingEngined.lib;SEBossaNovad.lib;SEAssetUtilityd.lib;SEApplicationd.lib;SED3D12Applicationd.lib;SED3D12Deviced.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\SDK\Lib\Debug;..\..\ThirdPartyLibs\Lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
@@ -106,7 +106,7 @@
       <AdditionalDependencies>SECore.lib;SEGeometricTools.lib;SERenderingEngine.lib;SEBossaNova.lib;SEAssetUtility.lib;SEApplication.lib;SED3D12Application.lib;SED3D12Device.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\SDK\Lib\Release;..\..\ThirdPartyLibs\Lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
