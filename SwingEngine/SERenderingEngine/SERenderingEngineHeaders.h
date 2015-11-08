@@ -41,6 +41,12 @@
 
 // Thin GPU Device
 #include "SEThinGPUDevice.h"
+#include "SECommandAllocator.h"
+#include "SECommandList.h"
+#include "SECommandQueue.h"
+#include "SEDescriptor.h"
+#include "SEDescriptorHeap.h"
+#include "SEThinGPUDeviceFence.h"
 
 // GPGPU
 #include "SEComputePass.h"

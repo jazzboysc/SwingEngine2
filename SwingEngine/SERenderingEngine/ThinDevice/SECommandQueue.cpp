@@ -4,3 +4,8 @@
 // This part of Swing Engine belongs to an abstraction layer of the next 
 // generation GPU graphics and compute API. Currently being constructed to 
 // support Microsoft's DirectX 12 and Apple's Metal.
+
+#include "SERenderingEnginePCH.h"
+#include "SECommandQueue.h"
+
+using namespace Swing;

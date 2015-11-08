@@ -5,8 +5,8 @@
 // generation GPU graphics and compute API. Currently being constructed to 
 // support Microsoft's DirectX 12 and Apple's Metal.
 
-#ifndef Swing_ThinGPUDevice_H
-#define Swing_ThinGPUDevice_H
+#ifndef Swing_CommandAllocator_H
+#define Swing_CommandAllocator_H
 
 #include "SERenderingEngineLIB.h"
 #include "SEReferencable.h"
@@ -16,18 +16,16 @@ namespace Swing
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
-// Date: 10/17/2015
+// Date: 11/07/2015
 //----------------------------------------------------------------------------
-class SE_RENDERING_ENGINE_API SEThinGPUDevice : public SEReferencable
+class SE_RENDERING_ENGINE_API SECommandAllocator : public SEReferencable
 {
 public:
-    SEThinGPUDevice();
-    ~SEThinGPUDevice();
+    SECommandAllocator();
+    ~SECommandAllocator();
 };
 
-typedef SESmartPointer<SEThinGPUDevice> SEThinGPUDevicePtr;
-
-#include "SEThinGPUDevice.inl"
+typedef SESmartPointer<SECommandAllocator> SECommandAllocatorPtr;
 
 }
 

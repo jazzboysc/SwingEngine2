@@ -282,6 +282,12 @@
       <Filter>SceneObjects</Filter>
     </ClCompile>
     <ClCompile Include="ThinDevice\SEThinGPUDevice.cpp" />
+    <ClCompile Include="ThinDevice\SECommandAllocator.cpp" />
+    <ClCompile Include="ThinDevice\SECommandList.cpp" />
+    <ClCompile Include="ThinDevice\SECommandQueue.cpp" />
+    <ClCompile Include="ThinDevice\SEDescriptor.cpp" />
+    <ClCompile Include="ThinDevice\SEDescriptorHeap.cpp" />
+    <ClCompile Include="ThinDevice\SEThinGPUDeviceFence.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneGraph\SEBoundingVolume.h">
@@ -539,6 +545,12 @@
       <Filter>SceneObjects</Filter>
     </ClInclude>
     <ClInclude Include="ThinDevice\SEThinGPUDevice.h" />
+    <ClInclude Include="ThinDevice\SECommandAllocator.h" />
+    <ClInclude Include="ThinDevice\SECommandList.h" />
+    <ClInclude Include="ThinDevice\SECommandQueue.h" />
+    <ClInclude Include="ThinDevice\SEDescriptor.h" />
+    <ClInclude Include="ThinDevice\SEDescriptorHeap.h" />
+    <ClInclude Include="ThinDevice\SEThinGPUDeviceFence.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SceneGraph\SEBoxBV.inl">
