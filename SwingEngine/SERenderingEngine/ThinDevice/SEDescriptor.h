@@ -4,3 +4,29 @@
 // This part of Swing Engine belongs to an abstraction layer of the next 
 // generation GPU graphics and compute API. Currently being constructed to 
 // support Microsoft's DirectX 12 and Apple's Metal.
+
+#ifndef Swing_Descriptor_H
+#define Swing_Descriptor_H
+
+#include "SERenderingEngineLIB.h"
+#include "SEReferencable.h"
+
+namespace Swing
+{
+
+//----------------------------------------------------------------------------
+// Author: Che Sun
+// Date: 11/07/2015
+//----------------------------------------------------------------------------
+class SE_RENDERING_ENGINE_API SEDescriptor : public SEReferencable
+{
+public:
+    SEDescriptor();
+    virtual ~SEDescriptor();
+};
+
+typedef SESmartPointer<SEDescriptor> SEDescriptorPtr;
+
+}
+
+#endif

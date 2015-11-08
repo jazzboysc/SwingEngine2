@@ -9,3 +9,13 @@
 #include "SEThinGPUDeviceFence.h"
 
 using namespace Swing;
+
+//----------------------------------------------------------------------------
+SEThinGPUDeviceFence::SEThinGPUDeviceFence()
+{
+}
+//----------------------------------------------------------------------------
+SEThinGPUDeviceFence::~SEThinGPUDeviceFence()
+{
+}
+//----------------------------------------------------------------------------
