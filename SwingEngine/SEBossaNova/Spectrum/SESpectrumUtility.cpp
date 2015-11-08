@@ -42,6 +42,7 @@
 //----------------------------------------------------------------------------
 #if defined(SE_IS_WINDOWS)
 #pragma warning (disable : 4305) // double constant assigned to float
+#pragma warning (disable : 4838) // double constant assigned to float
 #endif
 //----------------------------------------------------------------------------
 

@@ -130,7 +130,7 @@ void SED3D12Application::Initialize(SEGPUDevice* device)
     //mDevice->Initialize(&deviceDesc);
 
     // Anisotropic Filtering
-    int maxAnisFilterLevel;
+    //int maxAnisFilterLevel;
     //mDevice->GetMaxAnisFilterLevel(&maxAnisFilterLevel);
     //mDevice->SetAnisFilterLevel(maxAnisFilterLevel);
 

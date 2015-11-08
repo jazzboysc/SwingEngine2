@@ -34,6 +34,7 @@
 #include "SETextureManager.h"
 
 // GPU Device
+#include "SEGPUDeviceBase.h"
 #include "SEGPUDevice.h"
 #include "SEGPUResource.h"
 #include "SEGPUDeviceInspector.h"

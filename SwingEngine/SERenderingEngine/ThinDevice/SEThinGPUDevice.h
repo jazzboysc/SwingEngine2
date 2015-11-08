@@ -9,7 +9,7 @@
 #define Swing_ThinGPUDevice_H
 
 #include "SERenderingEngineLIB.h"
-#include "SEReferencable.h"
+#include "SEGPUDeviceBase.h"
 
 namespace Swing
 {
@@ -18,7 +18,7 @@ namespace Swing
 // Author: Che Sun
 // Date: 10/17/2015
 //----------------------------------------------------------------------------
-class SE_RENDERING_ENGINE_API SEThinGPUDevice : public SEReferencable
+class SE_RENDERING_ENGINE_API SEThinGPUDevice : public SEGPUDeviceBase
 {
 public:
     SEThinGPUDevice();

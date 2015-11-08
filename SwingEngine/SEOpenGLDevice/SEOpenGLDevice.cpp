@@ -19,6 +19,8 @@
 #include "SEPassInfo.h"
 #include "SEPipelineStateBlock.h"
 #include "SEGPUTimer.h"
+#include "SEVector3.h"
+#include "SEMatrix4.h"
 
 #include <string>
 #include <GL/glew.h>

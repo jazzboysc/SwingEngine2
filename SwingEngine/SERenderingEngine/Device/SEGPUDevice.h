@@ -5,10 +5,8 @@
 #define Swing_GPUDevice_H
 
 #include "SERenderingEngineLIB.h"
-#include "SEReferencable.h"
+#include "SEGPUDeviceBase.h"
 #include "SEGPUResource.h"
-#include "SEVector3.h"
-#include "SEMatrix4.h"
 
 namespace Swing
 {
@@ -49,6 +47,9 @@ class SETextureBuffer;
 class SEFrameBuffer;
 class SEPrimitive;
 class SEGPUTimer;
+class SEVector3f;
+class SEVector4f;
+class SEMatrix4f;
 
 struct SEShaderHandle;
 struct SEShaderProgramHandle;
@@ -217,7 +218,7 @@ typedef double (SEGPUDevice::*GPUDeviceTimerGetTimeElapsed)(SEGPUTimer* timer);
 // Author: Che Sun
 // Date: 11/29/2014
 //----------------------------------------------------------------------------
-class SE_RENDERING_ENGINE_API SEGPUDevice : public SEReferencable
+class SE_RENDERING_ENGINE_API SEGPUDevice : public SEGPUDeviceBase
 {
 public:
     SEGPUDevice();

@@ -441,6 +441,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile Include="Buffers\SEUniformBuffer.cpp" />
     <ClCompile Include="Buffers\SEVertexBuffer.cpp" />
     <ClCompile Include="Device\SEGPUDevice.cpp" />
+    <ClCompile Include="Device\SEGPUDeviceBase.cpp" />
     <ClCompile Include="Device\SEGPUDeviceInspector.cpp" />
     <ClCompile Include="Device\SEGPUDeviceResident.cpp" />
     <ClCompile Include="Device\SEGPUResource.cpp" />
@@ -541,6 +542,7 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="Buffers\SEUniformBuffer.h" />
     <ClInclude Include="Buffers\SEVertexBuffer.h" />
     <ClInclude Include="Device\SEGPUDevice.h" />
+    <ClInclude Include="Device\SEGPUDeviceBase.h" />
     <ClInclude Include="Device\SEGPUDeviceInspector.h" />
     <ClInclude Include="Device\SEGPUDeviceResident.h" />
     <ClInclude Include="Device\SEGPUResource.h" />
@@ -626,6 +628,7 @@ copy /y *.h ..\SDK\Include
   </ItemGroup>
   <ItemGroup>
     <None Include="Device\SEGPUDevice.inl" />
+    <None Include="Device\SEGPUDeviceBase.inl" />
     <None Include="Renderers\SEVoxelizer.inl" />
     <None Include="SceneGraph\SEBoxBV.inl" />
     <None Include="SceneGraph\SECamera.inl" />
