@@ -77,7 +77,7 @@ SED3D12Application::~SED3D12Application()
     // TODO:
 }
 //----------------------------------------------------------------------------
-void SED3D12Application::Initialize(SEGPUDevice* device)
+void SED3D12Application::Initialize(SEGPUDeviceBase* device)
 {
     // Set working directory to resource folder.
     chdir("..\\..\\Bin\\");
@@ -130,9 +130,9 @@ void SED3D12Application::Initialize(SEGPUDevice* device)
     mDevice->Initialize(&deviceDesc);
 
     // Anisotropic Filtering
-    //int maxAnisFilterLevel;
-    //mDevice->GetMaxAnisFilterLevel(&maxAnisFilterLevel);
-    //mDevice->SetAnisFilterLevel(maxAnisFilterLevel);
+    int maxAnisFilterLevel;
+    mDevice->GetMaxAnisFilterLevel(&maxAnisFilterLevel);
+    mDevice->SetAnisFilterLevel(maxAnisFilterLevel);
 
     // Initialize texture manager.
     SETextureManager::Initialize();
@@ -187,7 +187,7 @@ void SED3D12Application::Terminate()
     SETextureManager::Terminate();
 
     // Terminate device.
-    //mDevice->Terminate();
+    mDevice->Terminate();
 }
 //----------------------------------------------------------------------------
 void SED3D12Application::ProcessInput(int, int, int, int)

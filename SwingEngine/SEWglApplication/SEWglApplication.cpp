@@ -32,7 +32,7 @@ SEWglApplication::~SEWglApplication()
 {
 }
 //----------------------------------------------------------------------------
-void SEWglApplication::Initialize(SEGPUDevice* device)
+void SEWglApplication::Initialize(SEGPUDeviceBase* device)
 {
     // Set working directory to resource folder.
     chdir("..\\..\\Bin\\");

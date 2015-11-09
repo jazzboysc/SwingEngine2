@@ -16,7 +16,7 @@ public:
     ~D3D12Sample();
 
     // Override SED3D12Application interface.
-    void Initialize(SEGPUDevice* device) override;
+    void Initialize(SEGPUDeviceBase* device) override;
     void ProcessInput() override;
     void FrameFunc() override;
     void Terminate() override;

@@ -2,7 +2,7 @@
 #define RTGI_ObjLoadingTestApp_H
 
 #include "ObjMesh.h"
-#include "SEApplication.h"
+#include "SEWglApplication.h"
 #include "SwingEngineAssetUtility.h"
 #include "SwingEngineRenderingEngine.h"
 
@@ -13,13 +13,13 @@ namespace Swing
 // Author: Che Sun
 // Date: 06/13/2015
 //----------------------------------------------------------------------------
-class ObjLoadingTestApp : public SEApplication
+class ObjLoadingTestApp : public SEWglApplication
 {
 public:
     ObjLoadingTestApp(int width = 1024, int height = 768);
     ~ObjLoadingTestApp();
 
-	void Initialize(SEGPUDevice* device) override;
+	void Initialize(SEGPUDeviceBase* device) override;
 	void ProcessInput() override;
 	void FrameFunc() override;
 	void Terminate() override;

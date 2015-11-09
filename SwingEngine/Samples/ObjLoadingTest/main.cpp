@@ -3,7 +3,7 @@
 
 using namespace Swing;
 
-Swing::SEApplication* app = 0;
+SEWglApplication* app = 0;
 //----------------------------------------------------------------------------
 int main(int argc, char **argv)
 {
@@ -16,9 +16,9 @@ int main(int argc, char **argv)
 
     // Initialize application.
 	app = new ObjLoadingTestApp(width, height);
-    app->Swing::SEApplication::Initialize(gpuDevice);
-    app->Swing::SEApplication::Run();
-    app->Swing::SEApplication::Terminate();
+    app->Swing::SEWglApplication::Initialize(gpuDevice);
+    app->Swing::SEWglApplication::Run();
+    app->Swing::SEWglApplication::Terminate();
     delete app;
 
     return 0;

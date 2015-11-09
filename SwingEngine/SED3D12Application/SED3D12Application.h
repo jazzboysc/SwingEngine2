@@ -22,7 +22,7 @@ public:
 	virtual ~SED3D12Application();
 
     // Implement base class interface.
-	virtual void Initialize(SEGPUDevice* device);
+	virtual void Initialize(SEGPUDeviceBase* device);
 	virtual void Run();
 	virtual void Terminate();
 	virtual void ProcessInput();

@@ -161,7 +161,7 @@ void VPLviaSVOGI::CreateSceneLights(SEGPUDevice* device)
 #endif
 #endif
 
-	mLightManager->CreateLightBuffer(mDevice);
+	mLightManager->CreateLightBuffer(device);
 }
 //----------------------------------------------------------------------------
 SEMaterialTemplate* VPLviaSVOGI::CreateSceneModelMaterialTemplate()
@@ -599,8 +599,10 @@ void VPLviaSVOGI::CreateScene(SEMaterialTemplate* sceneMT, SEGPUDevice* device,
 	}
 }
 //----------------------------------------------------------------------------
-void VPLviaSVOGI::Initialize(SEGPUDevice* device)
+void VPLviaSVOGI::Initialize(SEGPUDeviceBase* device)
 {
+    SEGPUDevice* gpuDevice = (SEGPUDevice*)device;
+
     mInitPSB = new SEPipelineStateBlock();
     mInitPSB->PipelineStageFlag = PB_OutputMerger | PB_Rasterizer;
     mInitPSB->OutputMerger.OutputMergerOpFlag = OMB_ClearColor;
@@ -609,9 +611,9 @@ void VPLviaSVOGI::Initialize(SEGPUDevice* device)
     mInitPSB->Rasterizer.CullMode = PCM_Cull_Back;
     mInitPSB->Rasterizer.FillMode = PFM_Solid;
     mInitPSB->OutputMerger.DepthStencil.DepthEnable = true;
-    mDevice->ApplyPipelineStateBlock(mInitPSB);
+    gpuDevice->ApplyPipelineStateBlock(mInitPSB);
 
-    mDeviceInspector = new SEGPUDeviceInspector(device);
+    mDeviceInspector = new SEGPUDeviceInspector(gpuDevice);
     
     // Create scene camera.
 #ifdef DEMO_SPONZA_SCENE
@@ -628,7 +630,7 @@ void VPLviaSVOGI::Initialize(SEGPUDevice* device)
 
 	// Create scene lights and light manager. Light manager maintains a lgiht
 	// buffer for shaders accessing scene lights info.
-	CreateSceneLights(device);
+	CreateSceneLights(gpuDevice);
 
 	// Create a mult-pass material template used by scene models.
 	SEMaterialTemplate* mtSceneModel = CreateSceneModelMaterialTemplate();
@@ -638,20 +640,20 @@ void VPLviaSVOGI::Initialize(SEGPUDevice* device)
 	mShadowCasters = new SERenderSet();
 	mRSMObjects = new SERenderSet();
 	mVoxelizedObjects = new SERenderSet();
-	CreateScene(mtSceneModel, device, &mSceneBB, mVoxelizedObjects, mGBufferObjects, 
+	CreateScene(mtSceneModel, gpuDevice, &mSceneBB, mVoxelizedObjects, mGBufferObjects,
 		mShadowCasters, mRSMObjects);
 
     // Create scene voxelizer.
     if( mVoxelizerType == SEVoxelizer::VT_Grid )
     {
-        mVoxelizer = new GridVoxelizer(mDevice);
-        ((GridVoxelizer*)(SEVoxelizer*)mVoxelizer)->Initialize(mDevice, 
+        mVoxelizer = new GridVoxelizer(gpuDevice);
+        ((GridVoxelizer*)(SEVoxelizer*)mVoxelizer)->Initialize(gpuDevice, 
             VOXEL_DIMENSION, VOXEL_LOCAL_GROUP_DIM, &mSceneBB);
     }
     else if( mVoxelizerType == SEVoxelizer::VT_SVO )
     {
-        mVoxelizer = new SVOVoxelizer(mDevice);
-        ((SVOVoxelizer*)(SEVoxelizer*)mVoxelizer)->Initialize(mDevice, 
+        mVoxelizer = new SVOVoxelizer(gpuDevice);
+        ((SVOVoxelizer*)(SEVoxelizer*)mVoxelizer)->Initialize(gpuDevice, 
             VOXEL_DIMENSION, &mSceneBB);
     }
     else
@@ -669,44 +671,44 @@ void VPLviaSVOGI::Initialize(SEGPUDevice* device)
     gbufferDesc.NormalFormat = BF_RGBAF;
     gbufferDesc.AlbedoFormat = BF_RGBAF;
     gbufferDesc.RPCFormat = BF_RGBAF;
-    mGBufferRenderer = new SEGBufferRenderer(mDevice);
+    mGBufferRenderer = new SEGBufferRenderer(gpuDevice);
     mGBufferRenderer->Initialize(&gbufferDesc);
     mGBufferRenderer->SetRenderSet(mGBufferObjects);
 
 	// Create G-buffer splitter.
-	mGBufferSplitter = new GBufferSplitter(mDevice);
-	mGBufferSplitter->Initialize(mDevice, mGBufferRenderer, 
+	mGBufferSplitter = new GBufferSplitter(gpuDevice);
+	mGBufferSplitter->Initialize(gpuDevice, mGBufferRenderer, 
 		INTERLEAVED_PATTERN_SIZE, INTERLEAVED_PATTERN_SIZE);
 
     // Create shadow map renderer.
-    mShadowMapRenderer = new ShadowMapsGenerator(mDevice);
+    mShadowMapRenderer = new ShadowMapsGenerator(gpuDevice);
     mShadowMapRenderer->Initialize(SHADOWMAP_DIMENSION, SHADOWMAP_DIMENSION, BF_R32F, mLightManager);
     mShadowMapRenderer->SetRenderSet(mShadowCasters);
 
     // Create RSM renderer.
-    mRSMRenderer = new RSMRenderer(mDevice);
+    mRSMRenderer = new RSMRenderer(gpuDevice);
     mRSMRenderer->Initialize(RSM_DIMENSION, RSM_DIMENSION, RSM_POINT_LIGHT_FACE_COUNT, BF_RGBAF,
 		mLightManager, true);
     mRSMRenderer->SetRenderSet(mRSMObjects);
 
     // Create VPL generator.
-    mVPLGenerator = new VPLGenerator(mDevice);
-	mVPLGenerator->Initialize(mDevice, mRSMRenderer, VPL_SAMPLE_COUNT);
+    mVPLGenerator = new VPLGenerator(gpuDevice);
+	mVPLGenerator->Initialize(gpuDevice, mRSMRenderer, VPL_SAMPLE_COUNT);
 
     // Create direct lighting renderer.
-    mDirectLightingRenderer = new DirectLightingRenderer(mDevice);
-    mDirectLightingRenderer->Initialize(mDevice, Width, Height, BF_RGBAF, 
+    mDirectLightingRenderer = new DirectLightingRenderer(gpuDevice);
+    mDirectLightingRenderer->Initialize(gpuDevice, Width, Height, BF_RGBAF, 
         mGBufferRenderer, mShadowMapRenderer);
 
     // Create indirect lighting renderer.
-    mIndirectLightingRenderer = new IndirectLightingRenderer(mDevice);
-    mIndirectLightingRenderer->Initialize(mDevice, Width, Height, BF_RGBAF, 
+    mIndirectLightingRenderer = new IndirectLightingRenderer(gpuDevice);
+    mIndirectLightingRenderer->Initialize(gpuDevice, Width, Height, BF_RGBAF, 
         VPL_SAMPLE_COUNT, INTERLEAVED_PATTERN_SIZE, &mSceneBB, VOXEL_DIMENSION, 
         mGBufferSplitter, mVPLGenerator, mVoxelizer, mUseTC);
 
 	// Create splitted buffer merger.
-	mSplittedBufferMerger = new SplittedBufferMerger(mDevice);
-	mSplittedBufferMerger->Initialize(mDevice, mIndirectLightingRenderer,
+	mSplittedBufferMerger = new SplittedBufferMerger(gpuDevice);
+	mSplittedBufferMerger->Initialize(gpuDevice, mIndirectLightingRenderer,
         RTGI_IndirectLightingRenderer_IndirectLighting_Name, 
 		RTGI_SplittedBufferMerger_MergedBuffer_Name, 
 		INTERLEAVED_PATTERN_SIZE, INTERLEAVED_PATTERN_SIZE);
@@ -720,8 +722,8 @@ void VPLviaSVOGI::Initialize(SEGPUDevice* device)
 #ifdef DEMO_CORNELL_SCENE
     thresholdPosition = 0.5f;
 #endif
-	mGAwareFilter = new GAwareFilter(mDevice);
-	mGAwareFilter->Initialize(mDevice, mGBufferRenderer, mSplittedBufferMerger, 
+	mGAwareFilter = new GAwareFilter(gpuDevice);
+	mGAwareFilter->Initialize(gpuDevice, mGBufferRenderer, mSplittedBufferMerger, 
 		RTGI_SplittedBufferMerger_MergedBuffer_Name, 
 		RTGI_GAwareFilter_FilteredBuffer_Name, 
 		INTERLEAVED_PATTERN_SIZE, INTERLEAVED_PATTERN_SIZE, thresholdPosition, 
@@ -735,8 +737,8 @@ void VPLviaSVOGI::Initialize(SEGPUDevice* device)
 #ifdef DEMO_CORNELL_SCENE
     toneMapperMaxRadiance = 80.0f;
 #endif
-    mVisualizer = new Visualizer(mDevice);
-    mVisualizer->Initialize(mDevice, mVoxelizer, mVPLGenerator, 
+    mVisualizer = new Visualizer(gpuDevice);
+    mVisualizer->Initialize(gpuDevice, mVoxelizer, mVPLGenerator, 
         mShadowMapRenderer, mGBufferRenderer, mGBufferSplitter, mRSMRenderer, 
         mDirectLightingRenderer, mIndirectLightingRenderer, mSplittedBufferMerger, 
         mGAwareFilter, &mSceneBB, VOXEL_DIMENSION, VOXEL_LOCAL_GROUP_DIM, 
@@ -745,7 +747,7 @@ void VPLviaSVOGI::Initialize(SEGPUDevice* device)
 
     // Create GPU timer.
     mTimer = new SEGPUTimer();
-    mTimer->CreateDeviceResource(mDevice);
+    mTimer->CreateDeviceResource(gpuDevice);
     mVoxelizer->SetTimer(mTimer);
     mShadowMapRenderer->SetTimer(mTimer);
     mGBufferRenderer->SetTimer(mTimer);

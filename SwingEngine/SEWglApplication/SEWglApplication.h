@@ -23,7 +23,7 @@ public:
 	virtual ~SEWglApplication();
 
     // Implement base class interface.
-	virtual void Initialize(SEGPUDevice* device);
+	virtual void Initialize(SEGPUDeviceBase* device);
 	virtual void Run();
 	virtual void Terminate();
 	virtual void ProcessInput();

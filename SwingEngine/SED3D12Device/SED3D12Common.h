@@ -6,7 +6,19 @@
 
 #include <windows.h>
 #include <d3d12.h>
+#include <dxgi1_4.h>
+#include <wrl\client.h>
+
+using namespace Microsoft::WRL;
 
 #define SE_RELEASE_COM(x) { if(x){ x->Release(); x = 0; } }
+
+inline void ThrowIfFailed(HRESULT hr)
+{
+    if( FAILED(hr) )
+    {
+        throw;
+    }
+}
 
 #endif

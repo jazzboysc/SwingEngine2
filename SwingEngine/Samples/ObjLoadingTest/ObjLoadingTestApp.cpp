@@ -17,8 +17,10 @@ ObjLoadingTestApp::~ObjLoadingTestApp()
 {
 }
 //----------------------------------------------------------------------------
-void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
+void ObjLoadingTestApp::Initialize(SEGPUDeviceBase* device)
 {
+    SEGPUDevice* gpuDevice = (SEGPUDevice*)device;
+
     // Create scene camera.
     mMainCamera->SetPerspectiveFrustum(45.0f, (float)Width / (float)Height, 0.5f, 4000.0f);
     mMainCamera->SetLookAt(SEVector3f(-850.0f, 350.0f, -10.0f), 
@@ -52,7 +54,7 @@ void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
     //mesh->UpdateModelSpaceVertices(rotM);
     //mesh->SetWorldTranslation(SEVector3f(0.0f, 0.0f, 250.0f));
     //mesh->SetWorldScale(SEVector3f(0.1f, 0.1f, 0.1f));
-    //mesh->CreateDeviceResource(device);
+    //mesh->CreateDeviceResource(gpuDevice);
     //mesh->App = this;
     //mMeshes.push_back(mesh);
 
@@ -137,7 +139,7 @@ void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
             ObjMesh* mesh = new ObjMesh(material, mMainCamera);
             mesh->LoadFromSEMetaMesh(objMeshes[i]);
             mesh->GenerateNormals();
-            mesh->CreateDeviceResource(mDevice);
+            mesh->CreateDeviceResource(gpuDevice);
 			mesh->App = this;
             mMeshes.push_back(mesh);
         }
@@ -148,7 +150,7 @@ void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
     //ObjMesh* mesh = new ObjMesh(material, mMainCamera);
     //mesh->LoadFromPLYFile("dragon_s.ply");
     //mesh->GenerateNormals();
-    //mesh->CreateDeviceResource(device);
+    //mesh->CreateDeviceResource(gpuDevice);
     //rotM.FromAxisAngle(SEVector3f(0.0f, 1.0f, 0.0f), -30.0f*SEMathf::DEG_TO_RAD);
     //mesh->SetWorldTransform(rotM);
     //mesh->SetWorldTranslation(SEVector3f(-5.4f, 3.2f, -1.6f));
@@ -165,7 +167,7 @@ void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
     //    sprintf(objFileName, "elephant-gallop/elephant-gallop-%d.obj", i);
     //    model2->LoadFromOBJFile(objFileName);
     //    model2->GenerateNormals();
-    //    model2->CreateDeviceResource(device);
+    //    model2->CreateDeviceResource(gpuDevice);
     //    rotM.FromAxisAngle(SEVector3f(0.0f, 1.0f, 0.0f), 60.0f*SEMathf::DEG_TO_RAD);
     //    model2->SetWorldTransform(rotM);
     //    model2->SetWorldTranslation(SEVector3f(3.2f, 3.2f, -2.4f));
@@ -180,7 +182,7 @@ void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
     //mesh = new ObjMesh(material, mMainCamera);
     //mesh->LoadFromPLYFile("square.ply");
     //mesh->GenerateNormals();
-    //mesh->CreateDeviceResource(device);
+    //mesh->CreateDeviceResource(gpuDevice);
     //mMeshes.push_back(mesh);
 
     //// Ceiling.
@@ -188,7 +190,7 @@ void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
     //mesh = new ObjMesh(material, mMainCamera);
     //mesh->LoadFromPLYFile("square.ply");
     //mesh->GenerateNormals();
-    //mesh->CreateDeviceResource(device);
+    //mesh->CreateDeviceResource(gpuDevice);
     //rotM.FromAxisAngle(SEVector3f(1.0f, 0.0f, 0.0f), 180.0f*SEMathf::DEG_TO_RAD);
     //mesh->SetWorldTransform(rotM);
     //mesh->SetWorldTranslation(SEVector3f(0.0f, 20.0f, 0.0f));
@@ -199,7 +201,7 @@ void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
     //mesh = new ObjMesh(material, mMainCamera);
     //mesh->LoadFromPLYFile("square.ply");
     //mesh->GenerateNormals();
-    //mesh->CreateDeviceResource(device);
+    //mesh->CreateDeviceResource(gpuDevice);
     //rotM.FromAxisAngle(SEVector3f(1.0f, 0.0f, 0.0f), -90.0f*SEMathf::DEG_TO_RAD);
     //mesh->SetWorldTransform(rotM);
     //mesh->SetWorldTranslation(SEVector3f(0.0f, 10.0f, 10.0f));
@@ -210,7 +212,7 @@ void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
     //mesh = new ObjMesh(material, mMainCamera);
     //mesh->LoadFromPLYFile("square.ply");
     //mesh->GenerateNormals();
-    //mesh->CreateDeviceResource(device);
+    //mesh->CreateDeviceResource(gpuDevice);
     //rotM.FromAxisAngle(SEVector3f(0.0f, 0.0f, 1.0f), -90.0f*SEMathf::DEG_TO_RAD);
     //mesh->SetWorldTransform(rotM);
     //mesh->SetWorldTranslation(SEVector3f(-10.0f, 10.0f, 0.0f));
@@ -220,7 +222,7 @@ void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
     //mesh = new ObjMesh(material, mMainCamera);
     //mesh->LoadFromPLYFile("square.ply");
     //mesh->GenerateNormals();
-    //mesh->CreateDeviceResource(device);
+    //mesh->CreateDeviceResource(gpuDevice);
     //rotM.FromAxisAngle(SEVector3f(0.0f, 0.0f, 1.0f), 90.0f*SEMathf::DEG_TO_RAD);
     //mesh->SetWorldTransform(rotM);
     //mesh->SetWorldTranslation(SEVector3f(10.0f, 10.0f, 0.0f));
@@ -236,7 +238,7 @@ void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
     mWireframePSB->OutputMerger.OutputMergerOpFlag |= OMB_Clear | OMB_ClearColor;
     mWireframePSB->OutputMerger.ClearColor = SEVector4f(0.5f, 0.5f, 0.5f, 1.0f);
     mWireframePSB->OutputMerger.ClearMask = OMCB_Color_Buffer | OMCB_Depth_Buffer;
-    mWireframePSB->CreateDeviceResource(mDevice);
+    mWireframePSB->CreateDeviceResource(gpuDevice);
 
     mSolidPSB = new SEPipelineStateBlock();
     mSolidPSB->PipelineStageFlag |= PB_OutputMerger;
@@ -246,7 +248,7 @@ void ObjLoadingTestApp::Initialize(SEGPUDevice* device)
     mSolidPSB->OutputMerger.OutputMergerOpFlag |= OMB_Clear | OMB_ClearColor;
     mSolidPSB->OutputMerger.ClearColor = SEVector4f(0.5f, 0.5f, 0.5f, 1.0f);
     mSolidPSB->OutputMerger.ClearMask = OMCB_Color_Buffer | OMCB_Depth_Buffer;
-    mSolidPSB->CreateDeviceResource(mDevice);
+    mSolidPSB->CreateDeviceResource(gpuDevice);
 }
 //----------------------------------------------------------------------------
 void ObjLoadingTestApp::FrameFunc()
@@ -273,11 +275,11 @@ void ObjLoadingTestApp::FrameFunc()
 
 	if( mIsWireframe )
 	{
-        mDevice->ApplyPipelineStateBlock(mWireframePSB);
+        ((SEGPUDevice*)(SEGPUDeviceBase*)mDevice)->ApplyPipelineStateBlock(mWireframePSB);
 	}
 	else
 	{
-        mDevice->ApplyPipelineStateBlock(mSolidPSB);
+        ((SEGPUDevice*)(SEGPUDeviceBase*)mDevice)->ApplyPipelineStateBlock(mSolidPSB);
 	}
 
 	for( int i = 0; i < (int)mMeshes.size(); ++i )

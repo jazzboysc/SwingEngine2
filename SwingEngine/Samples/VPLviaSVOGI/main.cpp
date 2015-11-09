@@ -4,7 +4,7 @@
 
 using namespace Swing;
 
-Swing::SEWglApplication* app = 0;
+SEWglApplication* app = 0;
 //----------------------------------------------------------------------------
 int main(int, char **)
 {

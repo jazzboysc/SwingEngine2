@@ -5,7 +5,7 @@
 #define Swing_Application_H
 
 #include "SEApplicationLIB.h"
-#include "SEGPUDevice.h"
+#include "SEGPUDeviceBase.h"
 
 #include <string>
 
@@ -22,7 +22,7 @@ public:
 	SEApplication();
 	virtual ~SEApplication();
 
-	virtual void Initialize(SEGPUDevice* device) = 0;
+	virtual void Initialize(SEGPUDeviceBase* device) = 0;
 	virtual void Run() = 0;
 	virtual void Terminate() = 0;
 	virtual void ProcessInput() = 0;
@@ -37,7 +37,7 @@ public:
     unsigned int FrameCounter;
 
 protected:
-	SEGPUDevicePtr mDevice;
+    SEGPUDeviceBasePtr mDevice;
 	SERTGICamera* mMainCamera;
 	float mMainCameraSpeed;
 	bool mInitialized = false;
