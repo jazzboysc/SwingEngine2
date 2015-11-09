@@ -6,75 +6,17 @@
 
 #include "SERenderingEngineLIB.h"
 #include "SEGPUDeviceBase.h"
-#include "SEGPUResource.h"
 
 namespace Swing
 {
 
-struct SE_RENDERING_ENGINE_API SEGPUDeviceDescription
-{
-    unsigned int FramebufferWidth;
-    unsigned int FramebufferHeight;
-    bool EnableMSAA;
-};
-
-enum SEGPUDeviceVendor
-{
-	DV_Unknown = 0,
-	DV_NVIDIA,
-	DV_AMD
-};
-
-struct SE_RENDERING_ENGINE_API SEGPUDeviceInfo
-{
-	bool Valid;
-	SEGPUDeviceVendor Vendor;
-	unsigned int GPUTotalMemory;
-	unsigned int GPUDedicatedMemory;
-};
+//----------------------------------------------------------------------------
+#define SE_INSERT_GPU_DEVICE_FUNC(function, device) \
+    _##function = (GPUDevice##function)&##device::__##function
+//----------------------------------------------------------------------------
 
 class SEGPUDevice;
-class SEGPUDeviceInspector;
-class SEShader;
-class SEShaderProgram;
-class SEPassInfo;
-class SEShaderUniform;
-class SETexture;
-class SEBuffer;
-class SEBufferView;
-class SEPixelBuffer;
-class SETextureBuffer;
-class SEFrameBuffer;
-class SEPrimitive;
-class SEGPUTimer;
-class SEVector3f;
-class SEVector4f;
-class SEMatrix4f;
 
-struct SEShaderHandle;
-struct SEShaderProgramHandle;
-struct SEPassInfoHandle;
-struct SEShaderUniformHandle;
-struct SETextureHandle;
-struct SEFBOHandle;
-struct SEBufferHandle;
-struct SEBufferViewHandle;
-struct SEGPUTimerHandle;
-struct SESamplerDesc;
-struct SEPipelineStateBlock;
-struct SEViewportState;
-
-enum SEShaderProgramParameter;
-enum SEBufferInternalFormat;
-enum SEBufferFormat;
-enum SEBufferComponentType;
-enum SEBufferAccess;
-enum SEBufferUsage;
-enum SEPrimitiveType;
-
-typedef void (SEGPUDevice::*GPUDeviceInitialize)(
-    SEGPUDeviceDescription* deviceDesc);
-typedef void (SEGPUDevice::*GPUDeviceTerminate)();
 typedef SEShaderHandle* (SEGPUDevice::*GPUDeviceCreateShader)(SEShader* shader);
 typedef void (SEGPUDevice::*GPUDeviceDeleteShader)(SEShader* shader);
 typedef SEShaderProgramHandle* (SEGPUDevice::*GPUDeviceCreateProgram)(
@@ -193,8 +135,6 @@ typedef SEBufferHandle*
 typedef void (SEGPUDevice::*GPUDeviceBufferClear)(SEBuffer* buffer, 
     SEBufferInternalFormat internalFormat, SEBufferFormat format, 
     SEBufferComponentType type, void* data);
-typedef void (SEGPUDevice::*GPUDeviceGetMaxAnisFilterLevel)(int* maxAnisFilterLevel);
-typedef void (SEGPUDevice::*GPUDeviceSetAnisFilterLevel)(int maxAnisFilterLevel);
 typedef int (SEGPUDevice::*GPUDeviceGetDeviceMemoryAvailable)();
 typedef void (SEGPUDevice::*GPUDeviceMemoryBarrier)(unsigned int flags);
 typedef void (SEGPUDevice::*GPUDeviceApplyPipelineStateBlock)(SEPipelineStateBlock* psb);
@@ -221,12 +161,13 @@ typedef double (SEGPUDevice::*GPUDeviceTimerGetTimeElapsed)(SEGPUTimer* timer);
 class SE_RENDERING_ENGINE_API SEGPUDevice : public SEGPUDeviceBase
 {
 public:
-    SEGPUDevice();
     ~SEGPUDevice();
-	
-    inline 	void Initialize(SEGPUDeviceDescription* deviceDesc);
-    inline 	void Terminate();
 
+protected:
+    // Abstract base class.
+    SEGPUDevice();
+
+public:
     // Shader stuff.
     inline 	SEShaderHandle* CreateShader(SEShader* shader);
     inline 	void DeleteShader(SEShader* shader);
@@ -348,13 +289,11 @@ public:
         SEBufferComponentType type, void* data);
 
     // Device query stuff.
-    inline 	void GetMaxAnisFilterLevel(int* maxAnisFilterLevel);
-    inline 	void SetAnisFilterLevel(int maxAnisFilterLevel);
     inline const SEGPUDeviceDescription& GetDeviceDescription() const;
     inline const SEGPUDeviceInfo& GetDeviceInfo() const;
     inline int GetDeviceMemoryAvailable();
 
-    // Device inspector stuff.
+    // Inspector stuff.
     void SetInspector(SEGPUDeviceInspector* inspector);
     inline SEGPUDeviceInspector* GetInspector();
 
@@ -385,8 +324,6 @@ public:
     inline double TimerGetTimeElapsed(SEGPUTimer* timer);
 
 protected:
-    GPUDeviceInitialize                           _Initialize;
-    GPUDeviceTerminate                            _Terminate;
     GPUDeviceCreateShader                         _CreateShader;
     GPUDeviceDeleteShader                         _DeleteShader;
     GPUDeviceCreateProgram                        _CreateProgram;
@@ -447,8 +384,6 @@ protected:
     GPUDeviceBufferLoadFromSystemMemory           _BufferLoadFromSystemMemory;
     GPUDeviceBufferLoadImmutableFromSystemMemory  _BufferLoadImmutableFromSystemMemory;
     GPUDeviceBufferClear                          _BufferClear;
-    GPUDeviceGetMaxAnisFilterLevel				  _GetMaxAnisFilterLevel;
-    GPUDeviceSetAnisFilterLevel					  _SetAnisFilterLevel;
     GPUDeviceGetDeviceMemoryAvailable             _GetDeviceMemoryAvailable;
     GPUDeviceMemoryBarrier                        _MemoryBarrier;
     GPUDeviceApplyPipelineStateBlock              _ApplyPipelineStateBlock;
@@ -465,14 +400,6 @@ protected:
     GPUDeviceTimerStart                           _TimerStart;
     GPUDeviceTimerStop                            _TimerStop;
     GPUDeviceTimerGetTimeElapsed                  _TimerGetTimeElapsed;
-
-    // Device capabilities.
-    int mMaxTextureArrayLayer;
-
-	SEGPUDeviceDescription mDeviceDesc;
-	SEGPUDeviceInfo mDeviceInfo;
-
-    SEGPUDeviceInspector* mInspector;
 };
 
 typedef SESmartPointer<SEGPUDevice> SEGPUDevicePtr;

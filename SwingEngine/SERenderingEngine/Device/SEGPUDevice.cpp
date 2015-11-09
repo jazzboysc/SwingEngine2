@@ -10,8 +10,6 @@ using namespace Swing;
 //----------------------------------------------------------------------------
 SEGPUDevice::SEGPUDevice()
 {
-	memset(&mDeviceDesc, 0, sizeof(SEGPUDeviceDescription));
-	memset(&mDeviceInfo, 0, sizeof(SEGPUDeviceInfo));
 }
 //----------------------------------------------------------------------------
 SEGPUDevice::~SEGPUDevice()

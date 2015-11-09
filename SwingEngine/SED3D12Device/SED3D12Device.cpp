@@ -34,9 +34,11 @@ SEShaderHandle* SED3D12Device::__CreateShader(SEShader*)
 //----------------------------------------------------------------------------
 SED3D12Device::SED3D12Device(HWND mainWindow)
 {
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(Initialize, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(Terminate, SED3D12Device);
+
     mMainWindow = mainWindow;
-    mEnable4xMsaa = false;
-    m4xMsaaQuality = 0;
+    mMsaaQuality = 0;
 }
 //----------------------------------------------------------------------------
 SED3D12Device::~SED3D12Device()

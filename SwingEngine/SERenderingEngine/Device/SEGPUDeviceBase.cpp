@@ -9,6 +9,9 @@ using namespace Swing;
 //----------------------------------------------------------------------------
 SEGPUDeviceBase::SEGPUDeviceBase()
 {
+    memset(&mDeviceDesc, 0, sizeof(SEGPUDeviceDescription));
+    memset(&mDeviceInfo, 0, sizeof(SEGPUDeviceInfo));
+    mInspector = 0;
 }
 //----------------------------------------------------------------------------
 SEGPUDeviceBase::~SEGPUDeviceBase()

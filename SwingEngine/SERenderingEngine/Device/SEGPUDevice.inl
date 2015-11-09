@@ -354,27 +354,6 @@ SEShaderHandle* SEGPUDevice::CreateShader(SEShader* shader)
     return (this->*_CreateShader)(shader);
 }
 //----------------------------------------------------------------------------
-void SEGPUDevice::Terminate()
-{
-    (this->*_Terminate)();
-}
-//----------------------------------------------------------------------------
-void SEGPUDevice::Initialize(SEGPUDeviceDescription* deviceDesc)
-{
-	mDeviceDesc = *deviceDesc;
-    (this->*_Initialize)(deviceDesc);
-}
-//----------------------------------------------------------------------------
-void SEGPUDevice::SetAnisFilterLevel(int maxAnisFilterLevel)
-{
-    (this->*_SetAnisFilterLevel)(maxAnisFilterLevel);
-}
-//----------------------------------------------------------------------------
-void SEGPUDevice::GetMaxAnisFilterLevel(int* maxAnisFilterLevel)
-{
-    (this->*_GetMaxAnisFilterLevel)(maxAnisFilterLevel);
-}
-//----------------------------------------------------------------------------
 const SEGPUDeviceDescription& SEGPUDevice::GetDeviceDescription() const
 {
 	return mDeviceDesc;

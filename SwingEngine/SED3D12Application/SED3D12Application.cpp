@@ -127,7 +127,7 @@ void SED3D12Application::Initialize(SEGPUDevice* device)
     SEGPUDeviceDescription deviceDesc;
     deviceDesc.FramebufferWidth = Width;
     deviceDesc.FramebufferHeight = Height;
-    //mDevice->Initialize(&deviceDesc);
+    mDevice->Initialize(&deviceDesc);
 
     // Anisotropic Filtering
     //int maxAnisFilterLevel;

@@ -5,13 +5,13 @@
 #define Swing_D3D12Device_H
 
 #include "SED3D12DeviceLIB.h"
-#include "SEGPUDevice.h"
+#include "SEThinGPUDevice.h"
 #include "SED3D12Common.h"
 
 namespace Swing
 {
 
-class SE_D3D12_DEVICE_API SED3D12Device : public SEGPUDevice
+class SE_D3D12_DEVICE_API SED3D12Device : public SEThinGPUDevice
 {
 public:
     SED3D12Device(HWND mainWindow);
@@ -25,9 +25,10 @@ private:
 
 private:
     HWND mMainWindow;
-    bool mEnable4xMsaa;
-    UINT m4xMsaaQuality;
+    UINT mMsaaQuality;
 };
+
+typedef SESmartPointer<SED3D12Device> SED3D12DevicePtr;
 
 }
 
