@@ -11,7 +11,10 @@
 using namespace Swing;
 
 //----------------------------------------------------------------------------
-SECommandList::SECommandList()
+SECommandList::SECommandList(SECommandListType type)
+    :
+    mType(type),
+    mCommandListHandle(0)
 {
 }
 //----------------------------------------------------------------------------

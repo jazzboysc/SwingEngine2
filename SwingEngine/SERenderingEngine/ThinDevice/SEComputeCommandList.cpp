@@ -5,15 +5,19 @@
 // generation GPU graphics and compute API. Currently being constructed to 
 // support Microsoft's DirectX 12 and Apple's Metal.
 
+#include "SERenderingEnginePCH.h"
+#include "SEComputeCommandList.h"
+
+using namespace Swing;
+
 //----------------------------------------------------------------------------
-SECommandQueueHandle* SEThinGPUDevice::CreateCommandQueue(
-    SECommandQueue* commandQueue)
+SEComputeCommandList::SEComputeCommandList()
+    :
+    SECommandList(CLT_Compute)
 {
-    return (this->*_CreateCommandQueue)(commandQueue);
 }
 //----------------------------------------------------------------------------
-void SEThinGPUDevice::DeleteCommandQueue(SECommandQueue* commandQueue)
+SEComputeCommandList::~SEComputeCommandList()
 {
-    (this->*_DeleteCommandQueue)(commandQueue);
 }
 //----------------------------------------------------------------------------

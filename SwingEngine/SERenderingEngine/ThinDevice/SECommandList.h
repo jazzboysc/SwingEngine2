@@ -9,20 +9,33 @@
 #define Swing_CommandList_H
 
 #include "SERenderingEngineLIB.h"
-#include "SEReferencable.h"
+#include "SEGPUDeviceResident.h"
+#include "SEThinGPUDeviceChild.h"
 
 namespace Swing
 {
+
+enum SECommandListType
+{
+    CLT_Unknown = -1,
+    CLT_Render,
+    CLT_Compute,
+    CommandListType_Max
+};
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
 // Date: 11/07/2015
 //----------------------------------------------------------------------------
-class SE_RENDERING_ENGINE_API SECommandList : public SEReferencable
+class SE_RENDERING_ENGINE_API SECommandList : public SEGPUDeviceResident
 {
 public:
-    SECommandList();
+    SECommandList(SECommandListType type);
     virtual ~SECommandList();
+
+protected:
+    SECommandListType mType;
+    SECommandListHandle* mCommandListHandle;
 };
 
 typedef SESmartPointer<SECommandList> SECommandListPtr;

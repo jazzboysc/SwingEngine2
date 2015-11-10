@@ -5,28 +5,27 @@
 // generation GPU graphics and compute API. Currently being constructed to 
 // support Microsoft's DirectX 12 and Apple's Metal.
 
-#ifndef Swing_ThinGPUDeviceFence_H
-#define Swing_ThinGPUDeviceFence_H
+#ifndef Swing_ComputeCommandList_H
+#define Swing_ComputeCommandList_H
 
 #include "SERenderingEngineLIB.h"
-#include "SEGPUDeviceResident.h"
-#include "SEThinGPUDeviceChild.h"
+#include "SECommandList.h"
 
 namespace Swing
 {
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
-// Date: 11/07/2015
+// Date: 11/09/2015
 //----------------------------------------------------------------------------
-class SE_RENDERING_ENGINE_API SEThinGPUDeviceFence : public SEGPUDeviceResident
+class SE_RENDERING_ENGINE_API SEComputeCommandList : public SECommandList
 {
 public:
-    SEThinGPUDeviceFence();
-    virtual ~SEThinGPUDeviceFence();
+    SEComputeCommandList();
+    virtual ~SEComputeCommandList();
 };
 
-typedef SESmartPointer<SEThinGPUDeviceFence> SEThinGPUDeviceFencePtr;
+typedef SESmartPointer<SEComputeCommandList> SEComputeCommandListPtr;
 
 }
 

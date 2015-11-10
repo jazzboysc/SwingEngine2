@@ -9,7 +9,8 @@
 #define Swing_CommandAllocator_H
 
 #include "SERenderingEngineLIB.h"
-#include "SEReferencable.h"
+#include "SEGPUDeviceResident.h"
+#include "SEThinGPUDeviceChild.h"
 
 namespace Swing
 {
@@ -18,11 +19,14 @@ namespace Swing
 // Author: Che Sun
 // Date: 11/07/2015
 //----------------------------------------------------------------------------
-class SE_RENDERING_ENGINE_API SECommandAllocator : public SEReferencable
+class SE_RENDERING_ENGINE_API SECommandAllocator : public SEGPUDeviceResident
 {
 public:
     SECommandAllocator();
-    ~SECommandAllocator();
+    virtual ~SECommandAllocator();
+
+protected:
+    SECommandAllocatorHandle* mCommandAllocatorHandle;
 };
 
 typedef SESmartPointer<SECommandAllocator> SECommandAllocatorPtr;

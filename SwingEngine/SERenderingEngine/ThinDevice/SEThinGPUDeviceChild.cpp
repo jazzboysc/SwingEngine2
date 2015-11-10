@@ -5,15 +5,19 @@
 // generation GPU graphics and compute API. Currently being constructed to 
 // support Microsoft's DirectX 12 and Apple's Metal.
 
+#include "SERenderingEnginePCH.h"
+#include "SEThinGPUDeviceChild.h"
+
+using namespace Swing;
+
 //----------------------------------------------------------------------------
-SECommandQueueHandle* SEThinGPUDevice::CreateCommandQueue(
-    SECommandQueue* commandQueue)
+SEThinGPUDeviceChild::SEThinGPUDeviceChild()
+    :
+    ThinDevice(0)
 {
-    return (this->*_CreateCommandQueue)(commandQueue);
 }
 //----------------------------------------------------------------------------
-void SEThinGPUDevice::DeleteCommandQueue(SECommandQueue* commandQueue)
+SEThinGPUDeviceChild::~SEThinGPUDeviceChild()
 {
-    (this->*_DeleteCommandQueue)(commandQueue);
 }
 //----------------------------------------------------------------------------

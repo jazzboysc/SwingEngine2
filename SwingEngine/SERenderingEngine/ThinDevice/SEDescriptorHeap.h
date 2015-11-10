@@ -9,7 +9,8 @@
 #define Swing_DescriptorHeap_H
 
 #include "SERenderingEngineLIB.h"
-#include "SEReferencable.h"
+#include "SEGPUDeviceResident.h"
+#include "SEThinGPUDeviceChild.h"
 
 namespace Swing
 {
@@ -18,11 +19,14 @@ namespace Swing
 // Author: Che Sun
 // Date: 11/07/2015
 //----------------------------------------------------------------------------
-class SE_RENDERING_ENGINE_API SEDescriptorHeap : public SEReferencable
+class SE_RENDERING_ENGINE_API SEDescriptorHeap : public SEGPUDeviceResident
 {
 public:
     SEDescriptorHeap();
     virtual ~SEDescriptorHeap();
+
+protected:
+    SEDescriptorHeapHandle* mDescriptorHeapHandle;
 };
 
 typedef SESmartPointer<SEDescriptorHeap> SEDescriptorHeapPtr;

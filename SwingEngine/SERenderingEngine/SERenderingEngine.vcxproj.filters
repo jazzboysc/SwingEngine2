@@ -289,6 +289,9 @@
     <ClCompile Include="ThinDevice\SEDescriptorHeap.cpp" />
     <ClCompile Include="ThinDevice\SEThinGPUDeviceFence.cpp" />
     <ClCompile Include="Device\SEGPUDeviceBase.cpp" />
+    <ClCompile Include="ThinDevice\SEThinGPUDeviceChild.cpp" />
+    <ClCompile Include="ThinDevice\SEComputeCommandList.cpp" />
+    <ClCompile Include="ThinDevice\SERenderCommandList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneGraph\SEBoundingVolume.h">
@@ -553,6 +556,9 @@
     <ClInclude Include="ThinDevice\SEDescriptorHeap.h" />
     <ClInclude Include="ThinDevice\SEThinGPUDeviceFence.h" />
     <ClInclude Include="Device\SEGPUDeviceBase.h" />
+    <ClInclude Include="ThinDevice\SEThinGPUDeviceChild.h" />
+    <ClInclude Include="ThinDevice\SEComputeCommandList.h" />
+    <ClInclude Include="ThinDevice\SERenderCommandList.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SceneGraph\SEBoxBV.inl">
