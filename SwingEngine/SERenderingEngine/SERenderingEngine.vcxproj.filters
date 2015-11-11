@@ -294,6 +294,8 @@
     <ClCompile Include="ThinDevice\SERenderCommandList.cpp" />
     <ClCompile Include="ThinDevice\SEComputeCommandQueue.cpp" />
     <ClCompile Include="ThinDevice\SERenderCommandQueue.cpp" />
+    <ClCompile Include="ThinDevice\SEComputeCommandAllocator.cpp" />
+    <ClCompile Include="ThinDevice\SERenderCommandAllocator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneGraph\SEBoundingVolume.h">
@@ -563,6 +565,8 @@
     <ClInclude Include="ThinDevice\SERenderCommandList.h" />
     <ClInclude Include="ThinDevice\SEComputeCommandQueue.h" />
     <ClInclude Include="ThinDevice\SERenderCommandQueue.h" />
+    <ClInclude Include="ThinDevice\SEComputeCommandAllocator.h" />
+    <ClInclude Include="ThinDevice\SERenderCommandAllocator.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SceneGraph\SEBoxBV.inl">

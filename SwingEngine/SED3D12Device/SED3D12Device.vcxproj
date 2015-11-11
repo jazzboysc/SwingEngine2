@@ -294,6 +294,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="d3dx12.h" />
     <ClInclude Include="SED3D12Common.h" />
     <ClInclude Include="SED3D12Device.h" />
     <ClInclude Include="SED3D12DeviceHeaders.h" />

@@ -28,6 +28,10 @@ private:
     SECommandQueueHandle* __CreateCommandQueue(SECommandQueue* commandQueue);
     void __DeleteCommandQueue(SECommandQueue* commandQueue);
 
+    // Command allocator stuff.
+    SECommandAllocatorHandle* __CreateCommandAllocator(SECommandAllocator* commandAllocator);
+    void __DeleteCommandAllocator(SECommandAllocator* commandAllocator);
+
     void __GetMaxAnisFilterLevel(int* maxAnisFilterLevel);
     void __SetAnisFilterLevel(int anisFilterLevel);
 
@@ -40,20 +44,21 @@ private:
     HWND mMainWindow;
     UINT mMsaaQuality;
 
-    enum { FrameBufferCount = 2 };
+    enum { BackBufferCount = 2 };
 
     D3D12_VIEWPORT mScreenViewport;
     D3D12_RECT mScissorRect;
     ComPtr<IDXGISwapChain3> mSwapChain;
     ComPtr<ID3D12Device> mD3DDevice;
-    ComPtr<ID3D12Resource> mRenderTargets[FrameBufferCount];
-    ComPtr<ID3D12CommandAllocator> mCommandAllocator;
-    ComPtr<ID3D12CommandQueue> mCommandQueue;
+    ComPtr<ID3D12Resource> mRenderTargets[BackBufferCount];
     ComPtr<ID3D12RootSignature> mRootSignature;
     ComPtr<ID3D12DescriptorHeap> mRtvHeap;
     ComPtr<ID3D12PipelineState> mPipelineState;
     ComPtr<ID3D12GraphicsCommandList> mCommandList;
     UINT mRtvDescriptorSize;
+
+    // Synchronization objects.
+    UINT mBackBufferIndex;
 };
 
 typedef SESmartPointer<SED3D12Device> SED3D12DevicePtr;

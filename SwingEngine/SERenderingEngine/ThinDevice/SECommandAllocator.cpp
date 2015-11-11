@@ -11,13 +11,35 @@
 using namespace Swing;
 
 //----------------------------------------------------------------------------
-SECommandAllocator::SECommandAllocator()
+SECommandAllocator::SECommandAllocator(SECommandAllocatorType type)
     :
+    mType(type),
     mCommandAllocatorHandle(0)
 {
 }
 //----------------------------------------------------------------------------
 SECommandAllocator::~SECommandAllocator()
 {
+}
+//----------------------------------------------------------------------------
+void SECommandAllocator::CreateDeviceChild(SEThinGPUDevice* device)
+{
+    if( mCommandAllocatorHandle || !device )
+    {
+        SE_ASSERT(false);
+        return;
+    }
+
+    mCommandAllocatorHandle = device->CreateCommandAllocator(this);
+}
+//----------------------------------------------------------------------------
+SECommandAllocatorType SECommandAllocator::GetType() const
+{
+    return mType;
+}
+//----------------------------------------------------------------------------
+SECommandAllocatorHandle* SECommandAllocator::GetCommandAllocatorHandle() const
+{
+    return mCommandAllocatorHandle;
 }
 //----------------------------------------------------------------------------

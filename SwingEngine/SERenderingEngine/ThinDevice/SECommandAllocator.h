@@ -15,6 +15,14 @@
 namespace Swing
 {
 
+enum SECommandAllocatorType
+{
+    CAT_Unknown = -1,
+    CAT_Render,
+    CAT_Compute,
+    CommandAllocatorType_Max
+};
+
 //----------------------------------------------------------------------------
 // Author: Che Sun
 // Date: 11/07/2015
@@ -22,10 +30,17 @@ namespace Swing
 class SE_RENDERING_ENGINE_API SECommandAllocator : public SEGPUDeviceResident
 {
 public:
-    SECommandAllocator();
     virtual ~SECommandAllocator();
 
+    void CreateDeviceChild(SEThinGPUDevice* device);
+
+    SECommandAllocatorType GetType() const;
+    SECommandAllocatorHandle* GetCommandAllocatorHandle() const;
+
 protected:
+    SECommandAllocator(SECommandAllocatorType type);
+
+    SECommandAllocatorType mType;
     SECommandAllocatorHandle* mCommandAllocatorHandle;
 };
 

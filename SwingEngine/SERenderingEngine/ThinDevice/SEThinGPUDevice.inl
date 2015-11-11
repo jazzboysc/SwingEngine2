@@ -17,3 +17,15 @@ void SEThinGPUDevice::DeleteCommandQueue(SECommandQueue* commandQueue)
     (this->*_DeleteCommandQueue)(commandQueue);
 }
 //----------------------------------------------------------------------------
+SECommandAllocatorHandle* SEThinGPUDevice::CreateCommandAllocator(
+    SECommandAllocator* commandAllocator)
+{
+    return (this->*_CreateCommandAllocator)(commandAllocator);
+}
+//----------------------------------------------------------------------------
+void SEThinGPUDevice::DeleteCommandAllocator(
+    SECommandAllocator* commandAllocator)
+{
+    (this->*_DeleteCommandAllocator)(commandAllocator);
+}
+//----------------------------------------------------------------------------

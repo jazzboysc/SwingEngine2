@@ -44,6 +44,8 @@
 #include "SEThinGPUDevice.h"
 #include "SEThinGPUDeviceChild.h"
 #include "SECommandAllocator.h"
+#include "SERenderCommandAllocator.h"
+#include "SEComputeCommandAllocator.h"
 #include "SECommandList.h"
 #include "SERenderCommandList.h"
 #include "SEComputeCommandList.h"

@@ -30,10 +30,11 @@ enum SECommandListType
 class SE_RENDERING_ENGINE_API SECommandList : public SEGPUDeviceResident
 {
 public:
-    SECommandList(SECommandListType type);
     virtual ~SECommandList();
 
 protected:
+    SECommandList(SECommandListType type);
+
     SECommandListType mType;
     SECommandListHandle* mCommandListHandle;
 };

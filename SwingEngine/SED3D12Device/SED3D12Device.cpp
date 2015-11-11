@@ -9,13 +9,23 @@
 #include "SERenderCommandQueue.h"
 #include "SEComputeCommandQueue.h"
 #include "SECommandAllocator.h"
+#include "SERenderCommandAllocator.h"
+#include "SEComputeCommandAllocator.h"
 #include "SECommandList.h"
 #include "SERenderCommandList.h"
 #include "SEComputeCommandList.h"
 
+#include "d3dx12.h"
+
 using namespace Swing;
 
 D3D12_COMMAND_LIST_TYPE gsCommandQueueType[CommandQueueType_Max] =
+{
+    D3D12_COMMAND_LIST_TYPE_DIRECT,
+    D3D12_COMMAND_LIST_TYPE_COMPUTE
+};
+
+D3D12_COMMAND_LIST_TYPE gsCommandAllocatorType[CommandAllocatorType_Max] =
 {
     D3D12_COMMAND_LIST_TYPE_DIRECT,
     D3D12_COMMAND_LIST_TYPE_COMPUTE
@@ -88,7 +98,7 @@ void SED3D12Device::__Initialize(SEGPUDeviceDescription*)
 
     // Describe and create the swap chain.
     DXGI_SWAP_CHAIN_DESC swapChainDesc = {};
-    swapChainDesc.BufferCount = FrameBufferCount;
+    swapChainDesc.BufferCount = BackBufferCount;
     swapChainDesc.BufferDesc.Width = mDeviceDesc.FramebufferWidth;
     swapChainDesc.BufferDesc.Height = mDeviceDesc.FramebufferHeight;
     swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -104,37 +114,39 @@ void SED3D12Device::__Initialize(SEGPUDeviceDescription*)
 
     ThrowIfFailed(swapChain.As(&mSwapChain));
 
-//    // This sample does not support fullscreen transitions.
-//    ThrowIfFailed(factory->MakeWindowAssociation(Win32Application::GetHwnd(), DXGI_MWA_NO_ALT_ENTER));
-//
-//    m_frameIndex = m_swapChain->GetCurrentBackBufferIndex();
-//
-//    // Create descriptor heaps.
-//    {
-//        // Describe and create a render target view (RTV) descriptor heap.
-//        D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = {};
-//        rtvHeapDesc.NumDescriptors = FrameCount;
-//        rtvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
-//        rtvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
-//        ThrowIfFailed(m_device->CreateDescriptorHeap(&rtvHeapDesc, IID_PPV_ARGS(&m_rtvHeap)));
-//
-//        m_rtvDescriptorSize = m_device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
-//    }
-//
-//    // Create frame resources.
-//    {
-//        CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle(m_rtvHeap->GetCPUDescriptorHandleForHeapStart());
-//
-//        // Create a RTV for each frame.
-//        for( UINT n = 0; n < FrameCount; n++ )
-//        {
-//            ThrowIfFailed(m_swapChain->GetBuffer(n, IID_PPV_ARGS(&m_renderTargets[n])));
-//            m_device->CreateRenderTargetView(m_renderTargets[n].Get(), nullptr, rtvHandle);
-//            rtvHandle.Offset(1, m_rtvDescriptorSize);
-//        }
-//    }
-//
-//    ThrowIfFailed(m_device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&m_commandAll
+    // This sample does not support fullscreen transitions.
+    ThrowIfFailed(factory->MakeWindowAssociation(mMainWindow, DXGI_MWA_NO_ALT_ENTER));
+
+    mBackBufferIndex = mSwapChain->GetCurrentBackBufferIndex();
+
+    // Create default descriptor heap for backbuffers.
+    {
+        // Describe and create a render target view (RTV) descriptor heap.
+        D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = {};
+        rtvHeapDesc.NumDescriptors = BackBufferCount;
+        rtvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
+        rtvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+        ThrowIfFailed(mD3DDevice->CreateDescriptorHeap(&rtvHeapDesc, IID_PPV_ARGS(&mRtvHeap)));
+
+        mRtvDescriptorSize = mD3DDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
+    }
+
+    // Create backbuffer resources.
+    {
+        CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle(mRtvHeap->GetCPUDescriptorHandleForHeapStart());
+
+        // Create a RTV for each backbuffer.
+        for( UINT n = 0; n < BackBufferCount; n++ )
+        {
+            ThrowIfFailed(mSwapChain->GetBuffer(n, IID_PPV_ARGS(&mRenderTargets[n])));
+            mD3DDevice->CreateRenderTargetView(mRenderTargets[n].Get(), nullptr, rtvHandle);
+            rtvHandle.Offset(1, mRtvDescriptorSize);
+        }
+    }
+
+    // Create default render command allocator.
+    mDefaultRenderCommandAllocator = SE_NEW SERenderCommandAllocator();
+    mDefaultRenderCommandAllocator->CreateDeviceChild(this);
 }
 //----------------------------------------------------------------------------
 void SED3D12Device::__Terminate()
@@ -146,12 +158,13 @@ void SED3D12Device::__Terminate()
 SECommandQueueHandle* SED3D12Device::__CreateCommandQueue(
     SECommandQueue* commandQueue)
 {
-    SED3D12CommandQueueHandle* commandQueueHandle = SE_NEW SED3D12CommandQueueHandle();
+    SED3D12CommandQueueHandle* commandQueueHandle 
+        = SE_NEW SED3D12CommandQueueHandle();
     commandQueueHandle->ThinDevice = this;
 
     D3D12_COMMAND_QUEUE_DESC queueDesc = {};
     queueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
-    queueDesc.Type = gsCommandQueueType[commandQueue->GetType()];
+    queueDesc.Type = gsCommandQueueType[(int)commandQueue->GetType()];
     
     HRESULT hr = mD3DDevice->CreateCommandQueue(&queueDesc, 
         IID_PPV_ARGS(&commandQueueHandle->mCommandQueue));
@@ -164,7 +177,36 @@ void SED3D12Device::__DeleteCommandQueue(SECommandQueue* commandQueue)
 {
     SED3D12CommandQueueHandle* commandQueueHandle = 
         (SED3D12CommandQueueHandle*)commandQueue->GetCommandQueueHandle();
-    commandQueueHandle->mCommandQueue = nullptr;
+    if( commandQueueHandle )
+    {
+        commandQueueHandle->mCommandQueue = nullptr;
+    }
+}
+//----------------------------------------------------------------------------
+SECommandAllocatorHandle* SED3D12Device::__CreateCommandAllocator(
+    SECommandAllocator* commandAllocator)
+{
+    SED3D12CommandAllocatorHandle* commandAllocatorHandle 
+        = SE_NEW SED3D12CommandAllocatorHandle();
+    commandAllocatorHandle->ThinDevice = this;
+
+    HRESULT hr = mD3DDevice->CreateCommandAllocator(
+        gsCommandAllocatorType[(int)commandAllocator->GetType()],
+        IID_PPV_ARGS(&commandAllocatorHandle->mCommandAllocator));
+    SE_ASSERT( hr == S_OK );
+
+    return commandAllocatorHandle;
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::__DeleteCommandAllocator(
+    SECommandAllocator* commandAllocator)
+{
+    SED3D12CommandAllocatorHandle* commandAllocatorHandle = 
+        (SED3D12CommandAllocatorHandle*)commandAllocator->GetCommandAllocatorHandle();
+    if( commandAllocatorHandle )
+    {
+        commandAllocatorHandle->mCommandAllocator = nullptr;
+    }
 }
 //----------------------------------------------------------------------------
 void SED3D12Device::__GetMaxAnisFilterLevel(int*)
@@ -198,9 +240,12 @@ SED3D12Device::SED3D12Device(HWND mainWindow)
 
     SE_INSERT_THIN_GPU_DEVICE_FUNC(CreateCommandQueue, SED3D12Device);
     SE_INSERT_THIN_GPU_DEVICE_FUNC(DeleteCommandQueue, SED3D12Device);
+    SE_INSERT_THIN_GPU_DEVICE_FUNC(CreateCommandAllocator, SED3D12Device);
+    SE_INSERT_THIN_GPU_DEVICE_FUNC(DeleteCommandAllocator, SED3D12Device);
 
     mMainWindow = mainWindow;
     mMsaaQuality = 0;
+    mBackBufferIndex = 0;
 }
 //----------------------------------------------------------------------------
 SED3D12Device::~SED3D12Device()

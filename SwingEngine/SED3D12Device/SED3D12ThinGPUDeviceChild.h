@@ -16,6 +16,11 @@ struct SE_D3D12_DEVICE_API SED3D12CommandQueueHandle : public SECommandQueueHand
     ComPtr<ID3D12CommandQueue> mCommandQueue;
 };
 
+struct SE_D3D12_DEVICE_API SED3D12CommandAllocatorHandle : public SECommandAllocatorHandle
+{
+    ComPtr<ID3D12CommandAllocator> mCommandAllocator;
+};
+
 }
 
 #endif

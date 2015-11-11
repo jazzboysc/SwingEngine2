@@ -30,7 +30,6 @@ enum SECommandQueueType
 class SE_RENDERING_ENGINE_API SECommandQueue : public SEGPUDeviceResident
 {
 public:
-    SECommandQueue(SECommandQueueType type);
     virtual ~SECommandQueue();
 
     void CreateDeviceChild(SEThinGPUDevice* device);
@@ -39,6 +38,8 @@ public:
     SECommandQueueHandle* GetCommandQueueHandle() const;
 
 protected:
+    SECommandQueue(SECommandQueueType type);
+
     SECommandQueueType mType;
     SECommandQueueHandle* mCommandQueueHandle;
 };

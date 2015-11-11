@@ -521,10 +521,12 @@ copy /y *.h ..\SDK\Include
     <ClCompile Include="ThinDevice\SECommandAllocator.cpp" />
     <ClCompile Include="ThinDevice\SECommandList.cpp" />
     <ClCompile Include="ThinDevice\SECommandQueue.cpp" />
+    <ClCompile Include="ThinDevice\SEComputeCommandAllocator.cpp" />
     <ClCompile Include="ThinDevice\SEComputeCommandList.cpp" />
     <ClCompile Include="ThinDevice\SEComputeCommandQueue.cpp" />
     <ClCompile Include="ThinDevice\SEDescriptor.cpp" />
     <ClCompile Include="ThinDevice\SEDescriptorHeap.cpp" />
+    <ClCompile Include="ThinDevice\SERenderCommandAllocator.cpp" />
     <ClCompile Include="ThinDevice\SERenderCommandList.cpp" />
     <ClCompile Include="ThinDevice\SERenderCommandQueue.cpp" />
     <ClCompile Include="ThinDevice\SEThinGPUDevice.cpp" />
@@ -624,10 +626,12 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="ThinDevice\SECommandAllocator.h" />
     <ClInclude Include="ThinDevice\SECommandList.h" />
     <ClInclude Include="ThinDevice\SECommandQueue.h" />
+    <ClInclude Include="ThinDevice\SEComputeCommandAllocator.h" />
     <ClInclude Include="ThinDevice\SEComputeCommandList.h" />
     <ClInclude Include="ThinDevice\SEComputeCommandQueue.h" />
     <ClInclude Include="ThinDevice\SEDescriptor.h" />
     <ClInclude Include="ThinDevice\SEDescriptorHeap.h" />
+    <ClInclude Include="ThinDevice\SERenderCommandAllocator.h" />
     <ClInclude Include="ThinDevice\SERenderCommandList.h" />
     <ClInclude Include="ThinDevice\SERenderCommandQueue.h" />
     <ClInclude Include="ThinDevice\SEThinGPUDevice.h" />

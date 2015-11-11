@@ -6,19 +6,18 @@
 // support Microsoft's DirectX 12 and Apple's Metal.
 
 #include "SERenderingEnginePCH.h"
-#include "SEThinGPUDevice.h"
+#include "SERenderCommandAllocator.h"
 
 using namespace Swing;
 
 //----------------------------------------------------------------------------
-SEThinGPUDevice::SEThinGPUDevice()
+SERenderCommandAllocator::SERenderCommandAllocator()
     :
-    mDefaultRenderCommandQueue(nullptr),
-    mDefaultRenderCommandAllocator(nullptr)
+    SECommandAllocator(CAT_Render)
 {
 }
 //----------------------------------------------------------------------------
-SEThinGPUDevice::~SEThinGPUDevice()
+SERenderCommandAllocator::~SERenderCommandAllocator()
 {
 }
 //----------------------------------------------------------------------------
