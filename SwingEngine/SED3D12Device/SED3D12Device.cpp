@@ -4,11 +4,24 @@
 #include "SED3D12DevicePCH.h"
 #include "SED3D12Device.h"
 #include "SED3D12GPUResources.h"
-#include "SwingEngineCore.h"
-#include "SwingEngineRenderingEngine.h"
+#include "SED3D12ThinGPUDeviceChild.h"
+#include "SECommandQueue.h"
+#include "SERenderCommandQueue.h"
+#include "SEComputeCommandQueue.h"
+#include "SECommandAllocator.h"
+#include "SECommandList.h"
+#include "SERenderCommandList.h"
+#include "SEComputeCommandList.h"
 
 using namespace Swing;
 
+D3D12_COMMAND_LIST_TYPE gsCommandQueueType[CommandQueueType_Max] =
+{
+    D3D12_COMMAND_LIST_TYPE_DIRECT,
+    D3D12_COMMAND_LIST_TYPE_COMPUTE
+};
+
+//----------------------------------------------------------------------------
 void SED3D12Device::GetHardwareAdapter(IDXGIFactory2* pFactory, IDXGIAdapter1** ppAdapter)
 {
     ComPtr<IDXGIAdapter1> adapter;
@@ -36,7 +49,11 @@ void SED3D12Device::GetHardwareAdapter(IDXGIFactory2* pFactory, IDXGIAdapter1** 
 
     *ppAdapter = adapter.Detach();
 }
-
+//----------------------------------------------------------------------------
+void SED3D12Device::SetMainWindow(HWND mainWindow)
+{
+    mMainWindow = mainWindow;
+}
 //----------------------------------------------------------------------------
 void SED3D12Device::__Initialize(SEGPUDeviceDescription*)
 {
@@ -55,40 +72,38 @@ void SED3D12Device::__Initialize(SEGPUDeviceDescription*)
     ComPtr<IDXGIFactory4> factory;
     ThrowIfFailed(CreateDXGIFactory1(IID_PPV_ARGS(&factory)));
 
+    // Get the first GPU.
     ComPtr<IDXGIAdapter1> hardwareAdapter;
     GetHardwareAdapter(factory.Get(), &hardwareAdapter);
 
+    // Create device.
     ThrowIfFailed(D3D12CreateDevice(hardwareAdapter.Get(), D3D_FEATURE_LEVEL_11_0,
         IID_PPV_ARGS(&mD3DDevice)));
 
-//    // Describe and create the command queue.
-//    D3D12_COMMAND_QUEUE_DESC queueDesc = {};
-//    queueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
-//    queueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
-//
-//    ThrowIfFailed(m_device->CreateCommandQueue(&queueDesc, IID_PPV_ARGS(&m_commandQueue)));
-//
-//    // Describe and create the swap chain.
-//    DXGI_SWAP_CHAIN_DESC swapChainDesc = {};
-//    swapChainDesc.BufferCount = FrameCount;
-//    swapChainDesc.BufferDesc.Width = m_width;
-//    swapChainDesc.BufferDesc.Height = m_height;
-//    swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-//    swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-//    swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
-//    swapChainDesc.OutputWindow = Win32Application::GetHwnd();
-//    swapChainDesc.SampleDesc.Count = 1;
-//    swapChainDesc.Windowed = TRUE;
-//
-//    ComPtr<IDXGISwapChain> swapChain;
-//    ThrowIfFailed(factory->CreateSwapChain(
-//        m_commandQueue.Get(),        // Swap chain needs the queue so that it can force a flush on it.
-//        &swapChainDesc,
-//        &swapChain
-//        ));
-//
-//    ThrowIfFailed(swapChain.As(&m_swapChain));
-//
+    // Create default render command queue.
+    mDefaultRenderCommandQueue = SE_NEW SERenderCommandQueue();
+    mDefaultRenderCommandQueue->CreateDeviceChild(this);
+    SED3D12CommandQueueHandle* commandQueueHandle = 
+        (SED3D12CommandQueueHandle*)mDefaultRenderCommandQueue->GetCommandQueueHandle();
+
+    // Describe and create the swap chain.
+    DXGI_SWAP_CHAIN_DESC swapChainDesc = {};
+    swapChainDesc.BufferCount = FrameBufferCount;
+    swapChainDesc.BufferDesc.Width = mDeviceDesc.FramebufferWidth;
+    swapChainDesc.BufferDesc.Height = mDeviceDesc.FramebufferHeight;
+    swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+    swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+    swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
+    swapChainDesc.OutputWindow = mMainWindow;
+    swapChainDesc.SampleDesc.Count = 1;
+    swapChainDesc.Windowed = TRUE;
+
+    ComPtr<IDXGISwapChain> swapChain;
+    ThrowIfFailed(factory->CreateSwapChain(commandQueueHandle->mCommandQueue.Get(),
+        &swapChainDesc, &swapChain));
+
+    ThrowIfFailed(swapChain.As(&mSwapChain));
+
 //    // This sample does not support fullscreen transitions.
 //    ThrowIfFailed(factory->MakeWindowAssociation(Win32Application::GetHwnd(), DXGI_MWA_NO_ALT_ENTER));
 //
@@ -124,7 +139,32 @@ void SED3D12Device::__Initialize(SEGPUDeviceDescription*)
 //----------------------------------------------------------------------------
 void SED3D12Device::__Terminate()
 {
-    // TODO:
+    SE_DELETE mDefaultRenderCommandQueue;
+    mDefaultRenderCommandQueue = 0;
+}
+//----------------------------------------------------------------------------
+SECommandQueueHandle* SED3D12Device::__CreateCommandQueue(
+    SECommandQueue* commandQueue)
+{
+    SED3D12CommandQueueHandle* commandQueueHandle = SE_NEW SED3D12CommandQueueHandle();
+    commandQueueHandle->ThinDevice = this;
+
+    D3D12_COMMAND_QUEUE_DESC queueDesc = {};
+    queueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
+    queueDesc.Type = gsCommandQueueType[commandQueue->GetType()];
+    
+    HRESULT hr = mD3DDevice->CreateCommandQueue(&queueDesc, 
+        IID_PPV_ARGS(&commandQueueHandle->mCommandQueue));
+    SE_ASSERT( hr == S_OK );
+
+    return commandQueueHandle;
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::__DeleteCommandQueue(SECommandQueue* commandQueue)
+{
+    SED3D12CommandQueueHandle* commandQueueHandle = 
+        (SED3D12CommandQueueHandle*)commandQueue->GetCommandQueueHandle();
+    commandQueueHandle->mCommandQueue = nullptr;
 }
 //----------------------------------------------------------------------------
 void SED3D12Device::__GetMaxAnisFilterLevel(int*)
@@ -155,6 +195,9 @@ SED3D12Device::SED3D12Device(HWND mainWindow)
     SE_INSERT_GPU_DEVICE_BASE_FUNC(Terminate, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(GetMaxAnisFilterLevel, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(SetAnisFilterLevel, SED3D12Device);
+
+    SE_INSERT_THIN_GPU_DEVICE_FUNC(CreateCommandQueue, SED3D12Device);
+    SE_INSERT_THIN_GPU_DEVICE_FUNC(DeleteCommandQueue, SED3D12Device);
 
     mMainWindow = mainWindow;
     mMsaaQuality = 0;

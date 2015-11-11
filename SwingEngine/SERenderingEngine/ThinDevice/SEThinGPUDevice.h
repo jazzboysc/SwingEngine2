@@ -57,6 +57,8 @@ public:
 protected:
     ThinGPUDeviceCreateCommandQueue    _CreateCommandQueue;
     ThinGPUDeviceDeleteCommandQueue    _DeleteCommandQueue;
+
+    SECommandQueue* mDefaultRenderCommandQueue;
 };
 
 typedef SESmartPointer<SEThinGPUDevice> SEThinGPUDevicePtr;

@@ -5,8 +5,9 @@
 #define Swing_D3D12Device_H
 
 #include "SED3D12DeviceLIB.h"
-#include "SEThinGPUDevice.h"
 #include "SED3D12Common.h"
+#include "SEThinGPUDevice.h"
+#include "SEThinGPUDeviceChild.h"
 
 namespace Swing
 {
@@ -17,9 +18,15 @@ public:
     SED3D12Device(HWND mainWindow);
     ~SED3D12Device();
 
+    void SetMainWindow(HWND mainWindow);
+
 private:
     void __Initialize(SEGPUDeviceDescription* deviceDesc);
     void __Terminate();
+
+    // Command queue stuff.
+    SECommandQueueHandle* __CreateCommandQueue(SECommandQueue* commandQueue);
+    void __DeleteCommandQueue(SECommandQueue* commandQueue);
 
     void __GetMaxAnisFilterLevel(int* maxAnisFilterLevel);
     void __SetAnisFilterLevel(int anisFilterLevel);
@@ -33,11 +40,13 @@ private:
     HWND mMainWindow;
     UINT mMsaaQuality;
 
+    enum { FrameBufferCount = 2 };
+
     D3D12_VIEWPORT mScreenViewport;
     D3D12_RECT mScissorRect;
     ComPtr<IDXGISwapChain3> mSwapChain;
     ComPtr<ID3D12Device> mD3DDevice;
-    ComPtr<ID3D12Resource> mRenderTargets[2];
+    ComPtr<ID3D12Resource> mRenderTargets[FrameBufferCount];
     ComPtr<ID3D12CommandAllocator> mCommandAllocator;
     ComPtr<ID3D12CommandQueue> mCommandQueue;
     ComPtr<ID3D12RootSignature> mRootSignature;

@@ -3,6 +3,7 @@
 
 #include "SED3D12ApplicationPCH.h"
 #include "SED3D12Application.h"
+#include "SED3D12Device.h"
 #include "SERTGICamera.h"
 #include "SETextureManager.h"
 
@@ -127,6 +128,7 @@ void SED3D12Application::Initialize(SEGPUDeviceBase* device)
     SEGPUDeviceDescription deviceDesc;
     deviceDesc.FramebufferWidth = Width;
     deviceDesc.FramebufferHeight = Height;
+    ((SED3D12Device*)(SEGPUDeviceBase*)mDevice)->SetMainWindow(mhMainWnd);
     mDevice->Initialize(&deviceDesc);
 
     // Anisotropic Filtering

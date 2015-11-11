@@ -15,6 +15,14 @@
 namespace Swing
 {
 
+enum SECommandQueueType
+{
+    CQT_Unknown = -1,
+    CQT_Render,
+    CQT_Compute,
+    CommandQueueType_Max
+};
+
 //----------------------------------------------------------------------------
 // Author: Che Sun
 // Date: 11/07/2015
@@ -22,10 +30,16 @@ namespace Swing
 class SE_RENDERING_ENGINE_API SECommandQueue : public SEGPUDeviceResident
 {
 public:
-    SECommandQueue();
+    SECommandQueue(SECommandQueueType type);
     virtual ~SECommandQueue();
 
+    void CreateDeviceChild(SEThinGPUDevice* device);
+
+    SECommandQueueType GetType() const;
+    SECommandQueueHandle* GetCommandQueueHandle() const;
+
 protected:
+    SECommandQueueType mType;
     SECommandQueueHandle* mCommandQueueHandle;
 };
 

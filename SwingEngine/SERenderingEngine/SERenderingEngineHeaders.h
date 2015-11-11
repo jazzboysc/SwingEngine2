@@ -48,6 +48,8 @@
 #include "SERenderCommandList.h"
 #include "SEComputeCommandList.h"
 #include "SECommandQueue.h"
+#include "SERenderCommandQueue.h"
+#include "SEComputeCommandQueue.h"
 #include "SEDescriptor.h"
 #include "SEDescriptorHeap.h"
 #include "SEThinGPUDeviceFence.h"

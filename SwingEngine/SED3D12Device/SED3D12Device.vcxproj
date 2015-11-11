@@ -301,6 +301,7 @@
     <ClInclude Include="SED3D12DevicePCH.h" />
     <ClInclude Include="SED3D12DeviceRegister.h" />
     <ClInclude Include="SED3D12GPUResources.h" />
+    <ClInclude Include="SED3D12ThinGPUDeviceChild.h" />
     <ClInclude Include="SwingEngineD3D12Device.h" />
   </ItemGroup>
   <ItemGroup>
@@ -315,6 +316,7 @@
     </ClCompile>
     <ClCompile Include="SED3D12DeviceRegister.cpp" />
     <ClCompile Include="SED3D12GPUResources.cpp" />
+    <ClCompile Include="SED3D12ThinGPUDeviceChild.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
