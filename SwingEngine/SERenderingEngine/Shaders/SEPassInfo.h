@@ -8,6 +8,8 @@
 #include "SEGPUDevice.h"
 #include "SEPrimitive.h"
 #include "SEShaderProgram.h"
+#include "SEGeometryAttributes.h"
+#include "SEPipelineStateBlock.h"
 
 namespace Swing
 {
@@ -23,8 +25,7 @@ public:
 	~SEPassInfo();
 
 	void Create(SEGPUDevice* device, SEShaderProgram* program, 
-        SEPrimitive* primitive, bool hasNormal, bool hasTCoord, 
-        int vertexComponentCount);
+        SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb);
 
 	void Enable();
 	void Disable();

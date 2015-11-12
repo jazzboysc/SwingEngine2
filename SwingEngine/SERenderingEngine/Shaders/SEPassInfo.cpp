@@ -25,16 +25,16 @@ SEPassInfo::~SEPassInfo()
 }
 //----------------------------------------------------------------------------
 void SEPassInfo::Create(SEGPUDevice* device, SEShaderProgram* program, 
-    SEPrimitive* primitive, bool hasNormal, bool hasTCoord, 
-    int vertexComponentCount)
+    SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb)
 {
     if( mPassInfoHandle )
     {
         return;
     }
 
-    mPassInfoHandle = device->CreatePassInfo(this, program, primitive, 
-        hasNormal, hasTCoord, vertexComponentCount);
+    mPassInfoHandle = device->CreatePassInfo(this, program, geometryAttr->Prim,
+        geometryAttr->HasNormal, geometryAttr->HasTCoord, 
+        geometryAttr->VertexComponentCount);
 }
 //----------------------------------------------------------------------------
 void SEPassInfo::Enable()

@@ -16,5 +16,8 @@
     <FxCompile Include="..\..\Bin\Shaders\D3D12Sample\vTest.hlsl">
       <Filter>HLSL</Filter>
     </FxCompile>
+    <FxCompile Include="..\..\Bin\Shaders\D3D12Sample\fTest.hlsl">
+      <Filter>HLSL</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

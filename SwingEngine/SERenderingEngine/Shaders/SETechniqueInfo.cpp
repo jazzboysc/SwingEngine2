@@ -24,11 +24,10 @@ void SETechniqueInfo::CreatePassInfo(SEGPUDevice* device, SETechnique* technique
 	{
 		SEPass* pass = (SEPass*)technique->GetPass(i);
 		SEShaderProgram* program = pass->GetShaderProgram();
+        SEPipelineStateBlock* psb = pass->GetPipelineStateBlock();
 
 		SEPassInfo* passInfo = SE_NEW SEPassInfo();
-		passInfo->Create(device, program, geometryAttr->Prim, 
-            geometryAttr->HasNormal, geometryAttr->HasTCoord, 
-            geometryAttr->VertexComponentCount);
+		passInfo->Create(device, program, geometryAttr, psb);
 		mPassInfoArray.push_back(passInfo);
 	}
 }

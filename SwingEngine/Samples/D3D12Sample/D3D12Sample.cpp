@@ -21,6 +21,8 @@ void D3D12Sample::Initialize(SEGPUDeviceBase* device)
 {
     SEVertexShader* vShader = SE_NEW SEVertexShader("D3D12Sample/vTest.hlsl");
     vShader->CreateDeviceResource(device);
+    SEFragmentShader* fShader = SE_NEW SEFragmentShader("D3D12Sample/fTest.hlsl");
+    fShader->CreateDeviceResource(device);
 }
 //----------------------------------------------------------------------------
 void D3D12Sample::ProcessInput()
