@@ -1849,9 +1849,9 @@ SEOpenGLDevice::SEOpenGLDevice()
     SE_INSERT_GPU_DEVICE_BASE_FUNC(Terminate, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(GetMaxAnisFilterLevel, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(SetAnisFilterLevel, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateShader, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteShader, SEOpenGLDevice);
 
-    SE_INSERT_GPU_DEVICE_FUNC(CreateShader, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DeleteShader, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(CreateProgram, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(DeleteProgram, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(EnableProgram, SEOpenGLDevice);

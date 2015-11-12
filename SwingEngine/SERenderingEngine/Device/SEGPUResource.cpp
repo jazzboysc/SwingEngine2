@@ -7,9 +7,22 @@
 using namespace Swing;
 
 //----------------------------------------------------------------------------
-SEGPUResource::SEGPUResource()
+SEGPUResourceBase::SEGPUResourceBase()
+    :
+    Device(nullptr)
 {
-    Device = 0;
+}
+//----------------------------------------------------------------------------
+SEGPUResourceBase::~SEGPUResourceBase()
+{
+}
+//----------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------
+SEGPUResource::SEGPUResource()
+    :
+    Device(nullptr)
+{
 }
 //----------------------------------------------------------------------------
 SEGPUResource::~SEGPUResource()

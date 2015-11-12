@@ -14,6 +14,7 @@
 #include "SECommandList.h"
 #include "SERenderCommandList.h"
 #include "SEComputeCommandList.h"
+#include "SEShader.h"
 
 #include "d3dx12.h"
 
@@ -29,6 +30,16 @@ D3D12_COMMAND_LIST_TYPE gsCommandAllocatorType[CommandAllocatorType_Max] =
 {
     D3D12_COMMAND_LIST_TYPE_DIRECT,
     D3D12_COMMAND_LIST_TYPE_COMPUTE
+};
+
+const std::string gsShaderProfileTarget[ShaderType_Max] =
+{
+    "vs_5_0",
+    "ps_5_0",
+    "gs_5_0",
+    "cs_5_0",
+    "hs_5_0",
+    "ds_5_0"
 };
 
 //----------------------------------------------------------------------------
@@ -209,6 +220,52 @@ void SED3D12Device::__DeleteCommandAllocator(
     }
 }
 //----------------------------------------------------------------------------
+SEShaderHandle* SED3D12Device::__CreateShader(SEShader* shader)
+{
+    const std::string& shaderSource = shader->GetSource();
+    const std::string& shaderSourceName = shader->GetShaderFileName();
+    SEShaderType type = shader->GetType();
+
+    const std::string& target = gsShaderProfileTarget[(int)type];
+
+    UINT flags = D3DCOMPILE_ENABLE_STRICTNESS;
+#if defined(_DEBUG)
+    flags |= D3DCOMPILE_SKIP_OPTIMIZATION | D3DCOMPILE_DEBUG;
+#endif
+
+    ID3DBlob* codeBuffer;
+    ID3DBlob* errorBuffer;
+
+    HRESULT hr = D3DCompile((LPCVOID)shaderSource.c_str(),
+        shaderSource.length(), shaderSourceName.c_str(), nullptr, nullptr, "main",
+        target.c_str(), flags, 0, &codeBuffer, &errorBuffer);
+    if( FAILED(hr) )
+    {
+        std::string error = std::string((char*)errorBuffer->GetBufferPointer());
+        printf("Failed compiling %s\n%s\n", shaderSourceName.c_str(),
+            error.c_str());
+        errorBuffer->Release();
+
+        return 0;
+    }
+
+    SED3D12ShaderHandle* shaderHandle = SE_NEW SED3D12ShaderHandle();
+    shaderHandle->Device = this;
+    shaderHandle->mShaderHandle = codeBuffer;
+
+    return shaderHandle;
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::__DeleteShader(SEShader* shader)
+{
+    SED3D12ShaderHandle* shaderHandle =
+        (SED3D12ShaderHandle*)shader->GetShaderHandle();
+    if( shaderHandle )
+    {
+        shaderHandle->mShaderHandle = nullptr;
+    }
+}
+//----------------------------------------------------------------------------
 void SED3D12Device::__GetMaxAnisFilterLevel(int*)
 {
     // TODO:
@@ -224,11 +281,6 @@ void SED3D12Device::__OnResize(unsigned int, unsigned int)
     // TODO:
 }
 //----------------------------------------------------------------------------
-SEShaderHandle* SED3D12Device::__CreateShader(SEShader*)
-{
-    // TODO:
-    return 0;
-}
 
 //----------------------------------------------------------------------------
 SED3D12Device::SED3D12Device(HWND mainWindow)
@@ -237,6 +289,8 @@ SED3D12Device::SED3D12Device(HWND mainWindow)
     SE_INSERT_GPU_DEVICE_BASE_FUNC(Terminate, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(GetMaxAnisFilterLevel, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(SetAnisFilterLevel, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateShader, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteShader, SED3D12Device);
 
     SE_INSERT_THIN_GPU_DEVICE_FUNC(CreateCommandQueue, SED3D12Device);
     SE_INSERT_THIN_GPU_DEVICE_FUNC(DeleteCommandQueue, SED3D12Device);

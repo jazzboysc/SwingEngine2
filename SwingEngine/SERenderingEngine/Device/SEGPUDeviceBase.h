@@ -81,6 +81,8 @@ typedef void (SEGPUDeviceBase::*GPUDeviceBaseInitialize)(SEGPUDeviceDescription*
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseTerminate)();
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseGetMaxAnisFilterLevel)(int* maxAnisFilterLevel);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseSetAnisFilterLevel)(int maxAnisFilterLevel);
+typedef SEShaderHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateShader)(SEShader* shader);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteShader)(SEShader* shader);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -103,11 +105,17 @@ public:
     inline 	void GetMaxAnisFilterLevel(int* maxAnisFilterLevel);
     inline 	void SetAnisFilterLevel(int maxAnisFilterLevel);
 
+    // Shader stuff.
+    inline 	SEShaderHandle* CreateShader(SEShader* shader);
+    inline 	void DeleteShader(SEShader* shader);
+
 protected:
     GPUDeviceBaseInitialize                           _Initialize;
     GPUDeviceBaseTerminate                            _Terminate;
     GPUDeviceBaseGetMaxAnisFilterLevel				  _GetMaxAnisFilterLevel;
     GPUDeviceBaseSetAnisFilterLevel					  _SetAnisFilterLevel;
+    GPUDeviceBaseCreateShader                         _CreateShader;
+    GPUDeviceBaseDeleteShader                         _DeleteShader;
 
 protected:
     // Device capabilities.

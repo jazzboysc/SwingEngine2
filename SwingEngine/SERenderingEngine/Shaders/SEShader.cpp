@@ -34,9 +34,9 @@ SEShader::~SEShader()
     }
 }
 //----------------------------------------------------------------------------
-void SEShader::CreateDeviceResource(SEGPUDevice* device)
+void SEShader::CreateDeviceResource(SEGPUDeviceBase* device)
 {
-	if( mShaderHandle )
+	if( mShaderHandle || !device )
 	{
 		return;
 	}

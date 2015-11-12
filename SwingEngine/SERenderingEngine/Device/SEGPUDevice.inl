@@ -344,16 +344,6 @@ SEShaderProgramHandle* SEGPUDevice::CreateProgram(SEShaderProgram* program)
     return (this->*_CreateProgram)(program);
 }
 //----------------------------------------------------------------------------
-void SEGPUDevice::DeleteShader(SEShader* shader)
-{
-    (this->*_DeleteShader)(shader);
-}
-//----------------------------------------------------------------------------
-SEShaderHandle* SEGPUDevice::CreateShader(SEShader* shader)
-{
-    return (this->*_CreateShader)(shader);
-}
-//----------------------------------------------------------------------------
 const SEGPUDeviceDescription& SEGPUDevice::GetDeviceDescription() const
 {
 	return mDeviceDesc;

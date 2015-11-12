@@ -23,3 +23,13 @@ void SEGPUDeviceBase::GetMaxAnisFilterLevel(int* maxAnisFilterLevel)
     (this->*_GetMaxAnisFilterLevel)(maxAnisFilterLevel);
 }
 //----------------------------------------------------------------------------
+SEShaderHandle* SEGPUDeviceBase::CreateShader(SEShader* shader)
+{
+    return (this->*_CreateShader)(shader);
+}
+//----------------------------------------------------------------------------
+void SEGPUDeviceBase::DeleteShader(SEShader* shader)
+{
+    (this->*_DeleteShader)(shader);
+}
+//----------------------------------------------------------------------------

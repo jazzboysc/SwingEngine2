@@ -24,6 +24,9 @@ private:
     void __Initialize(SEGPUDeviceDescription* deviceDesc);
     void __Terminate();
 
+    void __GetMaxAnisFilterLevel(int* maxAnisFilterLevel);
+    void __SetAnisFilterLevel(int anisFilterLevel);
+
     // Command queue stuff.
     SECommandQueueHandle* __CreateCommandQueue(SECommandQueue* commandQueue);
     void __DeleteCommandQueue(SECommandQueue* commandQueue);
@@ -32,11 +35,11 @@ private:
     SECommandAllocatorHandle* __CreateCommandAllocator(SECommandAllocator* commandAllocator);
     void __DeleteCommandAllocator(SECommandAllocator* commandAllocator);
 
-    void __GetMaxAnisFilterLevel(int* maxAnisFilterLevel);
-    void __SetAnisFilterLevel(int anisFilterLevel);
+    // Shader stuff.
+    SEShaderHandle* __CreateShader(SEShader* shader);
+    void __DeleteShader(SEShader* shader);
 
     void __OnResize(unsigned int width, unsigned int height);
-    SEShaderHandle* __CreateShader(SEShader* shader);
 
 private:
     void GetHardwareAdapter(IDXGIFactory2* pFactory, IDXGIAdapter1** ppAdapter);

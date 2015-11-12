@@ -6,7 +6,7 @@
 
 #include "SERenderingEngineLIB.h"
 #include "SEReferencable.h"
-#include "SEGPUDevice.h"
+#include "SEGPUDeviceBase.h"
 #include <string>
 
 namespace Swing
@@ -34,7 +34,7 @@ public:
     SEShader(SEShaderType type, const std::string& shaderFileName);
     virtual ~SEShader();
 
-	void CreateDeviceResource(SEGPUDevice* device);
+	void CreateDeviceResource(SEGPUDeviceBase* device);
     SEShaderHandle* GetShaderHandle() const;
     std::string GetShaderFileName() const;
     SEShaderType GetType() const;

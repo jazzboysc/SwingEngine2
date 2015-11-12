@@ -316,7 +316,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SED3D12DeviceRegister.cpp" />
-    <ClCompile Include="SED3D12GPUResources.cpp" />
     <ClCompile Include="SED3D12ThinGPUDeviceChild.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

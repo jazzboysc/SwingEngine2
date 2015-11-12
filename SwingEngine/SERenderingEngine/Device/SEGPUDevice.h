@@ -17,8 +17,6 @@ namespace Swing
 
 class SEGPUDevice;
 
-typedef SEShaderHandle* (SEGPUDevice::*GPUDeviceCreateShader)(SEShader* shader);
-typedef void (SEGPUDevice::*GPUDeviceDeleteShader)(SEShader* shader);
 typedef SEShaderProgramHandle* (SEGPUDevice::*GPUDeviceCreateProgram)(
     SEShaderProgram* program);
 typedef void (SEGPUDevice::*GPUDeviceDeleteProgram)(SEShaderProgram* program);
@@ -169,8 +167,6 @@ protected:
 
 public:
     // Shader stuff.
-    inline 	SEShaderHandle* CreateShader(SEShader* shader);
-    inline 	void DeleteShader(SEShader* shader);
     inline 	SEShaderProgramHandle* CreateProgram(SEShaderProgram* program);
     inline 	void DeleteProgram(SEShaderProgram* program);
     inline 	void EnableProgram(SEShaderProgram* program);
@@ -324,8 +320,6 @@ public:
     inline double TimerGetTimeElapsed(SEGPUTimer* timer);
 
 protected:
-    GPUDeviceCreateShader                         _CreateShader;
-    GPUDeviceDeleteShader                         _DeleteShader;
     GPUDeviceCreateProgram                        _CreateProgram;
     GPUDeviceDeleteProgram                        _DeleteProgram;
     GPUDeviceEnableProgram                        _EnableProgram;

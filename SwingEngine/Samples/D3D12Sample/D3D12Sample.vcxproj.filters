@@ -13,7 +13,7 @@
     <ClInclude Include="D3D12Sample.h" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="test.hlsl">
+    <FxCompile Include="..\..\Bin\Shaders\D3D12Sample\vTest.hlsl">
       <Filter>HLSL</Filter>
     </FxCompile>
   </ItemGroup>

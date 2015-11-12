@@ -10,7 +10,21 @@
 namespace Swing
 {
 
+class SEGPUDeviceBase;
 class SEGPUDevice;
+
+//----------------------------------------------------------------------------
+// Author: Che Sun
+// Date: 11/12/2015
+//----------------------------------------------------------------------------
+class SE_RENDERING_ENGINE_API SEGPUResourceBase : public SEReferencable
+{
+public:
+    SEGPUResourceBase();
+    virtual ~SEGPUResourceBase();
+
+    SEGPUDeviceBase* Device;
+};
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -27,7 +41,7 @@ public:
 
 typedef SESmartPointer<SEGPUResource> SEGPUResourcePtr;
 
-struct SE_RENDERING_ENGINE_API SEShaderHandle : public SEGPUResource
+struct SE_RENDERING_ENGINE_API SEShaderHandle : public SEGPUResourceBase
 {
 };
 

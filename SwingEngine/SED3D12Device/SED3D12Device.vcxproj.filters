@@ -4,9 +4,6 @@
     <ClCompile Include="SED3D12Device.cpp">
       <Filter>GPU</Filter>
     </ClCompile>
-    <ClCompile Include="SED3D12GPUResources.cpp">
-      <Filter>GPU</Filter>
-    </ClCompile>
     <ClCompile Include="SED3D12DevicePCH.cpp" />
     <ClCompile Include="SED3D12DeviceRegister.cpp" />
     <ClCompile Include="SED3D12ThinGPUDeviceChild.cpp">

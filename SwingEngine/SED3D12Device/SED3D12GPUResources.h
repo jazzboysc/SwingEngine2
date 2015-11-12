@@ -5,18 +5,15 @@
 #define Swing_D3D12GPUResources_H
 
 #include "SED3D12DeviceLIB.h"
+#include "SED3D12Common.h"
 #include "SEGPUResource.h"
 
 namespace Swing
 {
 
-class SE_D3D12_DEVICE_API SED3D12ShaderHandle : public SEShaderHandle
+struct SE_D3D12_DEVICE_API SED3D12ShaderHandle : public SEShaderHandle
 {
-public:
-    SED3D12ShaderHandle();
-    ~SED3D12ShaderHandle();
-
-    void* ShaderInterface;
+    ComPtr<ID3DBlob> mShaderHandle;
 };
 
 }
