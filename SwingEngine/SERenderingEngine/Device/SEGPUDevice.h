@@ -22,12 +22,6 @@ typedef SEShaderProgramHandle* (SEGPUDevice::*GPUDeviceCreateProgram)(
 typedef void (SEGPUDevice::*GPUDeviceDeleteProgram)(SEShaderProgram* program);
 typedef void (SEGPUDevice::*GPUDeviceEnableProgram)(SEShaderProgram* program);
 typedef void (SEGPUDevice::*GPUDeviceDisableProgram)(SEShaderProgram* program);
-typedef SEPassInfoHandle* (SEGPUDevice::*GPUDeviceCreatePassInfo)(
-    SEPassInfo* passInfo, SEShaderProgram* program, SEPrimitive* primitive, 
-    bool hasNormal, bool hasTCoord, int vertexComponentCount);
-typedef void (SEGPUDevice::*GPUDeviceDeletePassInfo)(SEPassInfo* passInfo);
-typedef void (SEGPUDevice::*GPUDeviceEnablePassInfo)(SEPassInfo* passInfo);
-typedef void (SEGPUDevice::*GPUDeviceDisablePassInfo)(SEPassInfo* passInfo);
 typedef void (SEGPUDevice::*GPUDeviceGetUniformLocation)(SEShaderProgram* program, 
     SEShaderUniform* uniform, const char* name);
 typedef void (SEGPUDevice::*GPUDeviceSetUniformValueMat4)(SEShaderUniform* uniform, 
@@ -171,14 +165,6 @@ public:
     inline 	void DeleteProgram(SEShaderProgram* program);
     inline 	void EnableProgram(SEShaderProgram* program);
     inline 	void DisableProgram(SEShaderProgram* program);
-
-    // Pass info stuff.
-    inline 	SEPassInfoHandle* CreatePassInfo(SEPassInfo* passInfo, 
-        SEShaderProgram* program, SEPrimitive* primitive, bool hasNormal, 
-        bool hasTCoord, int vertexComponentCount);
-    inline 	void DeletePassInfo(SEPassInfo* passInfo);
-    inline void EnablePassInfo(SEPassInfo* passInfo);
-    inline void DisablePassInfo(SEPassInfo* passInfo);
 
     // Uniform stuff.
     inline 	void GetUniformLocation(SEShaderProgram* program, 
@@ -324,10 +310,6 @@ protected:
     GPUDeviceDeleteProgram                        _DeleteProgram;
     GPUDeviceEnableProgram                        _EnableProgram;
     GPUDeviceDisableProgram                       _DisableProgram;
-    GPUDeviceCreatePassInfo                       _CreatePassInfo;
-    GPUDeviceDeletePassInfo                       _DeletePassInfo;
-    GPUDeviceEnablePassInfo                       _EnablePassInfo;
-    GPUDeviceDisablePassInfo                      _DisablePassInfo;
     GPUDeviceGetUniformLocation                   _GetUniformLocation;
     GPUDeviceSetUniformValueMat4                  _SetUniformValueMat4;
     GPUDeviceSetUniformValueVec3                  _SetUniformValueVec3;

@@ -33,3 +33,25 @@ void SEGPUDeviceBase::DeleteShader(SEShader* shader)
     (this->*_DeleteShader)(shader);
 }
 //----------------------------------------------------------------------------
+SEPassInfoHandle* SEGPUDeviceBase::CreatePassInfo(SEPassInfo* passInfo,
+    SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
+    SEPipelineStateBlock* psb)
+{
+    return (this->*_CreatePassInfo)(passInfo, program, geometryAttr, psb);
+}
+//----------------------------------------------------------------------------
+void SEGPUDeviceBase::DeletePassInfo(SEPassInfo* passInfo)
+{
+    (this->*_DeletePassInfo)(passInfo);
+}
+//----------------------------------------------------------------------------
+void SEGPUDeviceBase::EnablePassInfo(SEPassInfo* passInfo)
+{
+    (this->*_EnablePassInfo)(passInfo);
+}
+//----------------------------------------------------------------------------
+void SEGPUDeviceBase::DisablePassInfo(SEPassInfo* passInfo)
+{
+    (this->*_DisablePassInfo)(passInfo);
+}
+//----------------------------------------------------------------------------

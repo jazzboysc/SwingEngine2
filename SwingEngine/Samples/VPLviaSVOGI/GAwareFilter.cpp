@@ -78,7 +78,10 @@ void GAwareFilter::Initialize(SEGPUDevice* device, SESubRenderer* gbufferSrc,
 	programInfo.FShaderFileName = "VPLviaSVOGI/fGAwareFilter.glsl";
 	programInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
 		                          SEShaderStage::SS_Fragment;
-	SEPass* passGAwareFilter = new SEPass(programInfo);
+    SERenderPassTargetsInfo targetsInfo;
+    targetsInfo.ColorTargetCount = 1;
+    targetsInfo.ColorTargetFormats[0] = srcBuffer->GetFormat();
+	SERenderPass* passGAwareFilter = new SERenderPass(programInfo, targetsInfo);
 
 	SETechnique* techGAwareFilter = new SETechnique();
 	techGAwareFilter->AddPass(passGAwareFilter);

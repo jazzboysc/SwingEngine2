@@ -360,40 +360,45 @@ void Visualizer::Initialize(SEGPUDevice* device, SEVoxelizer* voxelizer,
     mVoxelGridLocalGroupDim = voxelGridLocalGroupDim;
     mGlobalDim = mVoxelGridDim / mVoxelGridLocalGroupDim;
 
+    // Output to backbuffer.
+    SERenderPassTargetsInfo targetsInfo;
+    targetsInfo.ColorTargetCount = 1;
+    targetsInfo.ColorTargetFormats[0] = BF_RGBA;
+
     SEShaderProgramInfo tempResultSM0ProgramInfo;
     tempResultSM0ProgramInfo.VShaderFileName = "VPLviaSVOGI/vTempResult.glsl";
     tempResultSM0ProgramInfo.FShaderFileName = "VPLviaSVOGI/fTempResultSM0.glsl";
     tempResultSM0ProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
                                                SEShaderStage::SS_Fragment;
-    SEPass* passTempResultSM0 = new SEPass(tempResultSM0ProgramInfo);
+    SERenderPass* passTempResultSM0 = new SERenderPass(tempResultSM0ProgramInfo, targetsInfo);
 
     SEShaderProgramInfo tempResultSM1ProgramInfo;
     tempResultSM1ProgramInfo.VShaderFileName = "VPLviaSVOGI/vTempResult.glsl";
     tempResultSM1ProgramInfo.FShaderFileName = "VPLviaSVOGI/fTempResultSM1.glsl";
     tempResultSM1ProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
                                                SEShaderStage::SS_Fragment;
-    SEPass* passTempResultSM1 = new SEPass(tempResultSM1ProgramInfo);
+    SERenderPass* passTempResultSM1 = new SERenderPass(tempResultSM1ProgramInfo, targetsInfo);
 
     SEShaderProgramInfo tempResultSM2ProgramInfo;
     tempResultSM2ProgramInfo.VShaderFileName = "VPLviaSVOGI/vTempResult.glsl";
     tempResultSM2ProgramInfo.FShaderFileName = "VPLviaSVOGI/fTempResultSM2.glsl";
     tempResultSM2ProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
                                                SEShaderStage::SS_Fragment;
-    SEPass* passTempResultSM2 = new SEPass(tempResultSM2ProgramInfo);
+    SERenderPass* passTempResultSM2 = new SERenderPass(tempResultSM2ProgramInfo, targetsInfo);
 
     SEShaderProgramInfo tempResultSM3ProgramInfo;
     tempResultSM3ProgramInfo.VShaderFileName = "VPLviaSVOGI/vTempResult.glsl";
     tempResultSM3ProgramInfo.FShaderFileName = "VPLviaSVOGI/fTempResultSM3.glsl";
     tempResultSM3ProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
                                                SEShaderStage::SS_Fragment;
-    SEPass* passTempResultSM3 = new SEPass(tempResultSM3ProgramInfo);
+    SERenderPass* passTempResultSM3 = new SERenderPass(tempResultSM3ProgramInfo, targetsInfo);
 
     SEShaderProgramInfo tempResultSM4ProgramInfo;
     tempResultSM4ProgramInfo.VShaderFileName = "VPLviaSVOGI/vTempResult.glsl";
     tempResultSM4ProgramInfo.FShaderFileName = "VPLviaSVOGI/fTempResultSM4.glsl";
     tempResultSM4ProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
                                                SEShaderStage::SS_Fragment;
-    SEPass* passTempResultSM4 = new SEPass(tempResultSM4ProgramInfo);
+    SERenderPass* passTempResultSM4 = new SERenderPass(tempResultSM4ProgramInfo, targetsInfo);
 
     SETechnique* techScreenQuad = new SETechnique();
     techScreenQuad->AddPass(passTempResultSM0);
@@ -457,7 +462,7 @@ void Visualizer::Initialize(SEGPUDevice* device, SEVoxelizer* voxelizer,
     showVPLProgramInfo.FShaderFileName = "VPLviaSVOGI/fShowVPL.glsl";
     showVPLProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
                                          SEShaderStage::SS_Fragment;
-    SEPass* passShowVPL = new SEPass(showVPLProgramInfo);
+    SERenderPass* passShowVPL = new SERenderPass(showVPLProgramInfo, targetsInfo);
 
     SETechnique* techShowVPL = new SETechnique();
     techShowVPL->AddPass(passShowVPL);
@@ -491,7 +496,7 @@ void Visualizer::Initialize(SEGPUDevice* device, SEVoxelizer* voxelizer,
             "VPLviaSVOGI/fShowVoxelGrid.glsl";
         showVoxelGridProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
                                                    SEShaderStage::SS_Fragment;
-        SEPass* passShowVoxelGrid = new SEPass(showVoxelGridProgramInfo);
+        SERenderPass* passShowVoxelGrid = new SERenderPass(showVoxelGridProgramInfo, targetsInfo);
 
         SETechnique* techShowVoxelGrid = new SETechnique();
         techShowVoxelGrid->AddPass(passShowVoxelGrid);
@@ -550,7 +555,7 @@ void Visualizer::Initialize(SEGPUDevice* device, SEVoxelizer* voxelizer,
         showSVOProgramInfo.FShaderFileName = "VPLviaSVOGI/fShowSVO.glsl";
         showSVOProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
                                              SEShaderStage::SS_Fragment;
-        SEPass* passShowSVO = new SEPass(showSVOProgramInfo);
+        SERenderPass* passShowSVO = new SERenderPass(showSVOProgramInfo, targetsInfo);
 
         SETechnique* techShowSVO = new SETechnique();
         techShowSVO->AddPass(passShowSVO);

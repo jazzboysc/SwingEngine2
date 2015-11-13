@@ -26,6 +26,14 @@ public:
     SEGPUDeviceBase* Device;
 };
 
+struct SE_RENDERING_ENGINE_API SEShaderHandle : public SEGPUResourceBase
+{
+};
+
+struct SE_RENDERING_ENGINE_API SEPassInfoHandle : public SEGPUResourceBase
+{
+};
+
 //----------------------------------------------------------------------------
 // Author: Che Sun
 // Date: 11/29/2014
@@ -41,15 +49,7 @@ public:
 
 typedef SESmartPointer<SEGPUResource> SEGPUResourcePtr;
 
-struct SE_RENDERING_ENGINE_API SEShaderHandle : public SEGPUResourceBase
-{
-};
-
 struct SE_RENDERING_ENGINE_API SEShaderProgramHandle : public SEGPUResource
-{
-};
-
-struct SE_RENDERING_ENGINE_API SEPassInfoHandle : public SEGPUResource
 {
 };
 

@@ -153,7 +153,7 @@ read_row_callback(png_structp png_ptr, png_uint_32 row_number, int pass)
 
    if (status_pass != pass)
    {
-      fprintf(stdout, "\n SEPass %d: ", pass);
+      fprintf(stdout, "\n Pass %d: ", pass);
       status_pass = pass;
       status_dots = 31;
    }

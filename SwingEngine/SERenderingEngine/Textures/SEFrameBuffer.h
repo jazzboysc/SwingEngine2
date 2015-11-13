@@ -43,7 +43,7 @@ public:
 	void Enable();
 	void Disable();
 
-    enum { FBO_MAX_COLOR_TARGETS = 16 };
+    enum { FBO_MAX_COLOR_TARGETS = 8 };
 
 private:
     SEFBOHandle* mFBO;

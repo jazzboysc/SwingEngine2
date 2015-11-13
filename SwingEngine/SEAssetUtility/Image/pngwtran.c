@@ -93,7 +93,7 @@ png_do_write_transformations(png_structrp png_ptr, png_row_infop row_info)
 }
 
 #ifdef PNG_WRITE_PACK_SUPPORTED
-/* Pack pixels into bytes.  SEPass the true bit depth in bit_depth.  The
+/* Pack pixels into bytes.  Pass the true bit depth in bit_depth.  The
  * row_info bit depth should be 8 (one pixel per byte).  The channels
  * should be 1 (this only happens on grayscale and paletted images).
  */
@@ -235,7 +235,7 @@ png_do_pack(png_row_infop row_info, png_bytep row, png_uint_32 bit_depth)
 #endif
 
 #ifdef PNG_WRITE_SHIFT_SUPPORTED
-/* Shift pixel values to take advantage of whole range.  SEPass the
+/* Shift pixel values to take advantage of whole range.  Pass the
  * true number of bits in bit_depth.  The row should be packed
  * according to row_info->bit_depth.  Thus, if you had a row of
  * bit depth 4, but the pixels only had values from 0 to 7, you

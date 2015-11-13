@@ -496,7 +496,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile Include="Shaders\SEGeometryShader.cpp" />
     <ClCompile Include="Shaders\SEMaterial.cpp" />
     <ClCompile Include="Shaders\SEMaterialTemplate.cpp" />
-    <ClCompile Include="Shaders\SEPass.cpp" />
+    <ClCompile Include="Shaders\SERenderPass.cpp" />
     <ClCompile Include="Shaders\SEPassBase.cpp" />
     <ClCompile Include="Shaders\SEPassInfo.cpp" />
     <ClCompile Include="Shaders\SEPassManager.cpp" />
@@ -600,7 +600,7 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="Shaders\SEGeometryShader.h" />
     <ClInclude Include="Shaders\SEMaterial.h" />
     <ClInclude Include="Shaders\SEMaterialTemplate.h" />
-    <ClInclude Include="Shaders\SEPass.h" />
+    <ClInclude Include="Shaders\SERenderPass.h" />
     <ClInclude Include="Shaders\SEPassBase.h" />
     <ClInclude Include="Shaders\SEPassInfo.h" />
     <ClInclude Include="Shaders\SEPassManager.h" />

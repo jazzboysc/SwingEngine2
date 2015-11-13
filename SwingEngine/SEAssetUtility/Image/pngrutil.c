@@ -3076,7 +3076,7 @@ png_combine_row(png_const_structrp png_ptr, png_bytep dp, int display)
           *
           * The following defines allow generation of compile time constant bit
           * masks for each pixel depth and each possibility of swapped or not
-          * swapped bytes.  SEPass 'p' is in the range 0..6; 'x', a pixel index,
+          * swapped bytes.  Pass 'p' is in the range 0..6; 'x', a pixel index,
           * is in the range 0..7; and the result is 1 if the pixel is to be
           * copied in the pass, 0 if not.  'S' is for the sparkle method, 'B'
           * for the block method.

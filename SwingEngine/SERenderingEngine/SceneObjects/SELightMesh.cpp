@@ -41,7 +41,7 @@ void SELightMesh::OnUpdateShaderConstants(int technique, int pass)
     LightMeshTexture->BindToSampler(0, &sampler);
 }
 //----------------------------------------------------------------------------
-void SELightMesh::OnRender(SEPass* pass, SEPassInfo* passInfo)
+void SELightMesh::OnRender(SERenderPass* pass, SEPassInfo* passInfo)
 {
     // TODO:
     //glDisable(GL_DEPTH_TEST);

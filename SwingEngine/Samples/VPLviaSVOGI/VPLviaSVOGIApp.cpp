@@ -184,7 +184,10 @@ SEMaterialTemplate* VPLviaSVOGI::CreateSceneModelMaterialTemplate()
 	voxelizationProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
 		SEShaderStage::SS_Geometry |
 		SEShaderStage::SS_Fragment;
-	SEPass* passVoxelization = new SEPass(voxelizationProgramInfo);
+    SERenderPassTargetsInfo voxelizationTargetsInfo;
+    voxelizationTargetsInfo.ColorTargetCount = 0;
+	SERenderPass* passVoxelization = new SERenderPass(voxelizationProgramInfo, 
+        voxelizationTargetsInfo);
 
 	SEShaderProgramInfo pointLightShadowProgramInfo;
 	pointLightShadowProgramInfo.VShaderFileName = "VPLviaSVOGI/vPointLightShadow.glsl";
@@ -197,7 +200,11 @@ SEMaterialTemplate* VPLviaSVOGI::CreateSceneModelMaterialTemplate()
 		SEShaderStage::SS_TessellationControl |
 		SEShaderStage::SS_TessellationEvaluation |
 		SEShaderStage::SS_Geometry;
-	SEPass* passPointLightShadow = new SEPass(pointLightShadowProgramInfo);
+    SERenderPassTargetsInfo pointLightShadowTargetsInfo;
+    pointLightShadowTargetsInfo.ColorTargetCount = 1;
+    pointLightShadowTargetsInfo.ColorTargetFormats[0] = BF_R32F;
+	SERenderPass* passPointLightShadow = new SERenderPass(pointLightShadowProgramInfo, 
+        pointLightShadowTargetsInfo);
 
 	SEShaderProgramInfo spotLightShadowProgramInfo;
 	spotLightShadowProgramInfo.VShaderFileName = "VPLviaSVOGI/vSpotLightShadow.glsl";
@@ -206,7 +213,11 @@ SEMaterialTemplate* VPLviaSVOGI::CreateSceneModelMaterialTemplate()
 	spotLightShadowProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
 		SEShaderStage::SS_Geometry |
 		SEShaderStage::SS_Fragment;
-	SEPass* passSpotLightShadow = new SEPass(spotLightShadowProgramInfo);
+    SERenderPassTargetsInfo spotLightShadowTargetsInfo;
+    spotLightShadowTargetsInfo.ColorTargetCount = 1;
+    spotLightShadowTargetsInfo.ColorTargetFormats[0] = BF_R32F;
+	SERenderPass* passSpotLightShadow = new SERenderPass(spotLightShadowProgramInfo, 
+        spotLightShadowTargetsInfo);
 
 	SEShaderProgramInfo gbufferProgramInfo;
 	if( mUseTC )
@@ -221,7 +232,12 @@ SEMaterialTemplate* VPLviaSVOGI::CreateSceneModelMaterialTemplate()
 	}
 	gbufferProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
 		SEShaderStage::SS_Fragment;
-	SEPass* passGBuffer = new SEPass(gbufferProgramInfo);
+    SERenderPassTargetsInfo gBufferTargetsInfo;
+    gBufferTargetsInfo.ColorTargetCount = 3;
+    gBufferTargetsInfo.ColorTargetFormats[0] = BF_RGBAF;
+    gBufferTargetsInfo.ColorTargetFormats[1] = BF_RGBAF;
+    gBufferTargetsInfo.ColorTargetFormats[2] = BF_RGBAF;
+	SERenderPass* passGBuffer = new SERenderPass(gbufferProgramInfo, gBufferTargetsInfo);
 
 	SEShaderProgramInfo pointLightRSMProgramInfo;
 	pointLightRSMProgramInfo.VShaderFileName = "VPLviaSVOGI/vPointLightRSM.glsl";
@@ -233,7 +249,13 @@ SEMaterialTemplate* VPLviaSVOGI::CreateSceneModelMaterialTemplate()
 	pointLightRSMProgramInfo.Parameters.push_back(
 		SEShaderProgramParameterValue(SPP_Geometry_Vertices_Out,
 		RSM_POINT_LIGHT_FACE_COUNT * 3));
-	SEPass* passPointLightRSM = new SEPass(pointLightRSMProgramInfo);
+    SERenderPassTargetsInfo pointLightRSMTargetsInfo;
+    pointLightRSMTargetsInfo.ColorTargetCount = 3;
+    pointLightRSMTargetsInfo.ColorTargetFormats[0] = BF_RGBAF;
+    pointLightRSMTargetsInfo.ColorTargetFormats[1] = BF_RGBAF;
+    pointLightRSMTargetsInfo.ColorTargetFormats[2] = BF_RGBAF;
+	SERenderPass* passPointLightRSM = new SERenderPass(pointLightRSMProgramInfo, 
+        pointLightRSMTargetsInfo);
 
 	SEShaderProgramInfo spotLightRSMProgramInfo;
 	spotLightRSMProgramInfo.VShaderFileName = "VPLviaSVOGI/vSpotLightRSM.glsl";
@@ -242,7 +264,13 @@ SEMaterialTemplate* VPLviaSVOGI::CreateSceneModelMaterialTemplate()
 	spotLightRSMProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
 		SEShaderStage::SS_Geometry |
 		SEShaderStage::SS_Fragment;
-	SEPass* passSpotLightRSM = new SEPass(spotLightRSMProgramInfo);
+    SERenderPassTargetsInfo spotLightRSMTargetsInfo;
+    spotLightRSMTargetsInfo.ColorTargetCount = 3;
+    spotLightRSMTargetsInfo.ColorTargetFormats[0] = BF_RGBAF;
+    spotLightRSMTargetsInfo.ColorTargetFormats[1] = BF_RGBAF;
+    spotLightRSMTargetsInfo.ColorTargetFormats[2] = BF_RGBAF;
+	SERenderPass* passSpotLightRSM = new SERenderPass(spotLightRSMProgramInfo, 
+        spotLightRSMTargetsInfo);
 
 	SETechnique* techSceneModel = new SETechnique();
 	techSceneModel->AddPass(passVoxelization);

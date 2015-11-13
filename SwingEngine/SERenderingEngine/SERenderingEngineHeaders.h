@@ -113,7 +113,7 @@
 #include "SETessellationEvaluationShader.h"
 #include "SEShaderProgram.h"
 #include "SEPassBase.h"
-#include "SEPass.h"
+#include "SERenderPass.h"
 #include "SEPassInfo.h"
 #include "SEPassManager.h"
 #include "SETechnique.h"

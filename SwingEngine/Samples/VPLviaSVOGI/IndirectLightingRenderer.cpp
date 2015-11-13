@@ -121,7 +121,11 @@ void IndirectLightingRenderer::Initialize(SEGPUDevice* device, int width,
     }
     indirectLightingProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
                                                   SEShaderStage::SS_Fragment;
-    SEPass* passIndirectLighting = new SEPass(indirectLightingProgramInfo);
+    SERenderPassTargetsInfo targetsInfo;
+    targetsInfo.ColorTargetCount = 1;
+    targetsInfo.ColorTargetFormats[0] = format;
+    SERenderPass* passIndirectLighting = new SERenderPass(
+        indirectLightingProgramInfo, targetsInfo);
 
     SETechnique* techIndirectLighting = new SETechnique();
     techIndirectLighting->AddPass(passIndirectLighting);

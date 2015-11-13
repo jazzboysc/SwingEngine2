@@ -11,12 +11,12 @@ SETechnique::SETechnique()
 {
 }
 //----------------------------------------------------------------------------
-SETechnique::SETechnique(SEPass* _pPass)
+SETechnique::SETechnique(SERenderPass* _pPass)
 {
 	AddPass(_pPass);
 }
 //----------------------------------------------------------------------------
-SETechnique::SETechnique(std::initializer_list<SEPass*> _passes)
+SETechnique::SETechnique(std::initializer_list<SERenderPass*> _passes)
 {
 	for (auto i : _passes)
 	{

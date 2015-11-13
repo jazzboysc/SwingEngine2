@@ -86,9 +86,6 @@
     <ClCompile Include="Shaders\SEMaterialTemplate.cpp">
       <Filter>Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="Shaders\SEPass.cpp">
-      <Filter>Shaders</Filter>
-    </ClCompile>
     <ClCompile Include="Shaders\SEPassBase.cpp">
       <Filter>Shaders</Filter>
     </ClCompile>
@@ -296,6 +293,9 @@
     <ClCompile Include="ThinDevice\SERenderCommandQueue.cpp" />
     <ClCompile Include="ThinDevice\SEComputeCommandAllocator.cpp" />
     <ClCompile Include="ThinDevice\SERenderCommandAllocator.cpp" />
+    <ClCompile Include="Shaders\SERenderPass.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneGraph\SEBoundingVolume.h">
@@ -355,9 +355,6 @@
       <Filter>Shaders</Filter>
     </ClInclude>
     <ClInclude Include="Shaders\SEMaterialTemplate.h">
-      <Filter>Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="Shaders\SEPass.h">
       <Filter>Shaders</Filter>
     </ClInclude>
     <ClInclude Include="Shaders\SEPassBase.h">
@@ -567,6 +564,9 @@
     <ClInclude Include="ThinDevice\SERenderCommandQueue.h" />
     <ClInclude Include="ThinDevice\SEComputeCommandAllocator.h" />
     <ClInclude Include="ThinDevice\SERenderCommandAllocator.h" />
+    <ClInclude Include="Shaders\SERenderPass.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SceneGraph\SEBoxBV.inl">

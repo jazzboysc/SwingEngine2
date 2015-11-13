@@ -444,8 +444,8 @@ void SEOpenGLDevice::__SetProgramParameterInt(SEShaderProgram* program,
 }
 //----------------------------------------------------------------------------
 SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*, 
-    SEShaderProgram* program, SEPrimitive* primitive, bool hasNormal, 
-    bool hasTCoord, int vertexComponentCount)
+    SEShaderProgram* program, SEGeometryAttributes* geometryAttr, 
+    SEPipelineStateBlock*)
 {
     SEOpenGLPassInfoHandle* passInfoHandle = SE_NEW SEOpenGLPassInfoHandle();
     passInfoHandle->Device = this;
@@ -457,17 +457,17 @@ SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*,
     glGenVertexArrays(1, &passInfoHandle->mVAO);
     glBindVertexArray(passInfoHandle->mVAO);
     
-    if( primitive->IB )
+    if( geometryAttr->Prim->IB )
     {
-        primitive->IB->Bind();
+        geometryAttr->Prim->IB->Bind();
     }
-    if( primitive->VB )
+    if( geometryAttr->Prim->VB )
     {
-        primitive->VB->Bind();
+        geometryAttr->Prim->VB->Bind();
     }
     
     // Specify vertex attributes.
-    if( !hasNormal && !hasTCoord )
+    if( !geometryAttr->HasNormal && !geometryAttr->HasTCoord )
     {
         GLint loc = glGetAttribLocation(programHandle->mProgram, "vPosition");
         if( loc != -1 )
@@ -476,14 +476,14 @@ SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*,
             glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE, 0, 0);
         }
     }
-    else if( hasNormal && !hasTCoord )
+    else if( geometryAttr->HasNormal && !geometryAttr->HasTCoord )
     {
         GLint loc = glGetAttribLocation(programHandle->mProgram, "vPosition");
         if( loc != -1 )
         {
             glEnableVertexAttribArray(loc);
             glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE,
-                vertexComponentCount*sizeof(float), 0);
+                geometryAttr->VertexComponentCount*sizeof(float), 0);
         }
     
         loc = glGetAttribLocation(programHandle->mProgram, "vNormal");
@@ -491,17 +491,17 @@ SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*,
         {
             glEnableVertexAttribArray(loc);
             glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE,
-                vertexComponentCount*sizeof(float), (void*)12);
+                geometryAttr->VertexComponentCount*sizeof(float), (void*)12);
         }
     }
-    else if( hasNormal && hasTCoord )
+    else if( geometryAttr->HasNormal && geometryAttr->HasTCoord )
     {
         GLint loc = glGetAttribLocation(programHandle->mProgram, "vPosition");
         if( loc != -1 )
         {
             glEnableVertexAttribArray(loc);
             glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE,
-                vertexComponentCount*sizeof(float), 0);
+                geometryAttr->VertexComponentCount*sizeof(float), 0);
         }
     
         loc = glGetAttribLocation(programHandle->mProgram, "vTCoord");
@@ -509,7 +509,7 @@ SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*,
         {
             glEnableVertexAttribArray(loc);
             glVertexAttribPointer(loc, 2, GL_FLOAT, GL_FALSE,
-                vertexComponentCount*sizeof(float), (void*)12);
+                geometryAttr->VertexComponentCount*sizeof(float), (void*)12);
         }
     
         loc = glGetAttribLocation(programHandle->mProgram, "vNormal");
@@ -517,7 +517,7 @@ SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*,
         {
             glEnableVertexAttribArray(loc);
             glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE,
-                vertexComponentCount*sizeof(float), (void*)20);
+                geometryAttr->VertexComponentCount*sizeof(float), (void*)20);
         }
     }
     else
@@ -527,7 +527,7 @@ SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*,
         {
             glEnableVertexAttribArray(loc);
             glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE,
-                vertexComponentCount*sizeof(float), 0);
+                geometryAttr->VertexComponentCount*sizeof(float), 0);
         }
     
         loc = glGetAttribLocation(programHandle->mProgram, "vTCoord");
@@ -535,7 +535,7 @@ SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*,
         {
             glEnableVertexAttribArray(loc);
             glVertexAttribPointer(loc, 2, GL_FLOAT, GL_FALSE,
-                vertexComponentCount*sizeof(float), (void*)12);
+                geometryAttr->VertexComponentCount*sizeof(float), (void*)12);
         }
     }
     
@@ -1851,16 +1851,16 @@ SEOpenGLDevice::SEOpenGLDevice()
     SE_INSERT_GPU_DEVICE_BASE_FUNC(SetAnisFilterLevel, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateShader, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteShader, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreatePassInfo, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeletePassInfo, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(EnablePassInfo, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DisablePassInfo, SEOpenGLDevice);
 
     SE_INSERT_GPU_DEVICE_FUNC(CreateProgram, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(DeleteProgram, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(EnableProgram, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(DisableProgram, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(SetProgramParameterInt, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(CreatePassInfo, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DeletePassInfo, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(EnablePassInfo, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DisablePassInfo, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(GetUniformLocation, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueMat4, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueVec3, SEOpenGLDevice);

@@ -301,29 +301,6 @@ void SEGPUDevice::GetUniformLocation(SEShaderProgram* program,
     (this->*_GetUniformLocation)(program, uniform, name);
 }
 //----------------------------------------------------------------------------
-void SEGPUDevice::DeletePassInfo(SEPassInfo* passInfo)
-{
-    (this->*_DeletePassInfo)(passInfo);
-}
-//----------------------------------------------------------------------------
-SEPassInfoHandle* SEGPUDevice::CreatePassInfo(SEPassInfo* passInfo, 
-    SEShaderProgram* program, SEPrimitive* primitive, bool hasNormal, 
-    bool hasTCoord, int vertexComponentCount)
-{
-    return (this->*_CreatePassInfo)(passInfo, program, primitive, hasNormal, 
-        hasTCoord, vertexComponentCount);
-}
-//----------------------------------------------------------------------------
-void SEGPUDevice::EnablePassInfo(SEPassInfo* passInfo)
-{
-    (this->*_EnablePassInfo)(passInfo);
-}
-//----------------------------------------------------------------------------
-void SEGPUDevice::DisablePassInfo(SEPassInfo* passInfo)
-{
-    (this->*_DisablePassInfo)(passInfo);
-}
-//----------------------------------------------------------------------------
 void SEGPUDevice::DisableProgram(SEShaderProgram* program)
 {
     (this->*_DisableProgram)(program);

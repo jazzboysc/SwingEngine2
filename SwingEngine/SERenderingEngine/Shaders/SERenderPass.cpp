@@ -2,38 +2,40 @@
 // Copyright (c) 2007-2015
 
 #include "SERenderingEnginePCH.h"
-#include "SEPass.h"
+#include "SERenderPass.h"
 
 using namespace Swing;
 
 //----------------------------------------------------------------------------
-SEPass::SEPass(const SEShaderProgramInfo& programInfo)
+SERenderPass::SERenderPass(const SEShaderProgramInfo& programInfo, 
+    const SERenderPassTargetsInfo& targetsInfo)
     :
     SEPassBase(programInfo)
 {
+    mTargetsInfo = targetsInfo;
 }
 //----------------------------------------------------------------------------
-SEPass::SEPass(SEShaderProgram* shaderProgram)
+SERenderPass::SERenderPass(SEShaderProgram* shaderProgram)
     :
     SEPassBase(shaderProgram)
 {
 }
 //----------------------------------------------------------------------------
-SEPass::~SEPass()
+SERenderPass::~SERenderPass()
 {
 }
 //----------------------------------------------------------------------------
-void SEPass::Enable()
+void SERenderPass::Enable()
 {
 	mShaderProgram->Enable();
 }
 //----------------------------------------------------------------------------
-void SEPass::Disable()
+void SERenderPass::Disable()
 {
 	mShaderProgram->Disable();
 }
 //----------------------------------------------------------------------------
-bool SEPass::IsTessellationEnabled() const
+bool SERenderPass::IsTessellationEnabled() const
 {
     return mShaderProgram->IsTessellationEnabled();
 }

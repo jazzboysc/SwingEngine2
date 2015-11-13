@@ -66,7 +66,13 @@ void DirectLightingRenderer::Initialize(SEGPUDevice* device, int width,
     directLightingProgramInfo.FShaderFileName = "VPLviaSVOGI/fDirectLighting.glsl";
     directLightingProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
         SEShaderStage::SS_Fragment;
-    SEPass* passDirectLighting = new SEPass(directLightingProgramInfo);
+    SERenderPassTargetsInfo directLightingTargetsInfo;
+    directLightingTargetsInfo.ColorTargetCount = 1;
+    directLightingTargetsInfo.ColorTargetFormats[0] = format;
+    directLightingTargetsInfo.DepthFormat = BF_Depth;
+    directLightingTargetsInfo.StencilFormat = BF_Unknown;
+    SERenderPass* passDirectLighting = new SERenderPass(
+        directLightingProgramInfo, directLightingTargetsInfo);
 
     SETechnique* techDirectLighting = new SETechnique();
     techDirectLighting->AddPass(passDirectLighting);

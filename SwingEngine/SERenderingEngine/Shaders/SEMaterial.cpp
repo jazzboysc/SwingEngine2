@@ -26,7 +26,7 @@ void SEMaterial::Apply(int techniqueNum, int passNum)
 	SETechnique* tech = mMaterialTemplate->GetTechnique(techniqueNum);
     SE_ASSERT( tech );
 
-    SEPass* pass = (SEPass*)tech->GetPass(passNum);
+    SERenderPass* pass = (SERenderPass*)tech->GetPass(passNum);
     SE_ASSERT( pass );
 
 	SEPassInfo* passInfo = mTechniqueInfo[techniqueNum]->GetPassInfo(passNum);
@@ -68,7 +68,7 @@ void SEMaterial::CreateDeviceResource(SEGPUDevice* device,
 SEShaderProgram* SEMaterial::GetProgram(int technique, int pass)
 {
 	SETechnique* t = mMaterialTemplate->GetTechnique(technique);
-	SEPass* p = (SEPass*)t->GetPass(pass);
+	SERenderPass* p = (SERenderPass*)t->GetPass(pass);
 	SEShaderProgram* program = p->GetShaderProgram();
 	return program;
 }
