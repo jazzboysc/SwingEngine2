@@ -45,8 +45,7 @@ private:
 
     // Pass info stuff.
     SEPassInfoHandle* __CreatePassInfo(SEPassInfo* passInfo, SEShaderProgram* program, 
-        SEPrimitive* primitive, bool hasNormal, bool hasTCoord, 
-        int vertexComponentCount);
+        SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb);
     void __DeletePassInfo(SEPassInfo* passInfo);
     void __EnablePassInfo(SEPassInfo* passInfo);
     void __DisablePassInfo(SEPassInfo* passInfo);

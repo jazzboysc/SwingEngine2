@@ -65,7 +65,11 @@ void GBufferSplitter::Initialize(SEGPUDevice* device,
     programInfo.FShaderFileName = "VPLviaSVOGI/fGBufferSplitter.glsl";
     programInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
                                   SEShaderStage::SS_Fragment;
-    SEPass* passGBufferSplitter = new SEPass(programInfo);
+    SERenderPassTargetsInfo targetsInfo;
+    targetsInfo.ColorTargetCount = 2;
+    targetsInfo.ColorTargetFormats[0] = desc.PositionFormat;
+    targetsInfo.ColorTargetFormats[1] = desc.NormalFormat;
+    SERenderPass* passGBufferSplitter = new SERenderPass(programInfo, targetsInfo);
 
     SETechnique* techGBufferSplitter = new SETechnique();
     techGBufferSplitter->AddPass(passGBufferSplitter);

@@ -113,7 +113,7 @@ void SERenderSequence::OnUpdateShaderConstants(int technique, int pass)
     mObjects[mActiveObjectIndex]->OnUpdateShaderConstants(technique, pass);
 }
 //----------------------------------------------------------------------------
-void SERenderSequence::OnRender(SEPass* pass, SEPassInfo* passInfo)
+void SERenderSequence::OnRender(SERenderPass* pass, SEPassInfo* passInfo)
 {
     mObjects[mActiveObjectIndex]->OnRender(pass, passInfo);
 }

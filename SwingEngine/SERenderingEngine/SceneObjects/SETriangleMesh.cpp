@@ -73,10 +73,12 @@ void SETriangleMesh::OnDisableBuffers()
 {
 }
 //----------------------------------------------------------------------------
-void SETriangleMesh::OnRender(SEPass* pass, SEPassInfo* passInfo)
+void SETriangleMesh::OnRender(SERenderPass* pass, SEPassInfo* passInfo)
 {
     bool enableTessellation = pass->IsTessellationEnabled();
-    SEGPUDevice* device = passInfo->GetPassInfoHandle()->Device;
+    // TODO:
+    // Hack device for now.
+    SEGPUDevice* device = (SEGPUDevice*)passInfo->GetPassInfoHandle()->Device;
     SE_ASSERT(device);
 
     if( enableTessellation )

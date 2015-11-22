@@ -996,7 +996,7 @@ png_push_process_row(png_structrp png_ptr)
                png_read_push_finish_row(png_ptr); /* Updates png_ptr->pass */
             }
 
-            if (png_ptr->pass == 2) /* SEPass 1 might be empty */
+            if (png_ptr->pass == 2) /* Pass 1 might be empty */
             {
                for (i = 0; i < 4 && png_ptr->pass == 2; i++)
                {
@@ -1060,7 +1060,7 @@ png_push_process_row(png_structrp png_ptr)
                png_read_push_finish_row(png_ptr);
             }
 
-            if (png_ptr->pass == 4) /* SEPass 3 might be empty */
+            if (png_ptr->pass == 4) /* Pass 3 might be empty */
             {
                for (i = 0; i < 2 && png_ptr->pass == 4; i++)
                {
@@ -1110,7 +1110,7 @@ png_push_process_row(png_structrp png_ptr)
                png_read_push_finish_row(png_ptr);
             }
 
-            if (png_ptr->pass == 6) /* SEPass 5 might be empty */
+            if (png_ptr->pass == 6) /* Pass 5 might be empty */
             {
                png_push_have_row(png_ptr, NULL);
                png_read_push_finish_row(png_ptr);

@@ -32,9 +32,7 @@ void SEPassInfo::Create(SEGPUDevice* device, SEShaderProgram* program,
         return;
     }
 
-    mPassInfoHandle = device->CreatePassInfo(this, program, geometryAttr->Prim,
-        geometryAttr->HasNormal, geometryAttr->HasTCoord, 
-        geometryAttr->VertexComponentCount);
+    mPassInfoHandle = device->CreatePassInfo(this, program, geometryAttr, psb);
 }
 //----------------------------------------------------------------------------
 void SEPassInfo::Enable()

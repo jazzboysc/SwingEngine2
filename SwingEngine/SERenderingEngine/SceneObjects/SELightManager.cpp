@@ -18,16 +18,17 @@ SELightManager::SELightManager(SEGPUDevice* device)
     mLightBufferCache = SE_NEW unsigned char[bufferSize];
     memset(mLightBufferCache, 0, bufferSize);
 
-    SEShaderProgramInfo lightMeshProgramInfo;
-    lightMeshProgramInfo.VShaderFileName = "VPLviaSVOGI/vLightMesh.glsl";
-    lightMeshProgramInfo.FShaderFileName = "VPLviaSVOGI/fLightMesh.glsl";
-    lightMeshProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
-                                           SEShaderStage::SS_Fragment;
-    SEPass* passLightMesh = SE_NEW SEPass(lightMeshProgramInfo);
-    SETechnique* techLightMesh = SE_NEW SETechnique();
-    techLightMesh->AddPass(passLightMesh);
-    mMtLightMesh = SE_NEW SEMaterialTemplate();
-    mMtLightMesh->AddTechnique(techLightMesh);
+    // TODO:
+    //SEShaderProgramInfo lightMeshProgramInfo;
+    //lightMeshProgramInfo.VShaderFileName = "VPLviaSVOGI/vLightMesh.glsl";
+    //lightMeshProgramInfo.FShaderFileName = "VPLviaSVOGI/fLightMesh.glsl";
+    //lightMeshProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
+    //                                       SEShaderStage::SS_Fragment;
+    //SERenderPass* passLightMesh = SE_NEW SERenderPass(lightMeshProgramInfo);
+    //SETechnique* techLightMesh = SE_NEW SETechnique();
+    //techLightMesh->AddPass(passLightMesh);
+    //mMtLightMesh = SE_NEW SEMaterialTemplate();
+    //mMtLightMesh->AddTechnique(techLightMesh);
 }
 //----------------------------------------------------------------------------
 SELightManager::~SELightManager()

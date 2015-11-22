@@ -30,7 +30,7 @@ public:
 	// Implement base class interface.
     virtual int GetVoxelizerRasterDimension(SEVoxelizer* voxelizer);
 	virtual void Render(int technique, int pass, SESubRenderer* subRenderer = 0);
-    virtual void OnRender(SEPass* pass, SEPassInfo* passInfo);
+    virtual void OnRender(SERenderPass* pass, SEPassInfo* passInfo);
 	virtual void OnUpdateShaderConstants(int technique, int pass);
 	virtual void OnEnableBuffers();
 	virtual void OnDisableBuffers();

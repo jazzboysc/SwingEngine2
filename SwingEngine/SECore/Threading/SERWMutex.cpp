@@ -200,7 +200,7 @@ void SERWMutex::ReleaseRead()
         // Decrement the number of waiting writers
         --m_RWMutex.WritersWaitingCount;
 
-        // SEPass ownership to a writer thread.
+        // Pass ownership to a writer thread.
         m_RWMutex.ActiveWriterReaders = (SE_UInt32)MAKELONG(0, 1);
         ReleaseSemaphore((HANDLE)m_RWMutex.hReadyToWrite, 1, NULL);
     }

@@ -22,7 +22,7 @@ void SETechniqueInfo::CreatePassInfo(SEGPUDevice* device, SETechnique* technique
 	mPassInfoArray.reserve(pcount);
 	for( unsigned int i = 0; i < pcount; ++i )
 	{
-		SEPass* pass = (SEPass*)technique->GetPass(i);
+		SERenderPass* pass = (SERenderPass*)technique->GetPass(i);
 		SEShaderProgram* program = pass->GetShaderProgram();
         SEPipelineStateBlock* psb = pass->GetPipelineStateBlock();
 

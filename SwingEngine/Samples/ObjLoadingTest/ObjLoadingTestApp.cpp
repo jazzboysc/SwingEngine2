@@ -38,7 +38,10 @@ void ObjLoadingTestApp::Initialize(SEGPUDeviceBase* device)
     objMeshProgramInfo.FShaderFileName = "ObjLoadingTest/fObjMesh.glsl";
     objMeshProgramInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
                                          SEShaderStage::SS_Fragment;
-    SEPass* passObjMesh = new SEPass(objMeshProgramInfo);
+    SERenderPassTargetsInfo targetsInfo;
+    targetsInfo.ColorTargetCount = 1;
+    targetsInfo.ColorTargetFormats[0] = BF_RGBA;
+    SERenderPass* passObjMesh = new SERenderPass(objMeshProgramInfo, targetsInfo);
 
     SETechnique* techObjMesh = new SETechnique();
     techObjMesh->AddPass(passObjMesh);

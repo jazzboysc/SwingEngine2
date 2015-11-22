@@ -69,7 +69,10 @@ void SplittedBufferMerger::Initialize(SEGPUDevice* device, SESubRenderer* source
 	programInfo.FShaderFileName = "VPLviaSVOGI/fSplittedBufferMerger.glsl";
 	programInfo.ShaderStageFlag = SEShaderStage::SS_Vertex |
 		                          SEShaderStage::SS_Fragment;
-	SEPass* passSplittedBufferMerger = new SEPass(programInfo);
+    SERenderPassTargetsInfo targetsInfo;
+    targetsInfo.ColorTargetCount = 1;
+    targetsInfo.ColorTargetFormats[0] = srcBuffer->GetFormat();
+	SERenderPass* passSplittedBufferMerger = new SERenderPass(programInfo, targetsInfo);
 
 	SETechnique* techSplittedBufferMerger = new SETechnique();
 	techSplittedBufferMerger->AddPass(passSplittedBufferMerger);

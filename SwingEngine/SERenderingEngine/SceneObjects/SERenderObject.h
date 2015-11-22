@@ -10,7 +10,7 @@
 #include "SERTGICamera.h"
 #include "SESpatialInfo.h"
 #include "SEPrimitive.h"
-#include "SEPass.h"
+#include "SERenderPass.h"
 #include "SEShaderUniform.h"
 #include "SEMaterial.h"
 #include <cstring>
@@ -60,7 +60,7 @@ public:
 	virtual void Render(int technique, int pass, 
         SESubRenderer* subRenderer = 0) = 0;
 	virtual void OnUpdateShaderConstants(int technique, int pass) = 0;
-    virtual void OnRender(SEPass*, SEPassInfo*){};
+    virtual void OnRender(SERenderPass*, SEPassInfo*){};
 	virtual void OnEnableBuffers(){};
 	virtual void OnDisableBuffers(){};
 

@@ -22,7 +22,7 @@ public:
 
 	// Implement base class interface.
 	void Render(int technique, int pass, SESubRenderer* subRenderer = 0) override;
-    virtual void OnRender(SEPass* pass, SEPassInfo* passInfo);
+    virtual void OnRender(SERenderPass* pass, SEPassInfo* passInfo);
 
 	// Load data from user specified memory location.
     void LoadFromSystemMemory(unsigned int pointCount, float* vertexData,

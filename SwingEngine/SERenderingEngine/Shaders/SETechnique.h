@@ -5,7 +5,7 @@
 #define Swing_Technique_H
 
 #include "SERenderingEngineLIB.h"
-#include "SEPass.h"
+#include "SERenderPass.h"
 #include "SEPassManager.h"
 
 namespace Swing
@@ -19,8 +19,8 @@ class SE_RENDERING_ENGINE_API SETechnique : public SEPassManager
 {
 public:
 	SETechnique();
-	SETechnique(SEPass* _pPass);
-	SETechnique(std::initializer_list<SEPass*> _passes);
+	SETechnique(SERenderPass* _pPass);
+	SETechnique(std::initializer_list<SERenderPass*> _passes);
 	~SETechnique();
 };
 
