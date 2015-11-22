@@ -1,8 +1,8 @@
 // Swing Engine Version 2 Source Code 
 // Copyright (c) 2007-2015
 
-#ifndef Swing_D3D12ThinGPUDeviceChild_H
-#define Swing_D3D12ThinGPUDeviceChild_H
+#ifndef Swing_D3D12GPUDeviceChild_H
+#define Swing_D3D12GPUDeviceChild_H
 
 #include "SED3D12DeviceLIB.h"
 #include "SED3D12Common.h"
@@ -19,6 +19,11 @@ struct SE_D3D12_DEVICE_API SED3D12CommandQueueHandle : public SECommandQueueHand
 struct SE_D3D12_DEVICE_API SED3D12CommandAllocatorHandle : public SECommandAllocatorHandle
 {
     ComPtr<ID3D12CommandAllocator> mCommandAllocator;
+};
+
+struct SE_D3D12_DEVICE_API SED3D12CommandListHandle : public SECommandListHandle
+{
+    ComPtr<ID3D12CommandList> mCommandList;
 };
 
 }

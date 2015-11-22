@@ -48,6 +48,12 @@ private:
     void __DeleteCommandAllocator(
         SECommandAllocator* commandAllocator, SECommandList* commandList);
 
+    // Command list stuff.
+    SECommandListHandle* __CreateCommandList(SECommandList* commandList,
+        SECommandAllocator* commandAllocator);
+    void __DeleteCommandList(SECommandList* commandList,
+        SECommandAllocator* commandAllocator);
+
     void __OnResize(unsigned int width, unsigned int height);
 
 private:

@@ -302,7 +302,7 @@
     <ClInclude Include="SED3D12DevicePCH.h" />
     <ClInclude Include="SED3D12DeviceRegister.h" />
     <ClInclude Include="SED3D12GPUResources.h" />
-    <ClInclude Include="SED3D12ThinGPUDeviceChild.h" />
+    <ClInclude Include="SED3D12GPUDeviceChild.h" />
     <ClInclude Include="SwingEngineD3D12Device.h" />
   </ItemGroup>
   <ItemGroup>
@@ -316,7 +316,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SED3D12DeviceRegister.cpp" />
-    <ClCompile Include="SED3D12ThinGPUDeviceChild.cpp" />
+    <ClCompile Include="SED3D12GPUDeviceChild.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

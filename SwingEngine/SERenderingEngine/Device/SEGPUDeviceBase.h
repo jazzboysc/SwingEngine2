@@ -43,6 +43,7 @@ class SEGPUDeviceInspector;
 class SEShader;
 class SEShaderProgram;
 class SEPassInfo;
+class SEGeometryAttributes;
 class SEShaderUniform;
 class SETexture;
 class SEBuffer;
@@ -52,7 +53,6 @@ class SETextureBuffer;
 class SEFrameBuffer;
 class SEPrimitive;
 class SEGPUTimer;
-class SEGeometryAttributes;
 
 class SECommandAllocator;
 class SECommandList;

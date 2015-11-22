@@ -2,6 +2,6 @@
 // Copyright (c) 2007-2015
 
 #include "SED3D12DevicePCH.h"
-#include "SED3D12ThinGPUDeviceChild.h"
+#include "SED3D12GPUDeviceChild.h"
 
 using namespace Swing;

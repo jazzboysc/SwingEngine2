@@ -6,7 +6,7 @@
     </ClCompile>
     <ClCompile Include="SED3D12DevicePCH.cpp" />
     <ClCompile Include="SED3D12DeviceRegister.cpp" />
-    <ClCompile Include="SED3D12ThinGPUDeviceChild.cpp">
+    <ClCompile Include="SED3D12GPUDeviceChild.cpp">
       <Filter>GPU</Filter>
     </ClCompile>
   </ItemGroup>
@@ -23,10 +23,10 @@
     <ClInclude Include="SED3D12DevicePCH.h" />
     <ClInclude Include="SED3D12DeviceRegister.h" />
     <ClInclude Include="SwingEngineD3D12Device.h" />
-    <ClInclude Include="SED3D12ThinGPUDeviceChild.h">
+    <ClInclude Include="d3dx12.h">
       <Filter>GPU</Filter>
     </ClInclude>
-    <ClInclude Include="d3dx12.h">
+    <ClInclude Include="SED3D12GPUDeviceChild.h">
       <Filter>GPU</Filter>
     </ClInclude>
   </ItemGroup>
