@@ -14,11 +14,41 @@ using namespace Swing;
 SECommandList::SECommandList(SECommandListType type)
     :
     mType(type),
-    mCommandListHandle(0)
+    mCommandListHandle(nullptr),
+    mCommandAllocator(nullptr)
 {
 }
 //----------------------------------------------------------------------------
 SECommandList::~SECommandList()
 {
+    if( mCommandListHandle )
+    {
+        mCommandListHandle->DeviceBase->DeleteCommandList(this, mCommandAllocator);
+        SE_DELETE mCommandListHandle;
+        mCommandListHandle = nullptr;
+    }
+}
+//----------------------------------------------------------------------------
+void SECommandList::CreateDeviceChild(SEGPUDeviceBase* device, 
+    SECommandAllocator* commandAllocator)
+{
+    if( mCommandListHandle || !device )
+    {
+        SE_ASSERT(false);
+        return;
+    }
+
+    mCommandListHandle = device->CreateCommandList(this, commandAllocator);
+    mCommandAllocator = commandAllocator;
+}
+//----------------------------------------------------------------------------
+SECommandListType SECommandList::GetType() const
+{
+    return mType;
+}
+//----------------------------------------------------------------------------
+SECommandListHandle* SECommandList::GetCommandListHandle() const
+{
+    return mCommandListHandle;
 }
 //----------------------------------------------------------------------------

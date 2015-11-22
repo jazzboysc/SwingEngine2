@@ -7,6 +7,7 @@
 
 #include "SERenderingEnginePCH.h"
 #include "SECommandAllocator.h"
+#include "SEGPUDeviceBase.h"
 
 using namespace Swing;
 
@@ -14,15 +15,23 @@ using namespace Swing;
 SECommandAllocator::SECommandAllocator(SECommandAllocatorType type)
     :
     mType(type),
-    mCommandAllocatorHandle(0)
+    mCommandAllocatorHandle(nullptr),
+    mCommandList(nullptr)
 {
 }
 //----------------------------------------------------------------------------
 SECommandAllocator::~SECommandAllocator()
 {
+    if( mCommandAllocatorHandle )
+    {
+        mCommandAllocatorHandle->DeviceBase->DeleteCommandAllocator(this, mCommandList);
+        SE_DELETE mCommandAllocatorHandle;
+        mCommandAllocatorHandle = nullptr;
+    }
 }
 //----------------------------------------------------------------------------
-void SECommandAllocator::CreateDeviceChild(SEThinGPUDevice* device)
+void SECommandAllocator::CreateDeviceChild(SEGPUDeviceBase* device,
+    SECommandList* commandList)
 {
     if( mCommandAllocatorHandle || !device )
     {
@@ -30,7 +39,8 @@ void SECommandAllocator::CreateDeviceChild(SEThinGPUDevice* device)
         return;
     }
 
-    mCommandAllocatorHandle = device->CreateCommandAllocator(this);
+    mCommandAllocatorHandle = device->CreateCommandAllocator(this, commandList);
+    mCommandList = commandList;
 }
 //----------------------------------------------------------------------------
 SECommandAllocatorType SECommandAllocator::GetType() const

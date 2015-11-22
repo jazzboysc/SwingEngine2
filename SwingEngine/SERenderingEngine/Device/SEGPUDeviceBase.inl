@@ -33,3 +33,38 @@ void SEGPUDeviceBase::DeleteShader(SEShader* shader)
     (this->*_DeleteShader)(shader);
 }
 //----------------------------------------------------------------------------
+SECommandQueueHandle* SEGPUDeviceBase::CreateCommandQueue(
+    SECommandQueue* commandQueue)
+{
+    return (this->*_CreateCommandQueue)(commandQueue);
+}
+//----------------------------------------------------------------------------
+void SEGPUDeviceBase::DeleteCommandQueue(SECommandQueue* commandQueue)
+{
+    (this->*_DeleteCommandQueue)(commandQueue);
+}
+//----------------------------------------------------------------------------
+SECommandAllocatorHandle* SEGPUDeviceBase::CreateCommandAllocator(
+    SECommandAllocator* commandAllocator, SECommandList* commandList)
+{
+    return (this->*_CreateCommandAllocator)(commandAllocator, commandList);
+}
+//----------------------------------------------------------------------------
+void SEGPUDeviceBase::DeleteCommandAllocator(
+    SECommandAllocator* commandAllocator, SECommandList* commandList)
+{
+    (this->*_DeleteCommandAllocator)(commandAllocator, commandList);
+}
+//----------------------------------------------------------------------------
+SECommandListHandle* SEGPUDeviceBase::CreateCommandList(
+    SECommandList* commandList, SECommandAllocator* commandAllocator)
+{
+    return (this->*_CreateCommandList)(commandList, commandAllocator);
+}
+//----------------------------------------------------------------------------
+void SEGPUDeviceBase::DeleteCommandList(SECommandList* commandList,
+    SECommandAllocator* commandAllocator)
+{
+    (this->*_DeleteCommandList)(commandList, commandAllocator);
+}
+//----------------------------------------------------------------------------

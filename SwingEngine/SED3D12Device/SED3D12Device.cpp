@@ -155,9 +155,12 @@ void SED3D12Device::__Initialize(SEGPUDeviceDescription*)
         }
     }
 
+    // Create default render command list.
+    mDefaultRenderCommandList = SE_NEW SERenderCommandList();
+
     // Create default render command allocator.
     mDefaultRenderCommandAllocator = SE_NEW SERenderCommandAllocator();
-    mDefaultRenderCommandAllocator->CreateDeviceChild(this);
+    mDefaultRenderCommandAllocator->CreateDeviceChild(this, mDefaultRenderCommandList);
 }
 //----------------------------------------------------------------------------
 void SED3D12Device::__Terminate()
@@ -171,7 +174,7 @@ SECommandQueueHandle* SED3D12Device::__CreateCommandQueue(
 {
     SED3D12CommandQueueHandle* commandQueueHandle 
         = SE_NEW SED3D12CommandQueueHandle();
-    commandQueueHandle->ThinDevice = this;
+    commandQueueHandle->DeviceBase = this;
 
     D3D12_COMMAND_QUEUE_DESC queueDesc = {};
     queueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
@@ -195,11 +198,11 @@ void SED3D12Device::__DeleteCommandQueue(SECommandQueue* commandQueue)
 }
 //----------------------------------------------------------------------------
 SECommandAllocatorHandle* SED3D12Device::__CreateCommandAllocator(
-    SECommandAllocator* commandAllocator)
+    SECommandAllocator* commandAllocator, SECommandList*)
 {
     SED3D12CommandAllocatorHandle* commandAllocatorHandle 
         = SE_NEW SED3D12CommandAllocatorHandle();
-    commandAllocatorHandle->ThinDevice = this;
+    commandAllocatorHandle->DeviceBase = this;
 
     HRESULT hr = mD3DDevice->CreateCommandAllocator(
         gsCommandAllocatorType[(int)commandAllocator->GetType()],
@@ -210,7 +213,7 @@ SECommandAllocatorHandle* SED3D12Device::__CreateCommandAllocator(
 }
 //----------------------------------------------------------------------------
 void SED3D12Device::__DeleteCommandAllocator(
-    SECommandAllocator* commandAllocator)
+    SECommandAllocator* commandAllocator, SECommandList*)
 {
     SED3D12CommandAllocatorHandle* commandAllocatorHandle = 
         (SED3D12CommandAllocatorHandle*)commandAllocator->GetCommandAllocatorHandle();
@@ -291,11 +294,10 @@ SED3D12Device::SED3D12Device(HWND mainWindow)
     SE_INSERT_GPU_DEVICE_BASE_FUNC(SetAnisFilterLevel, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateShader, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteShader, SED3D12Device);
-
-    SE_INSERT_THIN_GPU_DEVICE_FUNC(CreateCommandQueue, SED3D12Device);
-    SE_INSERT_THIN_GPU_DEVICE_FUNC(DeleteCommandQueue, SED3D12Device);
-    SE_INSERT_THIN_GPU_DEVICE_FUNC(CreateCommandAllocator, SED3D12Device);
-    SE_INSERT_THIN_GPU_DEVICE_FUNC(DeleteCommandAllocator, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateCommandQueue, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteCommandQueue, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateCommandAllocator, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteCommandAllocator, SED3D12Device);
 
     mMainWindow = mainWindow;
     mMsaaQuality = 0;

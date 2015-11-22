@@ -42,7 +42,7 @@
 
 // Thin GPU Device
 #include "SEThinGPUDevice.h"
-#include "SEThinGPUDeviceChild.h"
+#include "SEGPUDeviceBaseChild.h"
 #include "SECommandAllocator.h"
 #include "SERenderCommandAllocator.h"
 #include "SEComputeCommandAllocator.h"

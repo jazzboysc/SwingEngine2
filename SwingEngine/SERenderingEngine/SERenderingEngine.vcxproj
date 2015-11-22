@@ -530,7 +530,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile Include="ThinDevice\SERenderCommandList.cpp" />
     <ClCompile Include="ThinDevice\SERenderCommandQueue.cpp" />
     <ClCompile Include="ThinDevice\SEThinGPUDevice.cpp" />
-    <ClCompile Include="ThinDevice\SEThinGPUDeviceChild.cpp" />
+    <ClCompile Include="ThinDevice\SEGPUDeviceBaseChild.cpp" />
     <ClCompile Include="ThinDevice\SEThinGPUDeviceFence.cpp" />
     <ClCompile Include="Utils\SEGPUTimer.cpp" />
     <ClCompile Include="Utils\SETerminal.cpp" />
@@ -635,7 +635,7 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="ThinDevice\SERenderCommandList.h" />
     <ClInclude Include="ThinDevice\SERenderCommandQueue.h" />
     <ClInclude Include="ThinDevice\SEThinGPUDevice.h" />
-    <ClInclude Include="ThinDevice\SEThinGPUDeviceChild.h" />
+    <ClInclude Include="ThinDevice\SEGPUDeviceBaseChild.h" />
     <ClInclude Include="ThinDevice\SEThinGPUDeviceFence.h" />
     <ClInclude Include="Utils\SEGPUTimer.h" />
     <ClInclude Include="Utils\SETerminal.h" />

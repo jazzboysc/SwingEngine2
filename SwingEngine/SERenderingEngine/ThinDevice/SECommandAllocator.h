@@ -10,7 +10,7 @@
 
 #include "SERenderingEngineLIB.h"
 #include "SEGPUDeviceResident.h"
-#include "SEThinGPUDeviceChild.h"
+#include "SEGPUDeviceBaseChild.h"
 
 namespace Swing
 {
@@ -23,6 +23,8 @@ enum SECommandAllocatorType
     CommandAllocatorType_Max
 };
 
+class SECommandList;
+
 //----------------------------------------------------------------------------
 // Author: Che Sun
 // Date: 11/07/2015
@@ -32,7 +34,7 @@ class SE_RENDERING_ENGINE_API SECommandAllocator : public SEGPUDeviceResident
 public:
     virtual ~SECommandAllocator();
 
-    void CreateDeviceChild(SEThinGPUDevice* device);
+    void CreateDeviceChild(SEGPUDeviceBase* device, SECommandList* commandList);
 
     SECommandAllocatorType GetType() const;
     SECommandAllocatorHandle* GetCommandAllocatorHandle() const;
@@ -42,6 +44,7 @@ protected:
 
     SECommandAllocatorType mType;
     SECommandAllocatorHandle* mCommandAllocatorHandle;
+    SECommandList* mCommandList;
 };
 
 typedef SESmartPointer<SECommandAllocator> SECommandAllocatorPtr;

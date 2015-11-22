@@ -7,7 +7,7 @@
 #include "SED3D12DeviceLIB.h"
 #include "SED3D12Common.h"
 #include "SEThinGPUDevice.h"
-#include "SEThinGPUDeviceChild.h"
+#include "SEGPUDeviceBaseChild.h"
 
 namespace Swing
 {
@@ -32,8 +32,10 @@ private:
     void __DeleteCommandQueue(SECommandQueue* commandQueue);
 
     // Command allocator stuff.
-    SECommandAllocatorHandle* __CreateCommandAllocator(SECommandAllocator* commandAllocator);
-    void __DeleteCommandAllocator(SECommandAllocator* commandAllocator);
+    SECommandAllocatorHandle* __CreateCommandAllocator(
+        SECommandAllocator* commandAllocator, SECommandList* commandList);
+    void __DeleteCommandAllocator(
+        SECommandAllocator* commandAllocator, SECommandList* commandList);
 
     // Shader stuff.
     SEShaderHandle* __CreateShader(SEShader* shader);

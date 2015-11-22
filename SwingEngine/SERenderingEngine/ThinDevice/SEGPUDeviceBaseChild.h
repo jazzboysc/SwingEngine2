@@ -14,40 +14,40 @@
 namespace Swing
 {
 
-class SEThinGPUDevice;
+class SEGPUDeviceBase;
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
 // Date: 11/09/2015
 //----------------------------------------------------------------------------
-class SE_RENDERING_ENGINE_API SEThinGPUDeviceChild : public SEReferencable
+class SE_RENDERING_ENGINE_API SEGPUDeviceBaseChild : public SEReferencable
 {
 public:
-    SEThinGPUDeviceChild();
-    virtual ~SEThinGPUDeviceChild();
+    SEGPUDeviceBaseChild();
+    virtual ~SEGPUDeviceBaseChild();
 
-    SEThinGPUDevice* ThinDevice;
+    SEGPUDeviceBase* DeviceBase;
 };
 
-typedef SESmartPointer<SEThinGPUDeviceChild> SEThinGPUDeviceChildPtr;
+typedef SESmartPointer<SEGPUDeviceBaseChild> SEThinGPUDeviceChildPtr;
 
-struct SE_RENDERING_ENGINE_API SECommandQueueHandle : public SEThinGPUDeviceChild
+struct SE_RENDERING_ENGINE_API SECommandQueueHandle : public SEGPUDeviceBaseChild
 {
 };
 
-struct SE_RENDERING_ENGINE_API SECommandAllocatorHandle : public SEThinGPUDeviceChild
+struct SE_RENDERING_ENGINE_API SECommandAllocatorHandle : public SEGPUDeviceBaseChild
 {
 };
 
-struct SE_RENDERING_ENGINE_API SECommandListHandle : public SEThinGPUDeviceChild
+struct SE_RENDERING_ENGINE_API SECommandListHandle : public SEGPUDeviceBaseChild
 {
 };
 
-struct SE_RENDERING_ENGINE_API SEDescriptorHandle : public SEThinGPUDeviceChild
+struct SE_RENDERING_ENGINE_API SEDescriptorHandle : public SEGPUDeviceBaseChild
 {
 };
 
-struct SE_RENDERING_ENGINE_API SEDescriptorHeapHandle : public SEThinGPUDeviceChild
+struct SE_RENDERING_ENGINE_API SEDescriptorHeapHandle : public SEGPUDeviceBaseChild
 {
 };
 

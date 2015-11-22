@@ -289,13 +289,13 @@
     <ClCompile Include="ThinDevice\SEDescriptorHeap.cpp" />
     <ClCompile Include="ThinDevice\SEThinGPUDeviceFence.cpp" />
     <ClCompile Include="Device\SEGPUDeviceBase.cpp" />
-    <ClCompile Include="ThinDevice\SEThinGPUDeviceChild.cpp" />
     <ClCompile Include="ThinDevice\SEComputeCommandList.cpp" />
     <ClCompile Include="ThinDevice\SERenderCommandList.cpp" />
     <ClCompile Include="ThinDevice\SEComputeCommandQueue.cpp" />
     <ClCompile Include="ThinDevice\SERenderCommandQueue.cpp" />
     <ClCompile Include="ThinDevice\SEComputeCommandAllocator.cpp" />
     <ClCompile Include="ThinDevice\SERenderCommandAllocator.cpp" />
+    <ClCompile Include="ThinDevice\SEGPUDeviceBaseChild.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneGraph\SEBoundingVolume.h">
@@ -560,13 +560,13 @@
     <ClInclude Include="ThinDevice\SEDescriptorHeap.h" />
     <ClInclude Include="ThinDevice\SEThinGPUDeviceFence.h" />
     <ClInclude Include="Device\SEGPUDeviceBase.h" />
-    <ClInclude Include="ThinDevice\SEThinGPUDeviceChild.h" />
     <ClInclude Include="ThinDevice\SEComputeCommandList.h" />
     <ClInclude Include="ThinDevice\SERenderCommandList.h" />
     <ClInclude Include="ThinDevice\SEComputeCommandQueue.h" />
     <ClInclude Include="ThinDevice\SERenderCommandQueue.h" />
     <ClInclude Include="ThinDevice\SEComputeCommandAllocator.h" />
     <ClInclude Include="ThinDevice\SERenderCommandAllocator.h" />
+    <ClInclude Include="ThinDevice\SEGPUDeviceBaseChild.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SceneGraph\SEBoxBV.inl">

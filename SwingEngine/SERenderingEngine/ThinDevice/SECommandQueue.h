@@ -10,7 +10,7 @@
 
 #include "SERenderingEngineLIB.h"
 #include "SEGPUDeviceResident.h"
-#include "SEThinGPUDeviceChild.h"
+#include "SEGPUDeviceBaseChild.h"
 
 namespace Swing
 {

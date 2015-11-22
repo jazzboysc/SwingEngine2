@@ -20,23 +20,12 @@ namespace Swing
 //----------------------------------------------------------------------------
 
 class SEThinGPUDevice;
-class SECommandAllocator;
-class SECommandList;
-class SECommandQueue;
 class SEDescriptor;
 class SEDescriptorHeap;
 class SEThinGPUDeviceFence;
 
-struct SECommandQueueHandle;
-struct SECommandAllocatorHandle;
-struct SECommandListHandle;
 struct SEDescriptorHandle;
 struct SEDescriptorHeapHandle;
-
-typedef SECommandQueueHandle* (SEThinGPUDevice::*ThinGPUDeviceCreateCommandQueue)(SECommandQueue* commandQueue);
-typedef void (SEThinGPUDevice::*ThinGPUDeviceDeleteCommandQueue)(SECommandQueue* commandQueue);
-typedef SECommandAllocatorHandle* (SEThinGPUDevice::*ThinGPUDeviceCreateCommandAllocator)(SECommandAllocator* commandAllocator);
-typedef void (SEThinGPUDevice::*ThinGPUDeviceDeleteCommandAllocator)(SECommandAllocator* commandAllocator);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -52,22 +41,9 @@ protected:
     SEThinGPUDevice();
 
 public:
-    // Command queue stuff.
-    inline 	SECommandQueueHandle* CreateCommandQueue(SECommandQueue* commandQueue);
-    inline  void DeleteCommandQueue(SECommandQueue* commandQueue);
-
-    // Command allocator stuff.
-    inline  SECommandAllocatorHandle* CreateCommandAllocator(SECommandAllocator* commandAllocator);
-    inline  void DeleteCommandAllocator(SECommandAllocator* commandAllocator);
 
 protected:
-    ThinGPUDeviceCreateCommandQueue      _CreateCommandQueue;
-    ThinGPUDeviceDeleteCommandQueue      _DeleteCommandQueue;
-    ThinGPUDeviceCreateCommandAllocator  _CreateCommandAllocator;
-    ThinGPUDeviceDeleteCommandAllocator  _DeleteCommandAllocator;
 
-    SECommandQueue* mDefaultRenderCommandQueue;
-    SECommandAllocator* mDefaultRenderCommandAllocator;
 };
 
 typedef SESmartPointer<SEThinGPUDevice> SEThinGPUDevicePtr;

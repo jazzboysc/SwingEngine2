@@ -52,6 +52,18 @@ class SETextureBuffer;
 class SEFrameBuffer;
 class SEPrimitive;
 class SEGPUTimer;
+
+class SECommandAllocator;
+class SECommandList;
+class SECommandQueue;
+class SERenderCommandQueue;
+class SERenderCommandAllocator;
+class SERenderCommandList;
+class SEComputeCommandQueue;
+class SEComputeCommandAllocator;
+class SEComputeCommandList;
+
+class SEVector2f;
 class SEVector3f;
 class SEVector4f;
 class SEMatrix4f;
@@ -68,6 +80,9 @@ struct SEGPUTimerHandle;
 struct SESamplerDesc;
 struct SEPipelineStateBlock;
 struct SEViewportState;
+struct SECommandQueueHandle;
+struct SECommandAllocatorHandle;
+struct SECommandListHandle;
 
 enum SEShaderProgramParameter;
 enum SEBufferInternalFormat;
@@ -83,6 +98,16 @@ typedef void (SEGPUDeviceBase::*GPUDeviceBaseGetMaxAnisFilterLevel)(int* maxAnis
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseSetAnisFilterLevel)(int maxAnisFilterLevel);
 typedef SEShaderHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateShader)(SEShader* shader);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteShader)(SEShader* shader);
+typedef SECommandQueueHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateCommandQueue)(SECommandQueue* commandQueue);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteCommandQueue)(SECommandQueue* commandQueue);
+typedef SECommandAllocatorHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateCommandAllocator)(
+    SECommandAllocator* commandAllocator, SECommandList* commandList);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteCommandAllocator)(
+    SECommandAllocator* commandAllocator, SECommandList* commandList);
+typedef SECommandListHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateCommandList)(
+    SECommandList* commandList, SECommandAllocator* commandAllocator);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteCommandList)(
+    SECommandList* commandList, SECommandAllocator* commandAllocator);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -109,6 +134,22 @@ public:
     inline 	SEShaderHandle* CreateShader(SEShader* shader);
     inline 	void DeleteShader(SEShader* shader);
 
+    // Command queue stuff.
+    inline 	SECommandQueueHandle* CreateCommandQueue(SECommandQueue* commandQueue);
+    inline  void DeleteCommandQueue(SECommandQueue* commandQueue);
+
+    // Command allocator stuff.
+    inline  SECommandAllocatorHandle* CreateCommandAllocator(
+        SECommandAllocator* commandAllocator, SECommandList* commandList);
+    inline  void DeleteCommandAllocator(
+        SECommandAllocator* commandAllocator, SECommandList* commandList);
+
+    // Command list stuff.
+    inline SECommandListHandle* CreateCommandList(SECommandList* commandList, 
+        SECommandAllocator* commandAllocator);
+    inline void DeleteCommandList(SECommandList* commandList, 
+        SECommandAllocator* commandAllocator);
+
 protected:
     GPUDeviceBaseInitialize                           _Initialize;
     GPUDeviceBaseTerminate                            _Terminate;
@@ -116,6 +157,17 @@ protected:
     GPUDeviceBaseSetAnisFilterLevel					  _SetAnisFilterLevel;
     GPUDeviceBaseCreateShader                         _CreateShader;
     GPUDeviceBaseDeleteShader                         _DeleteShader;
+
+    GPUDeviceBaseCreateCommandQueue                   _CreateCommandQueue;
+    GPUDeviceBaseDeleteCommandQueue                   _DeleteCommandQueue;
+    GPUDeviceBaseCreateCommandAllocator               _CreateCommandAllocator;
+    GPUDeviceBaseDeleteCommandAllocator               _DeleteCommandAllocator;
+    GPUDeviceBaseCreateCommandList                    _CreateCommandList;
+    GPUDeviceBaseDeleteCommandList                    _DeleteCommandList;
+
+    SERenderCommandQueue*     mDefaultRenderCommandQueue;
+    SERenderCommandAllocator* mDefaultRenderCommandAllocator;
+    SERenderCommandList*      mDefaultRenderCommandList;
 
 protected:
     // Device capabilities.

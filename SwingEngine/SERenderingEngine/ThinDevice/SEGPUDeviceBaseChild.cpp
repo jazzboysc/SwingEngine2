@@ -6,18 +6,18 @@
 // support Microsoft's DirectX 12 and Apple's Metal.
 
 #include "SERenderingEnginePCH.h"
-#include "SEThinGPUDeviceChild.h"
+#include "SEGPUDeviceBaseChild.h"
 
 using namespace Swing;
 
 //----------------------------------------------------------------------------
-SEThinGPUDeviceChild::SEThinGPUDeviceChild()
+SEGPUDeviceBaseChild::SEGPUDeviceBaseChild()
     :
-    ThinDevice(0)
+    DeviceBase(nullptr)
 {
 }
 //----------------------------------------------------------------------------
-SEThinGPUDeviceChild::~SEThinGPUDeviceChild()
+SEGPUDeviceBaseChild::~SEGPUDeviceBaseChild()
 {
 }
 //----------------------------------------------------------------------------

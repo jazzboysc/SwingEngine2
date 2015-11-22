@@ -8,10 +8,14 @@ using namespace Swing;
 
 //----------------------------------------------------------------------------
 SEGPUDeviceBase::SEGPUDeviceBase()
+    :
+    mDefaultRenderCommandQueue(nullptr),
+    mDefaultRenderCommandAllocator(nullptr),
+    mDefaultRenderCommandList(nullptr),
+    mInspector(nullptr)
 {
     memset(&mDeviceDesc, 0, sizeof(SEGPUDeviceDescription));
     memset(&mDeviceInfo, 0, sizeof(SEGPUDeviceInfo));
-    mInspector = 0;
 }
 //----------------------------------------------------------------------------
 SEGPUDeviceBase::~SEGPUDeviceBase()

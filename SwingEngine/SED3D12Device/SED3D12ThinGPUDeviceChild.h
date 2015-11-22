@@ -6,7 +6,7 @@
 
 #include "SED3D12DeviceLIB.h"
 #include "SED3D12Common.h"
-#include "SEThinGPUDeviceChild.h"
+#include "SEGPUDeviceBaseChild.h"
 
 namespace Swing
 {

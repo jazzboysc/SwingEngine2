@@ -25,7 +25,7 @@ SEPassInfo::~SEPassInfo()
 }
 //----------------------------------------------------------------------------
 void SEPassInfo::Create(SEGPUDevice* device, SEShaderProgram* program, 
-    SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb)
+    SEGeometryAttributes* geometryAttr, SEPipelineStateBlock*)
 {
     if( mPassInfoHandle )
     {

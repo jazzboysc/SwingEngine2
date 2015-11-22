@@ -12,9 +12,6 @@ using namespace Swing;
 
 //----------------------------------------------------------------------------
 SEThinGPUDevice::SEThinGPUDevice()
-    :
-    mDefaultRenderCommandQueue(nullptr),
-    mDefaultRenderCommandAllocator(nullptr)
 {
 }
 //----------------------------------------------------------------------------

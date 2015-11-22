@@ -22,7 +22,7 @@ SECommandQueue::~SECommandQueue()
 {
     if( mCommandQueueHandle )
     {
-        mCommandQueueHandle->ThinDevice->DeleteCommandQueue(this);
+        mCommandQueueHandle->DeviceBase->DeleteCommandQueue(this);
         SE_DELETE mCommandQueueHandle;
         mCommandQueueHandle = 0;
     }
