@@ -269,6 +269,27 @@ void SED3D12Device::__DeleteShader(SEShader* shader)
     }
 }
 //----------------------------------------------------------------------------
+SEPassInfoHandle* SED3D12Device::__CreatePassInfo(SEPassInfo* passInfo,
+    SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
+    SEPipelineStateBlock* psb)
+{
+    return 0;
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::__DeletePassInfo(SEPassInfo* passInfo)
+{
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::__EnablePassInfo(SEPassInfo* passInfo)
+{
+    // TODO:
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::__DisablePassInfo(SEPassInfo* passInfo)
+{
+    // TODO:
+}
+//----------------------------------------------------------------------------
 void SED3D12Device::__GetMaxAnisFilterLevel(int*)
 {
     // TODO:
@@ -294,6 +315,10 @@ SED3D12Device::SED3D12Device(HWND mainWindow)
     SE_INSERT_GPU_DEVICE_BASE_FUNC(SetAnisFilterLevel, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateShader, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteShader, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreatePassInfo, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeletePassInfo, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(EnablePassInfo, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DisablePassInfo, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateCommandQueue, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteCommandQueue, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateCommandAllocator, SED3D12Device);

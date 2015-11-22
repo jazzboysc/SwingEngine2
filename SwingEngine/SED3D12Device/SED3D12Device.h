@@ -27,16 +27,6 @@ private:
     void __GetMaxAnisFilterLevel(int* maxAnisFilterLevel);
     void __SetAnisFilterLevel(int anisFilterLevel);
 
-    // Command queue stuff.
-    SECommandQueueHandle* __CreateCommandQueue(SECommandQueue* commandQueue);
-    void __DeleteCommandQueue(SECommandQueue* commandQueue);
-
-    // Command allocator stuff.
-    SECommandAllocatorHandle* __CreateCommandAllocator(
-        SECommandAllocator* commandAllocator, SECommandList* commandList);
-    void __DeleteCommandAllocator(
-        SECommandAllocator* commandAllocator, SECommandList* commandList);
-
     // Shader stuff.
     SEShaderHandle* __CreateShader(SEShader* shader);
     void __DeleteShader(SEShader* shader);
@@ -47,6 +37,16 @@ private:
     void __DeletePassInfo(SEPassInfo* passInfo);
     void __EnablePassInfo(SEPassInfo* passInfo);
     void __DisablePassInfo(SEPassInfo* passInfo);
+
+    // Command queue stuff.
+    SECommandQueueHandle* __CreateCommandQueue(SECommandQueue* commandQueue);
+    void __DeleteCommandQueue(SECommandQueue* commandQueue);
+
+    // Command allocator stuff.
+    SECommandAllocatorHandle* __CreateCommandAllocator(
+        SECommandAllocator* commandAllocator, SECommandList* commandList);
+    void __DeleteCommandAllocator(
+        SECommandAllocator* commandAllocator, SECommandList* commandList);
 
     void __OnResize(unsigned int width, unsigned int height);
 

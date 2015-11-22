@@ -52,16 +52,17 @@ class SETextureBuffer;
 class SEFrameBuffer;
 class SEPrimitive;
 class SEGPUTimer;
+class SEGeometryAttributes;
 
 class SECommandAllocator;
 class SECommandList;
 class SECommandQueue;
-class SERenderCommandQueue;
 class SERenderCommandAllocator;
 class SERenderCommandList;
-class SEComputeCommandQueue;
+class SERenderCommandQueue;
 class SEComputeCommandAllocator;
 class SEComputeCommandList;
+class SEComputeCommandQueue;
 
 class SEVector2f;
 class SEVector3f;
@@ -98,6 +99,12 @@ typedef void (SEGPUDeviceBase::*GPUDeviceBaseGetMaxAnisFilterLevel)(int* maxAnis
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseSetAnisFilterLevel)(int maxAnisFilterLevel);
 typedef SEShaderHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateShader)(SEShader* shader);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteShader)(SEShader* shader);
+typedef SEPassInfoHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreatePassInfo)(
+    SEPassInfo* passInfo, SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
+    SEPipelineStateBlock* psb);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeletePassInfo)(SEPassInfo* passInfo);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseEnablePassInfo)(SEPassInfo* passInfo);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseDisablePassInfo)(SEPassInfo* passInfo);
 typedef SECommandQueueHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateCommandQueue)(SECommandQueue* commandQueue);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteCommandQueue)(SECommandQueue* commandQueue);
 typedef SECommandAllocatorHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateCommandAllocator)(
@@ -134,6 +141,14 @@ public:
     inline 	SEShaderHandle* CreateShader(SEShader* shader);
     inline 	void DeleteShader(SEShader* shader);
 
+    // Pass info stuff.
+    inline 	SEPassInfoHandle* CreatePassInfo(SEPassInfo* passInfo,
+        SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
+        SEPipelineStateBlock* psb);
+    inline 	void DeletePassInfo(SEPassInfo* passInfo);
+    inline void EnablePassInfo(SEPassInfo* passInfo);
+    inline void DisablePassInfo(SEPassInfo* passInfo);
+
     // Command queue stuff.
     inline 	SECommandQueueHandle* CreateCommandQueue(SECommandQueue* commandQueue);
     inline  void DeleteCommandQueue(SECommandQueue* commandQueue);
@@ -157,6 +172,11 @@ protected:
     GPUDeviceBaseSetAnisFilterLevel					  _SetAnisFilterLevel;
     GPUDeviceBaseCreateShader                         _CreateShader;
     GPUDeviceBaseDeleteShader                         _DeleteShader;
+
+    GPUDeviceBaseCreatePassInfo                       _CreatePassInfo;
+    GPUDeviceBaseDeletePassInfo                       _DeletePassInfo;
+    GPUDeviceBaseEnablePassInfo                       _EnablePassInfo;
+    GPUDeviceBaseDisablePassInfo                      _DisablePassInfo;
 
     GPUDeviceBaseCreateCommandQueue                   _CreateCommandQueue;
     GPUDeviceBaseDeleteCommandQueue                   _DeleteCommandQueue;
