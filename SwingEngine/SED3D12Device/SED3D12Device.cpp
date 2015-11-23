@@ -5,6 +5,8 @@
 #include "SED3D12Device.h"
 #include "SED3D12GPUResources.h"
 #include "SED3D12GPUDeviceChild.h"
+#include "SEShader.h"
+#include "SEShaderProgram.h"
 #include "SECommandQueue.h"
 #include "SERenderCommandQueue.h"
 #include "SEComputeCommandQueue.h"
@@ -14,7 +16,7 @@
 #include "SECommandList.h"
 #include "SERenderCommandList.h"
 #include "SEComputeCommandList.h"
-#include "SEShader.h"
+#include "SERootSignature.h"
 
 #include "d3dx12.h"
 
@@ -166,6 +168,12 @@ void SED3D12Device::__Initialize(SEGPUDeviceDescription*)
     mDefaultRenderCommandList = SE_NEW SERenderCommandList();
     mDefaultRenderCommandAllocator->CreateDeviceChild(this, mDefaultRenderCommandList);
     mDefaultRenderCommandList->CreateDeviceChild(this, mDefaultRenderCommandAllocator);
+
+    // Create default empty root signature.
+    SERootSignatureInfo defaultRootSignatureInfo;
+    defaultRootSignatureInfo.Flags = RSF_Allow_Input_Assembler_Input_Layout;
+    mDefaultRootSignature = SE_NEW SERootSignature(defaultRootSignatureInfo);
+    mDefaultRootSignature->CreateDeviceChild(this);
 }
 //----------------------------------------------------------------------------
 void SED3D12Device::__Terminate()
@@ -178,6 +186,24 @@ void SED3D12Device::__Terminate()
 
     SE_DELETE mDefaultRenderCommandList;
     mDefaultRenderCommandList = 0;
+
+    SE_DELETE mDefaultRootSignature;
+    mDefaultRootSignature = 0;
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::__GetMaxAnisFilterLevel(int*)
+{
+    // TODO:
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::__SetAnisFilterLevel(int)
+{
+    // TODO:
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::__OnResize(unsigned int, unsigned int)
+{
+    // TODO:
 }
 //----------------------------------------------------------------------------
 SEShaderHandle* SED3D12Device::__CreateShader(SEShader* shader)
@@ -228,8 +254,101 @@ void SED3D12Device::__DeleteShader(SEShader* shader)
 //----------------------------------------------------------------------------
 SEPassInfoHandle* SED3D12Device::__CreatePassInfo(SEPassInfo* passInfo,
     SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
-    SEPipelineStateBlock* psb)
+    SEPipelineStateBlock* psb, SERootSignature* rootSignature)
 {
+    D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};
+
+    // Setup input layout.
+    //psoDesc.InputLayout = { inputElementDescs, _countof(inputElementDescs) };
+
+    // Setup root signature.
+    if( !rootSignature )
+    {
+        rootSignature = mDefaultRootSignature;
+    }
+    SED3D12RootSignatureHandle* rootSignatureHandle =
+        (SED3D12RootSignatureHandle*)rootSignature->GetRootSignatureHandle();
+    SE_ASSERT(rootSignatureHandle);
+    psoDesc.pRootSignature = rootSignatureHandle->mRootSignature.Get();
+
+    // Setup shaders.
+    if( program )
+    {
+        SEVertexShader* vShader = program->GetVertexShader();
+        if( vShader )
+        {
+            SED3D12ShaderHandle* vShaderHandle = 
+                (SED3D12ShaderHandle*)vShader->GetShaderHandle();
+            SE_ASSERT(vShaderHandle);
+            
+            psoDesc.VS = { reinterpret_cast<UINT8*>(
+                vShaderHandle->mShaderHandle->GetBufferPointer()), 
+                vShaderHandle->mShaderHandle->GetBufferSize() };
+        }
+
+        SETessellationControlShader* tcShader = program->GetTessellationControlShader();
+        if( tcShader )
+        {
+            SED3D12ShaderHandle* tcShaderHandle =
+                (SED3D12ShaderHandle*)tcShader->GetShaderHandle();
+            SE_ASSERT(tcShaderHandle);
+
+            psoDesc.HS = { reinterpret_cast<UINT8*>(
+                tcShaderHandle->mShaderHandle->GetBufferPointer()),
+                tcShaderHandle->mShaderHandle->GetBufferSize() };
+        }
+
+        SETessellationEvaluationShader* teShader = program->GetTessellationEvaluationShader();
+        if( teShader )
+        {
+            SED3D12ShaderHandle* teShaderHandle =
+                (SED3D12ShaderHandle*)teShader->GetShaderHandle();
+            SE_ASSERT(teShaderHandle);
+
+            psoDesc.DS = { reinterpret_cast<UINT8*>(
+                teShaderHandle->mShaderHandle->GetBufferPointer()),
+                teShaderHandle->mShaderHandle->GetBufferSize() };
+        }
+
+        SEGeometryShader* gShader = program->GetGeometryShader();
+        if( gShader )
+        {
+            SED3D12ShaderHandle* gShaderHandle =
+                (SED3D12ShaderHandle*)gShader->GetShaderHandle();
+            SE_ASSERT(gShaderHandle);
+
+            psoDesc.GS = { reinterpret_cast<UINT8*>(
+                gShaderHandle->mShaderHandle->GetBufferPointer()),
+                gShaderHandle->mShaderHandle->GetBufferSize() };
+        }
+
+        SEFragmentShader* fShader = program->GetFragmentShader();
+        if( fShader )
+        {
+            SED3D12ShaderHandle* fShaderHandle =
+                (SED3D12ShaderHandle*)fShader->GetShaderHandle();
+            SE_ASSERT(fShaderHandle);
+
+            psoDesc.PS = { reinterpret_cast<UINT8*>(
+                fShaderHandle->mShaderHandle->GetBufferPointer()),
+                fShaderHandle->mShaderHandle->GetBufferSize() };
+        }
+    }
+
+    //psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
+
+    //psoDesc.BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
+
+    //psoDesc.DepthStencilState.DepthEnable = FALSE;
+    //psoDesc.DepthStencilState.StencilEnable = FALSE;
+
+    //psoDesc.SampleMask = UINT_MAX;
+    //psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
+
+    //psoDesc.NumRenderTargets = 1;
+    //psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
+    //psoDesc.SampleDesc.Count = 1;
+
     return 0;
 }
 //----------------------------------------------------------------------------
@@ -243,21 +362,6 @@ void SED3D12Device::__EnablePassInfo(SEPassInfo* passInfo)
 }
 //----------------------------------------------------------------------------
 void SED3D12Device::__DisablePassInfo(SEPassInfo* passInfo)
-{
-    // TODO:
-}
-//----------------------------------------------------------------------------
-void SED3D12Device::__GetMaxAnisFilterLevel(int*)
-{
-    // TODO:
-}
-//----------------------------------------------------------------------------
-void SED3D12Device::__SetAnisFilterLevel(int)
-{
-    // TODO:
-}
-//----------------------------------------------------------------------------
-void SED3D12Device::__OnResize(unsigned int, unsigned int)
 {
     // TODO:
 }
@@ -346,6 +450,70 @@ void SED3D12Device::__DeleteCommandList(SECommandList* commandList,
     }
 }
 //----------------------------------------------------------------------------
+SERootSignatureHandle* SED3D12Device::__CreateRootSignature(
+    SERootSignature* rootSignature)
+{
+    const SERootSignatureInfo& info = rootSignature->GetRootSignatureInfo();
+
+    D3D12_ROOT_SIGNATURE_FLAGS flags = D3D12_ROOT_SIGNATURE_FLAG_NONE;
+    if( info.Flags & RSF_Allow_Input_Assembler_Input_Layout )
+    {
+        flags |= D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
+    }
+    if( info.Flags & RSF_Allow_Stream_Output )
+    {
+        flags |= D3D12_ROOT_SIGNATURE_FLAG_ALLOW_STREAM_OUTPUT;
+    }
+    if( info.Flags & RSF_Deny_VS_Root_Access )
+    {
+        flags |= D3D12_ROOT_SIGNATURE_FLAG_DENY_VERTEX_SHADER_ROOT_ACCESS;
+    }
+    if( info.Flags & RSF_Deny_TCS_Root_Access )
+    {
+        flags |= D3D12_ROOT_SIGNATURE_FLAG_DENY_HULL_SHADER_ROOT_ACCESS;
+    }
+    if( info.Flags & RSF_Deny_TES_Root_Access )
+    {
+        flags |= D3D12_ROOT_SIGNATURE_FLAG_DENY_DOMAIN_SHADER_ROOT_ACCESS;
+    }
+    if( info.Flags & RSF_Deny_GS_Root_Access )
+    {
+        flags |= D3D12_ROOT_SIGNATURE_FLAG_DENY_GEOMETRY_SHADER_ROOT_ACCESS;
+    }
+    if( info.Flags & RSF_Deny_FS_Root_Access )
+    {
+        flags |= D3D12_ROOT_SIGNATURE_FLAG_DENY_PIXEL_SHADER_ROOT_ACCESS;
+    }
+
+    CD3DX12_ROOT_SIGNATURE_DESC rootSignatureDesc;
+    rootSignatureDesc.Init(0, nullptr, 0, nullptr, flags);
+
+    ComPtr<ID3DBlob> signature;
+    ComPtr<ID3DBlob> error;
+    HRESULT hr = D3D12SerializeRootSignature(&rootSignatureDesc, 
+        D3D_ROOT_SIGNATURE_VERSION_1, &signature, &error);
+    SE_ASSERT(hr == S_OK);
+
+    SED3D12RootSignatureHandle* rootSignatureHandle = SE_NEW SED3D12RootSignatureHandle();
+    rootSignatureHandle->DeviceBase = this;
+
+    hr = mD3DDevice->CreateRootSignature(0, signature->GetBufferPointer(),
+        signature->GetBufferSize(), IID_PPV_ARGS(&rootSignatureHandle->mRootSignature));
+    SE_ASSERT(hr == S_OK);
+
+    return rootSignatureHandle;
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::__DeleteRootSignature(SERootSignature* rootSignature)
+{
+    SED3D12RootSignatureHandle* rootSignatureHandle = 
+        (SED3D12RootSignatureHandle*)rootSignature->GetRootSignatureHandle();
+    if( rootSignatureHandle )
+    {
+        rootSignatureHandle->mRootSignature = nullptr;
+    }
+}
+//----------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------
 SED3D12Device::SED3D12Device(HWND mainWindow)
@@ -366,6 +534,8 @@ SED3D12Device::SED3D12Device(HWND mainWindow)
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteCommandAllocator, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateCommandList, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteCommandList, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateRootSignature, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteRootSignature, SED3D12Device);
 
     mMainWindow = mainWindow;
     mMsaaQuality = 0;

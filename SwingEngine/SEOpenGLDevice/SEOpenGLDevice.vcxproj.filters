@@ -22,6 +22,9 @@
     <ClInclude Include="SEOpenGLResource.h">
       <Filter>GPU</Filter>
     </ClInclude>
+    <ClInclude Include="SEOpenGLGPUDeviceChild.h">
+      <Filter>GPU</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GPU">

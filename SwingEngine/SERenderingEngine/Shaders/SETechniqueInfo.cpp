@@ -27,7 +27,7 @@ void SETechniqueInfo::CreatePassInfo(SEGPUDevice* device, SETechnique* technique
         SEPipelineStateBlock* psb = pass->GetPipelineStateBlock();
 
 		SEPassInfo* passInfo = SE_NEW SEPassInfo();
-		passInfo->Create(device, program, geometryAttr, psb);
+		passInfo->Create(device, program, geometryAttr, psb, 0);
 		mPassInfoArray.push_back(passInfo);
 	}
 }

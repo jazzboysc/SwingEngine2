@@ -32,7 +32,7 @@ class SE_RENDERING_ENGINE_API SECommandQueue : public SEGPUDeviceResident
 public:
     virtual ~SECommandQueue();
 
-    void CreateDeviceChild(SEThinGPUDevice* device);
+    void CreateDeviceChild(SEGPUDeviceBase* device);
 
     SECommandQueueType GetType() const;
     SECommandQueueHandle* GetCommandQueueHandle() const;

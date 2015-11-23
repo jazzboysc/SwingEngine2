@@ -7,5 +7,6 @@
 // GPU
 #include "SEOpenGLDevice.h"
 #include "SEOpenGLResource.h"
+#include "SEOpenGLGPUDeviceChild.h"
 
 #endif

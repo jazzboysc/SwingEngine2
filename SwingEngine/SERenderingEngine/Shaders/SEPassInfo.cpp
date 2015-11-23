@@ -18,31 +18,33 @@ SEPassInfo::~SEPassInfo()
 {
     if( mPassInfoHandle )
     {
-        mPassInfoHandle->Device->DeletePassInfo(this);
+        mPassInfoHandle->DeviceBase->DeletePassInfo(this);
         SE_DELETE mPassInfoHandle;
         mPassInfoHandle = 0;
     }
 }
 //----------------------------------------------------------------------------
-void SEPassInfo::Create(SEGPUDevice* device, SEShaderProgram* program, 
-    SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb)
+void SEPassInfo::Create(SEGPUDeviceBase* device, SEShaderProgram* program, 
+    SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb, 
+    SERootSignature* rootSignature)
 {
     if( mPassInfoHandle )
     {
         return;
     }
 
-    mPassInfoHandle = device->CreatePassInfo(this, program, geometryAttr, psb);
+    mPassInfoHandle = device->CreatePassInfo(this, program, geometryAttr, psb,
+        rootSignature);
 }
 //----------------------------------------------------------------------------
 void SEPassInfo::Enable()
 {
-    mPassInfoHandle->Device->EnablePassInfo(this);
+    mPassInfoHandle->DeviceBase->EnablePassInfo(this);
 }
 //----------------------------------------------------------------------------
 void SEPassInfo::Disable()
 {
-    mPassInfoHandle->Device->DisablePassInfo(this);
+    mPassInfoHandle->DeviceBase->DisablePassInfo(this);
 }
 //----------------------------------------------------------------------------
 SEPassInfoHandle* SEPassInfo::GetPassInfoHandle() const

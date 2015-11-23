@@ -5,11 +5,13 @@
 #define Swing_PassInfo_H
 
 #include "SERenderingEngineLIB.h"
-#include "SEGPUDevice.h"
+#include "SEGPUDeviceBase.h"
+#include "SEGPUDeviceBaseChild.h"
 #include "SEPrimitive.h"
 #include "SEShaderProgram.h"
 #include "SEGeometryAttributes.h"
 #include "SEPipelineStateBlock.h"
+#include "SERootSignature.h"
 
 namespace Swing
 {
@@ -24,8 +26,9 @@ public:
 	SEPassInfo();
 	~SEPassInfo();
 
-	void Create(SEGPUDevice* device, SEShaderProgram* program, 
-        SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb);
+	void Create(SEGPUDeviceBase* device, SEShaderProgram* program, 
+        SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb, 
+        SERootSignature* rootSignature);
 
 	void Enable();
 	void Disable();

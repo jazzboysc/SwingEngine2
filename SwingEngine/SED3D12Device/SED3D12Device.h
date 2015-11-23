@@ -27,13 +27,16 @@ private:
     void __GetMaxAnisFilterLevel(int* maxAnisFilterLevel);
     void __SetAnisFilterLevel(int anisFilterLevel);
 
+    void __OnResize(unsigned int width, unsigned int height);
+
     // Shader stuff.
     SEShaderHandle* __CreateShader(SEShader* shader);
     void __DeleteShader(SEShader* shader);
 
     // Pass info stuff.
     SEPassInfoHandle* __CreatePassInfo(SEPassInfo* passInfo, SEShaderProgram* program,
-        SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb);
+        SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb, 
+        SERootSignature* rootSignature);
     void __DeletePassInfo(SEPassInfo* passInfo);
     void __EnablePassInfo(SEPassInfo* passInfo);
     void __DisablePassInfo(SEPassInfo* passInfo);
@@ -54,7 +57,9 @@ private:
     void __DeleteCommandList(SECommandList* commandList,
         SECommandAllocator* commandAllocator);
 
-    void __OnResize(unsigned int width, unsigned int height);
+    // Root signature stuff.
+    SERootSignatureHandle* __CreateRootSignature(SERootSignature* rootSignature);
+    void __DeleteRootSignature(SERootSignature* rootSignature);
 
 private:
     void GetHardwareAdapter(IDXGIFactory2* pFactory, IDXGIAdapter1** ppAdapter);

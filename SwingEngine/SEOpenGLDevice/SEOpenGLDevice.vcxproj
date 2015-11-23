@@ -290,6 +290,7 @@
     <ClInclude Include="SEOpenGLDeviceLIB.h" />
     <ClInclude Include="SEOpenGLDevicePCH.h" />
     <ClInclude Include="SEOpenGLDeviceRegister.h" />
+    <ClInclude Include="SEOpenGLGPUDeviceChild.h" />
     <ClInclude Include="SEOpenGLResource.h" />
     <ClInclude Include="SwingEngineOpenGLDevice.h" />
   </ItemGroup>

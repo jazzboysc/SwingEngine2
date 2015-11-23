@@ -6,46 +6,46 @@
 // support Microsoft's DirectX 12 and Apple's Metal.
 
 #include "SERenderingEnginePCH.h"
-#include "SECommandQueue.h"
+#include "SERootSignature.h"
 
 using namespace Swing;
 
 //----------------------------------------------------------------------------
-SECommandQueue::SECommandQueue(SECommandQueueType type)
+SERootSignature::SERootSignature(const SERootSignatureInfo& rootSignatureInfo)
     :
-    mType(type),
-    mCommandQueueHandle(0)
+    mRootSignatureHandle(nullptr)
 {
+    mRootSignatureInfo = rootSignatureInfo;
 }
 //----------------------------------------------------------------------------
-SECommandQueue::~SECommandQueue()
+SERootSignature::~SERootSignature()
 {
-    if( mCommandQueueHandle )
+    if( mRootSignatureHandle )
     {
-        mCommandQueueHandle->DeviceBase->DeleteCommandQueue(this);
-        SE_DELETE mCommandQueueHandle;
-        mCommandQueueHandle = 0;
+        mRootSignatureHandle->DeviceBase->DeleteRootSignature(this);
+        SE_DELETE mRootSignatureHandle;
+        mRootSignatureHandle = nullptr;
     }
 }
 //----------------------------------------------------------------------------
-void SECommandQueue::CreateDeviceChild(SEThinGPUDevice* device)
+void SERootSignature::CreateDeviceChild(SEGPUDeviceBase* device)
 {
-    if( mCommandQueueHandle || !device )
+    if( mRootSignatureHandle || !device )
     {
         SE_ASSERT(false);
         return;
     }
 
-    mCommandQueueHandle = device->CreateCommandQueue(this);
+    mRootSignatureHandle = device->CreateRootSignature(this);
 }
 //----------------------------------------------------------------------------
-SECommandQueueType SECommandQueue::GetType() const
+SERootSignatureHandle* SERootSignature::GetRootSignatureHandle() const
 {
-    return mType;
+    return mRootSignatureHandle;
 }
 //----------------------------------------------------------------------------
-SECommandQueueHandle* SECommandQueue::GetCommandQueueHandle() const
+const SERootSignatureInfo& SERootSignature::GetRootSignatureInfo() const
 {
-    return mCommandQueueHandle;
+    return mRootSignatureInfo;
 }
 //----------------------------------------------------------------------------

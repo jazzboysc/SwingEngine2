@@ -445,10 +445,10 @@ void SEOpenGLDevice::__SetProgramParameterInt(SEShaderProgram* program,
 //----------------------------------------------------------------------------
 SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*, 
     SEShaderProgram* program, SEGeometryAttributes* geometryAttr, 
-    SEPipelineStateBlock*)
+    SEPipelineStateBlock*, SERootSignature*)
 {
     SEOpenGLPassInfoHandle* passInfoHandle = SE_NEW SEOpenGLPassInfoHandle();
-    passInfoHandle->Device = this;
+    passInfoHandle->DeviceBase = this;
 
     SEOpenGLShaderProgramHandle* programHandle =
         (SEOpenGLShaderProgramHandle*)program->GetProgramHandle();

@@ -51,6 +51,14 @@ struct SE_RENDERING_ENGINE_API SEDescriptorHeapHandle : public SEGPUDeviceBaseCh
 {
 };
 
+struct SE_RENDERING_ENGINE_API SERootSignatureHandle : public SEGPUDeviceBaseChild
+{
+};
+
+struct SE_RENDERING_ENGINE_API SEPassInfoHandle : public SEGPUDeviceBaseChild
+{
+};
+
 }
 
 #endif

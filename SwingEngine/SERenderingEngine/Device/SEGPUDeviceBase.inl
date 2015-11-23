@@ -35,9 +35,10 @@ void SEGPUDeviceBase::DeleteShader(SEShader* shader)
 //----------------------------------------------------------------------------
 SEPassInfoHandle* SEGPUDeviceBase::CreatePassInfo(SEPassInfo* passInfo,
     SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
-    SEPipelineStateBlock* psb)
+    SEPipelineStateBlock* psb, SERootSignature* rootSignature)
 {
-    return (this->*_CreatePassInfo)(passInfo, program, geometryAttr, psb);
+    return (this->*_CreatePassInfo)(passInfo, program, geometryAttr, psb, 
+        rootSignature);
 }
 //----------------------------------------------------------------------------
 void SEGPUDeviceBase::DeletePassInfo(SEPassInfo* passInfo)
@@ -88,5 +89,16 @@ void SEGPUDeviceBase::DeleteCommandList(SECommandList* commandList,
     SECommandAllocator* commandAllocator)
 {
     (this->*_DeleteCommandList)(commandList, commandAllocator);
+}
+//----------------------------------------------------------------------------
+SERootSignatureHandle* SEGPUDeviceBase::CreateRootSignature(
+    SERootSignature* rootSignature)
+{
+    return (this->*_CreateRootSignature)(rootSignature);
+}
+//----------------------------------------------------------------------------
+void SEGPUDeviceBase::DeleteRootSignature(SERootSignature* rootSignature)
+{
+    (this->*_DeleteRootSignature)(rootSignature);
 }
 //----------------------------------------------------------------------------

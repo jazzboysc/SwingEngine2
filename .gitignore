@@ -78,3 +78,4 @@ SwingEngine/SDK/Lib/ReleaseMemory/*.*
 *.cache
 SwingEngine/Bin/GUIFramework.dll
 *.asm
+*.cd

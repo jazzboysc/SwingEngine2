@@ -30,10 +30,6 @@ struct SE_RENDERING_ENGINE_API SEShaderHandle : public SEGPUResourceBase
 {
 };
 
-struct SE_RENDERING_ENGINE_API SEPassInfoHandle : public SEGPUResourceBase
-{
-};
-
 //----------------------------------------------------------------------------
 // Author: Che Sun
 // Date: 11/29/2014

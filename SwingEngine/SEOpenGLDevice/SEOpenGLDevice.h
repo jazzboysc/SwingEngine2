@@ -7,6 +7,7 @@
 #include "SEOpenGLDeviceLIB.h"
 #include "SEGPUDevice.h"
 #include "SEOpenGLResource.h"
+#include "SEOpenGLGPUDeviceChild.h"
 
 namespace Swing
 {
@@ -45,7 +46,8 @@ private:
 
     // Pass info stuff.
     SEPassInfoHandle* __CreatePassInfo(SEPassInfo* passInfo, SEShaderProgram* program, 
-        SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb);
+        SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb, 
+        SERootSignature* rootSignature);
     void __DeletePassInfo(SEPassInfo* passInfo);
     void __EnablePassInfo(SEPassInfo* passInfo);
     void __DisablePassInfo(SEPassInfo* passInfo);

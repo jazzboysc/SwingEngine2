@@ -63,6 +63,7 @@ class SERenderCommandQueue;
 class SEComputeCommandAllocator;
 class SEComputeCommandList;
 class SEComputeCommandQueue;
+class SERootSignature;
 
 class SEVector2f;
 class SEVector3f;
@@ -84,6 +85,7 @@ struct SEViewportState;
 struct SECommandQueueHandle;
 struct SECommandAllocatorHandle;
 struct SECommandListHandle;
+struct SERootSignatureHandle;
 
 enum SEShaderProgramParameter;
 enum SEBufferInternalFormat;
@@ -101,7 +103,7 @@ typedef SEShaderHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateShader)(SEShader* 
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteShader)(SEShader* shader);
 typedef SEPassInfoHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreatePassInfo)(
     SEPassInfo* passInfo, SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
-    SEPipelineStateBlock* psb);
+    SEPipelineStateBlock* psb, SERootSignature* rootSignature);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeletePassInfo)(SEPassInfo* passInfo);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseEnablePassInfo)(SEPassInfo* passInfo);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDisablePassInfo)(SEPassInfo* passInfo);
@@ -115,6 +117,10 @@ typedef SECommandListHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateCommandList)(
     SECommandList* commandList, SECommandAllocator* commandAllocator);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteCommandList)(
     SECommandList* commandList, SECommandAllocator* commandAllocator);
+typedef SERootSignatureHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateRootSignature)(
+    SERootSignature* rootSignature);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteRootSignature)(
+    SERootSignature* rootSignature);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -144,7 +150,7 @@ public:
     // Pass info stuff.
     inline 	SEPassInfoHandle* CreatePassInfo(SEPassInfo* passInfo,
         SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
-        SEPipelineStateBlock* psb);
+        SEPipelineStateBlock* psb, SERootSignature* rootSignature);
     inline 	void DeletePassInfo(SEPassInfo* passInfo);
     inline void EnablePassInfo(SEPassInfo* passInfo);
     inline void DisablePassInfo(SEPassInfo* passInfo);
@@ -165,6 +171,10 @@ public:
     inline void DeleteCommandList(SECommandList* commandList, 
         SECommandAllocator* commandAllocator);
 
+    // Root signature stuff.
+    inline SERootSignatureHandle* CreateRootSignature(SERootSignature* rootSignature);
+    inline void DeleteRootSignature(SERootSignature* rootSignature);
+
 protected:
     GPUDeviceBaseInitialize                           _Initialize;
     GPUDeviceBaseTerminate                            _Terminate;
@@ -172,22 +182,24 @@ protected:
     GPUDeviceBaseSetAnisFilterLevel					  _SetAnisFilterLevel;
     GPUDeviceBaseCreateShader                         _CreateShader;
     GPUDeviceBaseDeleteShader                         _DeleteShader;
-
     GPUDeviceBaseCreatePassInfo                       _CreatePassInfo;
     GPUDeviceBaseDeletePassInfo                       _DeletePassInfo;
     GPUDeviceBaseEnablePassInfo                       _EnablePassInfo;
     GPUDeviceBaseDisablePassInfo                      _DisablePassInfo;
-
     GPUDeviceBaseCreateCommandQueue                   _CreateCommandQueue;
     GPUDeviceBaseDeleteCommandQueue                   _DeleteCommandQueue;
     GPUDeviceBaseCreateCommandAllocator               _CreateCommandAllocator;
     GPUDeviceBaseDeleteCommandAllocator               _DeleteCommandAllocator;
     GPUDeviceBaseCreateCommandList                    _CreateCommandList;
     GPUDeviceBaseDeleteCommandList                    _DeleteCommandList;
+    GPUDeviceBaseCreateRootSignature                  _CreateRootSignature;
+    GPUDeviceBaseDeleteRootSignature                  _DeleteRootSignature;
 
+protected:
     SERenderCommandQueue*     mDefaultRenderCommandQueue;
     SERenderCommandAllocator* mDefaultRenderCommandAllocator;
     SERenderCommandList*      mDefaultRenderCommandList;
+    SERootSignature*          mDefaultRootSignature;
 
 protected:
     // Device capabilities.

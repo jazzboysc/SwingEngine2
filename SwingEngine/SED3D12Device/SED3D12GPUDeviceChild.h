@@ -26,6 +26,16 @@ struct SE_D3D12_DEVICE_API SED3D12CommandListHandle : public SECommandListHandle
     ComPtr<ID3D12CommandList> mCommandList;
 };
 
+struct SE_D3D12_DEVICE_API SED3D12RootSignatureHandle : public SERootSignatureHandle
+{
+    ComPtr<ID3D12RootSignature> mRootSignature;
+};
+
+struct SE_D3D12_DEVICE_API SED3D12PassInfoHandle : public SEPassInfoHandle
+{
+    ComPtr<ID3D12PipelineState> mPipelineState;
+};
+
 }
 
 #endif

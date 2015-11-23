@@ -33,7 +33,7 @@ void SEPointSet::OnRender(SERenderPass*, SEPassInfo* passInfo)
 { 
     // TODO:
     // Hack device for now.
-    SEGPUDevice* device = (SEGPUDevice*)passInfo->GetPassInfoHandle()->Device;
+    SEGPUDevice* device = (SEGPUDevice*)passInfo->GetPassInfoHandle()->DeviceBase;
     SE_ASSERT(device);
 
     device->SetPointSize(PointSize);

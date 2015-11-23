@@ -86,9 +86,6 @@
     <ClCompile Include="Shaders\SEMaterialTemplate.cpp">
       <Filter>Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="Shaders\SEPass.cpp">
-      <Filter>Shaders</Filter>
-    </ClCompile>
     <ClCompile Include="Shaders\SEPassBase.cpp">
       <Filter>Shaders</Filter>
     </ClCompile>
@@ -282,20 +279,22 @@
       <Filter>SceneObjects</Filter>
     </ClCompile>
     <ClCompile Include="ThinDevice\SEThinGPUDevice.cpp" />
-    <ClCompile Include="ThinDevice\SECommandAllocator.cpp" />
-    <ClCompile Include="ThinDevice\SECommandList.cpp" />
-    <ClCompile Include="ThinDevice\SECommandQueue.cpp" />
     <ClCompile Include="ThinDevice\SEDescriptor.cpp" />
     <ClCompile Include="ThinDevice\SEDescriptorHeap.cpp" />
     <ClCompile Include="ThinDevice\SEThinGPUDeviceFence.cpp" />
     <ClCompile Include="Device\SEGPUDeviceBase.cpp" />
-    <ClCompile Include="ThinDevice\SEComputeCommandList.cpp" />
-    <ClCompile Include="ThinDevice\SERenderCommandList.cpp" />
-    <ClCompile Include="ThinDevice\SEComputeCommandQueue.cpp" />
-    <ClCompile Include="ThinDevice\SERenderCommandQueue.cpp" />
-    <ClCompile Include="ThinDevice\SEComputeCommandAllocator.cpp" />
-    <ClCompile Include="ThinDevice\SERenderCommandAllocator.cpp" />
-    <ClCompile Include="ThinDevice\SEGPUDeviceBaseChild.cpp" />
+    <ClCompile Include="Shaders\SERenderPass.cpp" />
+    <ClCompile Include="Device\SECommandAllocator.cpp" />
+    <ClCompile Include="Device\SECommandList.cpp" />
+    <ClCompile Include="Device\SECommandQueue.cpp" />
+    <ClCompile Include="Device\SEComputeCommandAllocator.cpp" />
+    <ClCompile Include="Device\SEComputeCommandList.cpp" />
+    <ClCompile Include="Device\SEComputeCommandQueue.cpp" />
+    <ClCompile Include="Device\SEGPUDeviceBaseChild.cpp" />
+    <ClCompile Include="Device\SERenderCommandAllocator.cpp" />
+    <ClCompile Include="Device\SERenderCommandList.cpp" />
+    <ClCompile Include="Device\SERenderCommandQueue.cpp" />
+    <ClCompile Include="Device\SERootSignature.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneGraph\SEBoundingVolume.h">
@@ -355,9 +354,6 @@
       <Filter>Shaders</Filter>
     </ClInclude>
     <ClInclude Include="Shaders\SEMaterialTemplate.h">
-      <Filter>Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="Shaders\SEPass.h">
       <Filter>Shaders</Filter>
     </ClInclude>
     <ClInclude Include="Shaders\SEPassBase.h">
@@ -553,20 +549,22 @@
       <Filter>SceneObjects</Filter>
     </ClInclude>
     <ClInclude Include="ThinDevice\SEThinGPUDevice.h" />
-    <ClInclude Include="ThinDevice\SECommandAllocator.h" />
-    <ClInclude Include="ThinDevice\SECommandList.h" />
-    <ClInclude Include="ThinDevice\SECommandQueue.h" />
     <ClInclude Include="ThinDevice\SEDescriptor.h" />
     <ClInclude Include="ThinDevice\SEDescriptorHeap.h" />
     <ClInclude Include="ThinDevice\SEThinGPUDeviceFence.h" />
     <ClInclude Include="Device\SEGPUDeviceBase.h" />
-    <ClInclude Include="ThinDevice\SEComputeCommandList.h" />
-    <ClInclude Include="ThinDevice\SERenderCommandList.h" />
-    <ClInclude Include="ThinDevice\SEComputeCommandQueue.h" />
-    <ClInclude Include="ThinDevice\SERenderCommandQueue.h" />
-    <ClInclude Include="ThinDevice\SEComputeCommandAllocator.h" />
-    <ClInclude Include="ThinDevice\SERenderCommandAllocator.h" />
-    <ClInclude Include="ThinDevice\SEGPUDeviceBaseChild.h" />
+    <ClInclude Include="Shaders\SERenderPass.h" />
+    <ClInclude Include="Device\SECommandAllocator.h" />
+    <ClInclude Include="Device\SECommandList.h" />
+    <ClInclude Include="Device\SECommandQueue.h" />
+    <ClInclude Include="Device\SEComputeCommandAllocator.h" />
+    <ClInclude Include="Device\SEComputeCommandList.h" />
+    <ClInclude Include="Device\SEComputeCommandQueue.h" />
+    <ClInclude Include="Device\SEGPUDeviceBaseChild.h" />
+    <ClInclude Include="Device\SERenderCommandAllocator.h" />
+    <ClInclude Include="Device\SERenderCommandList.h" />
+    <ClInclude Include="Device\SERenderCommandQueue.h" />
+    <ClInclude Include="Device\SERootSignature.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SceneGraph\SEBoxBV.inl">

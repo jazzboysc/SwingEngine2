@@ -39,9 +39,6 @@
 #include "SEGPUResource.h"
 #include "SEGPUDeviceInspector.h"
 #include "SEGPUDeviceResident.h"
-
-// Thin GPU Device
-#include "SEThinGPUDevice.h"
 #include "SEGPUDeviceBaseChild.h"
 #include "SECommandAllocator.h"
 #include "SERenderCommandAllocator.h"
@@ -52,6 +49,10 @@
 #include "SECommandQueue.h"
 #include "SERenderCommandQueue.h"
 #include "SEComputeCommandQueue.h"
+#include "SERootSignature.h"
+
+// Thin GPU Device
+#include "SEThinGPUDevice.h"
 #include "SEDescriptor.h"
 #include "SEDescriptorHeap.h"
 #include "SEThinGPUDeviceFence.h"

@@ -22,11 +22,6 @@ struct SE_OPENGL_DEVICE_API SEOpenGLShaderProgramHandle : public SEShaderProgram
     GLuint mProgram;
 };
 
-struct SE_OPENGL_DEVICE_API SEOpenGLPassInfoHandle : public SEPassInfoHandle
-{
-    GLuint mVAO;
-};
-
 struct SE_OPENGL_DEVICE_API SEOpenGLShaderUniformHandle : public SEShaderUniformHandle
 {
     GLint mUniform;
