@@ -467,6 +467,8 @@ SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*,
     }
     
     // Specify vertex attributes.
+    // TODO:
+    // Remove this naive input layout specification system.
     if( !geometryAttr->HasNormal && !geometryAttr->HasTCoord )
     {
         GLint loc = glGetAttribLocation(programHandle->mProgram, "vPosition");

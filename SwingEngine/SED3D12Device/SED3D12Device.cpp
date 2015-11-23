@@ -17,6 +17,8 @@
 #include "SERenderCommandList.h"
 #include "SEComputeCommandList.h"
 #include "SERootSignature.h"
+#include "SEGeometryAttributes.h"
+#include "SEPrimitive.h"
 
 #include "d3dx12.h"
 
@@ -50,6 +52,15 @@ const std::string gsShaderProfileTarget[ShaderType_Max] =
     "ds_5_0"
 };
 
+D3D12_PRIMITIVE_TOPOLOGY_TYPE gsPrimitiveTopologyType[PrimitiveType_Max] =
+{
+    D3D12_PRIMITIVE_TOPOLOGY_TYPE_POINT,
+    D3D12_PRIMITIVE_TOPOLOGY_TYPE_LINE,
+    D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE,
+    D3D12_PRIMITIVE_TOPOLOGY_TYPE_UNDEFINED,  // D3D12 doesn't have quad type.
+    D3D12_PRIMITIVE_TOPOLOGY_TYPE_PATCH
+};
+
 //----------------------------------------------------------------------------
 void SED3D12Device::GetHardwareAdapter(IDXGIFactory2* pFactory, IDXGIAdapter1** ppAdapter)
 {
@@ -79,6 +90,83 @@ void SED3D12Device::GetHardwareAdapter(IDXGIFactory2* pFactory, IDXGIAdapter1** 
     *ppAdapter = adapter.Detach();
 }
 //----------------------------------------------------------------------------
+void SED3D12Device::SetupRasterizerState(const SERasterizerState& srcState, 
+    D3D12_RASTERIZER_DESC& dstState)
+{
+    // Polygon fill mode.
+    if( srcState.RasterizerOpFlag & RB_FillMode )
+    {
+        if( srcState.FillMode == PFM_Solid )
+        {
+            dstState.FillMode = D3D12_FILL_MODE_SOLID;
+        }
+        else
+        {
+            dstState.FillMode = D3D12_FILL_MODE_WIREFRAME;
+        }
+    }
+
+    // Polygon cull mode.
+    if( srcState.RasterizerOpFlag & RB_CullMode )
+    {
+        if( srcState.CullMode == PCM_Cull_None )
+        {
+            dstState.CullMode = D3D12_CULL_MODE_NONE;
+        }
+        else if( srcState.CullMode == PCM_Cull_Front )
+        {
+            dstState.CullMode = D3D12_CULL_MODE_FRONT;
+        }
+        else if( srcState.CullMode == PCM_Cull_Back )
+        {
+            dstState.CullMode = D3D12_CULL_MODE_BACK;
+        }
+    }
+
+    // Polygon front face.
+    if( srcState.RasterizerOpFlag & RB_FrontFace )
+    {
+        dstState.FrontCounterClockwise = !srcState.FrontFaceClockwise;
+    }
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::SetupBlendState(const SEBlendState& srcState, 
+    D3D12_BLEND_DESC& dstState)
+{
+    if( srcState.BlendStateOpFlag & BSB_ColorMask )
+    {
+        // TODO:
+        // Only support target 0 for now.
+        const SE_UInt8& colorMask = srcState.FrameBufferTarget[0].ColorMask;
+
+        dstState.RenderTarget[0].RenderTargetWriteMask = 0;
+        if( !(colorMask & CMB_Red) )
+        {
+            dstState.RenderTarget[0].RenderTargetWriteMask |= D3D12_COLOR_WRITE_ENABLE_RED;
+        }
+        if( !(colorMask & CMB_Green) )
+        {
+            dstState.RenderTarget[0].RenderTargetWriteMask |= D3D12_COLOR_WRITE_ENABLE_GREEN;
+        }
+        if( !(colorMask & CMB_Blue) )
+        {
+            dstState.RenderTarget[0].RenderTargetWriteMask |= D3D12_COLOR_WRITE_ENABLE_BLUE;
+        }
+        if( !(colorMask & CMB_Alpha) )
+        {
+            dstState.RenderTarget[0].RenderTargetWriteMask |= D3D12_COLOR_WRITE_ENABLE_ALPHA;
+        }
+    }
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::SetupDepthStencilState(
+    const SEDepthStencilState& srcState, D3D12_DEPTH_STENCIL_DESC& dstState)
+{
+    dstState.DepthEnable = srcState.DepthEnable;
+    dstState.StencilEnable = srcState.StencilEnable;
+}
+//----------------------------------------------------------------------------
+
 void SED3D12Device::SetMainWindow(HWND mainWindow)
 {
     mMainWindow = mainWindow;
@@ -252,14 +340,65 @@ void SED3D12Device::__DeleteShader(SEShader* shader)
     }
 }
 //----------------------------------------------------------------------------
-SEPassInfoHandle* SED3D12Device::__CreatePassInfo(SEPassInfo* passInfo,
+SEPassInfoHandle* SED3D12Device::__CreatePassInfo(SEPassInfo*,
     SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
     SEPipelineStateBlock* psb, SERootSignature* rootSignature)
 {
+    SE_ASSERT(geometryAttr);
+
     D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};
 
     // Setup input layout.
-    //psoDesc.InputLayout = { inputElementDescs, _countof(inputElementDescs) };
+    // TODO:
+    // Remove this naive input layout specification system.
+    std::vector<D3D12_INPUT_ELEMENT_DESC> inputElements;
+    if( !geometryAttr->HasNormal && !geometryAttr->HasTCoord )
+    {
+        D3D12_INPUT_ELEMENT_DESC positionDesc = { "vPosition", 0,
+            DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 };
+
+        inputElements.push_back(positionDesc);
+    }
+    else if( geometryAttr->HasNormal && !geometryAttr->HasTCoord )
+    {
+        D3D12_INPUT_ELEMENT_DESC positionDesc = { "vPosition", 0,
+            DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 };
+
+        D3D12_INPUT_ELEMENT_DESC normalDesc = { "vNormal", 0,
+            DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 };
+
+        inputElements.push_back(positionDesc);
+        inputElements.push_back(normalDesc);
+    }
+    else if( geometryAttr->HasNormal && geometryAttr->HasTCoord )
+    {
+        D3D12_INPUT_ELEMENT_DESC positionDesc = { "vPosition", 0,
+            DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 };
+
+        D3D12_INPUT_ELEMENT_DESC tcoordDesc = { "vTCoord", 0,
+            DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 };
+
+        D3D12_INPUT_ELEMENT_DESC normalDesc = { "vNormal", 0,
+            DXGI_FORMAT_R32G32_FLOAT, 0, 20, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 };
+
+        inputElements.push_back(positionDesc);
+        inputElements.push_back(tcoordDesc);
+        inputElements.push_back(normalDesc);
+    }
+    else
+    {
+        D3D12_INPUT_ELEMENT_DESC positionDesc = { "vPosition", 0,
+            DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 };
+
+        D3D12_INPUT_ELEMENT_DESC tcoordDesc = { "vTCoord", 0,
+            DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 };
+
+        inputElements.push_back(positionDesc);
+        inputElements.push_back(tcoordDesc);
+    }
+
+    psoDesc.InputLayout = { (const D3D12_INPUT_ELEMENT_DESC*)inputElements.data(), 
+        UINT(inputElements.size()) };
 
     // Setup root signature.
     if( !rootSignature )
@@ -335,15 +474,36 @@ SEPassInfoHandle* SED3D12Device::__CreatePassInfo(SEPassInfo* passInfo,
         }
     }
 
-    //psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
+    psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
+    psoDesc.BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
+    psoDesc.DepthStencilState = CD3DX12_DEPTH_STENCIL_DESC(D3D12_DEFAULT);
 
-    //psoDesc.BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
+    if( psb )
+    {
+        if( psb->PipelineStageFlag & PB_Rasterizer )
+        {
+            SetupRasterizerState(psb->Rasterizer, psoDesc.RasterizerState);
+        }
 
-    //psoDesc.DepthStencilState.DepthEnable = FALSE;
-    //psoDesc.DepthStencilState.StencilEnable = FALSE;
+        if( psb->PipelineStageFlag & PB_OutputMerger )
+        {
+            if( psb->OutputMerger.OutputMergerOpFlag & OMB_Blend )
+            {
+                SetupBlendState(psb->OutputMerger.Blend, psoDesc.BlendState);
+            }
 
-    //psoDesc.SampleMask = UINT_MAX;
-    //psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
+            if( psb->OutputMerger.OutputMergerOpFlag & OMB_DepthStencil )
+            {
+                SetupDepthStencilState(psb->OutputMerger.DepthStencil, 
+                    psoDesc.DepthStencilState);
+            }
+        }
+    }
+
+    psoDesc.SampleMask = UINT_MAX;
+
+    psoDesc.PrimitiveTopologyType = gsPrimitiveTopologyType[
+        (int)geometryAttr->Prim->Type];
 
     //psoDesc.NumRenderTargets = 1;
     //psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -352,16 +512,16 @@ SEPassInfoHandle* SED3D12Device::__CreatePassInfo(SEPassInfo* passInfo,
     return 0;
 }
 //----------------------------------------------------------------------------
-void SED3D12Device::__DeletePassInfo(SEPassInfo* passInfo)
+void SED3D12Device::__DeletePassInfo(SEPassInfo*)
 {
 }
 //----------------------------------------------------------------------------
-void SED3D12Device::__EnablePassInfo(SEPassInfo* passInfo)
+void SED3D12Device::__EnablePassInfo(SEPassInfo*)
 {
     // TODO:
 }
 //----------------------------------------------------------------------------
-void SED3D12Device::__DisablePassInfo(SEPassInfo* passInfo)
+void SED3D12Device::__DisablePassInfo(SEPassInfo*)
 {
     // TODO:
 }

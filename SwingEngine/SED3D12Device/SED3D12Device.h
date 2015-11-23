@@ -8,6 +8,7 @@
 #include "SED3D12Common.h"
 #include "SEThinGPUDevice.h"
 #include "SEGPUDeviceBaseChild.h"
+#include "SEPipelineStateBlock.h"
 
 namespace Swing
 {
@@ -63,6 +64,11 @@ private:
 
 private:
     void GetHardwareAdapter(IDXGIFactory2* pFactory, IDXGIAdapter1** ppAdapter);
+
+    // Render state helpers.
+    void SetupRasterizerState(const SERasterizerState& srcState, D3D12_RASTERIZER_DESC& dstState);
+    void SetupBlendState(const SEBlendState& srcState, D3D12_BLEND_DESC& dstState);
+    void SetupDepthStencilState(const SEDepthStencilState& srcState, D3D12_DEPTH_STENCIL_DESC& dstState);
 
     HWND mMainWindow;
     UINT mMsaaQuality;
