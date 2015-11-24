@@ -29,11 +29,11 @@ void SEPointSet::Render(int technique, int pass, SESubRenderer*)
     mMaterial->Apply(technique, pass);
 }
 //----------------------------------------------------------------------------
-void SEPointSet::OnRender(SERenderPass*, SEPassInfo* passInfo)
+void SEPointSet::OnRender(SERenderPass*, SERenderPassInfo* renderPassInfo)
 { 
     // TODO:
     // Hack device for now.
-    SEGPUDevice* device = (SEGPUDevice*)passInfo->GetPassInfoHandle()->DeviceBase;
+    SEGPUDevice* device = (SEGPUDevice*)renderPassInfo->GetPassInfoHandle()->DeviceBase;
     SE_ASSERT(device);
 
     device->SetPointSize(PointSize);

@@ -44,12 +44,12 @@ void SEQuadMesh::OnDisableBuffers()
 {
 }
 //----------------------------------------------------------------------------
-void SEQuadMesh::OnRender(SERenderPass* pass, SEPassInfo* passInfo)
+void SEQuadMesh::OnRender(SERenderPass* pass, SERenderPassInfo* renderPassInfo)
 {
     bool enableTessellation = pass->IsTessellationEnabled();
     // TODO:
     // Hack device for now.
-    SEGPUDevice* device = (SEGPUDevice*)passInfo->GetPassInfoHandle()->DeviceBase;
+    SEGPUDevice* device = (SEGPUDevice*)renderPassInfo->GetPassInfoHandle()->DeviceBase;
     SE_ASSERT(device);
 
     if( enableTessellation )

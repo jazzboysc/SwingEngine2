@@ -33,27 +33,28 @@ void SEGPUDeviceBase::DeleteShader(SEShader* shader)
     (this->*_DeleteShader)(shader);
 }
 //----------------------------------------------------------------------------
-SEPassInfoHandle* SEGPUDeviceBase::CreatePassInfo(SEPassInfo* passInfo,
-    SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
-    SEPipelineStateBlock* psb, SERootSignature* rootSignature)
+SERenderPassInfoHandle* SEGPUDeviceBase::CreateRenderPassInfo(
+    SERenderPassInfo* renderPassInfo, SEShaderProgram* program, 
+    SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb, 
+    SERootSignature* rootSignature, SERenderPassTargetsInfo* targetsInfo)
 {
-    return (this->*_CreatePassInfo)(passInfo, program, geometryAttr, psb, 
-        rootSignature);
+    return (this->*_CreateRenderPassInfo)(renderPassInfo, program, geometryAttr, 
+        psb, rootSignature, targetsInfo);
 }
 //----------------------------------------------------------------------------
-void SEGPUDeviceBase::DeletePassInfo(SEPassInfo* passInfo)
+void SEGPUDeviceBase::DeleteRenderPassInfo(SERenderPassInfo* renderPassInfo)
 {
-    (this->*_DeletePassInfo)(passInfo);
+    (this->*_DeleteRenderPassInfo)(renderPassInfo);
 }
 //----------------------------------------------------------------------------
-void SEGPUDeviceBase::EnablePassInfo(SEPassInfo* passInfo)
+void SEGPUDeviceBase::EnableRenderPassInfo(SERenderPassInfo* renderPassInfo)
 {
-    (this->*_EnablePassInfo)(passInfo);
+    (this->*_EnableRenderPassInfo)(renderPassInfo);
 }
 //----------------------------------------------------------------------------
-void SEGPUDeviceBase::DisablePassInfo(SEPassInfo* passInfo)
+void SEGPUDeviceBase::DisableRenderPassInfo(SERenderPassInfo* renderPassInfo)
 {
-    (this->*_DisablePassInfo)(passInfo);
+    (this->*_DisableRenderPassInfo)(renderPassInfo);
 }
 //----------------------------------------------------------------------------
 SECommandQueueHandle* SEGPUDeviceBase::CreateCommandQueue(

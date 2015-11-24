@@ -29,19 +29,19 @@ void SEMaterial::Apply(int techniqueNum, int passNum)
     SERenderPass* pass = (SERenderPass*)tech->GetPass(passNum);
     SE_ASSERT( pass );
 
-	SEPassInfo* passInfo = mTechniqueInfo[techniqueNum]->GetPassInfo(passNum);
-	SE_ASSERT( passInfo );
+	SERenderPassInfo* renderPassInfo = mTechniqueInfo[techniqueNum]->GetPassInfo(passNum);
+	SE_ASSERT( renderPassInfo );
     
-	passInfo->Enable();
+	renderPassInfo->Enable();
     pass->Enable();
 
     mRenderObject->OnEnableBuffers();
     mRenderObject->OnUpdateShaderConstants(techniqueNum, passNum);
-    mRenderObject->OnRender(pass, passInfo);
+    mRenderObject->OnRender(pass, renderPassInfo);
     mRenderObject->OnDisableBuffers();
 
     pass->Disable();
-	passInfo->Disable();
+	renderPassInfo->Disable();
 }
 //----------------------------------------------------------------------------
 void SEMaterial::CreateDeviceResource(SEGPUDevice* device, 
@@ -55,7 +55,7 @@ void SEMaterial::CreateDeviceResource(SEGPUDevice* device,
 	{
 		SETechnique* technique = mMaterialTemplate->GetTechnique((int)i);
 		SETechniqueInfo* techInfo = SE_NEW SETechniqueInfo();
-		techInfo->CreatePassInfo(device, technique, geometryAttr);
+		techInfo->CreateRenderPassInfo(device, technique, geometryAttr);
 		mTechniqueInfo.push_back(techInfo);
 	}
 

@@ -24,7 +24,7 @@ public:
     // Implement base class interface.
     virtual void OnGetShaderConstants();
     virtual void OnUpdateShaderConstants(int technique, int pass);
-    virtual void OnRender(SERenderPass* pass, SEPassInfo* passInfo);
+    virtual void OnRender(SERenderPass* pass, SERenderPassInfo* renderPassInfo);
 
     SETexture2DPtr LightMeshTexture;
 

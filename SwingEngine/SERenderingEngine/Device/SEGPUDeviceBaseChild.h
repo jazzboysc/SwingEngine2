@@ -55,7 +55,7 @@ struct SE_RENDERING_ENGINE_API SERootSignatureHandle : public SEGPUDeviceBaseChi
 {
 };
 
-struct SE_RENDERING_ENGINE_API SEPassInfoHandle : public SEGPUDeviceBaseChild
+struct SE_RENDERING_ENGINE_API SERenderPassInfoHandle : public SEGPUDeviceBaseChild
 {
 };
 

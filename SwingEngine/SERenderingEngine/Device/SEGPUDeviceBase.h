@@ -42,7 +42,7 @@ class SEGPUDeviceBase;
 class SEGPUDeviceInspector;
 class SEShader;
 class SEShaderProgram;
-class SEPassInfo;
+class SERenderPassInfo;
 class SEGeometryAttributes;
 class SEShaderUniform;
 class SETexture;
@@ -72,7 +72,7 @@ class SEMatrix4f;
 
 struct SEShaderHandle;
 struct SEShaderProgramHandle;
-struct SEPassInfoHandle;
+struct SERenderPassInfoHandle;
 struct SEShaderUniformHandle;
 struct SETextureHandle;
 struct SEFBOHandle;
@@ -86,6 +86,7 @@ struct SECommandQueueHandle;
 struct SECommandAllocatorHandle;
 struct SECommandListHandle;
 struct SERootSignatureHandle;
+struct SERenderPassTargetsInfo;
 
 enum SEShaderProgramParameter;
 enum SEBufferInternalFormat;
@@ -101,12 +102,12 @@ typedef void (SEGPUDeviceBase::*GPUDeviceBaseGetMaxAnisFilterLevel)(int* maxAnis
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseSetAnisFilterLevel)(int maxAnisFilterLevel);
 typedef SEShaderHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateShader)(SEShader* shader);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteShader)(SEShader* shader);
-typedef SEPassInfoHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreatePassInfo)(
-    SEPassInfo* passInfo, SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
-    SEPipelineStateBlock* psb, SERootSignature* rootSignature);
-typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeletePassInfo)(SEPassInfo* passInfo);
-typedef void (SEGPUDeviceBase::*GPUDeviceBaseEnablePassInfo)(SEPassInfo* passInfo);
-typedef void (SEGPUDeviceBase::*GPUDeviceBaseDisablePassInfo)(SEPassInfo* passInfo);
+typedef SERenderPassInfoHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateRenderPassInfo)(
+    SERenderPassInfo* renderPassInfo, SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
+    SEPipelineStateBlock* psb, SERootSignature* rootSignature, SERenderPassTargetsInfo* targetsInfo);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteRenderPassInfo)(SERenderPassInfo* renderPassInfo);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseEnableRenderPassInfo)(SERenderPassInfo* renderPassInfo);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseDisableRenderPassInfo)(SERenderPassInfo* renderPassInfo);
 typedef SECommandQueueHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateCommandQueue)(SECommandQueue* commandQueue);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteCommandQueue)(SECommandQueue* commandQueue);
 typedef SECommandAllocatorHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateCommandAllocator)(
@@ -147,13 +148,14 @@ public:
     inline 	SEShaderHandle* CreateShader(SEShader* shader);
     inline 	void DeleteShader(SEShader* shader);
 
-    // Pass info stuff.
-    inline 	SEPassInfoHandle* CreatePassInfo(SEPassInfo* passInfo,
+    // Render pass info stuff.
+    inline 	SERenderPassInfoHandle* CreateRenderPassInfo(SERenderPassInfo* renderPassInfo,
         SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
-        SEPipelineStateBlock* psb, SERootSignature* rootSignature);
-    inline 	void DeletePassInfo(SEPassInfo* passInfo);
-    inline void EnablePassInfo(SEPassInfo* passInfo);
-    inline void DisablePassInfo(SEPassInfo* passInfo);
+        SEPipelineStateBlock* psb, SERootSignature* rootSignature, 
+        SERenderPassTargetsInfo* targetsInfo);
+    inline 	void DeleteRenderPassInfo(SERenderPassInfo* renderPassInfo);
+    inline void EnableRenderPassInfo(SERenderPassInfo* renderPassInfo);
+    inline void DisableRenderPassInfo(SERenderPassInfo* renderPassInfo);
 
     // Command queue stuff.
     inline 	SECommandQueueHandle* CreateCommandQueue(SECommandQueue* commandQueue);
@@ -182,10 +184,10 @@ protected:
     GPUDeviceBaseSetAnisFilterLevel					  _SetAnisFilterLevel;
     GPUDeviceBaseCreateShader                         _CreateShader;
     GPUDeviceBaseDeleteShader                         _DeleteShader;
-    GPUDeviceBaseCreatePassInfo                       _CreatePassInfo;
-    GPUDeviceBaseDeletePassInfo                       _DeletePassInfo;
-    GPUDeviceBaseEnablePassInfo                       _EnablePassInfo;
-    GPUDeviceBaseDisablePassInfo                      _DisablePassInfo;
+    GPUDeviceBaseCreateRenderPassInfo                 _CreateRenderPassInfo;
+    GPUDeviceBaseDeleteRenderPassInfo                 _DeleteRenderPassInfo;
+    GPUDeviceBaseEnableRenderPassInfo                 _EnableRenderPassInfo;
+    GPUDeviceBaseDisableRenderPassInfo                _DisableRenderPassInfo;
     GPUDeviceBaseCreateCommandQueue                   _CreateCommandQueue;
     GPUDeviceBaseDeleteCommandQueue                   _DeleteCommandQueue;
     GPUDeviceBaseCreateCommandAllocator               _CreateCommandAllocator;

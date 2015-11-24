@@ -16,7 +16,7 @@
 #include "SEPixelBuffer.h"
 #include "SEFrameBuffer.h"
 #include "SEPrimitive.h"
-#include "SEPassInfo.h"
+#include "SERenderPassInfo.h"
 #include "SEPipelineStateBlock.h"
 #include "SEGPUTimer.h"
 #include "SEVector3.h"
@@ -443,11 +443,11 @@ void SEOpenGLDevice::__SetProgramParameterInt(SEShaderProgram* program,
     SE_OPENGL_DEVICE_CHECK_ERROR;
 }
 //----------------------------------------------------------------------------
-SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*, 
+SERenderPassInfoHandle* SEOpenGLDevice::__CreateRenderPassInfo(SERenderPassInfo*, 
     SEShaderProgram* program, SEGeometryAttributes* geometryAttr, 
-    SEPipelineStateBlock*, SERootSignature*)
+    SEPipelineStateBlock*, SERootSignature*, SERenderPassTargetsInfo*)
 {
-    SEOpenGLPassInfoHandle* passInfoHandle = SE_NEW SEOpenGLPassInfoHandle();
+    SEOpenGLRenderPassInfoHandle* passInfoHandle = SE_NEW SEOpenGLRenderPassInfoHandle();
     passInfoHandle->DeviceBase = this;
 
     SEOpenGLShaderProgramHandle* programHandle =
@@ -548,25 +548,25 @@ SEPassInfoHandle* SEOpenGLDevice::__CreatePassInfo(SEPassInfo*,
     return passInfoHandle;
 }
 //----------------------------------------------------------------------------
-void SEOpenGLDevice::__DeletePassInfo(SEPassInfo* passInfo)
+void SEOpenGLDevice::__DeleteRenderPassInfo(SERenderPassInfo* renderPassInfo)
 {
-    SEOpenGLPassInfoHandle* passInfoHandle = 
-        (SEOpenGLPassInfoHandle*)passInfo->GetPassInfoHandle();
+    SEOpenGLRenderPassInfoHandle* passInfoHandle = 
+        (SEOpenGLRenderPassInfoHandle*)renderPassInfo->GetPassInfoHandle();
     glDeleteVertexArrays(1, &passInfoHandle->mVAO);
 
     SE_OPENGL_DEVICE_CHECK_ERROR;
 }
 //----------------------------------------------------------------------------
-void SEOpenGLDevice::__EnablePassInfo(SEPassInfo* passInfo)
+void SEOpenGLDevice::__EnableRenderPassInfo(SERenderPassInfo* renderPassInfo)
 {
-    SEOpenGLPassInfoHandle* passInfoHandle =
-        (SEOpenGLPassInfoHandle*)passInfo->GetPassInfoHandle();
+    SEOpenGLRenderPassInfoHandle* passInfoHandle =
+        (SEOpenGLRenderPassInfoHandle*)renderPassInfo->GetPassInfoHandle();
     glBindVertexArray(passInfoHandle->mVAO);
 
     SE_OPENGL_DEVICE_CHECK_ERROR;
 }
 //----------------------------------------------------------------------------
-void SEOpenGLDevice::__DisablePassInfo(SEPassInfo*)
+void SEOpenGLDevice::__DisableRenderPassInfo(SERenderPassInfo*)
 {
     glBindVertexArray(0);
 
@@ -1853,10 +1853,10 @@ SEOpenGLDevice::SEOpenGLDevice()
     SE_INSERT_GPU_DEVICE_BASE_FUNC(SetAnisFilterLevel, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateShader, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteShader, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreatePassInfo, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeletePassInfo, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(EnablePassInfo, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(DisablePassInfo, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateRenderPassInfo, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteRenderPassInfo, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(EnableRenderPassInfo, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DisableRenderPassInfo, SEOpenGLDevice);
 
     SE_INSERT_GPU_DEVICE_FUNC(CreateProgram, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(DeleteProgram, SEOpenGLDevice);

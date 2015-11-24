@@ -15,8 +15,8 @@ SETechniqueInfo::~SETechniqueInfo()
 {
 }
 //----------------------------------------------------------------------------
-void SETechniqueInfo::CreatePassInfo(SEGPUDevice* device, SETechnique* technique,
-	SEGeometryAttributes* geometryAttr)
+void SETechniqueInfo::CreateRenderPassInfo(SEGPUDevice* device, 
+    SETechnique* technique, SEGeometryAttributes* geometryAttr)
 {
 	unsigned int pcount = technique->GetPassCount();
 	mPassInfoArray.reserve(pcount);
@@ -25,14 +25,16 @@ void SETechniqueInfo::CreatePassInfo(SEGPUDevice* device, SETechnique* technique
 		SERenderPass* pass = (SERenderPass*)technique->GetPass(i);
 		SEShaderProgram* program = pass->GetShaderProgram();
         SEPipelineStateBlock* psb = pass->GetPipelineStateBlock();
+        SERenderPassTargetsInfo* targetsInfo = pass->GetRenderPassTargetsInfo();
 
-		SEPassInfo* passInfo = SE_NEW SEPassInfo();
-		passInfo->Create(device, program, geometryAttr, psb, 0);
-		mPassInfoArray.push_back(passInfo);
+		SERenderPassInfo* renderPassInfo = SE_NEW SERenderPassInfo();
+		renderPassInfo->CreateDeviceChild(device, program, geometryAttr, psb, 
+            0, targetsInfo);
+		mPassInfoArray.push_back(renderPassInfo);
 	}
 }
 //----------------------------------------------------------------------------
-SEPassInfo* SETechniqueInfo::GetPassInfo(int i) const
+SERenderPassInfo* SETechniqueInfo::GetPassInfo(int i) const
 {
 	SE_ASSERT( i >= 0 && i < (int)mPassInfoArray.size());
 	return mPassInfoArray[i];

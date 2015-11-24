@@ -89,9 +89,6 @@
     <ClCompile Include="Shaders\SEPassBase.cpp">
       <Filter>Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="Shaders\SEPassInfo.cpp">
-      <Filter>Shaders</Filter>
-    </ClCompile>
     <ClCompile Include="Shaders\SEPassManager.cpp">
       <Filter>Shaders</Filter>
     </ClCompile>
@@ -295,6 +292,9 @@
     <ClCompile Include="Device\SERenderCommandList.cpp" />
     <ClCompile Include="Device\SERenderCommandQueue.cpp" />
     <ClCompile Include="Device\SERootSignature.cpp" />
+    <ClCompile Include="Shaders\SERenderPassInfo.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneGraph\SEBoundingVolume.h">
@@ -357,9 +357,6 @@
       <Filter>Shaders</Filter>
     </ClInclude>
     <ClInclude Include="Shaders\SEPassBase.h">
-      <Filter>Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="Shaders\SEPassInfo.h">
       <Filter>Shaders</Filter>
     </ClInclude>
     <ClInclude Include="Shaders\SEPassManager.h">
@@ -565,6 +562,9 @@
     <ClInclude Include="Device\SERenderCommandList.h" />
     <ClInclude Include="Device\SERenderCommandQueue.h" />
     <ClInclude Include="Device\SERootSignature.h" />
+    <ClInclude Include="Shaders\SERenderPassInfo.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SceneGraph\SEBoxBV.inl">

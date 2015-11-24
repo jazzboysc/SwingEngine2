@@ -1,8 +1,8 @@
 // Swing Engine Version 2 Source Code 
 // Copyright (c) 2007-2015
 
-#ifndef Swing_PassInfo_H
-#define Swing_PassInfo_H
+#ifndef Swing_RenderPassInfo_H
+#define Swing_RenderPassInfo_H
 
 #include "SERenderingEngineLIB.h"
 #include "SEGPUDeviceBase.h"
@@ -20,23 +20,23 @@ namespace Swing
 // Author: Che Sun
 // Date: 08/09/2014
 //----------------------------------------------------------------------------
-class SE_RENDERING_ENGINE_API SEPassInfo
+class SE_RENDERING_ENGINE_API SERenderPassInfo
 {
 public:
-	SEPassInfo();
-	~SEPassInfo();
+	SERenderPassInfo();
+	~SERenderPassInfo();
 
-	void Create(SEGPUDeviceBase* device, SEShaderProgram* program, 
+	void CreateDeviceChild(SEGPUDeviceBase* device, SEShaderProgram* program,
         SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb, 
-        SERootSignature* rootSignature);
+        SERootSignature* rootSignature, SERenderPassTargetsInfo* targetsInfo);
 
 	void Enable();
 	void Disable();
 
-    SEPassInfoHandle* GetPassInfoHandle() const;
+    SERenderPassInfoHandle* GetPassInfoHandle() const;
 
 private:
-    SEPassInfoHandle* mPassInfoHandle;
+    SERenderPassInfoHandle* mPassInfoHandle;
 };
 
 }

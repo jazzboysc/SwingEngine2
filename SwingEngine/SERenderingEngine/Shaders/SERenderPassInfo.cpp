@@ -2,52 +2,53 @@
 // Copyright (c) 2007-2015
 
 #include "SERenderingEnginePCH.h"
-#include "SEPassInfo.h"
+#include "SERenderPassInfo.h"
 #include <cstdio>
 
 using namespace Swing;
 
 //----------------------------------------------------------------------------
-SEPassInfo::SEPassInfo()
+SERenderPassInfo::SERenderPassInfo()
 	:
     mPassInfoHandle(0)
 {
 }
 //----------------------------------------------------------------------------
-SEPassInfo::~SEPassInfo()
+SERenderPassInfo::~SERenderPassInfo()
 {
     if( mPassInfoHandle )
     {
-        mPassInfoHandle->DeviceBase->DeletePassInfo(this);
+        mPassInfoHandle->DeviceBase->DeleteRenderPassInfo(this);
         SE_DELETE mPassInfoHandle;
         mPassInfoHandle = 0;
     }
 }
 //----------------------------------------------------------------------------
-void SEPassInfo::Create(SEGPUDeviceBase* device, SEShaderProgram* program, 
-    SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb, 
-    SERootSignature* rootSignature)
+void SERenderPassInfo::CreateDeviceChild(SEGPUDeviceBase* device, 
+    SEShaderProgram* program, SEGeometryAttributes* geometryAttr, 
+    SEPipelineStateBlock* psb, SERootSignature* rootSignature, 
+    SERenderPassTargetsInfo* targetsInfo)
 {
     if( mPassInfoHandle )
     {
         return;
     }
 
-    mPassInfoHandle = device->CreatePassInfo(this, program, geometryAttr, psb,
-        rootSignature);
+    mPassInfoHandle = device->CreateRenderPassInfo(this, program, 
+        geometryAttr, psb, rootSignature, targetsInfo);
 }
 //----------------------------------------------------------------------------
-void SEPassInfo::Enable()
+void SERenderPassInfo::Enable()
 {
-    mPassInfoHandle->DeviceBase->EnablePassInfo(this);
+    mPassInfoHandle->DeviceBase->EnableRenderPassInfo(this);
 }
 //----------------------------------------------------------------------------
-void SEPassInfo::Disable()
+void SERenderPassInfo::Disable()
 {
-    mPassInfoHandle->DeviceBase->DisablePassInfo(this);
+    mPassInfoHandle->DeviceBase->DisableRenderPassInfo(this);
 }
 //----------------------------------------------------------------------------
-SEPassInfoHandle* SEPassInfo::GetPassInfoHandle() const
+SERenderPassInfoHandle* SERenderPassInfo::GetPassInfoHandle() const
 {
     return mPassInfoHandle;
 }

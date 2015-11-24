@@ -7,7 +7,7 @@
 #include "SERenderingEngineLIB.h"
 #include "SEGPUDevice.h"
 #include "SETechnique.h"
-#include "SEPassInfo.h"
+#include "SERenderPassInfo.h"
 #include "SEGeometryAttributes.h"
 #include <vector>
 
@@ -24,13 +24,13 @@ public:
 	SETechniqueInfo();
 	~SETechniqueInfo();
 
-	void CreatePassInfo(SEGPUDevice* device, SETechnique* technique, 
+	void CreateRenderPassInfo(SEGPUDevice* device, SETechnique* technique, 
         SEGeometryAttributes* geometryAttr);
 
-	SEPassInfo* GetPassInfo(int i) const;
+	SERenderPassInfo* GetPassInfo(int i) const;
 
 private:
-	std::vector<SEPassInfo*> mPassInfoArray;
+	std::vector<SERenderPassInfo*> mPassInfoArray;
 };
 
 }

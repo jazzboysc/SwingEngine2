@@ -34,13 +34,14 @@ private:
     SEShaderHandle* __CreateShader(SEShader* shader);
     void __DeleteShader(SEShader* shader);
 
-    // Pass info stuff.
-    SEPassInfoHandle* __CreatePassInfo(SEPassInfo* passInfo, SEShaderProgram* program,
-        SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb, 
-        SERootSignature* rootSignature);
-    void __DeletePassInfo(SEPassInfo* passInfo);
-    void __EnablePassInfo(SEPassInfo* passInfo);
-    void __DisablePassInfo(SEPassInfo* passInfo);
+    // Render pass info stuff.
+    SERenderPassInfoHandle* __CreateRenderPassInfo(SERenderPassInfo* renderPassInfo, 
+        SEShaderProgram* program, SEGeometryAttributes* geometryAttr, 
+        SEPipelineStateBlock* psb, SERootSignature* rootSignature, 
+        SERenderPassTargetsInfo* targetsInfo);
+    void __DeleteRenderPassInfo(SERenderPassInfo* renderPassInfo);
+    void __EnableRenderPassInfo(SERenderPassInfo* renderPassInfo);
+    void __DisableRenderPassInfo(SERenderPassInfo* renderPassInfo);
 
     // Command queue stuff.
     SECommandQueueHandle* __CreateCommandQueue(SECommandQueue* commandQueue);

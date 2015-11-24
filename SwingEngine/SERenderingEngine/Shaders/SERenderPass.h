@@ -41,6 +41,8 @@ public:
 	void Enable();
 	void Disable();
 
+    SERenderPassTargetsInfo* GetRenderPassTargetsInfo();
+
     bool IsTessellationEnabled() const;
 
 protected:

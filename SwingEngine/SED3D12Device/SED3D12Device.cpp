@@ -19,6 +19,8 @@
 #include "SERootSignature.h"
 #include "SEGeometryAttributes.h"
 #include "SEPrimitive.h"
+#include "SERenderPass.h"
+#include "SERenderPassInfo.h"
 
 #include "d3dx12.h"
 
@@ -59,6 +61,20 @@ D3D12_PRIMITIVE_TOPOLOGY_TYPE gsPrimitiveTopologyType[PrimitiveType_Max] =
     D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE,
     D3D12_PRIMITIVE_TOPOLOGY_TYPE_UNDEFINED,  // D3D12 doesn't have quad type.
     D3D12_PRIMITIVE_TOPOLOGY_TYPE_PATCH
+};
+
+DXGI_FORMAT gsBufferFormat[BufferFormat_Max] =
+{
+    DXGI_FORMAT_R8_UNORM,
+    DXGI_FORMAT_R8G8_UNORM,
+    DXGI_FORMAT_R8G8B8A8_UNORM,
+    DXGI_FORMAT_R8G8B8A8_UNORM,
+    DXGI_FORMAT_R32G32B32_FLOAT,
+    DXGI_FORMAT_R32G32B32A32_FLOAT,
+    DXGI_FORMAT_R16G16B16A16_FLOAT,
+    DXGI_FORMAT_R32_UINT,
+    DXGI_FORMAT_R32_FLOAT,
+    DXGI_FORMAT_D24_UNORM_S8_UINT
 };
 
 //----------------------------------------------------------------------------
@@ -340,11 +356,12 @@ void SED3D12Device::__DeleteShader(SEShader* shader)
     }
 }
 //----------------------------------------------------------------------------
-SEPassInfoHandle* SED3D12Device::__CreatePassInfo(SEPassInfo*,
-    SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
-    SEPipelineStateBlock* psb, SERootSignature* rootSignature)
+SERenderPassInfoHandle* SED3D12Device::__CreateRenderPassInfo(
+    SERenderPassInfo*, SEShaderProgram* program, 
+    SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb, 
+    SERootSignature* rootSignature, SERenderPassTargetsInfo* targetsInfo)
 {
-    SE_ASSERT(geometryAttr);
+    SE_ASSERT(renderPassInfo && geometryAttr && targetsInfo);
 
     D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = {};
 
@@ -502,26 +519,49 @@ SEPassInfoHandle* SED3D12Device::__CreatePassInfo(SEPassInfo*,
 
     psoDesc.SampleMask = UINT_MAX;
 
+    // Specify primitive type.
     psoDesc.PrimitiveTopologyType = gsPrimitiveTopologyType[
         (int)geometryAttr->Prim->Type];
 
-    //psoDesc.NumRenderTargets = 1;
-    //psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
-    //psoDesc.SampleDesc.Count = 1;
+    // Specify render targets.
+    psoDesc.NumRenderTargets = targetsInfo->ColorTargetCount;
+    for( unsigned int i = 0; i < targetsInfo->ColorTargetCount; ++i )
+    {
+        SEBufferFormat format = targetsInfo->ColorTargetFormats[i];
+        psoDesc.RTVFormats[i] = gsBufferFormat[(int)format];
+    }
+    psoDesc.DSVFormat = gsBufferFormat[(int)targetsInfo->DepthFormat];
 
-    return 0;
+    // TODO:
+    // Implement multisampling setup.
+    psoDesc.SampleDesc.Count = 1;
+
+    SED3D12RenderPassInfoHandle* renderPassInfoHandle = SE_NEW SED3D12RenderPassInfoHandle();
+    renderPassInfoHandle->DeviceBase = this;
+
+    HRESULT hr = mD3DDevice->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&
+        renderPassInfoHandle->mPipelineState));
+    SE_ASSERT(hr == S_OK);
+
+    return renderPassInfoHandle;
 }
 //----------------------------------------------------------------------------
-void SED3D12Device::__DeletePassInfo(SEPassInfo*)
+void SED3D12Device::__DeleteRenderPassInfo(SERenderPassInfo* renderPassInfo)
 {
+    SED3D12RenderPassInfoHandle* renderPassInfoHandle =
+        (SED3D12RenderPassInfoHandle*)renderPassInfo->GetPassInfoHandle();
+    if( renderPassInfoHandle )
+    {
+        renderPassInfoHandle->mPipelineState = nullptr;
+    }
 }
 //----------------------------------------------------------------------------
-void SED3D12Device::__EnablePassInfo(SEPassInfo*)
+void SED3D12Device::__EnableRenderPassInfo(SERenderPassInfo*)
 {
     // TODO:
 }
 //----------------------------------------------------------------------------
-void SED3D12Device::__DisablePassInfo(SEPassInfo*)
+void SED3D12Device::__DisableRenderPassInfo(SERenderPassInfo*)
 {
     // TODO:
 }
@@ -684,10 +724,10 @@ SED3D12Device::SED3D12Device(HWND mainWindow)
     SE_INSERT_GPU_DEVICE_BASE_FUNC(SetAnisFilterLevel, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateShader, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteShader, SED3D12Device);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreatePassInfo, SED3D12Device);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeletePassInfo, SED3D12Device);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(EnablePassInfo, SED3D12Device);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(DisablePassInfo, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateRenderPassInfo, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteRenderPassInfo, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(EnableRenderPassInfo, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(DisableRenderPassInfo, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateCommandQueue, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteCommandQueue, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateCommandAllocator, SED3D12Device);

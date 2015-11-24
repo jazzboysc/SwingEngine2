@@ -41,14 +41,14 @@ void SELightMesh::OnUpdateShaderConstants(int technique, int pass)
     LightMeshTexture->BindToSampler(0, &sampler);
 }
 //----------------------------------------------------------------------------
-void SELightMesh::OnRender(SERenderPass* pass, SEPassInfo* passInfo)
+void SELightMesh::OnRender(SERenderPass* pass, SERenderPassInfo* renderPassInfo)
 {
     // TODO:
     //glDisable(GL_DEPTH_TEST);
     //glEnable(GL_BLEND);
     //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    SETriangleMesh::OnRender(pass, passInfo);
+    SETriangleMesh::OnRender(pass, renderPassInfo);
 
     //glDisable(GL_BLEND);
 }

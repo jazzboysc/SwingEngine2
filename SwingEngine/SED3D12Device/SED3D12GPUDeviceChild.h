@@ -31,7 +31,7 @@ struct SE_D3D12_DEVICE_API SED3D12RootSignatureHandle : public SERootSignatureHa
     ComPtr<ID3D12RootSignature> mRootSignature;
 };
 
-struct SE_D3D12_DEVICE_API SED3D12PassInfoHandle : public SEPassInfoHandle
+struct SE_D3D12_DEVICE_API SED3D12RenderPassInfoHandle : public SERenderPassInfoHandle
 {
     ComPtr<ID3D12PipelineState> mPipelineState;
 };

@@ -115,7 +115,7 @@
 #include "SEShaderProgram.h"
 #include "SEPassBase.h"
 #include "SERenderPass.h"
-#include "SEPassInfo.h"
+#include "SERenderPassInfo.h"
 #include "SEPassManager.h"
 #include "SETechnique.h"
 #include "SETechniqueInfo.h"

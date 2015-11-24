@@ -10,7 +10,7 @@
 namespace Swing
 {
 
-struct SE_OPENGL_DEVICE_API SEOpenGLPassInfoHandle : public SEPassInfoHandle
+struct SE_OPENGL_DEVICE_API SEOpenGLRenderPassInfoHandle : public SERenderPassInfoHandle
 {
     GLuint mVAO;
 };

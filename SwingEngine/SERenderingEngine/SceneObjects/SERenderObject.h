@@ -60,7 +60,7 @@ public:
 	virtual void Render(int technique, int pass, 
         SESubRenderer* subRenderer = 0) = 0;
 	virtual void OnUpdateShaderConstants(int technique, int pass) = 0;
-    virtual void OnRender(SERenderPass*, SEPassInfo*){};
+    virtual void OnRender(SERenderPass*, SERenderPassInfo*){};
 	virtual void OnEnableBuffers(){};
 	virtual void OnDisableBuffers(){};
 

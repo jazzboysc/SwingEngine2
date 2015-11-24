@@ -35,6 +35,11 @@ void SERenderPass::Disable()
 	mShaderProgram->Disable();
 }
 //----------------------------------------------------------------------------
+SERenderPassTargetsInfo* SERenderPass::GetRenderPassTargetsInfo()
+{
+    return &mTargetsInfo;
+}
+//----------------------------------------------------------------------------
 bool SERenderPass::IsTessellationEnabled() const
 {
     return mShaderProgram->IsTessellationEnabled();
