@@ -92,6 +92,18 @@ void SEGPUDeviceBase::DeleteCommandList(SECommandList* commandList,
     (this->*_DeleteCommandList)(commandList, commandAllocator);
 }
 //----------------------------------------------------------------------------
+void SEGPUDeviceBase::ResetRenderCommandList(
+    SERenderCommandList* renderCommandList, SERenderPassInfo* renderPassInfo)
+{
+    (this->*_ResetRenderCommandList)(renderCommandList, renderPassInfo);
+}
+//----------------------------------------------------------------------------
+void SEGPUDeviceBase::CloseRenderCommandList(
+    SERenderCommandList* renderCommandList)
+{
+    (this->*_CloseRenderCommandList)(renderCommandList);
+}
+//----------------------------------------------------------------------------
 SERootSignatureHandle* SEGPUDeviceBase::CreateRootSignature(
     SERootSignature* rootSignature)
 {

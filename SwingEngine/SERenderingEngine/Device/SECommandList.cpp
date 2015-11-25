@@ -52,3 +52,8 @@ SECommandListHandle* SECommandList::GetCommandListHandle() const
     return mCommandListHandle;
 }
 //----------------------------------------------------------------------------
+SECommandAllocator* SECommandList::GetCommandAllocator() const
+{
+    return mCommandAllocator;
+}
+//----------------------------------------------------------------------------

@@ -38,6 +38,7 @@ public:
 
     SECommandListType GetType() const;
     SECommandListHandle* GetCommandListHandle() const;
+    SECommandAllocator* GetCommandAllocator() const;
 
 protected:
     SECommandList(SECommandListType type);

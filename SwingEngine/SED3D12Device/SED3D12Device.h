@@ -58,6 +58,9 @@ private:
         SECommandAllocator* commandAllocator);
     void __DeleteCommandList(SECommandList* commandList,
         SECommandAllocator* commandAllocator);
+    void __ResetRenderCommandList(SERenderCommandList* renderCommandList, 
+        SERenderPassInfo* renderPassInfo);
+    void __CloseRenderCommandList(SERenderCommandList* renderCommandList);
 
     // Root signature stuff.
     SERootSignatureHandle* __CreateRootSignature(SERootSignature* rootSignature);

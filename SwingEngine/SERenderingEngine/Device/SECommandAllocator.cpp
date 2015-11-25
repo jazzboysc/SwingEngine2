@@ -53,3 +53,8 @@ SECommandAllocatorHandle* SECommandAllocator::GetCommandAllocatorHandle() const
     return mCommandAllocatorHandle;
 }
 //----------------------------------------------------------------------------
+SECommandList* SECommandAllocator::GetCommandList() const
+{
+    return mCommandList;
+}
+//----------------------------------------------------------------------------

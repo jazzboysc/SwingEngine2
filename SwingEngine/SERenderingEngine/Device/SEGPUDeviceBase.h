@@ -100,24 +100,40 @@ typedef void (SEGPUDeviceBase::*GPUDeviceBaseInitialize)(SEGPUDeviceDescription*
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseTerminate)();
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseGetMaxAnisFilterLevel)(int* maxAnisFilterLevel);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseSetAnisFilterLevel)(int maxAnisFilterLevel);
+
+// Shader.
 typedef SEShaderHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateShader)(SEShader* shader);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteShader)(SEShader* shader);
+
+// Render pass info.
 typedef SERenderPassInfoHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateRenderPassInfo)(
     SERenderPassInfo* renderPassInfo, SEShaderProgram* program, SEGeometryAttributes* geometryAttr,
     SEPipelineStateBlock* psb, SERootSignature* rootSignature, SERenderPassTargetsInfo* targetsInfo);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteRenderPassInfo)(SERenderPassInfo* renderPassInfo);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseEnableRenderPassInfo)(SERenderPassInfo* renderPassInfo);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDisableRenderPassInfo)(SERenderPassInfo* renderPassInfo);
+
+// Command queue.
 typedef SECommandQueueHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateCommandQueue)(SECommandQueue* commandQueue);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteCommandQueue)(SECommandQueue* commandQueue);
+
+// Command allocator.
 typedef SECommandAllocatorHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateCommandAllocator)(
     SECommandAllocator* commandAllocator, SECommandList* commandList);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteCommandAllocator)(
     SECommandAllocator* commandAllocator, SECommandList* commandList);
+
+// Command list.
 typedef SECommandListHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateCommandList)(
     SECommandList* commandList, SECommandAllocator* commandAllocator);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteCommandList)(
     SECommandList* commandList, SECommandAllocator* commandAllocator);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseResetRenderCommandList)(
+    SERenderCommandList* renderCommandList, SERenderPassInfo* renderPassInfo);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseCloseRenderCommandList)(
+    SERenderCommandList* renderCommandList);
+
+// Root signature.
 typedef SERootSignatureHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateRootSignature)(
     SERootSignature* rootSignature);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseDeleteRootSignature)(
@@ -168,10 +184,13 @@ public:
         SECommandAllocator* commandAllocator, SECommandList* commandList);
 
     // Command list stuff.
-    inline SECommandListHandle* CreateCommandList(SECommandList* commandList, 
+    inline  SECommandListHandle* CreateCommandList(SECommandList* commandList, 
         SECommandAllocator* commandAllocator);
-    inline void DeleteCommandList(SECommandList* commandList, 
+    inline  void DeleteCommandList(SECommandList* commandList, 
         SECommandAllocator* commandAllocator);
+    inline  void ResetRenderCommandList(SERenderCommandList* renderCommandList, 
+        SERenderPassInfo* renderPassInfo);
+    inline  void CloseRenderCommandList(SERenderCommandList* renderCommandList);
 
     // Root signature stuff.
     inline SERootSignatureHandle* CreateRootSignature(SERootSignature* rootSignature);
@@ -182,18 +201,26 @@ protected:
     GPUDeviceBaseTerminate                            _Terminate;
     GPUDeviceBaseGetMaxAnisFilterLevel				  _GetMaxAnisFilterLevel;
     GPUDeviceBaseSetAnisFilterLevel					  _SetAnisFilterLevel;
+
     GPUDeviceBaseCreateShader                         _CreateShader;
     GPUDeviceBaseDeleteShader                         _DeleteShader;
+
     GPUDeviceBaseCreateRenderPassInfo                 _CreateRenderPassInfo;
     GPUDeviceBaseDeleteRenderPassInfo                 _DeleteRenderPassInfo;
     GPUDeviceBaseEnableRenderPassInfo                 _EnableRenderPassInfo;
     GPUDeviceBaseDisableRenderPassInfo                _DisableRenderPassInfo;
+
     GPUDeviceBaseCreateCommandQueue                   _CreateCommandQueue;
     GPUDeviceBaseDeleteCommandQueue                   _DeleteCommandQueue;
+
     GPUDeviceBaseCreateCommandAllocator               _CreateCommandAllocator;
     GPUDeviceBaseDeleteCommandAllocator               _DeleteCommandAllocator;
+
     GPUDeviceBaseCreateCommandList                    _CreateCommandList;
     GPUDeviceBaseDeleteCommandList                    _DeleteCommandList;
+    GPUDeviceBaseResetRenderCommandList               _ResetRenderCommandList;
+    GPUDeviceBaseCloseRenderCommandList               _CloseRenderCommandList;
+
     GPUDeviceBaseCreateRootSignature                  _CreateRootSignature;
     GPUDeviceBaseDeleteRootSignature                  _DeleteRootSignature;
 
