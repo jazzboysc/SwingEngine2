@@ -104,6 +104,18 @@ void SEGPUDeviceBase::CloseRenderCommandList(
     (this->*_CloseRenderCommandList)(renderCommandList);
 }
 //----------------------------------------------------------------------------
+void SEGPUDeviceBase::RenderCommandListSetRootSignature(
+    SERenderCommandList* renderCommandList, SERootSignature* rootSignature)
+{
+    (this->*_RenderCommandListSetRootSignature)(renderCommandList, rootSignature);
+}
+//----------------------------------------------------------------------------
+void SEGPUDeviceBase::RenderCommandListSetViewport(
+    SERenderCommandList* renderCommandList, SEViewportState* srcViewport)
+{
+    (this->*_RenderCommandListSetViewport)(renderCommandList, srcViewport);
+}
+//----------------------------------------------------------------------------
 SERootSignatureHandle* SEGPUDeviceBase::CreateRootSignature(
     SERootSignature* rootSignature)
 {

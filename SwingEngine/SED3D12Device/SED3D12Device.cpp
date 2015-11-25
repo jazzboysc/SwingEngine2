@@ -683,6 +683,28 @@ void SED3D12Device::__CloseRenderCommandList(
     SE_ASSERT(hr == S_OK);
 }
 //----------------------------------------------------------------------------
+void SED3D12Device::__RenderCommandListSetRootSignature(
+    SERenderCommandList* renderCommandList, SERootSignature* rootSignature)
+{
+    SED3D12CommandListHandle* commandListHandle =
+        (SED3D12CommandListHandle*)renderCommandList->GetCommandListHandle();
+    SE_ASSERT(commandListHandle);
+
+    SED3D12RootSignatureHandle* rootSignatureHandle = 
+        (SED3D12RootSignatureHandle*)rootSignature->GetRootSignatureHandle();
+    SE_ASSERT(rootSignatureHandle);
+
+    ((ID3D12GraphicsCommandList*)
+        commandListHandle->mCommandList.Get())->SetGraphicsRootSignature(
+            rootSignatureHandle->mRootSignature.Get());
+}
+//----------------------------------------------------------------------------
+void SED3D12Device::__RenderCommandListSetViewport(
+    SERenderCommandList* renderCommandList, SEViewportState* srcViewport)
+{
+    // TODO:
+}
+//----------------------------------------------------------------------------
 SERootSignatureHandle* SED3D12Device::__CreateRootSignature(
     SERootSignature* rootSignature)
 {
@@ -755,20 +777,28 @@ SED3D12Device::SED3D12Device(HWND mainWindow)
     SE_INSERT_GPU_DEVICE_BASE_FUNC(Terminate, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(GetMaxAnisFilterLevel, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(SetAnisFilterLevel, SED3D12Device);
+
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateShader, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteShader, SED3D12Device);
+
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateRenderPassInfo, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteRenderPassInfo, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(EnableRenderPassInfo, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DisableRenderPassInfo, SED3D12Device);
+
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateCommandQueue, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteCommandQueue, SED3D12Device);
+
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateCommandAllocator, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteCommandAllocator, SED3D12Device);
+
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateCommandList, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteCommandList, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(ResetRenderCommandList, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CloseRenderCommandList, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(RenderCommandListSetRootSignature, SED3D12Device);
+    SE_INSERT_GPU_DEVICE_BASE_FUNC(RenderCommandListSetViewport, SED3D12Device);
+
     SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateRootSignature, SED3D12Device);
     SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteRootSignature, SED3D12Device);
 

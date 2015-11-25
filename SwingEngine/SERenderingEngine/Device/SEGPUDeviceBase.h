@@ -132,6 +132,10 @@ typedef void (SEGPUDeviceBase::*GPUDeviceBaseResetRenderCommandList)(
     SERenderCommandList* renderCommandList, SERenderPassInfo* renderPassInfo);
 typedef void (SEGPUDeviceBase::*GPUDeviceBaseCloseRenderCommandList)(
     SERenderCommandList* renderCommandList);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseRenderCommandListSetRootSignature)(
+    SERenderCommandList* renderCommandList, SERootSignature* rootSignature);
+typedef void (SEGPUDeviceBase::*GPUDeviceBaseRenderCommandListSetViewport)(
+    SERenderCommandList* renderCommandList, SEViewportState* srcViewport);
 
 // Root signature.
 typedef SERootSignatureHandle* (SEGPUDeviceBase::*GPUDeviceBaseCreateRootSignature)(
@@ -191,6 +195,10 @@ public:
     inline  void ResetRenderCommandList(SERenderCommandList* renderCommandList, 
         SERenderPassInfo* renderPassInfo);
     inline  void CloseRenderCommandList(SERenderCommandList* renderCommandList);
+    inline  void RenderCommandListSetRootSignature(
+        SERenderCommandList* renderCommandList, SERootSignature* rootSignature);
+    inline  void RenderCommandListSetViewport(SERenderCommandList* renderCommandList, 
+        SEViewportState* srcViewport);
 
     // Root signature stuff.
     inline SERootSignatureHandle* CreateRootSignature(SERootSignature* rootSignature);
@@ -220,6 +228,8 @@ protected:
     GPUDeviceBaseDeleteCommandList                    _DeleteCommandList;
     GPUDeviceBaseResetRenderCommandList               _ResetRenderCommandList;
     GPUDeviceBaseCloseRenderCommandList               _CloseRenderCommandList;
+    GPUDeviceBaseRenderCommandListSetRootSignature    _RenderCommandListSetRootSignature;
+    GPUDeviceBaseRenderCommandListSetViewport         _RenderCommandListSetViewport;
 
     GPUDeviceBaseCreateRootSignature                  _CreateRootSignature;
     GPUDeviceBaseDeleteRootSignature                  _DeleteRootSignature;

@@ -61,6 +61,10 @@ private:
     void __ResetRenderCommandList(SERenderCommandList* renderCommandList, 
         SERenderPassInfo* renderPassInfo);
     void __CloseRenderCommandList(SERenderCommandList* renderCommandList);
+    void __RenderCommandListSetRootSignature(
+        SERenderCommandList* renderCommandList, SERootSignature* rootSignature);
+    void __RenderCommandListSetViewport(SERenderCommandList* renderCommandList,
+        SEViewportState* srcViewport);
 
     // Root signature stuff.
     SERootSignatureHandle* __CreateRootSignature(SERootSignature* rootSignature);
