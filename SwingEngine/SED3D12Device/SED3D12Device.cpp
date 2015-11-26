@@ -357,7 +357,7 @@ void SED3D12Device::__DeleteShader(SEShader* shader)
 }
 //----------------------------------------------------------------------------
 SERenderPassInfoHandle* SED3D12Device::__CreateRenderPassInfo(
-    SERenderPassInfo*, SEShaderProgram* program, 
+    SERenderPassInfo* renderPassInfo, SEShaderProgram* program,
     SEGeometryAttributes* geometryAttr, SEPipelineStateBlock* psb, 
     SERootSignature* rootSignature, SERenderPassTargetsInfo* targetsInfo)
 {
