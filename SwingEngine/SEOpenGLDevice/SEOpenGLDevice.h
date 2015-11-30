@@ -8,6 +8,71 @@
 #include "SEGPUDevice.h"
 #include "SEOpenGLResource.h"
 #include "SEOpenGLGPUDeviceChild.h"
+#include "SEGPUDeviceInspector.h"
+#include "SETerminal.h"
+#include "SEShaderProgram.h"
+#include "SEBufferView.h"
+#include "SEBufferBase.h"
+#include "SETexture.h"
+#include "SETexture1D.h"
+#include "SETexture2D.h"
+#include "SETexture2DArray.h"
+#include "SETexture3D.h"
+#include "SEPixelBuffer.h"
+#include "SEFrameBuffer.h"
+#include "SEPrimitive.h"
+#include "SERenderPassInfo.h"
+#include "SEPipelineStateBlock.h"
+#include "SEGPUTimer.h"
+#include "SEVector3.h"
+#include "SEMatrix4.h"
+
+#include <string>
+#include <GL/glew.h>
+
+#ifdef _DEBUG
+//----------------------------------------------------------------------------
+#define SE_OPENGL_DEVICE_CHECK_ERROR  \
+    {  \
+        GLenum res = glGetError();  \
+        SE_ASSERT(res == GL_NO_ERROR);  \
+    }
+//----------------------------------------------------------------------------
+#else
+#define SE_OPENGL_DEVICE_CHECK_ERROR
+#endif
+
+#ifdef SE_GPU_MEMORY_INSPECTION
+//----------------------------------------------------------------------------
+#define SE_OPENGL_DEVICE_BEGIN_MEM_INSPECTION(inspector, resident)  \
+    int mem1 = 0;  \
+    if( inspector )  \
+    {  \
+        mem1 = GetDeviceMemoryAvailable();  \
+    }
+//----------------------------------------------------------------------------
+#define SE_OPENGL_DEVICE_END_MEM_INSPECTION(inspector, resident)  \
+    int mem2 = 0;  \
+    if( inspector )  \
+    {  \
+        mem2 = GetDeviceMemoryAvailable();  \
+        SEDeviceMemOp op;  \
+        op.Resident = resident;  \
+        op.DeviceMemPrint = mem1 - mem2;  \
+        inspector->OnDeviceMemoryOperation(&op);  \
+    }
+//----------------------------------------------------------------------------
+#else
+#define SE_OPENGL_DEVICE_BEGIN_MEM_INSPECTION(inspector, resident) (void)resident
+#define SE_OPENGL_DEVICE_END_MEM_INSPECTION(inspector, resident) (void)resident
+#endif
+//----------------------------------------------------------------------------
+
+#define GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX          0x9047
+#define GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX    0x9048
+#define GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX  0x9049
+#define GPU_MEMORY_INFO_EVICTION_COUNT_NVX            0x904A
+#define GPU_MEMORY_INFO_EVICTED_MEMORY_NVX            0x904B
 
 namespace Swing
 {
@@ -23,6 +88,9 @@ public:
     ~SEOpenGLDevice();
 
 private:
+    void InsertGPUDeviceBaseFunctions();
+    void InsertGPUDeviceFunctions();
+
     void __Initialize(SEGPUDeviceDescription* deviceDesc);
     void __Terminate();
     void __OnResize(unsigned int width, unsigned int height);
@@ -52,6 +120,33 @@ private:
     void __DeleteRenderPassInfo(SERenderPassInfo* renderPassInfo);
     void __EnableRenderPassInfo(SERenderPassInfo* renderPassInfo);
     void __DisableRenderPassInfo(SERenderPassInfo* renderPassInfo);
+
+    // Command queue stuff.
+    SECommandQueueHandle* __CreateCommandQueue(SECommandQueue* commandQueue);
+    void __DeleteCommandQueue(SECommandQueue* commandQueue);
+
+    // Command allocator stuff.
+    SECommandAllocatorHandle* __CreateCommandAllocator(
+        SECommandAllocator* commandAllocator, SECommandList* commandList);
+    void __DeleteCommandAllocator(
+        SECommandAllocator* commandAllocator, SECommandList* commandList);
+
+    // Command list stuff.
+    SECommandListHandle* __CreateCommandList(SECommandList* commandList,
+        SECommandAllocator* commandAllocator);
+    void __DeleteCommandList(SECommandList* commandList,
+        SECommandAllocator* commandAllocator);
+    void __ResetRenderCommandList(SERenderCommandList* renderCommandList,
+        SERenderPassInfo* renderPassInfo);
+    void __CloseRenderCommandList(SERenderCommandList* renderCommandList);
+    void __RenderCommandListSetRootSignature(
+        SERenderCommandList* renderCommandList, SERootSignature* rootSignature);
+    void __RenderCommandListSetViewport(SERenderCommandList* renderCommandList,
+        SEViewportState* srcViewport);
+
+    // Root signature stuff.
+    SERootSignatureHandle* __CreateRootSignature(SERootSignature* rootSignature);
+    void __DeleteRootSignature(SERootSignature* rootSignature);
 
     // Uniform.
     void __GetUniformLocation(SEShaderProgram* program, SEShaderUniform* uniform, 
@@ -169,6 +264,21 @@ private:
     bool mEnable4xMsaa;
     unsigned int m4xMsaaQuality;
     GLint mAnisFilterLevel;
+
+private:
+    static const GLenum gsShaderType[ShaderType_Max];
+    static const GLenum gsShaderProgramParams[SPP_Max];
+    static const GLenum gsBufferTargets[BufferType_Max];
+    static const GLenum gsBufferBindings[BufferType_Max];
+    static const GLenum gsBufferFormat[BufferFormat_Max];
+    static const GLint  gsBufferInternalFormat[BufferInternalFormat_Max];
+    static const GLenum gsBufferComponentType[BufferComponentType_Max];
+    static const GLenum gsBufferAccess[BufferAccess_Max];
+    static const GLenum gsBufferUsage[BufferUsage_Max];
+    static const GLenum gsTextureTargets[TextureType_Max];
+    static const GLenum gsFilterType[FilterType_Max];
+    static const GLenum gsWrapType[WrapType_Max];
+    static const GLenum gsPrimitiveType[PrimitiveType_Max];
 };
 
 }

@@ -9,6 +9,9 @@
     <ClCompile Include="SEOpenGLResource.cpp">
       <Filter>GPU</Filter>
     </ClCompile>
+    <ClCompile Include="SEOpenGLDeviceBase.cpp">
+      <Filter>GPU</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SEOpenGLDeviceHeaders.h" />

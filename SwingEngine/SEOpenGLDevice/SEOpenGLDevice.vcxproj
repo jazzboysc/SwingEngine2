@@ -296,6 +296,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SEOpenGLDevice.cpp" />
+    <ClCompile Include="SEOpenGLDeviceBase.cpp" />
     <ClCompile Include="SEOpenGLDevicePCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">Create</PrecompiledHeader>

@@ -9,6 +9,9 @@
     <ClCompile Include="SED3D12GPUDeviceChild.cpp">
       <Filter>GPU</Filter>
     </ClCompile>
+    <ClCompile Include="SED3D12DeviceBase.cpp">
+      <Filter>GPU</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SED3D12Device.h">

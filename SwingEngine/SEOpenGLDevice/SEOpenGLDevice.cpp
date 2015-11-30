@@ -3,34 +3,13 @@
 
 #include "SEOpenGLDevicePCH.h"
 #include "SEOpenGLDevice.h"
-#include "SEGPUDeviceInspector.h"
-#include "SETerminal.h"
-#include "SEShaderProgram.h"
-#include "SEBufferView.h"
-#include "SEBufferBase.h"
-#include "SETexture.h"
-#include "SETexture1D.h"
-#include "SETexture2D.h"
-#include "SETexture2DArray.h"
-#include "SETexture3D.h"
-#include "SEPixelBuffer.h"
-#include "SEFrameBuffer.h"
-#include "SEPrimitive.h"
-#include "SERenderPassInfo.h"
-#include "SEPipelineStateBlock.h"
-#include "SEGPUTimer.h"
-#include "SEVector3.h"
-#include "SEMatrix4.h"
-
-#include <string>
-#include <GL/glew.h>
 
 #define SE_OUTPUT_SHADER_RESOURCE_LOADING
 #define SE_GPU_MEMORY_INSPECTION
 
 using namespace Swing;
 
-GLenum gsShaderType[ShaderType_Max] = 
+const GLenum SEOpenGLDevice::gsShaderType[ShaderType_Max] =
 {
     GL_VERTEX_SHADER,
     GL_FRAGMENT_SHADER,
@@ -40,12 +19,12 @@ GLenum gsShaderType[ShaderType_Max] =
     GL_TESS_EVALUATION_SHADER,
 };
 
-GLenum gsShaderProgramParams[SPP_Max] = 
+const GLenum SEOpenGLDevice::gsShaderProgramParams[SPP_Max] =
 {
     GL_GEOMETRY_VERTICES_OUT_EXT
 };
 
-GLenum gsBufferTargets[BufferType_Max] =
+const GLenum SEOpenGLDevice::gsBufferTargets[BufferType_Max] =
 {
     GL_ATOMIC_COUNTER_BUFFER,
     GL_DISPATCH_INDIRECT_BUFFER,
@@ -58,7 +37,7 @@ GLenum gsBufferTargets[BufferType_Max] =
     GL_ELEMENT_ARRAY_BUFFER
 };
 
-GLenum gsBufferBindings[BufferType_Max] =
+const GLenum SEOpenGLDevice::gsBufferBindings[BufferType_Max] =
 {
     GL_ATOMIC_COUNTER_BUFFER_BINDING,
     GL_DISPATCH_INDIRECT_BUFFER_BINDING,
@@ -71,7 +50,7 @@ GLenum gsBufferBindings[BufferType_Max] =
     GL_ELEMENT_ARRAY_BUFFER_BINDING
 };
 
-GLenum gsBufferFormat[BufferFormat_Max] =
+const GLenum SEOpenGLDevice::gsBufferFormat[BufferFormat_Max] =
 {
     GL_R,
     GL_RG,
@@ -85,7 +64,7 @@ GLenum gsBufferFormat[BufferFormat_Max] =
     GL_DEPTH_COMPONENT
 };
 
-GLint gsBufferInternalFormat[BufferInternalFormat_Max] =
+const GLint SEOpenGLDevice::gsBufferInternalFormat[BufferInternalFormat_Max] =
 {
     GL_RGB8,
     GL_RGBA8,
@@ -100,7 +79,7 @@ GLint gsBufferInternalFormat[BufferInternalFormat_Max] =
     GL_DEPTH_COMPONENT24
 };
 
-GLenum gsBufferComponentType[BufferComponentType_Max] =
+const GLenum SEOpenGLDevice::gsBufferComponentType[BufferComponentType_Max] =
 {
     GL_UNSIGNED_BYTE,
     GL_UNSIGNED_INT,
@@ -108,14 +87,14 @@ GLenum gsBufferComponentType[BufferComponentType_Max] =
 	GL_HALF_FLOAT
 };
 
-GLenum gsBufferAccess[BufferAccess_Max] =
+const GLenum SEOpenGLDevice::gsBufferAccess[BufferAccess_Max] =
 {
     GL_READ_ONLY,
     GL_WRITE_ONLY,
     GL_READ_WRITE
 };
 
-GLenum gsBufferUsage[BufferUsage_Max] =
+const GLenum SEOpenGLDevice::gsBufferUsage[BufferUsage_Max] =
 {
     GL_STATIC_READ,
     GL_STATIC_COPY,
@@ -128,7 +107,7 @@ GLenum gsBufferUsage[BufferUsage_Max] =
 	GL_STREAM_DRAW
 };
 
-GLenum gsTextureTargets[TextureType_Max] =
+const GLenum SEOpenGLDevice::gsTextureTargets[TextureType_Max] =
 {
     GL_TEXTURE_1D,
     GL_TEXTURE_2D,
@@ -138,7 +117,7 @@ GLenum gsTextureTargets[TextureType_Max] =
     GL_TEXTURE_BUFFER
 };
 
-GLenum gsFilterType[FilterType_Max] =
+const GLenum SEOpenGLDevice::gsFilterType[FilterType_Max] =
 {
     GL_NEAREST,
     GL_LINEAR,
@@ -148,13 +127,13 @@ GLenum gsFilterType[FilterType_Max] =
     GL_LINEAR_MIPMAP_LINEAR
 };
 
-GLenum gsWrapType[WrapType_Max] =
+const GLenum SEOpenGLDevice::gsWrapType[WrapType_Max] =
 {
     GL_CLAMP,
     GL_REPEAT
 };
 
-GLenum gsPrimitiveType[PrimitiveType_Max] = 
+const GLenum SEOpenGLDevice::gsPrimitiveType[PrimitiveType_Max] =
 {
     GL_POINTS,
     GL_LINES,
@@ -163,142 +142,85 @@ GLenum gsPrimitiveType[PrimitiveType_Max] =
     GL_PATCHES,
 };
 
-#ifdef _DEBUG
 //----------------------------------------------------------------------------
-#define SE_OPENGL_DEVICE_CHECK_ERROR  \
-    {  \
-        GLenum res = glGetError();  \
-        SE_ASSERT(res == GL_NO_ERROR);  \
-    }
-//----------------------------------------------------------------------------
-#else
-#define SE_OPENGL_DEVICE_CHECK_ERROR
-#endif
-
-#ifdef SE_GPU_MEMORY_INSPECTION
-//----------------------------------------------------------------------------
-#define SE_OPENGL_DEVICE_BEGIN_MEM_INSPECTION(inspector, resident)  \
-    int mem1 = 0;  \
-    if( inspector )  \
-    {  \
-        mem1 = GetDeviceMemoryAvailable();  \
-    }
-//----------------------------------------------------------------------------
-#define SE_OPENGL_DEVICE_END_MEM_INSPECTION(inspector, resident)  \
-    int mem2 = 0;  \
-    if( inspector )  \
-    {  \
-        mem2 = GetDeviceMemoryAvailable();  \
-        SEDeviceMemOp op;  \
-        op.Resident = resident;  \
-        op.DeviceMemPrint = mem1 - mem2;  \
-        inspector->OnDeviceMemoryOperation(&op);  \
-    }
-//----------------------------------------------------------------------------
-#else
-#define SE_OPENGL_DEVICE_BEGIN_MEM_INSPECTION(inspector, resident) (void)resident
-#define SE_OPENGL_DEVICE_END_MEM_INSPECTION(inspector, resident) (void)resident
-#endif
-//----------------------------------------------------------------------------
-
-#define GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX          0x9047
-#define GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX    0x9048
-#define GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX  0x9049
-#define GPU_MEMORY_INFO_EVICTION_COUNT_NVX            0x904A
-#define GPU_MEMORY_INFO_EVICTED_MEMORY_NVX            0x904B
-
-//----------------------------------------------------------------------------
-void SEOpenGLDevice::__Initialize(SEGPUDeviceDescription*)
+void SEOpenGLDevice::InsertGPUDeviceFunctions()
 {
-    // TODO:
-    //  Should create OpenGL context here. Nothing to do now since we are
-    // using GLFW.
-
-	// Set device info.
-	// TODO:
-	// Only support NVIDIA for now.
-	const GLubyte* str = glGetString(GL_VENDOR);
-	std::string vendor((char*)str);
-	if( vendor.find("NVIDIA") != std::string::npos )
-	{
-		mDeviceInfo.Vendor = DV_NVIDIA;
-		glGetIntegerv(GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX, 
-			(GLint*)&mDeviceInfo.GPUTotalMemory);
-		mDeviceInfo.GPUTotalMemory = mDeviceInfo.GPUTotalMemory >> 10;
-		glGetIntegerv(GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX,
-			(GLint*)&mDeviceInfo.GPUDedicatedMemory);
-		mDeviceInfo.GPUDedicatedMemory = mDeviceInfo.GPUDedicatedMemory >> 10;
-		mDeviceInfo.Valid = true;
-	}
-
-    // Default global states.
-    glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
-    glFrontFace(GL_CW);
-}
-//----------------------------------------------------------------------------
-void SEOpenGLDevice::__Terminate()
-{
-    // TODO:
-    //  Should destroy OpenGL context here. Nothing to do now since we are
-    // using GLFW.
+    SE_INSERT_GPU_DEVICE_FUNC(CreateProgram, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DeleteProgram, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(EnableProgram, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DisableProgram, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetProgramParameterInt, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(GetUniformLocation, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueMat4, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueVec3, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueVec4, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueInt, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueUInt, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueFloat, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueFloat2, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DeleteTexture, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(Texture1DLoadFromSystemMemory, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(Texture1DUpdateFromPixelBuffer, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(TextureBindToImageUnit, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(TextureBindToSampler, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(TextureGenerateMipmap, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(Texture1DGetDataFromGPUMemory, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(Texture2DLoadFromSystemMemory, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(Texture2DLoadFromTextureBuffer, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(Texture2DUpdateFromPixelBuffer, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(Texture2DGetImageData, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(Tex2DArrayLoadFromSystemMemory, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(Texture3DLoadFromSystemMemory, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(Texture3DUpdateFromPixelBuffer, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(TextureCubeLoadFromSystemMemory, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(BufferTextureLoadFromTextureBuffer, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(CreateFrameBuffer, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DeleteFrameBuffer, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferSetRenderTargets, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferSetColorTarget, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferSetDepthTarget, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferSetStencilTarget, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferEnable, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferDisable, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(ComputeShaderDispatch, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(ComputeShaderDispatchIndirect, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DispatchVertex, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DispatchVertexIndirect, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DeleteBuffer, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(BufferMap, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(BufferUnmap, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(BufferBindIndex, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(BufferBindIndexTo, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(BufferBind, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(BufferBindTo, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(CreateBufferView, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DeleteBufferView, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(BufferUpdateSubData, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(BufferLoadFromSystemMemory, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(BufferLoadImmutableFromSystemMemory, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(BufferClear, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(GetDeviceMemoryAvailable, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(MemoryBarrier, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(ApplyPipelineStateBlock, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetPatchVertices, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DrawPrimitive, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DrawPrimitiveInstanced, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DrawIndexedPrimitive, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DrawIndexedPrimitiveIndirect, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetPatchVertices, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetPointSize, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(GetViewport, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(SetViewport, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(CreateTimer, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(DeleteTimer, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(TimerStart, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(TimerStop, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(TimerGetTimeElapsed, SEOpenGLDevice);
 }
 //----------------------------------------------------------------------------
 void SEOpenGLDevice::__OnResize(unsigned int, unsigned int)
 {
     // TODO:
-}
-//----------------------------------------------------------------------------
-SEShaderHandle* SEOpenGLDevice::__CreateShader(SEShader* shader)
-{
-    SEOpenGLShaderHandle* shaderHandle = SE_NEW SEOpenGLShaderHandle();
-    shaderHandle->Device = this;
-
-    const char* programText = shader->GetSource().c_str();
-    GLenum shaderType = gsShaderType[(int)shader->GetType()];
-    const std::string fileName = shader->GetShaderFileName();
-
-    shaderHandle->mShader = glCreateShader(shaderType);
-    glShaderSource(shaderHandle->mShader, 1, &programText, 0);
-    glCompileShader(shaderHandle->mShader);
-
-    GLint compiled;
-    glGetShaderiv(shaderHandle->mShader, GL_COMPILE_STATUS, &compiled);
-    if( !compiled )
-    {
-        GLint iInfoLen = 0;
-        glGetShaderiv(shaderHandle->mShader, GL_INFO_LOG_LENGTH, &iInfoLen);
-        if( iInfoLen > 1 )
-        {
-            char* acInfoLog = SE_NEW char[iInfoLen];
-            glGetShaderInfoLog(shaderHandle->mShader, iInfoLen, 0, acInfoLog);
-            SETerminal::Output(SETerminal::OC_Error, "Failed compiling %s\n%s\n", 
-                fileName.c_str(), acInfoLog);
-
-            SE_DELETE[] acInfoLog;
-        }
-
-        SE_ASSERT(false);
-        SE_DELETE  shaderHandle;
-        return 0;
-    }
-
-#ifdef SE_OUTPUT_SHADER_RESOURCE_LOADING
-    SETerminal::Output(SETerminal::OC_Success, "Loading shader %s finished\n", 
-        fileName.c_str());
-#endif
-
-    SE_OPENGL_DEVICE_CHECK_ERROR;
-
-    return shaderHandle;
-}
-//----------------------------------------------------------------------------
-void SEOpenGLDevice::__DeleteShader(SEShader* shader)
-{
-    SEOpenGLShaderHandle* shaderHandle = 
-        (SEOpenGLShaderHandle*)shader->GetShaderHandle();
-    glDeleteShader(shaderHandle->mShader);
-
-    SE_OPENGL_DEVICE_CHECK_ERROR;
 }
 //----------------------------------------------------------------------------
 SEShaderProgramHandle* SEOpenGLDevice::__CreateProgram(SEShaderProgram* program)
@@ -439,136 +361,6 @@ void SEOpenGLDevice::__SetProgramParameterInt(SEShaderProgram* program,
     SEOpenGLShaderProgramHandle* programHandle =
         (SEOpenGLShaderProgramHandle*)program->GetProgramHandle();
     glProgramParameteri(programHandle->mProgram, name, value);
-
-    SE_OPENGL_DEVICE_CHECK_ERROR;
-}
-//----------------------------------------------------------------------------
-SERenderPassInfoHandle* SEOpenGLDevice::__CreateRenderPassInfo(SERenderPassInfo*, 
-    SEShaderProgram* program, SEGeometryAttributes* geometryAttr, 
-    SEPipelineStateBlock*, SERootSignature*, SERenderPassTargetsInfo*)
-{
-    SEOpenGLRenderPassInfoHandle* passInfoHandle = SE_NEW SEOpenGLRenderPassInfoHandle();
-    passInfoHandle->DeviceBase = this;
-
-    SEOpenGLShaderProgramHandle* programHandle =
-        (SEOpenGLShaderProgramHandle*)program->GetProgramHandle();
-    SE_ASSERT(programHandle);
-    
-    glGenVertexArrays(1, &passInfoHandle->mVAO);
-    glBindVertexArray(passInfoHandle->mVAO);
-    
-    if( geometryAttr->Prim->IB )
-    {
-        geometryAttr->Prim->IB->Bind();
-    }
-    if( geometryAttr->Prim->VB )
-    {
-        geometryAttr->Prim->VB->Bind();
-    }
-    
-    // Specify vertex attributes.
-    // TODO:
-    // Remove this naive input layout specification system.
-    if( !geometryAttr->HasNormal && !geometryAttr->HasTCoord )
-    {
-        GLint loc = glGetAttribLocation(programHandle->mProgram, "vPosition");
-        if( loc != -1 )
-        {
-            glEnableVertexAttribArray(loc);
-            glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE, 0, 0);
-        }
-    }
-    else if( geometryAttr->HasNormal && !geometryAttr->HasTCoord )
-    {
-        GLint loc = glGetAttribLocation(programHandle->mProgram, "vPosition");
-        if( loc != -1 )
-        {
-            glEnableVertexAttribArray(loc);
-            glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE,
-                geometryAttr->VertexComponentCount*sizeof(float), 0);
-        }
-    
-        loc = glGetAttribLocation(programHandle->mProgram, "vNormal");
-        if( loc != -1 )
-        {
-            glEnableVertexAttribArray(loc);
-            glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE,
-                geometryAttr->VertexComponentCount*sizeof(float), (void*)12);
-        }
-    }
-    else if( geometryAttr->HasNormal && geometryAttr->HasTCoord )
-    {
-        GLint loc = glGetAttribLocation(programHandle->mProgram, "vPosition");
-        if( loc != -1 )
-        {
-            glEnableVertexAttribArray(loc);
-            glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE,
-                geometryAttr->VertexComponentCount*sizeof(float), 0);
-        }
-    
-        loc = glGetAttribLocation(programHandle->mProgram, "vTCoord");
-        if( loc != -1 )
-        {
-            glEnableVertexAttribArray(loc);
-            glVertexAttribPointer(loc, 2, GL_FLOAT, GL_FALSE,
-                geometryAttr->VertexComponentCount*sizeof(float), (void*)12);
-        }
-    
-        loc = glGetAttribLocation(programHandle->mProgram, "vNormal");
-        if( loc != -1 )
-        {
-            glEnableVertexAttribArray(loc);
-            glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE,
-                geometryAttr->VertexComponentCount*sizeof(float), (void*)20);
-        }
-    }
-    else
-    {
-        GLint loc = glGetAttribLocation(programHandle->mProgram, "vPosition");
-        if( loc != -1 )
-        {
-            glEnableVertexAttribArray(loc);
-            glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE,
-                geometryAttr->VertexComponentCount*sizeof(float), 0);
-        }
-    
-        loc = glGetAttribLocation(programHandle->mProgram, "vTCoord");
-        if( loc != -1 )
-        {
-            glEnableVertexAttribArray(loc);
-            glVertexAttribPointer(loc, 2, GL_FLOAT, GL_FALSE,
-                geometryAttr->VertexComponentCount*sizeof(float), (void*)12);
-        }
-    }
-    
-    glBindVertexArray(0);
-    
-    SE_OPENGL_DEVICE_CHECK_ERROR;
-
-    return passInfoHandle;
-}
-//----------------------------------------------------------------------------
-void SEOpenGLDevice::__DeleteRenderPassInfo(SERenderPassInfo* renderPassInfo)
-{
-    SEOpenGLRenderPassInfoHandle* passInfoHandle = 
-        (SEOpenGLRenderPassInfoHandle*)renderPassInfo->GetPassInfoHandle();
-    glDeleteVertexArrays(1, &passInfoHandle->mVAO);
-
-    SE_OPENGL_DEVICE_CHECK_ERROR;
-}
-//----------------------------------------------------------------------------
-void SEOpenGLDevice::__EnableRenderPassInfo(SERenderPassInfo* renderPassInfo)
-{
-    SEOpenGLRenderPassInfoHandle* passInfoHandle =
-        (SEOpenGLRenderPassInfoHandle*)renderPassInfo->GetPassInfoHandle();
-    glBindVertexArray(passInfoHandle->mVAO);
-
-    SE_OPENGL_DEVICE_CHECK_ERROR;
-}
-//----------------------------------------------------------------------------
-void SEOpenGLDevice::__DisableRenderPassInfo(SERenderPassInfo*)
-{
-    glBindVertexArray(0);
 
     SE_OPENGL_DEVICE_CHECK_ERROR;
 }
@@ -1847,88 +1639,8 @@ double SEOpenGLDevice::__TimerGetTimeElapsed(SEGPUTimer* timer)
 //----------------------------------------------------------------------------
 SEOpenGLDevice::SEOpenGLDevice()
 {    
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(Initialize, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(Terminate, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(GetMaxAnisFilterLevel, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(SetAnisFilterLevel, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateShader, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteShader, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(CreateRenderPassInfo, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(DeleteRenderPassInfo, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(EnableRenderPassInfo, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_BASE_FUNC(DisableRenderPassInfo, SEOpenGLDevice);
-
-    SE_INSERT_GPU_DEVICE_FUNC(CreateProgram, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DeleteProgram, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(EnableProgram, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DisableProgram, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetProgramParameterInt, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(GetUniformLocation, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueMat4, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueVec3, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueVec4, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueInt, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueUInt, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueFloat, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetUniformValueFloat2, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DeleteTexture, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(Texture1DLoadFromSystemMemory, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(Texture1DUpdateFromPixelBuffer, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(TextureBindToImageUnit, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(TextureBindToSampler, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(TextureGenerateMipmap, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(Texture1DGetDataFromGPUMemory, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(Texture2DLoadFromSystemMemory, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(Texture2DLoadFromTextureBuffer, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(Texture2DUpdateFromPixelBuffer, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(Texture2DGetImageData, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(Tex2DArrayLoadFromSystemMemory, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(Texture3DLoadFromSystemMemory, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(Texture3DUpdateFromPixelBuffer, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(TextureCubeLoadFromSystemMemory, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(BufferTextureLoadFromTextureBuffer, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(CreateFrameBuffer, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DeleteFrameBuffer, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferSetRenderTargets, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferSetColorTarget, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferSetDepthTarget, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferSetStencilTarget, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferEnable, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(FrameBufferDisable, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(ComputeShaderDispatch, SEOpenGLDevice);
-	SE_INSERT_GPU_DEVICE_FUNC(ComputeShaderDispatchIndirect, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DispatchVertex, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DispatchVertexIndirect, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DeleteBuffer, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(BufferMap, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(BufferUnmap, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(BufferBindIndex, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(BufferBindIndexTo, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(BufferBind, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(BufferBindTo, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(CreateBufferView, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DeleteBufferView, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(BufferUpdateSubData, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(BufferLoadFromSystemMemory, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(BufferLoadImmutableFromSystemMemory, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(BufferClear, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(GetDeviceMemoryAvailable, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(MemoryBarrier, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(ApplyPipelineStateBlock, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetPatchVertices, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DrawPrimitive, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DrawPrimitiveInstanced, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DrawIndexedPrimitive, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DrawIndexedPrimitiveIndirect, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetPatchVertices, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetPointSize, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(GetViewport, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(SetViewport, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(CreateTimer, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(DeleteTimer, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(TimerStart, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(TimerStop, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(TimerGetTimeElapsed, SEOpenGLDevice);
+    InsertGPUDeviceBaseFunctions();
+    InsertGPUDeviceFunctions();
 
     mEnable4xMsaa = false;
     m4xMsaaQuality = 0;

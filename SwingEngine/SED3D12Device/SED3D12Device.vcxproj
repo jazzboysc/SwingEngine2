@@ -307,6 +307,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SED3D12Device.cpp" />
+    <ClCompile Include="SED3D12DeviceBase.cpp" />
     <ClCompile Include="SED3D12DevicePCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>

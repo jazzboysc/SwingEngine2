@@ -9,6 +9,26 @@
 #include "SEThinGPUDevice.h"
 #include "SEGPUDeviceBaseChild.h"
 #include "SEPipelineStateBlock.h"
+#include "SED3D12GPUResources.h"
+#include "SED3D12GPUDeviceChild.h"
+#include "SEShader.h"
+#include "SEShaderProgram.h"
+#include "SECommandQueue.h"
+#include "SERenderCommandQueue.h"
+#include "SEComputeCommandQueue.h"
+#include "SECommandAllocator.h"
+#include "SERenderCommandAllocator.h"
+#include "SEComputeCommandAllocator.h"
+#include "SECommandList.h"
+#include "SERenderCommandList.h"
+#include "SEComputeCommandList.h"
+#include "SERootSignature.h"
+#include "SEGeometryAttributes.h"
+#include "SEPrimitive.h"
+#include "SERenderPass.h"
+#include "SERenderPassInfo.h"
+
+#include <d3dx12.h>
 
 namespace Swing
 {
@@ -22,6 +42,8 @@ public:
     void SetMainWindow(HWND mainWindow);
 
 private:
+    void InsertGPUDeviceBaseFunctions();
+
     void __Initialize(SEGPUDeviceDescription* deviceDesc);
     void __Terminate();
 
@@ -96,6 +118,14 @@ private:
 
     // Synchronization objects.
     UINT mBackBufferIndex;
+
+private:
+    static const D3D12_COMMAND_LIST_TYPE       gsCommandQueueType[CommandQueueType_Max];
+    static const D3D12_COMMAND_LIST_TYPE       gsCommandAllocatorType[CommandAllocatorType_Max];
+    static const D3D12_COMMAND_LIST_TYPE       gsCommandListType[CommandListType_Max];
+    static const std::string                   gsShaderProfileTarget[ShaderType_Max];
+    static const D3D12_PRIMITIVE_TOPOLOGY_TYPE gsPrimitiveTopologyType[PrimitiveType_Max];
+    static const DXGI_FORMAT                   gsBufferFormat[BufferFormat_Max];
 };
 
 typedef SESmartPointer<SED3D12Device> SED3D12DevicePtr;
