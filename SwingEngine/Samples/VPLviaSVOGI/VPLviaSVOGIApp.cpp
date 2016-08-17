@@ -104,7 +104,7 @@ void VPLviaSVOGI::CreateSceneLights(SEGPUDevice* device)
 	spotLight1Desc.CosCutoff = cos(40.0f / 180.0f * SEMathf::PI);
 	spotLight1Desc.InnerCosCutoff = cos(40.0f * 0.95f / 180.0f * SEMathf::PI);
 	spotLight1Desc.SpotExponent = 0.0f;
-	mLightManager->CreateSpotLight(&spotLight1ProjDesc, mMainCamera, &spotLight1Desc);
+	mSceneLight1 = mLightManager->CreateSpotLight(&spotLight1ProjDesc, mMainCamera, &spotLight1Desc);
 
 	SELightProjectorDesc spotLight2ProjDesc;
 	spotLight2ProjDesc.UpFovDegrees = 90.0f;
@@ -122,7 +122,7 @@ void VPLviaSVOGI::CreateSceneLights(SEGPUDevice* device)
 	spotLight2Desc.CosCutoff = cos(40.0f / 180.0f * SEMathf::PI);
 	spotLight2Desc.InnerCosCutoff = cos(40.0f * 0.95f / 180.0f * SEMathf::PI);
 	spotLight2Desc.SpotExponent = 0.0f;
-	mLightManager->CreateSpotLight(&spotLight2ProjDesc, mMainCamera, &spotLight2Desc);
+	mSceneLight2 = mLightManager->CreateSpotLight(&spotLight2ProjDesc, mMainCamera, &spotLight2Desc);
 #endif
 #ifdef DEMO_SPONZA_SCENE
     SELightProjectorDesc spotLight1ProjDesc;
@@ -140,7 +140,7 @@ void VPLviaSVOGI::CreateSceneLights(SEGPUDevice* device)
     spotLight1Desc.CosCutoff = cos(40.0f / 180.0f * SEMathf::PI);
     spotLight1Desc.InnerCosCutoff = cos(40.0f * 0.95f / 180.0f * SEMathf::PI);
     spotLight1Desc.SpotExponent = 0.0f;
-    mLightManager->CreateSpotLight(&spotLight1ProjDesc, mMainCamera, &spotLight1Desc);
+    mSceneLight1 = mLightManager->CreateSpotLight(&spotLight1ProjDesc, mMainCamera, &spotLight1Desc);
 
     //SELightProjectorDesc spotLight2ProjDesc;
     //spotLight2ProjDesc.UpFovDegrees = 90.0f;
@@ -157,7 +157,7 @@ void VPLviaSVOGI::CreateSceneLights(SEGPUDevice* device)
     //spotLight2Desc.CosCutoff = cos(40.0f / 180.0f * SEMathf::PI);
     //spotLight2Desc.InnerCosCutoff = cos(40.0f * 0.95f / 180.0f * SEMathf::PI);
     //spotLight2Desc.SpotExponent = 0.0f;
-    //mLightManager->CreateSpotLight(&spotLight2ProjDesc, mMainCamera, &spotLight2Desc);
+    //mSceneLight2 = mLightManager->CreateSpotLight(&spotLight2ProjDesc, mMainCamera, &spotLight2Desc);
 #endif
 #endif
 
@@ -801,7 +801,7 @@ void VPLviaSVOGI::CreateGUI()
 	glfwGetWindowPos(Window, &screenX, &screenY);
 	InformationPanel^ infoPanel = gcnew InformationPanel();
 	infoPanel->Show();
-	infoPanel->SetDesktopLocation(screenX + Width + 12, screenY - 30);
+	infoPanel->SetDesktopLocation(screenX + Width + 12, screenY - 100);
 
 	InformationPanel::GetInstance()->AddListener(this);
 
@@ -907,6 +907,13 @@ void VPLviaSVOGI::CreateGUI()
 	infoStartY += 24;
 	InformationPanel::GetInstance()->AddButton("Prev VPL Subset", 16, infoStartY, 100, 24);
 	InformationPanel::GetInstance()->AddButton("Next VPL Subset", 120, infoStartY, 100, 24);
+    infoStartY += 28;
+    InformationPanel::GetInstance()->AddCheckBox("Use HDR Tone Mapping", 16, infoStartY, 60, 20, true);
+    infoStartY += 24;
+    InformationPanel::GetInstance()->AddTextBox("Scene Light 1 Intensity", 16, infoStartY, 100, 24);
+    InformationPanel::GetInstance()->AddButton("Update Intensity", 240, infoStartY, 100, 24);
+    infoStartY += 24;
+    InformationPanel::GetInstance()->AddTextBox("Scene Light 2 Intensity", 16, infoStartY, 100, 24);
 }
 //----------------------------------------------------------------------------
 void VPLviaSVOGI::FrameFunc()
@@ -1067,6 +1074,9 @@ void VPLviaSVOGI::Terminate()
 	mRightWall = 0;
 	mModel = 0;
     mModel2Sequence = 0;
+
+    mSceneLight1 = 0;
+    mSceneLight2 = 0;
 
 	for( int i = 0; i < (int)mSponza.size(); ++i )
 	{
@@ -1259,6 +1269,16 @@ void VPLviaSVOGI::OnCheckBoxClick(System::Object^ sender,
 
 		mVisualizer->SetShowRSMFluxImportance(checkBox->Checked);
 	}
+
+    if( checkBox->Name == "Use HDR Tone Mapping" )
+    {
+        if( !mVisualizer )
+        {
+            return;
+        }
+
+        mVisualizer->SetUseHDRToneMapping(checkBox->Checked);
+    }
 }
 //----------------------------------------------------------------------------
 void VPLviaSVOGI::OnButtonClick(System::Object^  sender,
@@ -1307,5 +1327,36 @@ void VPLviaSVOGI::OnButtonClick(System::Object^  sender,
 		++curMipmapLevel;
 		mVisualizer->SetCurMipmapLevel(curMipmapLevel);
 	}
+
+    if( button->Name == "Update Intensity" )
+    {
+        if( mSceneLight1 )
+        {
+            String^ light1Intensity = InformationPanel::GetInstance()->GetTextBoxValue("Scene Light 1 Intensity");
+            array<String^>^ rgbString = light1Intensity->Split(',');
+            if( rgbString && rgbString->Length == 3 )
+            {
+                int i = 0;
+                for each (String^ var in rgbString)
+                {
+                    mSceneLight1->Intensity[i++] = (float)System::Convert::ToDouble(var);
+                }
+            }
+        }
+
+        if( mSceneLight2 )
+        {
+            String^ light2Intensity = InformationPanel::GetInstance()->GetTextBoxValue("Scene Light 2 Intensity");
+            array<String^>^ rgbString = light2Intensity->Split(',');
+            if( rgbString && rgbString->Length == 3 )
+            {
+                int i = 0;
+                for each (String^ var in rgbString)
+                {
+                    mSceneLight2->Intensity[i++] = (float)System::Convert::ToDouble(var);
+                }
+            }
+        }
+    }
 }
 //----------------------------------------------------------------------------

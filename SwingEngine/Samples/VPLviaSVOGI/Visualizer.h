@@ -94,6 +94,7 @@ private:
     SEShaderUniform mTempSamplerSM2Loc;
     SEShaderUniform mTempSampler2SM2Loc;
 	SEShaderUniform mAlbedoSamplerSM2Loc;
+    SEShaderUniform mUseToneMapperSM2Loc;
 
     // SM3
     SEShaderUniform mTempSamplerSM3Loc;
@@ -249,6 +250,8 @@ public:
 	void SetCurMipmapLevel(int value);
 
 	void SetShowRSMFluxImportance(bool value);
+
+    void SetUseHDRToneMapping(bool value);
 
 private:
     SEVoxelizer::SEVoxelizerType mVoxelizerType;

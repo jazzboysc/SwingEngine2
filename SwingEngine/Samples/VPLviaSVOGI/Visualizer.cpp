@@ -112,6 +112,8 @@ void VisualizerScreenQuad::OnUpdateShaderConstants(int, int pass)
         {
 			GBufferAlbedoTexture->BindToSampler(2, &sampler);
         }
+
+        mUseToneMapperSM2Loc.SetValue(UseToneMapper);
     }
     else if( pass == 3 )
     {
@@ -174,6 +176,7 @@ void VisualizerScreenQuad::OnGetShaderConstants()
     program->GetUniformLocation(&mTempSamplerSM2Loc, "tempSampler");
     program->GetUniformLocation(&mTempSampler2SM2Loc, "tempSampler2");
 	program->GetUniformLocation(&mAlbedoSamplerSM2Loc, "GBufferAlbedoSampler");
+    program->GetUniformLocation(&mUseToneMapperSM2Loc, "UseToneMapper");
 
     // SM3
     program = mMaterial->GetProgram(0, 3);
@@ -937,5 +940,10 @@ void Visualizer::SetShowVPLFluxContrast(bool value)
 void Visualizer::SetShowRSMFluxImportance(bool value)
 {
 	mScreenQuad->ShowImportance = value;
+}
+//----------------------------------------------------------------------------
+void Visualizer::SetUseHDRToneMapping(bool value)
+{
+    mScreenQuad->UseToneMapper = value;
 }
 //----------------------------------------------------------------------------

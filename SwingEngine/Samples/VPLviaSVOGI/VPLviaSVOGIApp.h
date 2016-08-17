@@ -136,6 +136,10 @@ private:
 	std::vector<SceneMeshPtr> mSponza;
     int mSceneTriangleCount;
 
+    // Scene lights.
+    SERTGILightPtr mSceneLight1;
+    SERTGILightPtr mSceneLight2;
+
 	// Render sets.
     SERenderSetPtr mGBufferObjects;
 	SERenderSetPtr mRSMObjects;

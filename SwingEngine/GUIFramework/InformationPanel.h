@@ -125,7 +125,7 @@ namespace Swing {
                 groupBoxUserInputs->Controls->Add(label);
 
                 TextBox^ textBox = gcnew TextBox();
-                int x2 = int(x + textBoxName->Length + 24);
+                int x2 = int(x + label->Size.Width);
                 textBox->Location = System::Drawing::Point(x2, y);
                 textBox->Name = textBoxName;
                 textBox->Size = System::Drawing::Size(width, height);
@@ -214,6 +214,7 @@ private: System::Windows::Forms::GroupBox^  groupBoxDebugOutputs;
 
 
 
+
         protected:
 
         protected:
@@ -233,50 +234,50 @@ private: System::Windows::Forms::GroupBox^  groupBoxDebugOutputs;
             /// </summary>
             void InitializeComponent(void)
             {
-				this->groupBoxWorkloadTiming = (gcnew System::Windows::Forms::GroupBox());
-				this->groupBoxUserInputs = (gcnew System::Windows::Forms::GroupBox());
-				this->groupBoxDebugOutputs = (gcnew System::Windows::Forms::GroupBox());
-				this->SuspendLayout();
-				// 
-				// groupBoxWorkloadTiming
-				// 
-				this->groupBoxWorkloadTiming->Location = System::Drawing::Point(12, 12);
-				this->groupBoxWorkloadTiming->Name = L"groupBoxWorkloadTiming";
-				this->groupBoxWorkloadTiming->Size = System::Drawing::Size(392, 294);
-				this->groupBoxWorkloadTiming->TabIndex = 0;
-				this->groupBoxWorkloadTiming->TabStop = false;
-				this->groupBoxWorkloadTiming->Text = L"Workload Timing (ms):";
-				// 
-				// groupBoxUserInputs
-				// 
-				this->groupBoxUserInputs->Location = System::Drawing::Point(12, 312);
-				this->groupBoxUserInputs->Name = L"groupBoxUserInputs";
-				this->groupBoxUserInputs->Size = System::Drawing::Size(392, 596);
-				this->groupBoxUserInputs->TabIndex = 1;
-				this->groupBoxUserInputs->TabStop = false;
-				this->groupBoxUserInputs->Text = L"User Inputs :";
-				// 
-				// groupBoxDebugOutputs
-				// 
-				this->groupBoxDebugOutputs->Location = System::Drawing::Point(410, 12);
-				this->groupBoxDebugOutputs->Name = L"groupBoxDebugOutputs";
-				this->groupBoxDebugOutputs->Size = System::Drawing::Size(311, 896);
-				this->groupBoxDebugOutputs->TabIndex = 2;
-				this->groupBoxDebugOutputs->TabStop = false;
-				this->groupBoxDebugOutputs->Text = L"Debug Outputs :";
-				// 
-				// InformationPanel
-				// 
-				this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
-				this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-				this->ClientSize = System::Drawing::Size(733, 920);
-				this->Controls->Add(this->groupBoxDebugOutputs);
-				this->Controls->Add(this->groupBoxUserInputs);
-				this->Controls->Add(this->groupBoxWorkloadTiming);
-				this->Name = L"InformationPanel";
-				this->ResumeLayout(false);
+                this->groupBoxWorkloadTiming = (gcnew System::Windows::Forms::GroupBox());
+                this->groupBoxUserInputs = (gcnew System::Windows::Forms::GroupBox());
+                this->groupBoxDebugOutputs = (gcnew System::Windows::Forms::GroupBox());
+                this->SuspendLayout();
+                // 
+                // groupBoxWorkloadTiming
+                // 
+                this->groupBoxWorkloadTiming->Location = System::Drawing::Point(12, 12);
+                this->groupBoxWorkloadTiming->Name = L"groupBoxWorkloadTiming";
+                this->groupBoxWorkloadTiming->Size = System::Drawing::Size(392, 294);
+                this->groupBoxWorkloadTiming->TabIndex = 0;
+                this->groupBoxWorkloadTiming->TabStop = false;
+                this->groupBoxWorkloadTiming->Text = L"Workload Timing (ms):";
+                // 
+                // groupBoxUserInputs
+                // 
+                this->groupBoxUserInputs->Location = System::Drawing::Point(12, 312);
+                this->groupBoxUserInputs->Name = L"groupBoxUserInputs";
+                this->groupBoxUserInputs->Size = System::Drawing::Size(392, 596);
+                this->groupBoxUserInputs->TabIndex = 1;
+                this->groupBoxUserInputs->TabStop = false;
+                this->groupBoxUserInputs->Text = L"User Inputs :";
+                // 
+                // groupBoxDebugOutputs
+                // 
+                this->groupBoxDebugOutputs->Location = System::Drawing::Point(410, 12);
+                this->groupBoxDebugOutputs->Name = L"groupBoxDebugOutputs";
+                this->groupBoxDebugOutputs->Size = System::Drawing::Size(311, 896);
+                this->groupBoxDebugOutputs->TabIndex = 2;
+                this->groupBoxDebugOutputs->TabStop = false;
+                this->groupBoxDebugOutputs->Text = L"Debug Outputs :";
+                // 
+                // InformationPanel
+                // 
+                this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+                this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+                this->ClientSize = System::Drawing::Size(733, 920);
+                this->Controls->Add(this->groupBoxDebugOutputs);
+                this->Controls->Add(this->groupBoxUserInputs);
+                this->Controls->Add(this->groupBoxWorkloadTiming);
+                this->Name = L"InformationPanel";
+                this->ResumeLayout(false);
 
-			}
+            }
 #pragma endregion
         private: System::Void button_Click(System::Object^  sender, System::EventArgs^  e) {
             for( int i = 0; i < (int)mListeners->size(); ++i )
