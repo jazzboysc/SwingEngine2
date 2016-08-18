@@ -801,7 +801,7 @@ void VPLviaSVOGI::CreateGUI()
 	glfwGetWindowPos(Window, &screenX, &screenY);
 	InformationPanel^ infoPanel = gcnew InformationPanel();
 	infoPanel->Show();
-	infoPanel->SetDesktopLocation(screenX + Width + 12, screenY - 100);
+	infoPanel->SetDesktopLocation(screenX + Width + 12, screenY - 150);
 
 	InformationPanel::GetInstance()->AddListener(this);
 
@@ -914,6 +914,8 @@ void VPLviaSVOGI::CreateGUI()
     InformationPanel::GetInstance()->AddButton("Update Intensity", 240, infoStartY, 100, 24);
     infoStartY += 24;
     InformationPanel::GetInstance()->AddTextBox("Scene Light 2 Intensity", 16, infoStartY, 100, 24);
+    infoStartY += 24;
+    InformationPanel::GetInstance()->AddTrackBar("HDR Exposure", 16, infoStartY, 200, 40, 50, 0, 50);
 }
 //----------------------------------------------------------------------------
 void VPLviaSVOGI::FrameFunc()
@@ -1357,6 +1359,17 @@ void VPLviaSVOGI::OnButtonClick(System::Object^  sender,
                 }
             }
         }
+    }
+}
+//----------------------------------------------------------------------------
+void VPLviaSVOGI::OnTrackBarScroll(System::Object^ sender, System::EventArgs^ e)
+{
+    TrackBar^ trackBar = (TrackBar^)sender;
+
+    if( trackBar->Name == "HDR Exposure" )
+    {
+        float p = (float)trackBar->Value / (float)trackBar->Maximum;
+        mVisualizer->SetHDRExposure(p);
     }
 }
 //----------------------------------------------------------------------------

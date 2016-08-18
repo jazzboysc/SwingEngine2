@@ -64,17 +64,23 @@ public:
     SETexture2DPtr GBufferNormalTexture;
 	SETexture2DPtr GBufferAlbedoTexture;
     SETexture2DArrayPtr TempTextureArray;
+
     int ShowMode;
     int TextureArrayIndex;
 	int CurMipmapLevel;
 	int MaxMipmapLevel;
     bool IsShadowMap;
+
     SEAxisAlignedBox3f* SceneBB;
     SEStructuredBufferPtr VoxelBuffer;
     int VoxelGridDim;
     bool UseToneMapper;
 	bool ShowImportance;
     float MaxRadiance;
+
+    float HDRExposure;
+    float HDRMinExposure;
+    float HDRMaxExposure;
 
 private:
     // SM0
@@ -95,6 +101,7 @@ private:
     SEShaderUniform mTempSampler2SM2Loc;
 	SEShaderUniform mAlbedoSamplerSM2Loc;
     SEShaderUniform mUseToneMapperSM2Loc;
+    SEShaderUniform mExposureSM2Loc;
 
     // SM3
     SEShaderUniform mTempSamplerSM3Loc;
@@ -252,6 +259,7 @@ public:
 	void SetShowRSMFluxImportance(bool value);
 
     void SetUseHDRToneMapping(bool value);
+    void SetHDRExposure(float value);
 
 private:
     SEVoxelizer::SEVoxelizerType mVoxelizerType;

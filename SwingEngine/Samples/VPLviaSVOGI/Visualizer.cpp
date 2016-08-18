@@ -50,6 +50,10 @@ VisualizerScreenQuad::VisualizerScreenQuad(SEMaterial* material)
     UseToneMapper = true;
 	ShowImportance = false;
     MaxRadiance = 500.0f;
+
+    HDRMinExposure = 0.0f;
+    HDRMaxExposure = 2.0f;
+    HDRExposure = 2.0f;
 }
 //----------------------------------------------------------------------------
 VisualizerScreenQuad::~VisualizerScreenQuad()
@@ -114,6 +118,7 @@ void VisualizerScreenQuad::OnUpdateShaderConstants(int, int pass)
         }
 
         mUseToneMapperSM2Loc.SetValue(UseToneMapper);
+        mExposureSM2Loc.SetValue(HDRExposure);
     }
     else if( pass == 3 )
     {
@@ -177,6 +182,7 @@ void VisualizerScreenQuad::OnGetShaderConstants()
     program->GetUniformLocation(&mTempSampler2SM2Loc, "tempSampler2");
 	program->GetUniformLocation(&mAlbedoSamplerSM2Loc, "GBufferAlbedoSampler");
     program->GetUniformLocation(&mUseToneMapperSM2Loc, "UseToneMapper");
+    program->GetUniformLocation(&mExposureSM2Loc, "Exposure");
 
     // SM3
     program = mMaterial->GetProgram(0, 3);
@@ -945,5 +951,10 @@ void Visualizer::SetShowRSMFluxImportance(bool value)
 void Visualizer::SetUseHDRToneMapping(bool value)
 {
     mScreenQuad->UseToneMapper = value;
+}
+//----------------------------------------------------------------------------
+void Visualizer::SetHDRExposure(float value)
+{
+    mScreenQuad->HDRExposure = value * mScreenQuad->HDRMaxExposure;
 }
 //----------------------------------------------------------------------------

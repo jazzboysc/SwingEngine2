@@ -6,6 +6,8 @@ in vec2 pTCoord;
 out vec4 Output;
 
 uniform bool UseToneMapper;
+uniform float Exposure;
+
 uniform sampler2D tempSampler;
 uniform sampler2D tempSampler2;
 uniform sampler2D GBufferAlbedoSampler;
@@ -21,8 +23,7 @@ void main()
     if( UseToneMapper )
     {
         const float gamma = 2.2;
-        const float exposure = 2.0;
-        mapped = HDRToneMapping(result, gamma, exposure);
+        mapped = HDRToneMapping(result, gamma, Exposure);
     }
     Output = vec4(mapped, 1.0);
 }

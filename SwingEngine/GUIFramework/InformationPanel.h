@@ -134,6 +134,31 @@ namespace Swing {
                 groupBoxUserInputs->Controls->Add(textBox);
             }
 
+            void AddTrackBar(String^ trackBarName, int x, int y, int width, int height, int initBarValue, int minBar, int maxBar)
+            {
+                Label^ label = gcnew Label();
+                label->AutoSize = true;
+                label->Location = System::Drawing::Point(x, y);
+                label->Name = trackBarName;
+                label->Text = trackBarName;
+                label->Size = System::Drawing::Size(32, 13);
+                label->TabIndex = 0;
+                groupBoxUserInputs->Controls->Add(label);
+
+                TrackBar^ trackBar = gcnew TrackBar();
+                int x2 = int(x + label->Size.Width);
+                trackBar->Location = System::Drawing::Point(x2, y);
+                trackBar->Name = trackBarName;
+                trackBar->Size = System::Drawing::Size(width, height);
+                trackBar->TabIndex = 0;
+                trackBar->Minimum = minBar;
+                trackBar->Maximum = maxBar;
+                trackBar->Value = initBarValue;
+                trackBar->Scroll += gcnew System::EventHandler(this, &InformationPanel::trackBar_Scroll);
+
+                groupBoxUserInputs->Controls->Add(trackBar);
+            }
+
             String^ GetTextBoxValue(String^ textBoxName)
             {
                 array<Control^, 1>^ res = groupBoxUserInputs->Controls->Find(textBoxName, true);
@@ -215,6 +240,7 @@ private: System::Windows::Forms::GroupBox^  groupBoxDebugOutputs;
 
 
 
+
         protected:
 
         protected:
@@ -252,7 +278,7 @@ private: System::Windows::Forms::GroupBox^  groupBoxDebugOutputs;
                 // 
                 this->groupBoxUserInputs->Location = System::Drawing::Point(12, 312);
                 this->groupBoxUserInputs->Name = L"groupBoxUserInputs";
-                this->groupBoxUserInputs->Size = System::Drawing::Size(392, 596);
+                this->groupBoxUserInputs->Size = System::Drawing::Size(392, 648);
                 this->groupBoxUserInputs->TabIndex = 1;
                 this->groupBoxUserInputs->TabStop = false;
                 this->groupBoxUserInputs->Text = L"User Inputs :";
@@ -261,7 +287,7 @@ private: System::Windows::Forms::GroupBox^  groupBoxDebugOutputs;
                 // 
                 this->groupBoxDebugOutputs->Location = System::Drawing::Point(410, 12);
                 this->groupBoxDebugOutputs->Name = L"groupBoxDebugOutputs";
-                this->groupBoxDebugOutputs->Size = System::Drawing::Size(311, 896);
+                this->groupBoxDebugOutputs->Size = System::Drawing::Size(311, 948);
                 this->groupBoxDebugOutputs->TabIndex = 2;
                 this->groupBoxDebugOutputs->TabStop = false;
                 this->groupBoxDebugOutputs->Text = L"Debug Outputs :";
@@ -270,7 +296,7 @@ private: System::Windows::Forms::GroupBox^  groupBoxDebugOutputs;
                 // 
                 this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
                 this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-                this->ClientSize = System::Drawing::Size(733, 920);
+                this->ClientSize = System::Drawing::Size(733, 972);
                 this->Controls->Add(this->groupBoxDebugOutputs);
                 this->Controls->Add(this->groupBoxUserInputs);
                 this->Controls->Add(this->groupBoxWorkloadTiming);
@@ -296,6 +322,12 @@ private: System::Windows::Forms::GroupBox^  groupBoxDebugOutputs;
              {
                  (*mListeners)[i]->OnCheckBoxClick(sender, e);
              }
+        }
+        private: System::Void trackBar_Scroll(System::Object^  sender, System::EventArgs^  e) {
+            for( int i = 0; i < (int)mListeners->size(); ++i )
+            {
+                (*mListeners)[i]->OnTrackBarScroll(sender, e);
+            }
         }
 };
     }

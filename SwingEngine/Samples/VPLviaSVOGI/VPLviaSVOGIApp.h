@@ -48,6 +48,7 @@ public:
     void OnRadioButtonClick(System::Object^  sender, System::EventArgs^  e) override;
     void OnCheckBoxClick(System::Object^  sender, System::EventArgs^  e) override;
     void OnButtonClick(System::Object^  sender, System::EventArgs^  e) override;
+    void OnTrackBarScroll(System::Object^ sender, System::EventArgs^ e) override;
 
 private:
 	void CreateSceneLights(SEGPUDevice* device);
