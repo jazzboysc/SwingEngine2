@@ -1,5 +1,5 @@
 // Swing Engine Version 2 Source Code 
-// Copyright (c) 2007-2015
+// Copyright (c) 2007-2017
 
 #ifndef Swing_BufferView_H
 #define Swing_BufferView_H
