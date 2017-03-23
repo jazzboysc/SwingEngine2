@@ -15,7 +15,7 @@ void SEImageIO::WriteImage(const std::string& name, float* pixels,
 {
     SE_ASSERT( name.size() >= 5 );
 
-    uint32_t suffixOffset = name.size() - 4;
+    uint32_t suffixOffset = (uint32_t)name.size() - 4;
 
     if( !strcmp(name.c_str() + suffixOffset, ".tga") ||
         !strcmp(name.c_str() + suffixOffset, ".TGA") )

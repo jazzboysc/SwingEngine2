@@ -222,7 +222,7 @@ void SEObjMetaMesh::ConvertToUnified()
 		vector<VertexAttr>::iterator itEnd = unique(curVertexInfo.begin(),
 			curVertexInfo.end());
 		curVertexInfo.erase(itEnd, curVertexInfo.end());
-		newVCount += curVertexInfo.size();
+		newVCount += (SE_Int32)curVertexInfo.size();
 	}
 
 	vector<SEVector3f> newVertexData;
@@ -243,7 +243,7 @@ void SEObjMetaMesh::ConvertToUnified()
 	for( int i = 0, k = 0; i < mVertexCount; ++i )
 	{
 		vector<VertexAttr>& curVertexInfo = vertexInfo[i];
-		SE_Int32 vertexRefCount = curVertexInfo.size();
+		SE_Int32 vertexRefCount = (SE_Int32)curVertexInfo.size();
 
 		for( int j = 0; j < vertexRefCount; ++j, ++k )
 		{
@@ -287,7 +287,7 @@ void SEObjMetaMesh::ConvertToUnified()
             }
 
 			vector<VertexAttr>& curVertexInfo = vertexInfo[tempAttr.V];
-			int halfSize = curVertexInfo.size() / 2;
+			int halfSize = (int)curVertexInfo.size() / 2;
 			for( int k = 0; k < halfSize; ++k )
 			{
 				if( curVertexInfo[k] == tempAttr )

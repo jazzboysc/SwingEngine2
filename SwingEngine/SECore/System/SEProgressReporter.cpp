@@ -95,7 +95,7 @@ SEProgressReporter::SEProgressReporter(int iTotalWork,
     m_pOutFile = stdout;
 
     // Initialize progress string.
-    const int bufLen = rTitle.size() + m_iTotalPlusses + 64;
+    const int bufLen = (int)rTitle.size() + m_iTotalPlusses + 64;
     m_pBuf = SE_NEW char[bufLen];
     snprintf(m_pBuf, bufLen, "\r%s: [", rTitle.c_str());
     m_pCurSpace = m_pBuf + strlen(m_pBuf);

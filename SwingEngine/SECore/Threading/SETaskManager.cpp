@@ -151,7 +151,7 @@ void SETaskManager::EnqueueTasks(const std::vector<SETask*>& rTasks)
     }
 
     m_pTasksRunningCondition->Lock();
-    m_uiUnfinishedTasksCount += rTasks.size();
+    m_uiUnfinishedTasksCount += (SE_UInt32)rTasks.size();
     m_pTasksRunningCondition->Unlock();
 
     m_pWorkerSemaphore->Post((int)rTasks.size());

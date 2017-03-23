@@ -142,7 +142,7 @@ bool SEObjLoader::Load(const std::string& filePath,
 					newMesh->MaterialName = newMeshMaterialName;
                 }
 
-				newFaceIndexCount = tokens.size() - 1;
+				newFaceIndexCount = (int)tokens.size() - 1;
 
 				// TODO:
 				// Only support tirangle and quad face for now.

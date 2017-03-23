@@ -71,7 +71,7 @@ SE_Int32 Swing::SE_AtomicAdd(SE_AtomicInt32* pV, SE_Int32 iDelta)
     // Do atomic add with MSVC inline assembly
 #if (SE_POINTER_SIZE == 8)
 
-    return InterlockedAdd(pV, iDelta);
+    return InterlockedAdd((volatile LONG*)pV, iDelta);
 
 #else
 
