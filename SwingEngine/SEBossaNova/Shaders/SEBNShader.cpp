@@ -359,7 +359,7 @@ SESpectrum Swing::SE_SpecularTransmit(const SERayDifferential& ray,
 //----------------------------------------------------------------------------
 SEDistribution1D* Swing::SE_ComputeLightSamplingCDF(const SEBNScene* scene)
 {
-    SE_UInt32 nLights = scene->Lights.size();
+    SE_UInt32 nLights = (SE_UInt32)scene->Lights.size();
     SE_ASSERT( nLights > 0 );
 
     std::vector<float> lightPower(nLights, 0.0f);

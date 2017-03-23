@@ -206,7 +206,7 @@ SEBNKdTree::SEBNKdTree(const std::vector<SEBNPrimitivePtr>& primitives,
     }
 
     // Start recursive construction of kd-tree.
-    BuildTree(0, Bounds, primBounds, primNums, Primitives.size(), MaxDepth, 
+    BuildTree(0, Bounds, primBounds, primNums, (int)Primitives.size(), MaxDepth, 
         edges, prims0, prims1);
 
     // Free working memory for kd-tree construction.

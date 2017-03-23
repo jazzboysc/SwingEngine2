@@ -22,7 +22,7 @@ void ResetVoxelBuffer::OnPreDispatch(unsigned int)
 //----------------------------------------------------------------------------
 void ResetVoxelBuffer::OnPostDispatch(unsigned int)
 {
-    mDevice->MemoryBarrier(MBT_Structured);
+    mDevice->GPUMemoryBarrier(MBT_Structured);
 }
 //----------------------------------------------------------------------------
 

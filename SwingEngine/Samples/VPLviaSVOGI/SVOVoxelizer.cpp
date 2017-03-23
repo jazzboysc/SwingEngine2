@@ -25,23 +25,23 @@ void BuildSVO::OnPostDispatch(unsigned int pass)
     switch( pass )
     {
     case BUILD_SVO_INIT_ROOT_PASS:
-        mDevice->MemoryBarrier(MBT_Structured);
+        mDevice->GPUMemoryBarrier(MBT_Structured);
         break;
 
     case BUILD_SVO_FLAG_NODES_PASS:
-        mDevice->MemoryBarrier(MBT_Structured);
+        mDevice->GPUMemoryBarrier(MBT_Structured);
         break;
 
     case BUILD_SVO_ALLOC_NODES_PASS:
-        mDevice->MemoryBarrier(MBT_AtomicCounter);
+        mDevice->GPUMemoryBarrier(MBT_AtomicCounter);
         break;
 
     case BUILD_SVO_POST_ALLOC_NODES_PASS:
-        mDevice->MemoryBarrier(MBT_Structured | MBT_Command);
+        mDevice->GPUMemoryBarrier(MBT_Structured | MBT_Command);
         break;
 
     case BUILD_SVO_INIT_NODES_PASS:
-        mDevice->MemoryBarrier(MBT_Structured);
+        mDevice->GPUMemoryBarrier(MBT_Structured);
         break;
 
     default:
@@ -65,12 +65,12 @@ void GatherVoxelFragmentListInfo::OnGetShaderConstants()
 //----------------------------------------------------------------------------
 void GatherVoxelFragmentListInfo::OnPreDispatch(unsigned int)
 {
-    mDevice->MemoryBarrier(MBT_AtomicCounter);
+    mDevice->GPUMemoryBarrier(MBT_AtomicCounter);
 }
 //----------------------------------------------------------------------------
 void GatherVoxelFragmentListInfo::OnPostDispatch(unsigned int)
 {
-    mDevice->MemoryBarrier(MBT_Command);
+    mDevice->GPUMemoryBarrier(MBT_Command);
 }
 //----------------------------------------------------------------------------
 

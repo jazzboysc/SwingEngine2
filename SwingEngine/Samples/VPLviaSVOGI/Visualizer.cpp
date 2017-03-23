@@ -32,7 +32,7 @@ void GatherVoxelBuffer::OnPreDispatch(unsigned int)
 //----------------------------------------------------------------------------
 void GatherVoxelBuffer::OnPostDispatch(unsigned int)
 {
-    mDevice->MemoryBarrier(MBT_Command);
+    mDevice->GPUMemoryBarrier(MBT_Command);
 }
 //----------------------------------------------------------------------------
 

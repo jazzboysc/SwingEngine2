@@ -236,7 +236,7 @@ private:
 	int __GetDeviceMemoryAvailable();
 
     // Memory barrier.
-    void __MemoryBarrier(unsigned int flags);
+    void __GPUMemoryBarrier(unsigned int flags);
 
     // Pipeline state block.
     void __ApplyPipelineStateBlock(SEPipelineStateBlock* psb);

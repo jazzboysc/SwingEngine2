@@ -91,7 +91,7 @@ SE_UInt32 SEBNSample::Add1DSamples(SE_UInt32 oneDSampleCount)
     SE_ASSERT( oneDSampleCount > 0 );
     N1D.push_back(oneDSampleCount);
 
-    return N1D.size() - 1;
+    return (SE_UInt32)N1D.size() - 1;
 }
 //----------------------------------------------------------------------------
 SE_UInt32 SEBNSample::Add2DSamples(SE_UInt32 twoDSampleCount)
@@ -99,7 +99,7 @@ SE_UInt32 SEBNSample::Add2DSamples(SE_UInt32 twoDSampleCount)
     SE_ASSERT( twoDSampleCount > 0 );
     N2D.push_back(twoDSampleCount);
 
-    return N2D.size() - 1;
+    return (SE_UInt32)N2D.size() - 1;
 }
 //----------------------------------------------------------------------------
 SEBNSample* SEBNSample::Duplicate(int count) const
@@ -120,7 +120,7 @@ SEBNSample* SEBNSample::Duplicate(int count) const
 void SEBNSample::AllocateSampleMemory()
 {
     // Allocate storage for sample pointers.
-    int nPtrs = N1D.size() + N2D.size();
+    int nPtrs = (int)N1D.size() + (int)N2D.size();
     if( !nPtrs )
     {
         OneD = TwoD = 0;

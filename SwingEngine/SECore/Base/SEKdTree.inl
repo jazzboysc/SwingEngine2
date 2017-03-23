@@ -38,7 +38,7 @@
 template <typename NodeData>
 SEKdTree<NodeData>::SEKdTree(const std::vector<NodeData>& rData)
 {
-    m_uiNodeCount = rData.size();
+    m_uiNodeCount = (SE_UInt32)rData.size();
     m_uiNextFreeNode = 1;
     m_Nodes = SE_AllocateAligned<SEKdNode>(m_uiNodeCount);
     m_NodeData = SE_AllocateAligned<NodeData>(m_uiNodeCount);

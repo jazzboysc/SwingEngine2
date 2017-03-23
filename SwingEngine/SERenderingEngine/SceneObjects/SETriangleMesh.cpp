@@ -11,7 +11,6 @@
 #include <sstream>
 
 using namespace Swing;
-using namespace Swing;
 
 //----------------------------------------------------------------------------
 SETriangleMesh::SETriangleMesh(SEMaterial* material, SERTGICamera* camera)
@@ -412,12 +411,12 @@ bool SETriangleMesh::LoadFromMemory(std::vector<SEVector3f>& _vData,
 	mVertexData = _vData;
 	mIndexData = _iData;
 	mVertexNormalData.resize(_nData.size());
-	for (int i = 0, e = _nData.size(); i < e; ++i)
+	for (int i = 0, e = (int)_nData.size(); i < e; ++i)
 	{
 		mVertexNormalData[i] = -_nData[i];
 	}
-	this->mFaceCount = mIndexData.size() / 3;
-	this->mVertexCount = mVertexData.size();
+	this->mFaceCount = (int)mIndexData.size() / 3;
+	this->mVertexCount = (int)mVertexData.size();
 	mHasNormal = true;
 	// Adjust bounding box.
 	for (auto vertex : mVertexData)
@@ -434,7 +433,7 @@ bool SETriangleMesh::LoadFromMemory(std::vector<SEVector3f>& _vData,
 	return true;
 }
 //----------------------------------------------------------------------------
-bool SETriangleMesh::LoadFromSEMetaMesh(Swing::SEObjMetaMesh* metaMesh)
+bool SETriangleMesh::LoadFromSEMetaMesh(SEObjMetaMesh* metaMesh)
 {
 	if( !metaMesh )
 	{
@@ -480,7 +479,7 @@ bool SETriangleMesh::LoadFromSEMetaMesh(Swing::SEObjMetaMesh* metaMesh)
 		mIndexData.push_back((unsigned int)indexData[i].VertexIndices[2]);
 		mIndexData.push_back((unsigned int)indexData[i].VertexIndices[1]);
 	}
-	mFaceCount = mIndexData.size() / 3;
+	mFaceCount = (int)mIndexData.size() / 3;
 
     // Get texture coordinates.
     if( metaMesh->HasTCoord() )

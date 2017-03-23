@@ -16,6 +16,8 @@
 #ifndef Swing_Assert_H
 #define Swing_Assert_H
 
+#include "SEPlatforms.h"
+
 #ifdef NDEBUG
 
 //----------------------------------------------------------------------------

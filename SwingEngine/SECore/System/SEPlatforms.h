@@ -31,6 +31,13 @@
 #endif
 #endif
 
+#ifndef SE_PLATFORM_X64
+#if defined(__amd64__) || defined(_M_X64)
+#define SE_PLATFORM_X64
+#endif
+#endif
+
+
 #ifndef SE_HAS_64_BIT_ATOMICS
 #if (SE_POINTER_SIZE == 8)
 #define SE_HAS_64_BIT_ATOMICS
@@ -39,7 +46,7 @@
 //----------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------
-// Microsoft Windows 2000/XP/Vista/7 platform
+// Microsoft Windows platform
 //----------------------------------------------------------------------------
 #if defined(_WIN32)
 

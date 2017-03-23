@@ -53,7 +53,7 @@ void SampleRSM::OnPreDispatch(unsigned int)
 //----------------------------------------------------------------------------
 void SampleRSM::OnPostDispatch(unsigned int)
 {
-    mDevice->MemoryBarrier(MBT_Structured);
+    mDevice->GPUMemoryBarrier(MBT_Structured);
 }
 //----------------------------------------------------------------------------
 

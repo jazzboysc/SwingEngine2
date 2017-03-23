@@ -500,11 +500,11 @@ void SEPhotonShootingTask::DoWork()
 
             bool causticUnsuccessful = Unsuccessful(
                 PhotonMapShader->CausticPhotonsWantedCount, 
-                CausticPhotons.size(), blockSize);
+                (SE_UInt32)CausticPhotons.size(), blockSize);
 
             bool indirectUnsuccessful = Unsuccessful(
                 PhotonMapShader->IndirectPhotonsWantedCount,
-                IndirectPhotons.size(), blockSize);
+                (SE_UInt32)IndirectPhotons.size(), blockSize);
 
             if( ShotCount > SEBNPhotonMapShader::MAX_PHOTON_PATH_SHOT_COUNT 
                 && (causticUnsuccessful || indirectUnsuccessful) )
@@ -523,8 +523,8 @@ void SEPhotonShootingTask::DoWork()
                 return;
             }
 
-            ProgressReporter.Update(localIndirectPhotons.size() + 
-                localCausticPhotons.size());
+            ProgressReporter.Update((int)localIndirectPhotons.size() + 
+                (int)localCausticPhotons.size());
             ShotCount += blockSize;
 
             // Merge direct and indirect photons into shared array.
@@ -638,7 +638,7 @@ SEComputeRadianceTask::SEComputeRadianceTask(SEProgressReporter& progress,
 void SEComputeRadianceTask::DoWork()
 {
     // Compute range of radiance photons to process in task.
-    SE_UInt32 taskSize = RadiancePhotons.size() / TaskCount;
+    SE_UInt32 taskSize = (SE_UInt32)RadiancePhotons.size() / TaskCount;
     SE_UInt32 excess = RadiancePhotons.size() % TaskCount;
     SE_UInt32 rpStart = SE_MIN(TaskNum, excess) * (taskSize + 1) +
         SE_MAX(0, (int)TaskNum - (int)excess) * taskSize;
@@ -739,7 +739,7 @@ void SEBNPhotonMapShader::OnRequestSamples(SEBNSampler* sampler,
     SEBNSample* sample, const SEBNScene* scene)
 {
     // Allocate and request samples for sampling all lights.
-    SE_UInt32 nLights = scene->Lights.size();
+    SE_UInt32 nLights = (SE_UInt32)scene->Lights.size();
     LightSampleOffsets = SE_NEW SEBNLightSampleOffsets[nLights];
     BsdfSampleOffsets = SE_NEW SEBSDFSampleOffsets[nLights];
     for( SE_UInt32 i = 0; i < nLights; ++i )

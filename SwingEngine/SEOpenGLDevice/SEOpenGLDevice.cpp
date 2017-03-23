@@ -200,7 +200,7 @@ void SEOpenGLDevice::InsertGPUDeviceFunctions()
     SE_INSERT_GPU_DEVICE_FUNC(BufferLoadImmutableFromSystemMemory, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(BufferClear, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(GetDeviceMemoryAvailable, SEOpenGLDevice);
-    SE_INSERT_GPU_DEVICE_FUNC(MemoryBarrier, SEOpenGLDevice);
+    SE_INSERT_GPU_DEVICE_FUNC(GPUMemoryBarrier, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(ApplyPipelineStateBlock, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(SetPatchVertices, SEOpenGLDevice);
     SE_INSERT_GPU_DEVICE_FUNC(DrawPrimitive, SEOpenGLDevice);
@@ -1358,7 +1358,7 @@ int SEOpenGLDevice::__GetDeviceMemoryAvailable()
 	return res >> 10;
 }
 //----------------------------------------------------------------------------
-void SEOpenGLDevice::__MemoryBarrier(unsigned int flags)
+void SEOpenGLDevice::__GPUMemoryBarrier(unsigned int flags)
 {
     GLbitfield barriers​ = 0;
 

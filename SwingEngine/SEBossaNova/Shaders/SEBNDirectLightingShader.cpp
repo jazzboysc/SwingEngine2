@@ -59,7 +59,7 @@ void SEBNDirectLightingShader::OnRequestSamples(SEBNSampler* sampler,
     if( Strategy == SEBNDirectLightingShader::SAMPLE_ALL_UNIFORM)
     {
         // Allocate and request samples for sampling all lights.
-        SE_UInt32 nLights = scene->Lights.size();
+        SE_UInt32 nLights = (SE_UInt32)scene->Lights.size();
         LightSampleOffsets = SE_NEW SEBNLightSampleOffsets[nLights];
         BsdfSampleOffsets = SE_NEW SEBSDFSampleOffsets[nLights];
 

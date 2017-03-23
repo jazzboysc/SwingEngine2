@@ -139,7 +139,7 @@ SERTGILight* SELightManager::GetPointLight(int i) const
 //----------------------------------------------------------------------------
 int SELightManager::GetPointLightCount() const
 {
-    return mPointLights.size();
+    return (int)mPointLights.size();
 }
 //----------------------------------------------------------------------------
 void SELightManager::AddSpotLight(SERTGILight* light)
@@ -156,7 +156,7 @@ SERTGILight* SELightManager::GetSpotLight(int i) const
 //----------------------------------------------------------------------------
 int SELightManager::GetSpotLightCount() const
 {
-    return mSpotLights.size();
+    return (int)mSpotLights.size();
 }
 //----------------------------------------------------------------------------
 void SELightManager::CreateLightBuffer(SEGPUDevice* device)

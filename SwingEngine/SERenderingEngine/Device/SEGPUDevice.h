@@ -128,7 +128,7 @@ typedef void (SEGPUDevice::*GPUDeviceBufferClear)(SEBuffer* buffer,
     SEBufferInternalFormat internalFormat, SEBufferFormat format, 
     SEBufferComponentType type, void* data);
 typedef int (SEGPUDevice::*GPUDeviceGetDeviceMemoryAvailable)();
-typedef void (SEGPUDevice::*GPUDeviceMemoryBarrier)(unsigned int flags);
+typedef void (SEGPUDevice::*GPUDeviceGPUMemoryBarrier)(unsigned int flags);
 typedef void (SEGPUDevice::*GPUDeviceApplyPipelineStateBlock)(SEPipelineStateBlock* psb);
 typedef void (SEGPUDevice::*GPUDeviceSetPatchVertices)(int value);
 typedef void (SEGPUDevice::*GPUDeviceDrawPrimitive)(SEPrimitiveType type, int count);
@@ -280,7 +280,7 @@ public:
     inline SEGPUDeviceInspector* GetInspector();
 
     // Memory barrier stuff.
-    inline void MemoryBarrier(unsigned int flags);
+    inline void GPUMemoryBarrier(unsigned int flags);
 
     // Pipeline state block stuff.
     inline void ApplyPipelineStateBlock(SEPipelineStateBlock* psb);
@@ -361,7 +361,7 @@ protected:
     GPUDeviceBufferLoadImmutableFromSystemMemory  _BufferLoadImmutableFromSystemMemory;
     GPUDeviceBufferClear                          _BufferClear;
     GPUDeviceGetDeviceMemoryAvailable             _GetDeviceMemoryAvailable;
-    GPUDeviceMemoryBarrier                        _MemoryBarrier;
+    GPUDeviceGPUMemoryBarrier                     _GPUMemoryBarrier;
     GPUDeviceApplyPipelineStateBlock              _ApplyPipelineStateBlock;
     GPUDeviceSetPatchVertices                     _SetPatchVertices;
     GPUDeviceDrawPrimitive                        _DrawPrimitive;

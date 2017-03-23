@@ -341,9 +341,9 @@ SEGPUDeviceInspector* SEGPUDevice::GetInspector()
     return mInspector;
 }
 //----------------------------------------------------------------------------
-void SEGPUDevice::MemoryBarrier(unsigned int flags)
+void SEGPUDevice::GPUMemoryBarrier(unsigned int flags)
 {
-    (this->*_MemoryBarrier)(flags);
+    (this->*_GPUMemoryBarrier)(flags);
 }
 //----------------------------------------------------------------------------
 void SEGPUDevice::ApplyPipelineStateBlock(SEPipelineStateBlock* psb)
