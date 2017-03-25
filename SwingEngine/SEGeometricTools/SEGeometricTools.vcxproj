@@ -253,6 +253,10 @@
     <OutDir>..\SDK\Lib\Debug\</OutDir>
     <IntDir>Temp\Debug\VC140\</IntDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\SDK\Lib\Release\</OutDir>
+    <IntDir>Temp\Release\VC140\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
