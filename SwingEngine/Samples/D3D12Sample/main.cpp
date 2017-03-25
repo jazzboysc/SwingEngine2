@@ -19,7 +19,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
     // Initialize application.
     app = new D3D12Sample(hInstance, prevInstance, cmdLine, showCmd, width, 
         height);
-    app->Swing::SED3D12Application::Initialize(gpuDevice);
+    SEApplicationDescription appDesc;
+    appDesc.GraphicsFeature = AGF_Rasterizer;
+    appDesc.GPUDevice = gpuDevice;
+    app->Swing::SED3D12Application::Initialize(&appDesc);
     app->Swing::SED3D12Application::Run();
     app->Swing::SED3D12Application::Terminate();
     delete app;

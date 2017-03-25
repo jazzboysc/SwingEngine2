@@ -23,13 +23,13 @@ public:
 	virtual ~SEWglApplication();
 
     // Implement base class interface.
-	virtual void Initialize(SEGPUDeviceBase* device);
-	virtual void Run();
-	virtual void Terminate();
-	virtual void ProcessInput();
-	virtual void FrameFunc();
-    virtual void UpdateMainCamera();
-	virtual void ProcessInput(int key, int scancode, int action, int mods);
+	virtual void Initialize(SEApplicationDescription* ApplicationDesc) override;
+	virtual void Run() override;
+	virtual void Terminate() override;
+	virtual void ProcessInput() override;
+	virtual void FrameFunc() override;
+    virtual void UpdateMainCamera() override;
+	virtual void ProcessInput(int key, int scancode, int action, int mods) override;
 
 	GLFWwindow* Window;
 

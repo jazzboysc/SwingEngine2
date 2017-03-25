@@ -39,7 +39,7 @@ public:
 	~VPLviaSVOGI();
 
     // Override SEWglApplication interface.
-	void Initialize(SEGPUDeviceBase* device) override;
+	void Initialize(SEApplicationDescription* ApplicationDesc) override;
 	void ProcessInput() override;
 	void FrameFunc() override;
 	void Terminate() override;

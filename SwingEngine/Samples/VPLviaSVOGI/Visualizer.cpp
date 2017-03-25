@@ -32,7 +32,7 @@ void GatherVoxelBuffer::OnPreDispatch(unsigned int)
 //----------------------------------------------------------------------------
 void GatherVoxelBuffer::OnPostDispatch(unsigned int)
 {
-    mDevice->GPUMemoryBarrier(MBT_Command);
+    mGPUDevice->GPUMemoryBarrier(MBT_Command);
 }
 //----------------------------------------------------------------------------
 
@@ -483,7 +483,7 @@ void Visualizer::Initialize(SEGPUDevice* device, SEVoxelizer* voxelizer,
     SEMaterial* showVPLMaterial = new SEMaterial(mtShowVPL);
     mVPLPointSet = new VPLPointSet(showVPLMaterial, mainCamera);
     mVPLPointSet->LoadFromSystemMemory(1, vplPointSetVB, 4);
-    mVPLPointSet->CreateDeviceResource(mDevice);
+    mVPLPointSet->CreateDeviceResource(mGPUDevice);
     mVPLPointSet->PointSize = 5.0f;
     mVPLPointSet->VPLCount = vplCount;
     mVPLPointSet->CurVPLSubsetID = mCurVPLSubsetIndex;
@@ -492,7 +492,7 @@ void Visualizer::Initialize(SEGPUDevice* device, SEVoxelizer* voxelizer,
     delete[] vplPointSetVB;
 
 	const SEGPUDeviceDescription& deviceDesc =
-		mDevice->GetDeviceDescription();
+		mGPUDevice->GetDeviceDescription();
 	mVPLViewportWidth = deviceDesc.FramebufferWidth / mVPLPointSet->PatternSize;
 	mVPLViewportHeight = deviceDesc.FramebufferHeight / mVPLPointSet->PatternSize;
 
@@ -640,7 +640,7 @@ void Visualizer::Initialize(SEGPUDevice* device, SEVoxelizer* voxelizer,
     mCommonPSB->Rasterizer.CullMode = PCM_Cull_Back;
     mCommonPSB->Rasterizer.RasterizerOpFlag |= RB_FillMode;
     mCommonPSB->Rasterizer.FillMode = PFM_Solid;
-    mCommonPSB->CreateDeviceResource(mDevice);
+    mCommonPSB->CreateDeviceResource(mGPUDevice);
 
     mShowSVOGridPSB = new SEPipelineStateBlock();
     mShowSVOGridPSB->PipelineStageFlag |= PB_OutputMerger;
@@ -651,13 +651,13 @@ void Visualizer::Initialize(SEGPUDevice* device, SEVoxelizer* voxelizer,
     mShowSVOGridPSB->Rasterizer.CullMode = PCM_Cull_None;
     mShowSVOGridPSB->Rasterizer.RasterizerOpFlag |= RB_FillMode;
     mShowSVOGridPSB->Rasterizer.FillMode = PFM_Wireframe;
-    mShowSVOGridPSB->CreateDeviceResource(mDevice);
+    mShowSVOGridPSB->CreateDeviceResource(mGPUDevice);
 
     mShowVPLPSB = new SEPipelineStateBlock();
     mShowVPLPSB->PipelineStageFlag |= PB_OutputMerger;
     mShowVPLPSB->OutputMerger.OutputMergerOpFlag |= OMB_DepthStencil;
     mShowVPLPSB->OutputMerger.DepthStencil.DepthEnable = false;
-    mShowVPLPSB->CreateDeviceResource(mDevice);
+    mShowVPLPSB->CreateDeviceResource(mGPUDevice);
 }
 //----------------------------------------------------------------------------
 void Visualizer::Render(int technique, int pass)
@@ -668,7 +668,7 @@ void Visualizer::Render(int technique, int pass)
 //----------------------------------------------------------------------------
 void Visualizer::OnRender(int, int, SERTGICamera*)
 {
-    mDevice->ApplyPipelineStateBlock(mCommonPSB);
+    mGPUDevice->ApplyPipelineStateBlock(mCommonPSB);
 
     if( mVoxelizerType == SEVoxelizer::VT_Grid && mShowMode == SM_VoxelGrid )
     {
@@ -683,7 +683,7 @@ void Visualizer::OnRender(int, int, SERTGICamera*)
     }
     else if( mVoxelizerType == SEVoxelizer::VT_SVO && mShowMode == SM_SVOGrid )
     {
-        mDevice->ApplyPipelineStateBlock(mShowSVOGridPSB);
+        mGPUDevice->ApplyPipelineStateBlock(mShowSVOGridPSB);
 
 		// Show SVO grid.
         mSVOUniformBuffer->Bind(0);
@@ -702,7 +702,7 @@ void Visualizer::OnRender(int, int, SERTGICamera*)
 
     if( mShowVPL )
     {
-        mDevice->ApplyPipelineStateBlock(mShowVPLPSB);
+        mGPUDevice->ApplyPipelineStateBlock(mShowVPLPSB);
 
         mVPLBuffer->Bind(0);
 
@@ -744,7 +744,7 @@ void Visualizer::OnRender(int, int, SERTGICamera*)
 		{
 			// Cache old values.
             static SEViewportState oldViewport;
-            mDevice->GetViewport(&oldViewport);
+            mGPUDevice->GetViewport(&oldViewport);
 			bool oldShowVPLSubset = mVPLPointSet->ShowVPLSubset;
 
 			mVPLPointSet->ShowVPLSubset = true;
@@ -757,7 +757,7 @@ void Visualizer::OnRender(int, int, SERTGICamera*)
 				{
                     curViewport.X = x*mVPLViewportWidth;
                     curViewport.Y = y*mVPLViewportHeight;
-                    mDevice->SetViewport(&curViewport);
+                    mGPUDevice->SetViewport(&curViewport);
 
 					mVPLPointSet->CurVPLSubsetID = mVPLPointSet->PatternSize*y + x;
 					mVPLPointSet->Render(0, 0);
@@ -765,7 +765,7 @@ void Visualizer::OnRender(int, int, SERTGICamera*)
 			}
 
 			// Restore old values.
-            mDevice->SetViewport(&oldViewport);
+            mGPUDevice->SetViewport(&oldViewport);
 			mVPLPointSet->ShowVPLSubset = oldShowVPLSubset;
 		}
 		else

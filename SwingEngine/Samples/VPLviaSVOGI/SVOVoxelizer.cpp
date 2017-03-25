@@ -25,23 +25,23 @@ void BuildSVO::OnPostDispatch(unsigned int pass)
     switch( pass )
     {
     case BUILD_SVO_INIT_ROOT_PASS:
-        mDevice->GPUMemoryBarrier(MBT_Structured);
+        mGPUDevice->GPUMemoryBarrier(MBT_Structured);
         break;
 
     case BUILD_SVO_FLAG_NODES_PASS:
-        mDevice->GPUMemoryBarrier(MBT_Structured);
+        mGPUDevice->GPUMemoryBarrier(MBT_Structured);
         break;
 
     case BUILD_SVO_ALLOC_NODES_PASS:
-        mDevice->GPUMemoryBarrier(MBT_AtomicCounter);
+        mGPUDevice->GPUMemoryBarrier(MBT_AtomicCounter);
         break;
 
     case BUILD_SVO_POST_ALLOC_NODES_PASS:
-        mDevice->GPUMemoryBarrier(MBT_Structured | MBT_Command);
+        mGPUDevice->GPUMemoryBarrier(MBT_Structured | MBT_Command);
         break;
 
     case BUILD_SVO_INIT_NODES_PASS:
-        mDevice->GPUMemoryBarrier(MBT_Structured);
+        mGPUDevice->GPUMemoryBarrier(MBT_Structured);
         break;
 
     default:
@@ -65,12 +65,12 @@ void GatherVoxelFragmentListInfo::OnGetShaderConstants()
 //----------------------------------------------------------------------------
 void GatherVoxelFragmentListInfo::OnPreDispatch(unsigned int)
 {
-    mDevice->GPUMemoryBarrier(MBT_AtomicCounter);
+    mGPUDevice->GPUMemoryBarrier(MBT_AtomicCounter);
 }
 //----------------------------------------------------------------------------
 void GatherVoxelFragmentListInfo::OnPostDispatch(unsigned int)
 {
-    mDevice->GPUMemoryBarrier(MBT_Command);
+    mGPUDevice->GPUMemoryBarrier(MBT_Command);
 }
 //----------------------------------------------------------------------------
 
@@ -120,7 +120,7 @@ void SVOVoxelizer::Initialize(SEGPUDevice*, int voxelGridDim,
         gatherVoxelFragmentListInfoProgramInfo);
     mGatherVoxelFragmentListInfoTask = new GatherVoxelFragmentListInfo();
     mGatherVoxelFragmentListInfoTask->AddPass(passGatherVoxelFragmentListInfo);
-    mGatherVoxelFragmentListInfoTask->CreateDeviceResource(mDevice);
+    mGatherVoxelFragmentListInfoTask->CreateDeviceResource(mGPUDevice);
 
     // Create build SVO task.
     SEShaderProgramInfo buildSVOInitRootProgramInfo;
@@ -173,7 +173,7 @@ void SVOVoxelizer::Initialize(SEGPUDevice*, int voxelGridDim,
     mBuildSVOTask->AddPass(passBuildSVOPostAllocateNodes);
     mBuildSVOTask->AddPass(passBuildSVOInitNodes);
     mBuildSVOTask->AddPass(passBuildSVOSplatLeafNodes);
-    mBuildSVOTask->CreateDeviceResource(mDevice);
+    mBuildSVOTask->CreateDeviceResource(mGPUDevice);
 
     // Create voxel fragment list buffer.
     unsigned int voxelCount = VoxelGridDim * VoxelGridDim * VoxelGridDim;
@@ -182,13 +182,13 @@ void SVOVoxelizer::Initialize(SEGPUDevice*, int voxelGridDim,
         unsigned int((float)voxelCount*1.0f/*0.2f*/); // voxel fragment ratio.
     size_t bufferSize = sizeof(VoxelFragmentBufferHead) + 
         voxelFragmentCount*sizeof(VoxelFragment);
-    mVoxelFragmentListBuffer->ReserveMutableDeviceResource(mDevice, 
+    mVoxelFragmentListBuffer->ReserveMutableDeviceResource(mGPUDevice, 
         bufferSize, BU_Dynamic_Copy);
 
     SEBufferViewDesc viewDesc;
     viewDesc.Type = BT_DrawIndirect;
     mVoxelFragmentListBufferIndirectView = new SEBufferView(viewDesc);
-    mVoxelFragmentListBufferIndirectView->CreateDeviceResource(mDevice,
+    mVoxelFragmentListBufferIndirectView->CreateDeviceResource(mGPUDevice,
         mVoxelFragmentListBuffer);
 
     // Create SVO buffer.
@@ -197,16 +197,16 @@ void SVOVoxelizer::Initialize(SEGPUDevice*, int voxelGridDim,
     // interior node ratio (1/7, fixed) and leaf node ratio.
     mSVONodeMaxCount = unsigned int((float)voxelCount*2.0f/*(0.143f + 0.05f)*/);
     bufferSize = sizeof(SVONodeBufferHead) + mSVONodeMaxCount*sizeof(SVONode);
-    mSVOBuffer->ReserveMutableDeviceResource(mDevice, bufferSize, 
+    mSVOBuffer->ReserveMutableDeviceResource(mGPUDevice, bufferSize, 
         BU_Dynamic_Copy);
 
     mSVOBufferIndirectView = new SEBufferView(viewDesc);
-    mSVOBufferIndirectView->CreateDeviceResource(mDevice, mSVOBuffer);
+    mSVOBufferIndirectView->CreateDeviceResource(mGPUDevice, mSVOBuffer);
 
     // Create SVO uniform buffer.
     mSVOUniformBuffer = new SEUniformBuffer();
     bufferSize = sizeof(unsigned int) * 2;
-    mSVOUniformBuffer->ReserveMutableDeviceResource(mDevice, bufferSize, 
+    mSVOUniformBuffer->ReserveMutableDeviceResource(mGPUDevice, bufferSize, 
         BU_Dynamic_Draw);
     unsigned int svoUniformBufferData[2] = { 0, (unsigned int)VoxelGridDim };
     mSVOUniformBuffer->UpdateSubData(0, 0, sizeof(unsigned int) * 2, 
@@ -215,10 +215,10 @@ void SVOVoxelizer::Initialize(SEGPUDevice*, int voxelGridDim,
     // Create atomic counter buffer. We create 2 atomic counters here.
     mAtomicCounterBuffer = new SEAtomicCounterBuffer();
 #ifdef DEBUG_VOXEL
-    mAtomicCounterBuffer->ReserveMutableDeviceResource(mDevice, 
+    mAtomicCounterBuffer->ReserveMutableDeviceResource(mGPUDevice, 
         sizeof(unsigned int) * 2, BU_Dynamic_Copy);
 #else
-    mAtomicCounterBuffer->ReserveImmutableDeviceResource(mDevice, 
+    mAtomicCounterBuffer->ReserveImmutableDeviceResource(mGPUDevice, 
         sizeof(unsigned int) * 2);
 #endif
 
@@ -239,7 +239,7 @@ void SVOVoxelizer::Initialize(SEGPUDevice*, int voxelGridDim,
 
     mSceneAABBBuffer = new SEStructuredBuffer();
     bufferSize = sizeof(SEVector4f)*2;
-    mSceneAABBBuffer->ReserveMutableDeviceResource(mDevice, bufferSize, 
+    mSceneAABBBuffer->ReserveMutableDeviceResource(mGPUDevice, bufferSize, 
         BU_Dynamic_Copy);
     mSceneAABBBuffer->Bind();
     SEVector4f* sceneAABBBufferData = (SEVector4f*)mSceneAABBBuffer->Map(BA_Write_Only);
@@ -266,7 +266,7 @@ void SVOVoxelizer::Initialize(SEGPUDevice*, int voxelGridDim,
     mBeginBuildingSVOPSB->Rasterizer.CullMode = PCM_Cull_None;
     mBeginBuildingSVOPSB->Rasterizer.RasterizerOpFlag |= RB_FillMode;
     mBeginBuildingSVOPSB->Rasterizer.FillMode = PFM_Solid;
-    mBeginBuildingSVOPSB->CreateDeviceResource(mDevice);
+    mBeginBuildingSVOPSB->CreateDeviceResource(mGPUDevice);
 
     mEndBuildingSVOPSB = new SEPipelineStateBlock();
     mEndBuildingSVOPSB->PipelineStageFlag |= PB_OutputMerger;
@@ -282,7 +282,7 @@ void SVOVoxelizer::Initialize(SEGPUDevice*, int voxelGridDim,
     // Enable cull face.
     mEndBuildingSVOPSB->Rasterizer.RasterizerOpFlag |= RB_CullMode;
     mEndBuildingSVOPSB->Rasterizer.CullMode = PCM_Cull_Back;
-    mEndBuildingSVOPSB->CreateDeviceResource(mDevice);
+    mEndBuildingSVOPSB->CreateDeviceResource(mGPUDevice);
 }
 //----------------------------------------------------------------------------
 static SEViewportState oldViewport;
@@ -296,8 +296,8 @@ void SVOVoxelizer::OnRender(int technique, int pass, SERTGICamera*)
     mSVOBuffer->Bind(3);
 
     // Cache old viewport values and set new values.
-    mDevice->GetViewport(&oldViewport);
-    mDevice->SetViewport(&mVoxelizerViewport);
+    mGPUDevice->GetViewport(&oldViewport);
+    mGPUDevice->SetViewport(&mVoxelizerViewport);
 
     // Reset counters.
 #ifdef DEBUG_VOXEL
@@ -318,7 +318,7 @@ void SVOVoxelizer::OnRender(int technique, int pass, SERTGICamera*)
     //----------------------- Begin building SVO -----------------------//
 
     // Scene voxelization pass.
-    mDevice->ApplyPipelineStateBlock(mBeginBuildingSVOPSB);
+    mGPUDevice->ApplyPipelineStateBlock(mBeginBuildingSVOPSB);
     VoxelizeScene(technique, pass);
 
     // Gather voxel fragment list info pass.
@@ -405,8 +405,8 @@ void SVOVoxelizer::OnRender(int technique, int pass, SERTGICamera*)
     //------------------------ End building SVO ------------------------//
 
     // Restore device states.
-    mDevice->ApplyPipelineStateBlock(mEndBuildingSVOPSB);
-    mDevice->SetViewport(&oldViewport);
+    mGPUDevice->ApplyPipelineStateBlock(mEndBuildingSVOPSB);
+    mGPUDevice->SetViewport(&oldViewport);
 }
 //----------------------------------------------------------------------------
 SEStructuredBuffer* SVOVoxelizer::GetVoxelFragmentListBuffer() const

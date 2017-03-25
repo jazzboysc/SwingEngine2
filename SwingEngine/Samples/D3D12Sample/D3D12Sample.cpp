@@ -17,12 +17,14 @@ D3D12Sample::~D3D12Sample()
 {
 }
 //----------------------------------------------------------------------------
-void D3D12Sample::Initialize(SEGPUDeviceBase* device)
+void D3D12Sample::Initialize(SEApplicationDescription* ApplicationDesc)
 {
+    SEGPUDeviceBase* gpuDevice = ApplicationDesc->GPUDevice;
+
     SEVertexShader* vShader = SE_NEW SEVertexShader("D3D12Sample/vTest.hlsl");
-    vShader->CreateDeviceResource(device);
+    vShader->CreateDeviceResource(gpuDevice);
     SEFragmentShader* fShader = SE_NEW SEFragmentShader("D3D12Sample/fTest.hlsl");
-    fShader->CreateDeviceResource(device);
+    fShader->CreateDeviceResource(gpuDevice);
 }
 //----------------------------------------------------------------------------
 void D3D12Sample::ProcessInput()

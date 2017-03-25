@@ -17,9 +17,9 @@ ObjLoadingTestApp::~ObjLoadingTestApp()
 {
 }
 //----------------------------------------------------------------------------
-void ObjLoadingTestApp::Initialize(SEGPUDeviceBase* device)
+void ObjLoadingTestApp::Initialize(SEApplicationDescription* ApplicationDesc)
 {
-    SEGPUDevice* gpuDevice = (SEGPUDevice*)device;
+    SEGPUDevice* gpuDevice = (SEGPUDevice*)ApplicationDesc->GPUDevice;
 
     // Create scene camera.
     mMainCamera->SetPerspectiveFrustum(45.0f, (float)Width / (float)Height, 0.5f, 4000.0f);
@@ -278,11 +278,11 @@ void ObjLoadingTestApp::FrameFunc()
 
 	if( mIsWireframe )
 	{
-        ((SEGPUDevice*)(SEGPUDeviceBase*)mDevice)->ApplyPipelineStateBlock(mWireframePSB);
+        ((SEGPUDevice*)(SEGPUDeviceBase*)mGPUDevice)->ApplyPipelineStateBlock(mWireframePSB);
 	}
 	else
 	{
-        ((SEGPUDevice*)(SEGPUDeviceBase*)mDevice)->ApplyPipelineStateBlock(mSolidPSB);
+        ((SEGPUDevice*)(SEGPUDeviceBase*)mGPUDevice)->ApplyPipelineStateBlock(mSolidPSB);
 	}
 
 	for( int i = 0; i < (int)mMeshes.size(); ++i )

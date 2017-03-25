@@ -8,7 +8,7 @@ D3D11Sample::D3D11Sample(SEGPUDevice* device, int width, int height)
     mWidth(width),
     mHeight(height),
     mWindowTitle("D3D11 Sample"),
-    mDevice(device)
+    mGPUDevice(device)
 {
 }
 //----------------------------------------------------------------------------
@@ -19,7 +19,7 @@ D3D11Sample::~D3D11Sample()
 void D3D11Sample::Initialize()
 {
     SEVertexShader* vShader = SE_NEW SEVertexShader("test.hlsl");
-    vShader->CreateDeviceResource(mDevice);
+    vShader->CreateDeviceResource(mGPUDevice);
 }
 //----------------------------------------------------------------------------
 void D3D11Sample::Run()

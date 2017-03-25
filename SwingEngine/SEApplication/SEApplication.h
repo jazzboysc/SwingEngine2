@@ -6,11 +6,27 @@
 
 #include "SEApplicationLIB.h"
 #include "SEGPUDeviceBase.h"
-
+#include "SERayTracingDevice.h"
 #include <string>
 
 namespace Swing
 {
+
+enum SEApplicationGraphicsFeature
+{
+    AGF_Unknown    = 0x00000000,
+    AGF_Rasterizer = 0x00000001,
+    AGF_RayTracer  = 0x00000002,
+    AGF_Both       = AGF_Rasterizer | AGF_RayTracer
+};
+
+struct SE_APPLICATION_API SEApplicationDescription
+{
+    SEApplicationGraphicsFeature GraphicsFeature;
+    SEGPUDeviceBase* GPUDevice;
+    SERayTracingDevice* RayTracingDevice;
+};
+
 //----------------------------------------------------------------------------
 // Author: Che Sun
 // Date: 09/14/2013
@@ -22,7 +38,7 @@ public:
 	SEApplication();
 	virtual ~SEApplication();
 
-	virtual void Initialize(SEGPUDeviceBase* device) = 0;
+	virtual void Initialize(SEApplicationDescription* ApplicationDesc) = 0;
 	virtual void Run() = 0;
 	virtual void Terminate() = 0;
 	virtual void ProcessInput() = 0;
@@ -37,9 +53,13 @@ public:
     unsigned int FrameCounter;
 
 protected:
-    SEGPUDeviceBasePtr mDevice;
+    SEApplicationGraphicsFeature mGraphicsFeature;
+    SEGPUDeviceBasePtr mGPUDevice;
+    SERayTracingDevicePtr mRayTracingDevice;
+
 	SERTGICamera* mMainCamera;
 	float mMainCameraSpeed;
+
 	bool mInitialized = false;
 
 	static SEApplication* mInstance;

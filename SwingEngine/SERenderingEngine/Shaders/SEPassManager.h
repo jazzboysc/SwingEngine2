@@ -29,7 +29,7 @@ public:
 
 protected:
     std::vector<SEPassBase*> mPasses;
-    SEGPUDevice* mDevice;
+    SEGPUDevice* mGPUDevice;
 };
 
 typedef SESmartPointer<SEPassManager> SEPassManagerPtr;

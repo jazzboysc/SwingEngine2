@@ -18,14 +18,17 @@ int main(int, char **)
 #endif
 
 	// Create GPU device.
-	SEOpenGLDevice* gpuDevice = new SEOpenGLDevice();
+	SEOpenGLDevice* gpuDevice =  SE_NEW SEOpenGLDevice();
 
 	// Initialize application.
-	app = new VPLviaSVOGI(width, height);
-    app->Swing::SEWglApplication::Initialize(gpuDevice);
+	app = SE_NEW VPLviaSVOGI(width, height);
+    SEApplicationDescription appDesc;
+    appDesc.GraphicsFeature = AGF_Rasterizer;
+    appDesc.GPUDevice = gpuDevice;
+    app->Swing::SEWglApplication::Initialize(&appDesc);
     app->Swing::SEWglApplication::Run();
     app->Swing::SEWglApplication::Terminate();
-	delete app;
+	SE_DELETE app;
 
 	return 0;
 }

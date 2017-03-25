@@ -78,12 +78,17 @@ SED3D12Application::~SED3D12Application()
     // TODO:
 }
 //----------------------------------------------------------------------------
-void SED3D12Application::Initialize(SEGPUDeviceBase* device)
+void SED3D12Application::Initialize(SEApplicationDescription* ApplicationDesc)
 {
+    if( mInitialized )
+    {
+        return;
+    }
+
     // Set working directory to resource folder.
     chdir("..\\..\\Bin\\");
 
-    mDevice = device;
+    mGPUDevice = ApplicationDesc->GPUDevice;
     mMainCamera = new SERTGICamera();
 
     // Create app window.
@@ -128,19 +133,19 @@ void SED3D12Application::Initialize(SEGPUDeviceBase* device)
     SEGPUDeviceDescription deviceDesc;
     deviceDesc.FramebufferWidth = Width;
     deviceDesc.FramebufferHeight = Height;
-    ((SED3D12Device*)(SEGPUDeviceBase*)mDevice)->SetMainWindow(mhMainWnd);
-    mDevice->Initialize(&deviceDesc);
+    ((SED3D12Device*)(SEGPUDeviceBase*)mGPUDevice)->SetMainWindow(mhMainWnd);
+    mGPUDevice->Initialize(&deviceDesc);
 
     // Anisotropic Filtering
     int maxAnisFilterLevel;
-    mDevice->GetMaxAnisFilterLevel(&maxAnisFilterLevel);
-    mDevice->SetAnisFilterLevel(maxAnisFilterLevel);
+    mGPUDevice->GetMaxAnisFilterLevel(&maxAnisFilterLevel);
+    mGPUDevice->SetAnisFilterLevel(maxAnisFilterLevel);
 
     // Initialize texture manager.
     SETextureManager::Initialize();
 
     // Call child class initialize
-    this->Initialize(device);
+    this->Initialize(ApplicationDesc);
     this->mInitialized = true;
 }
 //----------------------------------------------------------------------------
@@ -189,7 +194,7 @@ void SED3D12Application::Terminate()
     SETextureManager::Terminate();
 
     // Terminate device.
-    mDevice->Terminate();
+    mGPUDevice->Terminate();
 }
 //----------------------------------------------------------------------------
 void SED3D12Application::ProcessInput(int, int, int, int)

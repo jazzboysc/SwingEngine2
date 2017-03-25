@@ -33,7 +33,7 @@ public:
 private:
     int mWidth, mHeight;
     std::string mWindowTitle;
-    SEGPUDevice* mDevice;
+    SEGPUDevice* mGPUDevice;
 };
 
 }

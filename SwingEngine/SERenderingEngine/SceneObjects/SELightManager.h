@@ -88,7 +88,7 @@ public:
     enum { MAX_LIGHT_COUNT = 256 };
 
 private:
-    SEGPUDevice* mDevice;
+    SEGPUDevice* mGPUDevice;
     SEMaterialTemplatePtr mMtLightMesh;
     std::vector<SERTGILightPtr> mPointLights;
     std::vector<SERTGILightPtr> mSpotLights;

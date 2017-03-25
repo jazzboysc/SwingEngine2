@@ -32,12 +32,18 @@ SEWglApplication::~SEWglApplication()
 {
 }
 //----------------------------------------------------------------------------
-void SEWglApplication::Initialize(SEGPUDeviceBase* device)
+void SEWglApplication::Initialize(SEApplicationDescription* ApplicationDesc)
 {
+    if (mInitialized)
+    {
+        return;
+    }
+
     // Set working directory to resource folder.
     chdir("..\\..\\Bin\\");
 
-    mDevice = device;
+    mGraphicsFeature = AGF_Rasterizer;
+    mGPUDevice = ApplicationDesc->GPUDevice;
 	mMainCamera = new SERTGICamera;
 
 	if (!glfwInit())
@@ -77,12 +83,12 @@ void SEWglApplication::Initialize(SEGPUDeviceBase* device)
 	SEGPUDeviceDescription deviceDesc;
 	deviceDesc.FramebufferWidth = Width;
 	deviceDesc.FramebufferHeight = Height;
-	mDevice->Initialize(&deviceDesc);
+	mGPUDevice->Initialize(&deviceDesc);
 
 	// Anisotropic Filtering
 	GLint maxAnisFilterLevel;
-	mDevice->GetMaxAnisFilterLevel(&maxAnisFilterLevel);
-	mDevice->SetAnisFilterLevel(maxAnisFilterLevel);
+	mGPUDevice->GetMaxAnisFilterLevel(&maxAnisFilterLevel);
+	mGPUDevice->SetAnisFilterLevel(maxAnisFilterLevel);
 
     // Initialize texture manager.
     SETextureManager::Initialize();
@@ -97,7 +103,7 @@ void SEWglApplication::Initialize(SEGPUDeviceBase* device)
     glfwSwapInterval(0);
 
 	// Call child class initialize
-	this->Initialize(device);
+	this->Initialize(ApplicationDesc);
 	this->mInitialized = true;
 }
 //----------------------------------------------------------------------------
@@ -238,7 +244,7 @@ void SEWglApplication::Terminate()
     SETextureManager::Terminate();
 
     // Terminate device.
-    mDevice->Terminate();
+    mGPUDevice->Terminate();
 
 	glfwTerminate();
 }

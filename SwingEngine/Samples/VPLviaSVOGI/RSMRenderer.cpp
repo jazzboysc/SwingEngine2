@@ -55,7 +55,7 @@ void RSMRenderer::Initialize(int width, int height, int pointLightFaceCount,
     // Create RSM info uniform buffer.
     mRSMInfoBuffer = new SEUniformBuffer();
     size_t bufferSize = sizeof(RSMInfo);
-    mRSMInfoBuffer->ReserveMutableDeviceResource(mDevice, bufferSize,
+    mRSMInfoBuffer->ReserveMutableDeviceResource(mGPUDevice, bufferSize,
         BU_Dynamic_Copy);
 }
 //----------------------------------------------------------------------------

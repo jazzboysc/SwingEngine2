@@ -7,23 +7,26 @@
 
 using namespace Swing;
 
-SEApplication* SEApplication::mInstance = 0;
+SEApplication* SEApplication::mInstance = nullptr;
 
 //----------------------------------------------------------------------------
 SEApplication::SEApplication()
 	:
     FrameCounter(0),
 	mMainCameraSpeed(5.0f),
-    mDevice(0),
-    mMainCamera(0)
+    mGraphicsFeature(AGF_Unknown),
+    mGPUDevice(nullptr),
+    mRayTracingDevice(nullptr),
+    mMainCamera(nullptr)
 {
-    SE_ASSERT( mInstance == 0 );
+    SE_ASSERT( mInstance == nullptr );
     mInstance = this;
 }
 //----------------------------------------------------------------------------
 SEApplication::~SEApplication()
 {
-    mDevice = 0;
+    mGPUDevice = nullptr;
+    mRayTracingDevice = nullptr;
 }
 //----------------------------------------------------------------------------
 SEApplication* SEApplication::GetInstance()

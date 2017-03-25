@@ -36,7 +36,7 @@ public:
     void DumpDeviceMemoryOperation();
 
 protected:
-    SEGPUDevicePtr mDevice;
+    SEGPUDevicePtr mGPUDevice;
     std::vector<SEDeviceMemOp> mMemOps;
 };
 

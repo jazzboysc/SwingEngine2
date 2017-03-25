@@ -17,18 +17,18 @@ namespace Swing
 
 enum SERayTracingDeviceVendor
 {
-    DV_Unknown = 0,
-    DV_VRay,
-    DV_IRay,
-    DV_Redshift
+    RTDV_Unknown = 0,
+    RTDV_VRay,
+    RTDV_IRay,
+    RTDV_Redshift
 };
 
 enum SERayTracingDeviceRenderMode
 {
-    RM_Unknown = 0,
-    RM_RT_CPU,
-    RM_RT_GPU_CUDA,
-    RM_RT_GPU_OPENCL
+    RTDRM_Unknown = 0,
+    RTDRM_RT_CPU,
+    RTDRM_RT_GPU_CUDA,
+    RTDRM_RT_GPU_OPENCL
 };
 
 struct SE_RAY_TRACING_ADAPTER_API SERayTracingDeviceDescription

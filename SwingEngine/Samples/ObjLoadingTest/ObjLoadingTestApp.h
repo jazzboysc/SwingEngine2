@@ -19,7 +19,8 @@ public:
     ObjLoadingTestApp(int width = 1024, int height = 768);
     ~ObjLoadingTestApp();
 
-	void Initialize(SEGPUDeviceBase* device) override;
+    // Override SEWglApplication interface.
+	void Initialize(SEApplicationDescription* ApplicationDesc) override;
 	void ProcessInput() override;
 	void FrameFunc() override;
 	void Terminate() override;

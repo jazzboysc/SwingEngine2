@@ -10,7 +10,7 @@ using namespace Swing;
 //----------------------------------------------------------------------------
 SELightManager::SELightManager(SEGPUDevice* device)
     :
-    mDevice(device),
+    mGPUDevice(device),
     mLightBufferBindingPoint(0)
 {
     size_t bufferSize = sizeof(SELightBufferHead) + 
@@ -72,10 +72,10 @@ SERTGILight* SELightManager::CreatePointLight(SELightProjectorDesc* projectorDes
     lightMesh->SetTCoord(1, SEVector2f(1.0f, 0.0f));
     lightMesh->SetTCoord(2, SEVector2f(1.0f, 1.0f));
     lightMesh->SetTCoord(3, SEVector2f(0.0f, 1.0f));
-    lightMesh->CreateDeviceResource(mDevice);
+    lightMesh->CreateDeviceResource(mGPUDevice);
 
     lightMesh->LightMeshTexture = SE_NEW SETexture2D();
-    lightMesh->LightMeshTexture->LoadPNGFromFile(mDevice, 
+    lightMesh->LightMeshTexture->LoadPNGFromFile(mGPUDevice, 
         "Textures/pointLight.png");
 
     SERTGICamera* lightProjector = SE_NEW SERTGICamera();

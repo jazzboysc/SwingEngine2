@@ -193,7 +193,7 @@ void IndirectLightingRenderer::Initialize(SEGPUDevice* device, int width,
     if( mUseTC )
     {
         IndirectLightingTexture = new SETexture2D();
-        IndirectLightingTexture->CreateRenderTarget(mDevice, width, height,
+        IndirectLightingTexture->CreateRenderTarget(mGPUDevice, width, height,
             format, false);
     }
     else

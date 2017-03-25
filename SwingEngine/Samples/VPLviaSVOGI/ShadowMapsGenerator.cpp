@@ -43,7 +43,7 @@ void ShadowMapsGenerator::Initialize(int width, int height,
     // Create shadow map info uniform buffer.
     mShadowMapInfoBuffer = new SEUniformBuffer();
     size_t bufferSize = sizeof(ShadowMapInfo);
-    mShadowMapInfoBuffer->ReserveMutableDeviceResource(mDevice, bufferSize,
+    mShadowMapInfoBuffer->ReserveMutableDeviceResource(mGPUDevice, bufferSize,
         BU_Dynamic_Copy);
 }
 //----------------------------------------------------------------------------

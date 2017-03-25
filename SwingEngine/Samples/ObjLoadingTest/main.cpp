@@ -12,14 +12,17 @@ int main(int argc, char **argv)
 	height = 720;
 
     // Create GPU device.
-    SEOpenGLDevice* gpuDevice = new SEOpenGLDevice();
+    SEOpenGLDevice* gpuDevice = SE_NEW SEOpenGLDevice();
 
     // Initialize application.
-	app = new ObjLoadingTestApp(width, height);
-    app->Swing::SEWglApplication::Initialize(gpuDevice);
+	app = SE_NEW ObjLoadingTestApp(width, height);
+    SEApplicationDescription appDesc;
+    appDesc.GraphicsFeature = AGF_Rasterizer;
+    appDesc.GPUDevice = gpuDevice;
+    app->Swing::SEWglApplication::Initialize(&appDesc);
     app->Swing::SEWglApplication::Run();
     app->Swing::SEWglApplication::Terminate();
-    delete app;
+    SE_DELETE app;
 
     return 0;
 }

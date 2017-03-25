@@ -13,13 +13,13 @@ using namespace Swing;
 //----------------------------------------------------------------------------
 SEGPUDeviceInspector::SEGPUDeviceInspector(SEGPUDevice* device)
 {
-    mDevice = device;
-    mDevice->SetInspector(this);
+    mGPUDevice = device;
+    mGPUDevice->SetInspector(this);
 }
 //----------------------------------------------------------------------------
 SEGPUDeviceInspector::~SEGPUDeviceInspector()
 {
-    mDevice = 0;
+    mGPUDevice = 0;
 }
 //----------------------------------------------------------------------------
 void SEGPUDeviceInspector::OnDeviceMemoryOperation(SEDeviceMemOp* op)

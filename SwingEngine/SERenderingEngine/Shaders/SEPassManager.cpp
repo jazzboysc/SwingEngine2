@@ -9,7 +9,7 @@ using namespace Swing;
 //----------------------------------------------------------------------------
 SEPassManager::SEPassManager()
     :
-    mDevice(0)
+    mGPUDevice(0)
 {
 }
 //----------------------------------------------------------------------------
@@ -39,7 +39,7 @@ SEPassBase* SEPassManager::GetPass(unsigned int i) const
 //----------------------------------------------------------------------------
 void SEPassManager::CreateDeviceResource(SEGPUDevice* device)
 {
-    mDevice = device;
+    mGPUDevice = device;
 
     for( int i = 0; i < (int)mPasses.size(); ++i )
     {

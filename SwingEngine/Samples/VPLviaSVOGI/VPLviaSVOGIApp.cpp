@@ -627,9 +627,9 @@ void VPLviaSVOGI::CreateScene(SEMaterialTemplate* sceneMT, SEGPUDevice* device,
 	}
 }
 //----------------------------------------------------------------------------
-void VPLviaSVOGI::Initialize(SEGPUDeviceBase* device)
+void VPLviaSVOGI::Initialize(SEApplicationDescription* ApplicationDesc)
 {
-    SEGPUDevice* gpuDevice = (SEGPUDevice*)device;
+    SEGPUDevice* gpuDevice = (SEGPUDevice*)ApplicationDesc->GPUDevice;
 
     mInitPSB = new SEPipelineStateBlock();
     mInitPSB->PipelineStageFlag = PB_OutputMerger | PB_Rasterizer;

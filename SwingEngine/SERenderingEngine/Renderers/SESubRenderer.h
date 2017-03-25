@@ -98,7 +98,7 @@ protected:
     void PreRender(unsigned int outputFlag, SEPipelineStateBlock* psb);
     void PostRender(unsigned int outputFlag, SEPipelineStateBlock* psb);
 
-    SEGPUDevice* mDevice;
+    SEGPUDevice* mGPUDevice;
 
     // InOuts.
 

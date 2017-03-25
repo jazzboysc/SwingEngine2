@@ -84,7 +84,7 @@ SESubRenderer::SESubRenderer()
 //----------------------------------------------------------------------------
 SESubRenderer::SESubRenderer(SEGPUDevice* device, SERenderSet* renderSet)
     :
-    mDevice(device)
+    mGPUDevice(device)
 {
     mFrameBuffer = SE_NEW SEFrameBuffer(device);
     mRenderSet = renderSet;
@@ -130,12 +130,12 @@ void SESubRenderer::AddFrameBufferTarget(const std::string& name, int width,
     {
     case TT_Texture2D:
         texture = SE_NEW SETexture2D();
-        ((SETexture2D*)texture)->CreateRenderTarget(mDevice, width, height, 
+        ((SETexture2D*)texture)->CreateRenderTarget(mGPUDevice, width, height, 
             format, generateMipmap);
         break;
     case TT_Texture2DArray:
         texture = SE_NEW SETexture2DArray();
-        ((SETexture2DArray*)texture)->CreateRenderTarget(mDevice, width, height, 
+        ((SETexture2DArray*)texture)->CreateRenderTarget(mGPUDevice, width, height, 
             depth, format, generateMipmap);
         break;
     default:
@@ -227,7 +227,7 @@ void SESubRenderer::AddInputDependency(SESubRenderer* producer,
         producerOutput->OutputBuffer, view);
     if( consumerInput->InputBufferView )
     {
-        consumerInput->InputBufferView->CreateDeviceResource(mDevice, 
+        consumerInput->InputBufferView->CreateDeviceResource(mGPUDevice, 
             consumerInput->InputBuffer);
     }
     mInputs.push_back(consumerInput);
@@ -265,13 +265,13 @@ void SESubRenderer::CreateFrameBuffer(int depthWidth, int depthHeight,
     {
     case TT_Texture2D:
         depthTexture = SE_NEW SETexture2D();
-        ((SETexture2D*)depthTexture)->CreateRenderTarget(mDevice, depthWidth, 
+        ((SETexture2D*)depthTexture)->CreateRenderTarget(mGPUDevice, depthWidth, 
             depthHeight, BF_Depth);
         break;
 
     case TT_Texture2DArray:
         depthTexture = SE_NEW SETexture2DArray();
-        ((SETexture2DArray*)depthTexture)->CreateRenderTarget(mDevice, 
+        ((SETexture2DArray*)depthTexture)->CreateRenderTarget(mGPUDevice, 
             depthWidth, depthHeight, depthCount, BF_Depth);
         break;
 
@@ -294,13 +294,13 @@ void SESubRenderer::AddGenericBufferTarget(const std::string& name,
     SE_ASSERT(GetGenericBufferTargetByName(name) == 0);
 
     SEBufferBase* genericBufferTarget = msFactoryFunctions[(int)bufferType](
-        mDevice, size, usage);
+        mGPUDevice, size, usage);
 
     SERendererOutput* ro = SE_NEW SERendererOutput(name, genericBufferTarget, 
         ROT_Buffer, flag, (SEBufferType)bufferType, binding, reset, resetValue);
     if( ro->OutputBufferView )
     {
-        ro->OutputBufferView->CreateDeviceResource(mDevice, ro->OutputBuffer);
+        ro->OutputBufferView->CreateDeviceResource(mGPUDevice, ro->OutputBuffer);
     }
     mGenericBufferTargets.push_back(ro);
 }
@@ -451,7 +451,7 @@ void SESubRenderer::PreRender(unsigned int outputFlag,
     // Apply PSB.
     if( psb )
     {
-        mDevice->ApplyPipelineStateBlock(psb);
+        mGPUDevice->ApplyPipelineStateBlock(psb);
     }
 }
 //----------------------------------------------------------------------------
