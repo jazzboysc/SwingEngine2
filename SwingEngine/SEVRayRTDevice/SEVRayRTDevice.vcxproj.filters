@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="SEVRayRTDevicePCH.cpp" />
+    <ClCompile Include="SEVRayRTDeviceRegister.cpp" />
+    <ClCompile Include="RTDevice\SEVRayRTDevice.cpp">
+      <Filter>RTDevice</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SEVRayRTDeviceHeaders.h" />
+    <ClInclude Include="SEVRayRTDeviceLIB.h" />
+    <ClInclude Include="SEVRayRTDevicePCH.h" />
+    <ClInclude Include="SEVRayRTDeviceRegister.h" />
+    <ClInclude Include="SwingEngineVRayRTDevice.h" />
+    <ClInclude Include="RTDevice\SEVRayRTDevice.h">
+      <Filter>RTDevice</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="RTDevice">
+      <UniqueIdentifier>{84b1c7aa-a30d-4032-be28-ff6264682050}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

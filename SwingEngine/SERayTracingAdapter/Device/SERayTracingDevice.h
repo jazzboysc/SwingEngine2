@@ -10,6 +10,11 @@
 namespace Swing
 {
 
+//----------------------------------------------------------------------------
+#define SE_INSERT_RAY_TRACING_DEVICE_FUNC(function, device) \
+    _##function = (RayTracingDevice##function)&##device::__##function
+//----------------------------------------------------------------------------
+
 enum SERayTracingDeviceVendor
 {
     DV_Unknown = 0,
