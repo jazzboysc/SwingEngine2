@@ -45,7 +45,7 @@
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v140</PlatformToolset>
-    <CLRSupport>true</CLRSupport>
+    <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -57,7 +57,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
-    <CLRSupport>true</CLRSupport>
+    <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -107,16 +107,16 @@
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir>..\..\Bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir>..\..\Bin\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\SDK\Include;..\..\ThirdPartyLibs\glfw\include;..\..\ThirdPartyLibs\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\SDK\Include;..\..\ThirdPartyLibs\protobuf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;PROTOBUF_USE_DLLS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -132,7 +132,7 @@
       <DisableSpecificWarnings>4100</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SECored.lib;SEAssetUtilityd.lib;SEApplicationd.lib;SERenderingEngined.lib;SERayTracingAdapterd.lib;SEVRayWin32Applicationd.lib;SEVRayRTDeviced.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SECored.lib;SEAssetUtilityd.lib;SEApplicationd.lib;SERenderingEngined.lib;SERayTracingAdapterd.lib;SEVRayWin32Applicationd.lib;SEVRayRTDeviced.lib;libprotobufd.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\SDK\Lib\Debug;..\..\ThirdPartyLibs\Lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -148,8 +148,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\SDK\Include;..\..\ThirdPartyLibs\glfw\include;..\..\ThirdPartyLibs\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\SDK\Include;..\..\ThirdPartyLibs\protobuf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;PROTOBUF_USE_DLLS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -162,11 +162,11 @@
       <CompileAs>Default</CompileAs>
       <UseFullPaths>false</UseFullPaths>
       <SDLCheck>true</SDLCheck>
-      <DisableSpecificWarnings>4100</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4100;4267;4127;4125;4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SECored.lib;SEAssetUtilityd.lib;SEApplicationd.lib;SERenderingEngined.lib;SERayTracingAdapterd.lib;SEVRayWin32Applicationd.lib;SEVRayRTDeviced.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\SDK\Lib\Debug;..\..\ThirdPartyLibs\Lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SECored.lib;SEAssetUtilityd.lib;SEApplicationd.lib;SERenderingEngined.lib;SERayTracingAdapterd.lib;SEVRayWin32Applicationd.lib;SEVRayRTDeviced.lib;zlibd.lib;libprotobufd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\SDK\Lib\Debug;..\..\ThirdPartyLibs\Lib\Debug;..\..\ThirdPartyLibs\protobuf\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <ImageHasSafeExceptionHandlers>
@@ -181,8 +181,8 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\SDK\Include;..\..\ThirdPartyLibs\glfw\include;..\..\ThirdPartyLibs\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\SDK\Include;..\..\ThirdPartyLibs\protobuf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;PROTOBUF_USE_DLLS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -202,7 +202,7 @@
       <DisableSpecificWarnings>4100</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SECore.lib;SEAssetUtility.lib;SEApplication.lib;SERenderingEngine.lib;SERayTracingAdapter.lib;SEVRayWin32Application.lib;SEVRayRTDevice.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SECore.lib;SEAssetUtility.lib;SEApplication.lib;SERenderingEngine.lib;SERayTracingAdapter.lib;SEVRayWin32Application.lib;SEVRayRTDevice.lib;libprotobuf.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\SDK\Lib\Release;..\..\ThirdPartyLibs\Lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -220,8 +220,8 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\SDK\Include;..\..\ThirdPartyLibs\glfw\include;..\..\ThirdPartyLibs\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\SDK\Include;..\..\ThirdPartyLibs\protobuf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;PROTOBUF_USE_DLLS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -229,20 +229,21 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <CompileAsManaged>true</CompileAsManaged>
+      <CompileAsManaged>
+      </CompileAsManaged>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <MinimalRebuild>false</MinimalRebuild>
       <CallingConvention>
       </CallingConvention>
       <CompileAs>Default</CompileAs>
       <UseFullPaths>false</UseFullPaths>
       <SDLCheck>true</SDLCheck>
-      <DisableSpecificWarnings>4100</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4100;4267;4127;4125;4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SECore.lib;SEAssetUtility.lib;SEApplication.lib;SERenderingEngine.lib;SERayTracingAdapter.lib;SEVRayWin32Application.lib;SEVRayRTDevice.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\SDK\Lib\Release;..\..\ThirdPartyLibs\Lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SECore.lib;SEAssetUtility.lib;SEApplication.lib;SERenderingEngine.lib;SERayTracingAdapter.lib;SEVRayWin32Application.lib;SEVRayRTDevice.lib;zlib.lib;libprotobuf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\SDK\Lib\Release;..\..\ThirdPartyLibs\Lib\Release;..\..\ThirdPartyLibs\protobuf\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -263,9 +264,14 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RTLightmapBaker.cpp" />
+    <ClCompile Include="SceneProtocol.pb.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RTLightmapBaker.h" />
+    <ClInclude Include="SceneProtocol.pb.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SceneProtocol.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

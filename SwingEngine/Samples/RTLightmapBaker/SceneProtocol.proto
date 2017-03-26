@@ -1,0 +1,55 @@
+syntax = "proto2";
+
+message Vector3 {
+    required float x = 1;
+    required float y = 2;
+    required float z = 3;
+}
+
+message Vector4 {
+    required float x = 1;
+    required float y = 2;
+    required float z = 3;
+    required float w = 4;
+}
+
+message Quaternion {
+    required float x = 1;
+    required float y = 2;
+    required float z = 3;
+    required float w = 4;
+}
+
+// Scale,Rotation,Translation
+message Transform {
+    required Vector3 scale = 1; 
+    required Quaternion orientation = 2;
+    required Vector3 translation = 3;
+}
+
+message Color {
+    required float r = 1;
+    required float g = 2;
+    required float b = 3;
+    required float a = 4;
+}
+
+// PBR Material
+message Material {
+    // Diffuse Channel
+    optional Color diffuseColor = 1;
+    optional string diffuseMapURL = 2;
+    // Roughness Channel
+    optional float roughness = 3;
+    optional string roughnessMapURL = 4;
+    // Metallic Channel
+    optional float metallic = 5;
+    optional string metallicMapURL = 6;
+    // Normal Channel
+}
+
+message SceneNode {
+    required Transform worldTransform = 1;
+    required string meshURL = 2;
+    repeated Material materials = 3;
+}

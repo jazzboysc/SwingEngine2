@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="RTLightmapBaker.cpp" />
+    <ClCompile Include="SceneProtocol.pb.cc">
+      <Filter>Generated</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RTLightmapBaker.h" />
+    <ClInclude Include="SceneProtocol.pb.h">
+      <Filter>Generated</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Generated">
+      <UniqueIdentifier>{4d3ca9d6-c98c-4fc3-979a-32fe7eea9ff9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SceneProtocol.proto" />
+  </ItemGroup>
+</Project>
