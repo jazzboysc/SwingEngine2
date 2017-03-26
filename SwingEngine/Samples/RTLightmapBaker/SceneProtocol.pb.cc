@@ -16,20 +16,20 @@
 #include <google/protobuf/reflection_ops.h>
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
-class Vector3DefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Vector3> {
-} _Vector3_default_instance_;
-class Vector4DefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Vector4> {
-} _Vector4_default_instance_;
-class QuaternionDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Quaternion> {
-} _Quaternion_default_instance_;
-class TransformDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Transform> {
-} _Transform_default_instance_;
-class ColorDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Color> {
-} _Color_default_instance_;
-class MaterialDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Material> {
-} _Material_default_instance_;
-class SceneNodeDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<SceneNode> {
-} _SceneNode_default_instance_;
+class PBVector3DefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<PBVector3> {
+} _PBVector3_default_instance_;
+class PBVector4DefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<PBVector4> {
+} _PBVector4_default_instance_;
+class PBQuaternionDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<PBQuaternion> {
+} _PBQuaternion_default_instance_;
+class PBTransformDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<PBTransform> {
+} _PBTransform_default_instance_;
+class PBColorDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<PBColor> {
+} _PBColor_default_instance_;
+class PBMaterialDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<PBMaterial> {
+} _PBMaterial_default_instance_;
+class PBSceneNodeDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<PBSceneNode> {
+} _PBSceneNode_default_instance_;
 
 namespace protobuf_SceneProtocol_2eproto {
 
@@ -41,108 +41,110 @@ namespace {
 }  // namespace
 
 const ::google::protobuf::uint32 TableStruct::offsets[] = {
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vector3, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vector3, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBVector3, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBVector3, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vector3, x_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vector3, y_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vector3, z_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBVector3, x_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBVector3, y_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBVector3, z_),
   0,
   1,
   2,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vector4, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vector4, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBVector4, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBVector4, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vector4, x_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vector4, y_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vector4, z_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vector4, w_),
-  0,
-  1,
-  2,
-  3,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Quaternion, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Quaternion, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Quaternion, x_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Quaternion, y_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Quaternion, z_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Quaternion, w_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBVector4, x_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBVector4, y_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBVector4, z_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBVector4, w_),
   0,
   1,
   2,
   3,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Transform, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Transform, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBQuaternion, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBQuaternion, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Transform, scale_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Transform, orientation_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Transform, translation_),
-  0,
-  1,
-  2,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, r_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, g_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, b_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, a_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBQuaternion, x_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBQuaternion, y_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBQuaternion, z_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBQuaternion, w_),
   0,
   1,
   2,
   3,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Material, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Material, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBTransform, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBTransform, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Material, diffusecolor_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Material, diffusemapurl_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Material, roughness_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Material, roughnessmapurl_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Material, metallic_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Material, metallicmapurl_),
-  3,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBTransform, scale_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBTransform, orientation_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBTransform, translation_),
   0,
+  1,
+  2,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBColor, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBColor, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBColor, r_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBColor, g_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBColor, b_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBColor, a_),
+  0,
+  1,
+  2,
+  3,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBMaterial, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBMaterial, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBMaterial, diffusecolor_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBMaterial, diffusemapurl_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBMaterial, roughness_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBMaterial, roughnessmapurl_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBMaterial, metallic_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBMaterial, metallicmapurl_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBMaterial, normalmapurl_),
   4,
-  1,
+  0,
   5,
+  1,
+  6,
   2,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SceneNode, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SceneNode, _internal_metadata_),
+  3,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBSceneNode, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBSceneNode, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SceneNode, worldtransform_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SceneNode, meshurl_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SceneNode, materials_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBSceneNode, worldtransform_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBSceneNode, meshurl_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBSceneNode, materials_),
   1,
   0,
   ~0u,
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
-  { 0, 7, sizeof(Vector3)},
-  { 10, 18, sizeof(Vector4)},
-  { 22, 30, sizeof(Quaternion)},
-  { 34, 41, sizeof(Transform)},
-  { 44, 52, sizeof(Color)},
-  { 56, 66, sizeof(Material)},
-  { 72, 79, sizeof(SceneNode)},
+  { 0, 7, sizeof(PBVector3)},
+  { 10, 18, sizeof(PBVector4)},
+  { 22, 30, sizeof(PBQuaternion)},
+  { 34, 41, sizeof(PBTransform)},
+  { 44, 52, sizeof(PBColor)},
+  { 56, 67, sizeof(PBMaterial)},
+  { 74, 81, sizeof(PBSceneNode)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&_Vector3_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_Vector4_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_Quaternion_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_Transform_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_Color_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_Material_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&_SceneNode_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_PBVector3_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_PBVector4_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_PBQuaternion_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_PBTransform_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_PBColor_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_PBMaterial_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_PBSceneNode_default_instance_),
 };
 
 namespace {
@@ -169,19 +171,19 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void TableStruct::Shutdown() {
-  _Vector3_default_instance_.Shutdown();
+  _PBVector3_default_instance_.Shutdown();
   delete file_level_metadata[0].reflection;
-  _Vector4_default_instance_.Shutdown();
+  _PBVector4_default_instance_.Shutdown();
   delete file_level_metadata[1].reflection;
-  _Quaternion_default_instance_.Shutdown();
+  _PBQuaternion_default_instance_.Shutdown();
   delete file_level_metadata[2].reflection;
-  _Transform_default_instance_.Shutdown();
+  _PBTransform_default_instance_.Shutdown();
   delete file_level_metadata[3].reflection;
-  _Color_default_instance_.Shutdown();
+  _PBColor_default_instance_.Shutdown();
   delete file_level_metadata[4].reflection;
-  _Material_default_instance_.Shutdown();
+  _PBMaterial_default_instance_.Shutdown();
   delete file_level_metadata[5].reflection;
-  _SceneNode_default_instance_.Shutdown();
+  _PBSceneNode_default_instance_.Shutdown();
   delete file_level_metadata[6].reflection;
 }
 
@@ -189,23 +191,23 @@ void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::internal::InitProtobufDefaults();
-  _Vector3_default_instance_.DefaultConstruct();
-  _Vector4_default_instance_.DefaultConstruct();
-  _Quaternion_default_instance_.DefaultConstruct();
-  _Transform_default_instance_.DefaultConstruct();
-  _Color_default_instance_.DefaultConstruct();
-  _Material_default_instance_.DefaultConstruct();
-  _SceneNode_default_instance_.DefaultConstruct();
-  _Transform_default_instance_.get_mutable()->scale_ = const_cast< ::Vector3*>(
-      ::Vector3::internal_default_instance());
-  _Transform_default_instance_.get_mutable()->orientation_ = const_cast< ::Quaternion*>(
-      ::Quaternion::internal_default_instance());
-  _Transform_default_instance_.get_mutable()->translation_ = const_cast< ::Vector3*>(
-      ::Vector3::internal_default_instance());
-  _Material_default_instance_.get_mutable()->diffusecolor_ = const_cast< ::Color*>(
-      ::Color::internal_default_instance());
-  _SceneNode_default_instance_.get_mutable()->worldtransform_ = const_cast< ::Transform*>(
-      ::Transform::internal_default_instance());
+  _PBVector3_default_instance_.DefaultConstruct();
+  _PBVector4_default_instance_.DefaultConstruct();
+  _PBQuaternion_default_instance_.DefaultConstruct();
+  _PBTransform_default_instance_.DefaultConstruct();
+  _PBColor_default_instance_.DefaultConstruct();
+  _PBMaterial_default_instance_.DefaultConstruct();
+  _PBSceneNode_default_instance_.DefaultConstruct();
+  _PBTransform_default_instance_.get_mutable()->scale_ = const_cast< ::PBVector3*>(
+      ::PBVector3::internal_default_instance());
+  _PBTransform_default_instance_.get_mutable()->orientation_ = const_cast< ::PBQuaternion*>(
+      ::PBQuaternion::internal_default_instance());
+  _PBTransform_default_instance_.get_mutable()->translation_ = const_cast< ::PBVector3*>(
+      ::PBVector3::internal_default_instance());
+  _PBMaterial_default_instance_.get_mutable()->diffusecolor_ = const_cast< ::PBColor*>(
+      ::PBColor::internal_default_instance());
+  _PBSceneNode_default_instance_.get_mutable()->worldtransform_ = const_cast< ::PBTransform*>(
+      ::PBTransform::internal_default_instance());
 }
 
 void InitDefaults() {
@@ -215,24 +217,25 @@ void InitDefaults() {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] = {
-      "\n\023SceneProtocol.proto\"*\n\007Vector3\022\t\n\001x\030\001 "
-      "\002(\002\022\t\n\001y\030\002 \002(\002\022\t\n\001z\030\003 \002(\002\"5\n\007Vector4\022\t\n\001"
-      "x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\t\n\001z\030\003 \002(\002\022\t\n\001w\030\004 \002(\002"
-      "\"8\n\nQuaternion\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\t\n\001"
-      "z\030\003 \002(\002\022\t\n\001w\030\004 \002(\002\"e\n\tTransform\022\027\n\005scale"
-      "\030\001 \002(\0132\010.Vector3\022 \n\013orientation\030\002 \002(\0132\013."
-      "Quaternion\022\035\n\013translation\030\003 \002(\0132\010.Vector"
-      "3\"3\n\005Color\022\t\n\001r\030\001 \002(\002\022\t\n\001g\030\002 \002(\002\022\t\n\001b\030\003 "
-      "\002(\002\022\t\n\001a\030\004 \002(\002\"\225\001\n\010Material\022\034\n\014diffuseCo"
-      "lor\030\001 \001(\0132\006.Color\022\025\n\rdiffuseMapURL\030\002 \001(\t"
-      "\022\021\n\troughness\030\003 \001(\002\022\027\n\017roughnessMapURL\030\004"
-      " \001(\t\022\020\n\010metallic\030\005 \001(\002\022\026\n\016metallicMapURL"
-      "\030\006 \001(\t\"^\n\tSceneNode\022\"\n\016worldTransform\030\001 "
-      "\002(\0132\n.Transform\022\017\n\007meshURL\030\002 \002(\t\022\034\n\tmate"
-      "rials\030\003 \003(\0132\t.Material"
+      "\n\023SceneProtocol.proto\",\n\tPBVector3\022\t\n\001x\030"
+      "\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\t\n\001z\030\003 \002(\002\"7\n\tPBVector4"
+      "\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\t\n\001z\030\003 \002(\002\022\t\n\001w\030\004"
+      " \002(\002\":\n\014PBQuaternion\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002"
+      "(\002\022\t\n\001z\030\003 \002(\002\022\t\n\001w\030\004 \002(\002\"m\n\013PBTransform\022"
+      "\031\n\005scale\030\001 \002(\0132\n.PBVector3\022\"\n\013orientatio"
+      "n\030\002 \002(\0132\r.PBQuaternion\022\037\n\013translation\030\003 "
+      "\002(\0132\n.PBVector3\"5\n\007PBColor\022\t\n\001r\030\001 \002(\002\022\t\n"
+      "\001g\030\002 \002(\002\022\t\n\001b\030\003 \002(\002\022\t\n\001a\030\004 \002(\002\"\257\001\n\nPBMat"
+      "erial\022\036\n\014diffuseColor\030\001 \001(\0132\010.PBColor\022\025\n"
+      "\rdiffuseMapURL\030\002 \001(\t\022\021\n\troughness\030\003 \001(\002\022"
+      "\027\n\017roughnessMapURL\030\004 \001(\t\022\020\n\010metallic\030\005 \001"
+      "(\002\022\026\n\016metallicMapURL\030\006 \001(\t\022\024\n\014normalMapU"
+      "RL\030\007 \001(\t\"d\n\013PBSceneNode\022$\n\016worldTransfor"
+      "m\030\001 \002(\0132\014.PBTransform\022\017\n\007meshURL\030\002 \002(\t\022\036"
+      "\n\tmaterials\030\003 \003(\0132\013.PBMaterial"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 582);
+      descriptor, 630);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "SceneProtocol.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
@@ -255,20 +258,20 @@ struct StaticDescriptorInitializer {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Vector3::kXFieldNumber;
-const int Vector3::kYFieldNumber;
-const int Vector3::kZFieldNumber;
+const int PBVector3::kXFieldNumber;
+const int PBVector3::kYFieldNumber;
+const int PBVector3::kZFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Vector3::Vector3()
+PBVector3::PBVector3()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
     protobuf_SceneProtocol_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Vector3)
+  // @@protoc_insertion_point(constructor:PBVector3)
 }
-Vector3::Vector3(const Vector3& from)
+PBVector3::PBVector3(const PBVector3& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_),
@@ -277,48 +280,48 @@ Vector3::Vector3(const Vector3& from)
   ::memcpy(&x_, &from.x_,
     reinterpret_cast<char*>(&z_) -
     reinterpret_cast<char*>(&x_) + sizeof(z_));
-  // @@protoc_insertion_point(copy_constructor:Vector3)
+  // @@protoc_insertion_point(copy_constructor:PBVector3)
 }
 
-void Vector3::SharedCtor() {
+void PBVector3::SharedCtor() {
   _cached_size_ = 0;
   ::memset(&x_, 0, reinterpret_cast<char*>(&z_) -
     reinterpret_cast<char*>(&x_) + sizeof(z_));
 }
 
-Vector3::~Vector3() {
-  // @@protoc_insertion_point(destructor:Vector3)
+PBVector3::~PBVector3() {
+  // @@protoc_insertion_point(destructor:PBVector3)
   SharedDtor();
 }
 
-void Vector3::SharedDtor() {
+void PBVector3::SharedDtor() {
 }
 
-void Vector3::SetCachedSize(int size) const {
+void PBVector3::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Vector3::descriptor() {
+const ::google::protobuf::Descriptor* PBVector3::descriptor() {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[0].descriptor;
 }
 
-const Vector3& Vector3::default_instance() {
+const PBVector3& PBVector3::default_instance() {
   protobuf_SceneProtocol_2eproto::InitDefaults();
   return *internal_default_instance();
 }
 
-Vector3* Vector3::New(::google::protobuf::Arena* arena) const {
-  Vector3* n = new Vector3;
+PBVector3* PBVector3::New(::google::protobuf::Arena* arena) const {
+  PBVector3* n = new PBVector3;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void Vector3::Clear() {
-// @@protoc_insertion_point(message_clear_start:Vector3)
+void PBVector3::Clear() {
+// @@protoc_insertion_point(message_clear_start:PBVector3)
   if (_has_bits_[0 / 32] & 7u) {
     ::memset(&x_, 0, reinterpret_cast<char*>(&z_) -
       reinterpret_cast<char*>(&x_) + sizeof(z_));
@@ -327,11 +330,11 @@ void Vector3::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool Vector3::MergePartialFromCodedStream(
+bool PBVector3::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Vector3)
+  // @@protoc_insertion_point(parse_start:PBVector3)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -390,17 +393,17 @@ bool Vector3::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Vector3)
+  // @@protoc_insertion_point(parse_success:PBVector3)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Vector3)
+  // @@protoc_insertion_point(parse_failure:PBVector3)
   return false;
 #undef DO_
 }
 
-void Vector3::SerializeWithCachedSizes(
+void PBVector3::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Vector3)
+  // @@protoc_insertion_point(serialize_start:PBVector3)
   // required float x = 1;
   if (has_x()) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->x(), output);
@@ -420,13 +423,13 @@ void Vector3::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Vector3)
+  // @@protoc_insertion_point(serialize_end:PBVector3)
 }
 
-::google::protobuf::uint8* Vector3::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBVector3::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Vector3)
+  // @@protoc_insertion_point(serialize_to_array_start:PBVector3)
   // required float x = 1;
   if (has_x()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->x(), target);
@@ -446,12 +449,12 @@ void Vector3::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Vector3)
+  // @@protoc_insertion_point(serialize_to_array_end:PBVector3)
   return target;
 }
 
-size_t Vector3::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:Vector3)
+size_t PBVector3::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:PBVector3)
   size_t total_size = 0;
 
   if (has_x()) {
@@ -471,8 +474,8 @@ size_t Vector3::RequiredFieldsByteSizeFallback() const {
 
   return total_size;
 }
-size_t Vector3::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Vector3)
+size_t PBVector3::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PBVector3)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -500,23 +503,23 @@ size_t Vector3::ByteSizeLong() const {
   return total_size;
 }
 
-void Vector3::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Vector3)
+void PBVector3::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PBVector3)
   GOOGLE_DCHECK_NE(&from, this);
-  const Vector3* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Vector3>(
+  const PBVector3* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const PBVector3>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Vector3)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PBVector3)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Vector3)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PBVector3)
     MergeFrom(*source);
   }
 }
 
-void Vector3::MergeFrom(const Vector3& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Vector3)
+void PBVector3::MergeFrom(const PBVector3& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PBVector3)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from._has_bits_[0 / 32] & 7u) {
@@ -532,30 +535,30 @@ void Vector3::MergeFrom(const Vector3& from) {
   }
 }
 
-void Vector3::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Vector3)
+void PBVector3::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PBVector3)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Vector3::CopyFrom(const Vector3& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Vector3)
+void PBVector3::CopyFrom(const PBVector3& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PBVector3)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Vector3::IsInitialized() const {
+bool PBVector3::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
   return true;
 }
 
-void Vector3::Swap(Vector3* other) {
+void PBVector3::Swap(PBVector3* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Vector3::InternalSwap(Vector3* other) {
+void PBVector3::InternalSwap(PBVector3* other) {
   std::swap(x_, other->x_);
   std::swap(y_, other->y_);
   std::swap(z_, other->z_);
@@ -564,84 +567,84 @@ void Vector3::InternalSwap(Vector3* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata Vector3::GetMetadata() const {
+::google::protobuf::Metadata PBVector3::GetMetadata() const {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[0];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// Vector3
+// PBVector3
 
 // required float x = 1;
-bool Vector3::has_x() const {
+bool PBVector3::has_x() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-void Vector3::set_has_x() {
+void PBVector3::set_has_x() {
   _has_bits_[0] |= 0x00000001u;
 }
-void Vector3::clear_has_x() {
+void PBVector3::clear_has_x() {
   _has_bits_[0] &= ~0x00000001u;
 }
-void Vector3::clear_x() {
+void PBVector3::clear_x() {
   x_ = 0;
   clear_has_x();
 }
-float Vector3::x() const {
-  // @@protoc_insertion_point(field_get:Vector3.x)
+float PBVector3::x() const {
+  // @@protoc_insertion_point(field_get:PBVector3.x)
   return x_;
 }
-void Vector3::set_x(float value) {
+void PBVector3::set_x(float value) {
   set_has_x();
   x_ = value;
-  // @@protoc_insertion_point(field_set:Vector3.x)
+  // @@protoc_insertion_point(field_set:PBVector3.x)
 }
 
 // required float y = 2;
-bool Vector3::has_y() const {
+bool PBVector3::has_y() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-void Vector3::set_has_y() {
+void PBVector3::set_has_y() {
   _has_bits_[0] |= 0x00000002u;
 }
-void Vector3::clear_has_y() {
+void PBVector3::clear_has_y() {
   _has_bits_[0] &= ~0x00000002u;
 }
-void Vector3::clear_y() {
+void PBVector3::clear_y() {
   y_ = 0;
   clear_has_y();
 }
-float Vector3::y() const {
-  // @@protoc_insertion_point(field_get:Vector3.y)
+float PBVector3::y() const {
+  // @@protoc_insertion_point(field_get:PBVector3.y)
   return y_;
 }
-void Vector3::set_y(float value) {
+void PBVector3::set_y(float value) {
   set_has_y();
   y_ = value;
-  // @@protoc_insertion_point(field_set:Vector3.y)
+  // @@protoc_insertion_point(field_set:PBVector3.y)
 }
 
 // required float z = 3;
-bool Vector3::has_z() const {
+bool PBVector3::has_z() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-void Vector3::set_has_z() {
+void PBVector3::set_has_z() {
   _has_bits_[0] |= 0x00000004u;
 }
-void Vector3::clear_has_z() {
+void PBVector3::clear_has_z() {
   _has_bits_[0] &= ~0x00000004u;
 }
-void Vector3::clear_z() {
+void PBVector3::clear_z() {
   z_ = 0;
   clear_has_z();
 }
-float Vector3::z() const {
-  // @@protoc_insertion_point(field_get:Vector3.z)
+float PBVector3::z() const {
+  // @@protoc_insertion_point(field_get:PBVector3.z)
   return z_;
 }
-void Vector3::set_z(float value) {
+void PBVector3::set_z(float value) {
   set_has_z();
   z_ = value;
-  // @@protoc_insertion_point(field_set:Vector3.z)
+  // @@protoc_insertion_point(field_set:PBVector3.z)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -649,21 +652,21 @@ void Vector3::set_z(float value) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Vector4::kXFieldNumber;
-const int Vector4::kYFieldNumber;
-const int Vector4::kZFieldNumber;
-const int Vector4::kWFieldNumber;
+const int PBVector4::kXFieldNumber;
+const int PBVector4::kYFieldNumber;
+const int PBVector4::kZFieldNumber;
+const int PBVector4::kWFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Vector4::Vector4()
+PBVector4::PBVector4()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
     protobuf_SceneProtocol_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Vector4)
+  // @@protoc_insertion_point(constructor:PBVector4)
 }
-Vector4::Vector4(const Vector4& from)
+PBVector4::PBVector4(const PBVector4& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_),
@@ -672,48 +675,48 @@ Vector4::Vector4(const Vector4& from)
   ::memcpy(&x_, &from.x_,
     reinterpret_cast<char*>(&w_) -
     reinterpret_cast<char*>(&x_) + sizeof(w_));
-  // @@protoc_insertion_point(copy_constructor:Vector4)
+  // @@protoc_insertion_point(copy_constructor:PBVector4)
 }
 
-void Vector4::SharedCtor() {
+void PBVector4::SharedCtor() {
   _cached_size_ = 0;
   ::memset(&x_, 0, reinterpret_cast<char*>(&w_) -
     reinterpret_cast<char*>(&x_) + sizeof(w_));
 }
 
-Vector4::~Vector4() {
-  // @@protoc_insertion_point(destructor:Vector4)
+PBVector4::~PBVector4() {
+  // @@protoc_insertion_point(destructor:PBVector4)
   SharedDtor();
 }
 
-void Vector4::SharedDtor() {
+void PBVector4::SharedDtor() {
 }
 
-void Vector4::SetCachedSize(int size) const {
+void PBVector4::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Vector4::descriptor() {
+const ::google::protobuf::Descriptor* PBVector4::descriptor() {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[1].descriptor;
 }
 
-const Vector4& Vector4::default_instance() {
+const PBVector4& PBVector4::default_instance() {
   protobuf_SceneProtocol_2eproto::InitDefaults();
   return *internal_default_instance();
 }
 
-Vector4* Vector4::New(::google::protobuf::Arena* arena) const {
-  Vector4* n = new Vector4;
+PBVector4* PBVector4::New(::google::protobuf::Arena* arena) const {
+  PBVector4* n = new PBVector4;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void Vector4::Clear() {
-// @@protoc_insertion_point(message_clear_start:Vector4)
+void PBVector4::Clear() {
+// @@protoc_insertion_point(message_clear_start:PBVector4)
   if (_has_bits_[0 / 32] & 15u) {
     ::memset(&x_, 0, reinterpret_cast<char*>(&w_) -
       reinterpret_cast<char*>(&x_) + sizeof(w_));
@@ -722,11 +725,11 @@ void Vector4::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool Vector4::MergePartialFromCodedStream(
+bool PBVector4::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Vector4)
+  // @@protoc_insertion_point(parse_start:PBVector4)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -798,17 +801,17 @@ bool Vector4::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Vector4)
+  // @@protoc_insertion_point(parse_success:PBVector4)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Vector4)
+  // @@protoc_insertion_point(parse_failure:PBVector4)
   return false;
 #undef DO_
 }
 
-void Vector4::SerializeWithCachedSizes(
+void PBVector4::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Vector4)
+  // @@protoc_insertion_point(serialize_start:PBVector4)
   // required float x = 1;
   if (has_x()) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->x(), output);
@@ -833,13 +836,13 @@ void Vector4::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Vector4)
+  // @@protoc_insertion_point(serialize_end:PBVector4)
 }
 
-::google::protobuf::uint8* Vector4::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBVector4::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Vector4)
+  // @@protoc_insertion_point(serialize_to_array_start:PBVector4)
   // required float x = 1;
   if (has_x()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->x(), target);
@@ -864,12 +867,12 @@ void Vector4::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Vector4)
+  // @@protoc_insertion_point(serialize_to_array_end:PBVector4)
   return target;
 }
 
-size_t Vector4::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:Vector4)
+size_t PBVector4::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:PBVector4)
   size_t total_size = 0;
 
   if (has_x()) {
@@ -894,8 +897,8 @@ size_t Vector4::RequiredFieldsByteSizeFallback() const {
 
   return total_size;
 }
-size_t Vector4::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Vector4)
+size_t PBVector4::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PBVector4)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -926,23 +929,23 @@ size_t Vector4::ByteSizeLong() const {
   return total_size;
 }
 
-void Vector4::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Vector4)
+void PBVector4::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PBVector4)
   GOOGLE_DCHECK_NE(&from, this);
-  const Vector4* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Vector4>(
+  const PBVector4* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const PBVector4>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Vector4)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PBVector4)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Vector4)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PBVector4)
     MergeFrom(*source);
   }
 }
 
-void Vector4::MergeFrom(const Vector4& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Vector4)
+void PBVector4::MergeFrom(const PBVector4& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PBVector4)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from._has_bits_[0 / 32] & 15u) {
@@ -961,30 +964,30 @@ void Vector4::MergeFrom(const Vector4& from) {
   }
 }
 
-void Vector4::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Vector4)
+void PBVector4::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PBVector4)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Vector4::CopyFrom(const Vector4& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Vector4)
+void PBVector4::CopyFrom(const PBVector4& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PBVector4)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Vector4::IsInitialized() const {
+bool PBVector4::IsInitialized() const {
   if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
   return true;
 }
 
-void Vector4::Swap(Vector4* other) {
+void PBVector4::Swap(PBVector4* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Vector4::InternalSwap(Vector4* other) {
+void PBVector4::InternalSwap(PBVector4* other) {
   std::swap(x_, other->x_);
   std::swap(y_, other->y_);
   std::swap(z_, other->z_);
@@ -994,108 +997,108 @@ void Vector4::InternalSwap(Vector4* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata Vector4::GetMetadata() const {
+::google::protobuf::Metadata PBVector4::GetMetadata() const {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[1];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// Vector4
+// PBVector4
 
 // required float x = 1;
-bool Vector4::has_x() const {
+bool PBVector4::has_x() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-void Vector4::set_has_x() {
+void PBVector4::set_has_x() {
   _has_bits_[0] |= 0x00000001u;
 }
-void Vector4::clear_has_x() {
+void PBVector4::clear_has_x() {
   _has_bits_[0] &= ~0x00000001u;
 }
-void Vector4::clear_x() {
+void PBVector4::clear_x() {
   x_ = 0;
   clear_has_x();
 }
-float Vector4::x() const {
-  // @@protoc_insertion_point(field_get:Vector4.x)
+float PBVector4::x() const {
+  // @@protoc_insertion_point(field_get:PBVector4.x)
   return x_;
 }
-void Vector4::set_x(float value) {
+void PBVector4::set_x(float value) {
   set_has_x();
   x_ = value;
-  // @@protoc_insertion_point(field_set:Vector4.x)
+  // @@protoc_insertion_point(field_set:PBVector4.x)
 }
 
 // required float y = 2;
-bool Vector4::has_y() const {
+bool PBVector4::has_y() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-void Vector4::set_has_y() {
+void PBVector4::set_has_y() {
   _has_bits_[0] |= 0x00000002u;
 }
-void Vector4::clear_has_y() {
+void PBVector4::clear_has_y() {
   _has_bits_[0] &= ~0x00000002u;
 }
-void Vector4::clear_y() {
+void PBVector4::clear_y() {
   y_ = 0;
   clear_has_y();
 }
-float Vector4::y() const {
-  // @@protoc_insertion_point(field_get:Vector4.y)
+float PBVector4::y() const {
+  // @@protoc_insertion_point(field_get:PBVector4.y)
   return y_;
 }
-void Vector4::set_y(float value) {
+void PBVector4::set_y(float value) {
   set_has_y();
   y_ = value;
-  // @@protoc_insertion_point(field_set:Vector4.y)
+  // @@protoc_insertion_point(field_set:PBVector4.y)
 }
 
 // required float z = 3;
-bool Vector4::has_z() const {
+bool PBVector4::has_z() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-void Vector4::set_has_z() {
+void PBVector4::set_has_z() {
   _has_bits_[0] |= 0x00000004u;
 }
-void Vector4::clear_has_z() {
+void PBVector4::clear_has_z() {
   _has_bits_[0] &= ~0x00000004u;
 }
-void Vector4::clear_z() {
+void PBVector4::clear_z() {
   z_ = 0;
   clear_has_z();
 }
-float Vector4::z() const {
-  // @@protoc_insertion_point(field_get:Vector4.z)
+float PBVector4::z() const {
+  // @@protoc_insertion_point(field_get:PBVector4.z)
   return z_;
 }
-void Vector4::set_z(float value) {
+void PBVector4::set_z(float value) {
   set_has_z();
   z_ = value;
-  // @@protoc_insertion_point(field_set:Vector4.z)
+  // @@protoc_insertion_point(field_set:PBVector4.z)
 }
 
 // required float w = 4;
-bool Vector4::has_w() const {
+bool PBVector4::has_w() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-void Vector4::set_has_w() {
+void PBVector4::set_has_w() {
   _has_bits_[0] |= 0x00000008u;
 }
-void Vector4::clear_has_w() {
+void PBVector4::clear_has_w() {
   _has_bits_[0] &= ~0x00000008u;
 }
-void Vector4::clear_w() {
+void PBVector4::clear_w() {
   w_ = 0;
   clear_has_w();
 }
-float Vector4::w() const {
-  // @@protoc_insertion_point(field_get:Vector4.w)
+float PBVector4::w() const {
+  // @@protoc_insertion_point(field_get:PBVector4.w)
   return w_;
 }
-void Vector4::set_w(float value) {
+void PBVector4::set_w(float value) {
   set_has_w();
   w_ = value;
-  // @@protoc_insertion_point(field_set:Vector4.w)
+  // @@protoc_insertion_point(field_set:PBVector4.w)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -1103,21 +1106,21 @@ void Vector4::set_w(float value) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Quaternion::kXFieldNumber;
-const int Quaternion::kYFieldNumber;
-const int Quaternion::kZFieldNumber;
-const int Quaternion::kWFieldNumber;
+const int PBQuaternion::kXFieldNumber;
+const int PBQuaternion::kYFieldNumber;
+const int PBQuaternion::kZFieldNumber;
+const int PBQuaternion::kWFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Quaternion::Quaternion()
+PBQuaternion::PBQuaternion()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
     protobuf_SceneProtocol_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Quaternion)
+  // @@protoc_insertion_point(constructor:PBQuaternion)
 }
-Quaternion::Quaternion(const Quaternion& from)
+PBQuaternion::PBQuaternion(const PBQuaternion& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_),
@@ -1126,48 +1129,48 @@ Quaternion::Quaternion(const Quaternion& from)
   ::memcpy(&x_, &from.x_,
     reinterpret_cast<char*>(&w_) -
     reinterpret_cast<char*>(&x_) + sizeof(w_));
-  // @@protoc_insertion_point(copy_constructor:Quaternion)
+  // @@protoc_insertion_point(copy_constructor:PBQuaternion)
 }
 
-void Quaternion::SharedCtor() {
+void PBQuaternion::SharedCtor() {
   _cached_size_ = 0;
   ::memset(&x_, 0, reinterpret_cast<char*>(&w_) -
     reinterpret_cast<char*>(&x_) + sizeof(w_));
 }
 
-Quaternion::~Quaternion() {
-  // @@protoc_insertion_point(destructor:Quaternion)
+PBQuaternion::~PBQuaternion() {
+  // @@protoc_insertion_point(destructor:PBQuaternion)
   SharedDtor();
 }
 
-void Quaternion::SharedDtor() {
+void PBQuaternion::SharedDtor() {
 }
 
-void Quaternion::SetCachedSize(int size) const {
+void PBQuaternion::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Quaternion::descriptor() {
+const ::google::protobuf::Descriptor* PBQuaternion::descriptor() {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[2].descriptor;
 }
 
-const Quaternion& Quaternion::default_instance() {
+const PBQuaternion& PBQuaternion::default_instance() {
   protobuf_SceneProtocol_2eproto::InitDefaults();
   return *internal_default_instance();
 }
 
-Quaternion* Quaternion::New(::google::protobuf::Arena* arena) const {
-  Quaternion* n = new Quaternion;
+PBQuaternion* PBQuaternion::New(::google::protobuf::Arena* arena) const {
+  PBQuaternion* n = new PBQuaternion;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void Quaternion::Clear() {
-// @@protoc_insertion_point(message_clear_start:Quaternion)
+void PBQuaternion::Clear() {
+// @@protoc_insertion_point(message_clear_start:PBQuaternion)
   if (_has_bits_[0 / 32] & 15u) {
     ::memset(&x_, 0, reinterpret_cast<char*>(&w_) -
       reinterpret_cast<char*>(&x_) + sizeof(w_));
@@ -1176,11 +1179,11 @@ void Quaternion::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool Quaternion::MergePartialFromCodedStream(
+bool PBQuaternion::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Quaternion)
+  // @@protoc_insertion_point(parse_start:PBQuaternion)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -1252,17 +1255,17 @@ bool Quaternion::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Quaternion)
+  // @@protoc_insertion_point(parse_success:PBQuaternion)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Quaternion)
+  // @@protoc_insertion_point(parse_failure:PBQuaternion)
   return false;
 #undef DO_
 }
 
-void Quaternion::SerializeWithCachedSizes(
+void PBQuaternion::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Quaternion)
+  // @@protoc_insertion_point(serialize_start:PBQuaternion)
   // required float x = 1;
   if (has_x()) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->x(), output);
@@ -1287,13 +1290,13 @@ void Quaternion::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Quaternion)
+  // @@protoc_insertion_point(serialize_end:PBQuaternion)
 }
 
-::google::protobuf::uint8* Quaternion::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBQuaternion::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Quaternion)
+  // @@protoc_insertion_point(serialize_to_array_start:PBQuaternion)
   // required float x = 1;
   if (has_x()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->x(), target);
@@ -1318,12 +1321,12 @@ void Quaternion::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Quaternion)
+  // @@protoc_insertion_point(serialize_to_array_end:PBQuaternion)
   return target;
 }
 
-size_t Quaternion::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:Quaternion)
+size_t PBQuaternion::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:PBQuaternion)
   size_t total_size = 0;
 
   if (has_x()) {
@@ -1348,8 +1351,8 @@ size_t Quaternion::RequiredFieldsByteSizeFallback() const {
 
   return total_size;
 }
-size_t Quaternion::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Quaternion)
+size_t PBQuaternion::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PBQuaternion)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1380,23 +1383,23 @@ size_t Quaternion::ByteSizeLong() const {
   return total_size;
 }
 
-void Quaternion::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Quaternion)
+void PBQuaternion::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PBQuaternion)
   GOOGLE_DCHECK_NE(&from, this);
-  const Quaternion* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Quaternion>(
+  const PBQuaternion* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const PBQuaternion>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Quaternion)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PBQuaternion)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Quaternion)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PBQuaternion)
     MergeFrom(*source);
   }
 }
 
-void Quaternion::MergeFrom(const Quaternion& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Quaternion)
+void PBQuaternion::MergeFrom(const PBQuaternion& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PBQuaternion)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from._has_bits_[0 / 32] & 15u) {
@@ -1415,30 +1418,30 @@ void Quaternion::MergeFrom(const Quaternion& from) {
   }
 }
 
-void Quaternion::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Quaternion)
+void PBQuaternion::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PBQuaternion)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Quaternion::CopyFrom(const Quaternion& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Quaternion)
+void PBQuaternion::CopyFrom(const PBQuaternion& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PBQuaternion)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Quaternion::IsInitialized() const {
+bool PBQuaternion::IsInitialized() const {
   if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
   return true;
 }
 
-void Quaternion::Swap(Quaternion* other) {
+void PBQuaternion::Swap(PBQuaternion* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Quaternion::InternalSwap(Quaternion* other) {
+void PBQuaternion::InternalSwap(PBQuaternion* other) {
   std::swap(x_, other->x_);
   std::swap(y_, other->y_);
   std::swap(z_, other->z_);
@@ -1448,108 +1451,108 @@ void Quaternion::InternalSwap(Quaternion* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata Quaternion::GetMetadata() const {
+::google::protobuf::Metadata PBQuaternion::GetMetadata() const {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[2];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// Quaternion
+// PBQuaternion
 
 // required float x = 1;
-bool Quaternion::has_x() const {
+bool PBQuaternion::has_x() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-void Quaternion::set_has_x() {
+void PBQuaternion::set_has_x() {
   _has_bits_[0] |= 0x00000001u;
 }
-void Quaternion::clear_has_x() {
+void PBQuaternion::clear_has_x() {
   _has_bits_[0] &= ~0x00000001u;
 }
-void Quaternion::clear_x() {
+void PBQuaternion::clear_x() {
   x_ = 0;
   clear_has_x();
 }
-float Quaternion::x() const {
-  // @@protoc_insertion_point(field_get:Quaternion.x)
+float PBQuaternion::x() const {
+  // @@protoc_insertion_point(field_get:PBQuaternion.x)
   return x_;
 }
-void Quaternion::set_x(float value) {
+void PBQuaternion::set_x(float value) {
   set_has_x();
   x_ = value;
-  // @@protoc_insertion_point(field_set:Quaternion.x)
+  // @@protoc_insertion_point(field_set:PBQuaternion.x)
 }
 
 // required float y = 2;
-bool Quaternion::has_y() const {
+bool PBQuaternion::has_y() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-void Quaternion::set_has_y() {
+void PBQuaternion::set_has_y() {
   _has_bits_[0] |= 0x00000002u;
 }
-void Quaternion::clear_has_y() {
+void PBQuaternion::clear_has_y() {
   _has_bits_[0] &= ~0x00000002u;
 }
-void Quaternion::clear_y() {
+void PBQuaternion::clear_y() {
   y_ = 0;
   clear_has_y();
 }
-float Quaternion::y() const {
-  // @@protoc_insertion_point(field_get:Quaternion.y)
+float PBQuaternion::y() const {
+  // @@protoc_insertion_point(field_get:PBQuaternion.y)
   return y_;
 }
-void Quaternion::set_y(float value) {
+void PBQuaternion::set_y(float value) {
   set_has_y();
   y_ = value;
-  // @@protoc_insertion_point(field_set:Quaternion.y)
+  // @@protoc_insertion_point(field_set:PBQuaternion.y)
 }
 
 // required float z = 3;
-bool Quaternion::has_z() const {
+bool PBQuaternion::has_z() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-void Quaternion::set_has_z() {
+void PBQuaternion::set_has_z() {
   _has_bits_[0] |= 0x00000004u;
 }
-void Quaternion::clear_has_z() {
+void PBQuaternion::clear_has_z() {
   _has_bits_[0] &= ~0x00000004u;
 }
-void Quaternion::clear_z() {
+void PBQuaternion::clear_z() {
   z_ = 0;
   clear_has_z();
 }
-float Quaternion::z() const {
-  // @@protoc_insertion_point(field_get:Quaternion.z)
+float PBQuaternion::z() const {
+  // @@protoc_insertion_point(field_get:PBQuaternion.z)
   return z_;
 }
-void Quaternion::set_z(float value) {
+void PBQuaternion::set_z(float value) {
   set_has_z();
   z_ = value;
-  // @@protoc_insertion_point(field_set:Quaternion.z)
+  // @@protoc_insertion_point(field_set:PBQuaternion.z)
 }
 
 // required float w = 4;
-bool Quaternion::has_w() const {
+bool PBQuaternion::has_w() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-void Quaternion::set_has_w() {
+void PBQuaternion::set_has_w() {
   _has_bits_[0] |= 0x00000008u;
 }
-void Quaternion::clear_has_w() {
+void PBQuaternion::clear_has_w() {
   _has_bits_[0] &= ~0x00000008u;
 }
-void Quaternion::clear_w() {
+void PBQuaternion::clear_w() {
   w_ = 0;
   clear_has_w();
 }
-float Quaternion::w() const {
-  // @@protoc_insertion_point(field_get:Quaternion.w)
+float PBQuaternion::w() const {
+  // @@protoc_insertion_point(field_get:PBQuaternion.w)
   return w_;
 }
-void Quaternion::set_w(float value) {
+void PBQuaternion::set_w(float value) {
   set_has_w();
   w_ = value;
-  // @@protoc_insertion_point(field_set:Quaternion.w)
+  // @@protoc_insertion_point(field_set:PBQuaternion.w)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -1557,55 +1560,55 @@ void Quaternion::set_w(float value) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Transform::kScaleFieldNumber;
-const int Transform::kOrientationFieldNumber;
-const int Transform::kTranslationFieldNumber;
+const int PBTransform::kScaleFieldNumber;
+const int PBTransform::kOrientationFieldNumber;
+const int PBTransform::kTranslationFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Transform::Transform()
+PBTransform::PBTransform()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
     protobuf_SceneProtocol_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Transform)
+  // @@protoc_insertion_point(constructor:PBTransform)
 }
-Transform::Transform(const Transform& from)
+PBTransform::PBTransform(const PBTransform& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_scale()) {
-    scale_ = new ::Vector3(*from.scale_);
+    scale_ = new ::PBVector3(*from.scale_);
   } else {
     scale_ = NULL;
   }
   if (from.has_orientation()) {
-    orientation_ = new ::Quaternion(*from.orientation_);
+    orientation_ = new ::PBQuaternion(*from.orientation_);
   } else {
     orientation_ = NULL;
   }
   if (from.has_translation()) {
-    translation_ = new ::Vector3(*from.translation_);
+    translation_ = new ::PBVector3(*from.translation_);
   } else {
     translation_ = NULL;
   }
-  // @@protoc_insertion_point(copy_constructor:Transform)
+  // @@protoc_insertion_point(copy_constructor:PBTransform)
 }
 
-void Transform::SharedCtor() {
+void PBTransform::SharedCtor() {
   _cached_size_ = 0;
   ::memset(&scale_, 0, reinterpret_cast<char*>(&translation_) -
     reinterpret_cast<char*>(&scale_) + sizeof(translation_));
 }
 
-Transform::~Transform() {
-  // @@protoc_insertion_point(destructor:Transform)
+PBTransform::~PBTransform() {
+  // @@protoc_insertion_point(destructor:PBTransform)
   SharedDtor();
 }
 
-void Transform::SharedDtor() {
+void PBTransform::SharedDtor() {
   if (this != internal_default_instance()) {
     delete scale_;
   }
@@ -1617,60 +1620,60 @@ void Transform::SharedDtor() {
   }
 }
 
-void Transform::SetCachedSize(int size) const {
+void PBTransform::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Transform::descriptor() {
+const ::google::protobuf::Descriptor* PBTransform::descriptor() {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[3].descriptor;
 }
 
-const Transform& Transform::default_instance() {
+const PBTransform& PBTransform::default_instance() {
   protobuf_SceneProtocol_2eproto::InitDefaults();
   return *internal_default_instance();
 }
 
-Transform* Transform::New(::google::protobuf::Arena* arena) const {
-  Transform* n = new Transform;
+PBTransform* PBTransform::New(::google::protobuf::Arena* arena) const {
+  PBTransform* n = new PBTransform;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void Transform::Clear() {
-// @@protoc_insertion_point(message_clear_start:Transform)
+void PBTransform::Clear() {
+// @@protoc_insertion_point(message_clear_start:PBTransform)
   if (_has_bits_[0 / 32] & 7u) {
     if (has_scale()) {
       GOOGLE_DCHECK(scale_ != NULL);
-      scale_->::Vector3::Clear();
+      scale_->::PBVector3::Clear();
     }
     if (has_orientation()) {
       GOOGLE_DCHECK(orientation_ != NULL);
-      orientation_->::Quaternion::Clear();
+      orientation_->::PBQuaternion::Clear();
     }
     if (has_translation()) {
       GOOGLE_DCHECK(translation_ != NULL);
-      translation_->::Vector3::Clear();
+      translation_->::PBVector3::Clear();
     }
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
-bool Transform::MergePartialFromCodedStream(
+bool PBTransform::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Transform)
+  // @@protoc_insertion_point(parse_start:PBTransform)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .Vector3 scale = 1;
+      // required .PBVector3 scale = 1;
       case 1: {
         if (tag == 10u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
@@ -1681,7 +1684,7 @@ bool Transform::MergePartialFromCodedStream(
         break;
       }
 
-      // required .Quaternion orientation = 2;
+      // required .PBQuaternion orientation = 2;
       case 2: {
         if (tag == 18u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
@@ -1692,7 +1695,7 @@ bool Transform::MergePartialFromCodedStream(
         break;
       }
 
-      // required .Vector3 translation = 3;
+      // required .PBVector3 translation = 3;
       case 3: {
         if (tag == 26u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
@@ -1717,30 +1720,30 @@ bool Transform::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Transform)
+  // @@protoc_insertion_point(parse_success:PBTransform)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Transform)
+  // @@protoc_insertion_point(parse_failure:PBTransform)
   return false;
 #undef DO_
 }
 
-void Transform::SerializeWithCachedSizes(
+void PBTransform::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Transform)
-  // required .Vector3 scale = 1;
+  // @@protoc_insertion_point(serialize_start:PBTransform)
+  // required .PBVector3 scale = 1;
   if (has_scale()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, *this->scale_, output);
   }
 
-  // required .Quaternion orientation = 2;
+  // required .PBQuaternion orientation = 2;
   if (has_orientation()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, *this->orientation_, output);
   }
 
-  // required .Vector3 translation = 3;
+  // required .PBVector3 translation = 3;
   if (has_translation()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, *this->translation_, output);
@@ -1750,28 +1753,28 @@ void Transform::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Transform)
+  // @@protoc_insertion_point(serialize_end:PBTransform)
 }
 
-::google::protobuf::uint8* Transform::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBTransform::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Transform)
-  // required .Vector3 scale = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:PBTransform)
+  // required .PBVector3 scale = 1;
   if (has_scale()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         1, *this->scale_, false, target);
   }
 
-  // required .Quaternion orientation = 2;
+  // required .PBQuaternion orientation = 2;
   if (has_orientation()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
         2, *this->orientation_, false, target);
   }
 
-  // required .Vector3 translation = 3;
+  // required .PBVector3 translation = 3;
   if (has_translation()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
@@ -1782,30 +1785,30 @@ void Transform::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Transform)
+  // @@protoc_insertion_point(serialize_to_array_end:PBTransform)
   return target;
 }
 
-size_t Transform::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:Transform)
+size_t PBTransform::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:PBTransform)
   size_t total_size = 0;
 
   if (has_scale()) {
-    // required .Vector3 scale = 1;
+    // required .PBVector3 scale = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->scale_);
   }
 
   if (has_orientation()) {
-    // required .Quaternion orientation = 2;
+    // required .PBQuaternion orientation = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->orientation_);
   }
 
   if (has_translation()) {
-    // required .Vector3 translation = 3;
+    // required .PBVector3 translation = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->translation_);
@@ -1813,8 +1816,8 @@ size_t Transform::RequiredFieldsByteSizeFallback() const {
 
   return total_size;
 }
-size_t Transform::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Transform)
+size_t PBTransform::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PBTransform)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1823,17 +1826,17 @@ size_t Transform::ByteSizeLong() const {
         unknown_fields());
   }
   if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
-    // required .Vector3 scale = 1;
+    // required .PBVector3 scale = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->scale_);
 
-    // required .Quaternion orientation = 2;
+    // required .PBQuaternion orientation = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->orientation_);
 
-    // required .Vector3 translation = 3;
+    // required .PBVector3 translation = 3;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->translation_);
@@ -1848,53 +1851,53 @@ size_t Transform::ByteSizeLong() const {
   return total_size;
 }
 
-void Transform::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Transform)
+void PBTransform::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PBTransform)
   GOOGLE_DCHECK_NE(&from, this);
-  const Transform* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Transform>(
+  const PBTransform* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const PBTransform>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Transform)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PBTransform)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Transform)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PBTransform)
     MergeFrom(*source);
   }
 }
 
-void Transform::MergeFrom(const Transform& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Transform)
+void PBTransform::MergeFrom(const PBTransform& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PBTransform)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from._has_bits_[0 / 32] & 7u) {
     if (from.has_scale()) {
-      mutable_scale()->::Vector3::MergeFrom(from.scale());
+      mutable_scale()->::PBVector3::MergeFrom(from.scale());
     }
     if (from.has_orientation()) {
-      mutable_orientation()->::Quaternion::MergeFrom(from.orientation());
+      mutable_orientation()->::PBQuaternion::MergeFrom(from.orientation());
     }
     if (from.has_translation()) {
-      mutable_translation()->::Vector3::MergeFrom(from.translation());
+      mutable_translation()->::PBVector3::MergeFrom(from.translation());
     }
   }
 }
 
-void Transform::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Transform)
+void PBTransform::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PBTransform)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Transform::CopyFrom(const Transform& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Transform)
+void PBTransform::CopyFrom(const PBTransform& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PBTransform)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Transform::IsInitialized() const {
+bool PBTransform::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
   if (has_scale()) {
     if (!this->scale_->IsInitialized()) return false;
@@ -1908,11 +1911,11 @@ bool Transform::IsInitialized() const {
   return true;
 }
 
-void Transform::Swap(Transform* other) {
+void PBTransform::Swap(PBTransform* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Transform::InternalSwap(Transform* other) {
+void PBTransform::InternalSwap(PBTransform* other) {
   std::swap(scale_, other->scale_);
   std::swap(orientation_, other->orientation_);
   std::swap(translation_, other->translation_);
@@ -1921,49 +1924,49 @@ void Transform::InternalSwap(Transform* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata Transform::GetMetadata() const {
+::google::protobuf::Metadata PBTransform::GetMetadata() const {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[3];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// Transform
+// PBTransform
 
-// required .Vector3 scale = 1;
-bool Transform::has_scale() const {
+// required .PBVector3 scale = 1;
+bool PBTransform::has_scale() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-void Transform::set_has_scale() {
+void PBTransform::set_has_scale() {
   _has_bits_[0] |= 0x00000001u;
 }
-void Transform::clear_has_scale() {
+void PBTransform::clear_has_scale() {
   _has_bits_[0] &= ~0x00000001u;
 }
-void Transform::clear_scale() {
-  if (scale_ != NULL) scale_->::Vector3::Clear();
+void PBTransform::clear_scale() {
+  if (scale_ != NULL) scale_->::PBVector3::Clear();
   clear_has_scale();
 }
-const ::Vector3& Transform::scale() const {
-  // @@protoc_insertion_point(field_get:Transform.scale)
+const ::PBVector3& PBTransform::scale() const {
+  // @@protoc_insertion_point(field_get:PBTransform.scale)
   return scale_ != NULL ? *scale_
-                         : *::Vector3::internal_default_instance();
+                         : *::PBVector3::internal_default_instance();
 }
-::Vector3* Transform::mutable_scale() {
+::PBVector3* PBTransform::mutable_scale() {
   set_has_scale();
   if (scale_ == NULL) {
-    scale_ = new ::Vector3;
+    scale_ = new ::PBVector3;
   }
-  // @@protoc_insertion_point(field_mutable:Transform.scale)
+  // @@protoc_insertion_point(field_mutable:PBTransform.scale)
   return scale_;
 }
-::Vector3* Transform::release_scale() {
-  // @@protoc_insertion_point(field_release:Transform.scale)
+::PBVector3* PBTransform::release_scale() {
+  // @@protoc_insertion_point(field_release:PBTransform.scale)
   clear_has_scale();
-  ::Vector3* temp = scale_;
+  ::PBVector3* temp = scale_;
   scale_ = NULL;
   return temp;
 }
-void Transform::set_allocated_scale(::Vector3* scale) {
+void PBTransform::set_allocated_scale(::PBVector3* scale) {
   delete scale_;
   scale_ = scale;
   if (scale) {
@@ -1971,44 +1974,44 @@ void Transform::set_allocated_scale(::Vector3* scale) {
   } else {
     clear_has_scale();
   }
-  // @@protoc_insertion_point(field_set_allocated:Transform.scale)
+  // @@protoc_insertion_point(field_set_allocated:PBTransform.scale)
 }
 
-// required .Quaternion orientation = 2;
-bool Transform::has_orientation() const {
+// required .PBQuaternion orientation = 2;
+bool PBTransform::has_orientation() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-void Transform::set_has_orientation() {
+void PBTransform::set_has_orientation() {
   _has_bits_[0] |= 0x00000002u;
 }
-void Transform::clear_has_orientation() {
+void PBTransform::clear_has_orientation() {
   _has_bits_[0] &= ~0x00000002u;
 }
-void Transform::clear_orientation() {
-  if (orientation_ != NULL) orientation_->::Quaternion::Clear();
+void PBTransform::clear_orientation() {
+  if (orientation_ != NULL) orientation_->::PBQuaternion::Clear();
   clear_has_orientation();
 }
-const ::Quaternion& Transform::orientation() const {
-  // @@protoc_insertion_point(field_get:Transform.orientation)
+const ::PBQuaternion& PBTransform::orientation() const {
+  // @@protoc_insertion_point(field_get:PBTransform.orientation)
   return orientation_ != NULL ? *orientation_
-                         : *::Quaternion::internal_default_instance();
+                         : *::PBQuaternion::internal_default_instance();
 }
-::Quaternion* Transform::mutable_orientation() {
+::PBQuaternion* PBTransform::mutable_orientation() {
   set_has_orientation();
   if (orientation_ == NULL) {
-    orientation_ = new ::Quaternion;
+    orientation_ = new ::PBQuaternion;
   }
-  // @@protoc_insertion_point(field_mutable:Transform.orientation)
+  // @@protoc_insertion_point(field_mutable:PBTransform.orientation)
   return orientation_;
 }
-::Quaternion* Transform::release_orientation() {
-  // @@protoc_insertion_point(field_release:Transform.orientation)
+::PBQuaternion* PBTransform::release_orientation() {
+  // @@protoc_insertion_point(field_release:PBTransform.orientation)
   clear_has_orientation();
-  ::Quaternion* temp = orientation_;
+  ::PBQuaternion* temp = orientation_;
   orientation_ = NULL;
   return temp;
 }
-void Transform::set_allocated_orientation(::Quaternion* orientation) {
+void PBTransform::set_allocated_orientation(::PBQuaternion* orientation) {
   delete orientation_;
   orientation_ = orientation;
   if (orientation) {
@@ -2016,44 +2019,44 @@ void Transform::set_allocated_orientation(::Quaternion* orientation) {
   } else {
     clear_has_orientation();
   }
-  // @@protoc_insertion_point(field_set_allocated:Transform.orientation)
+  // @@protoc_insertion_point(field_set_allocated:PBTransform.orientation)
 }
 
-// required .Vector3 translation = 3;
-bool Transform::has_translation() const {
+// required .PBVector3 translation = 3;
+bool PBTransform::has_translation() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-void Transform::set_has_translation() {
+void PBTransform::set_has_translation() {
   _has_bits_[0] |= 0x00000004u;
 }
-void Transform::clear_has_translation() {
+void PBTransform::clear_has_translation() {
   _has_bits_[0] &= ~0x00000004u;
 }
-void Transform::clear_translation() {
-  if (translation_ != NULL) translation_->::Vector3::Clear();
+void PBTransform::clear_translation() {
+  if (translation_ != NULL) translation_->::PBVector3::Clear();
   clear_has_translation();
 }
-const ::Vector3& Transform::translation() const {
-  // @@protoc_insertion_point(field_get:Transform.translation)
+const ::PBVector3& PBTransform::translation() const {
+  // @@protoc_insertion_point(field_get:PBTransform.translation)
   return translation_ != NULL ? *translation_
-                         : *::Vector3::internal_default_instance();
+                         : *::PBVector3::internal_default_instance();
 }
-::Vector3* Transform::mutable_translation() {
+::PBVector3* PBTransform::mutable_translation() {
   set_has_translation();
   if (translation_ == NULL) {
-    translation_ = new ::Vector3;
+    translation_ = new ::PBVector3;
   }
-  // @@protoc_insertion_point(field_mutable:Transform.translation)
+  // @@protoc_insertion_point(field_mutable:PBTransform.translation)
   return translation_;
 }
-::Vector3* Transform::release_translation() {
-  // @@protoc_insertion_point(field_release:Transform.translation)
+::PBVector3* PBTransform::release_translation() {
+  // @@protoc_insertion_point(field_release:PBTransform.translation)
   clear_has_translation();
-  ::Vector3* temp = translation_;
+  ::PBVector3* temp = translation_;
   translation_ = NULL;
   return temp;
 }
-void Transform::set_allocated_translation(::Vector3* translation) {
+void PBTransform::set_allocated_translation(::PBVector3* translation) {
   delete translation_;
   translation_ = translation;
   if (translation) {
@@ -2061,7 +2064,7 @@ void Transform::set_allocated_translation(::Vector3* translation) {
   } else {
     clear_has_translation();
   }
-  // @@protoc_insertion_point(field_set_allocated:Transform.translation)
+  // @@protoc_insertion_point(field_set_allocated:PBTransform.translation)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -2069,21 +2072,21 @@ void Transform::set_allocated_translation(::Vector3* translation) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Color::kRFieldNumber;
-const int Color::kGFieldNumber;
-const int Color::kBFieldNumber;
-const int Color::kAFieldNumber;
+const int PBColor::kRFieldNumber;
+const int PBColor::kGFieldNumber;
+const int PBColor::kBFieldNumber;
+const int PBColor::kAFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Color::Color()
+PBColor::PBColor()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
     protobuf_SceneProtocol_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Color)
+  // @@protoc_insertion_point(constructor:PBColor)
 }
-Color::Color(const Color& from)
+PBColor::PBColor(const PBColor& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_),
@@ -2092,48 +2095,48 @@ Color::Color(const Color& from)
   ::memcpy(&r_, &from.r_,
     reinterpret_cast<char*>(&a_) -
     reinterpret_cast<char*>(&r_) + sizeof(a_));
-  // @@protoc_insertion_point(copy_constructor:Color)
+  // @@protoc_insertion_point(copy_constructor:PBColor)
 }
 
-void Color::SharedCtor() {
+void PBColor::SharedCtor() {
   _cached_size_ = 0;
   ::memset(&r_, 0, reinterpret_cast<char*>(&a_) -
     reinterpret_cast<char*>(&r_) + sizeof(a_));
 }
 
-Color::~Color() {
-  // @@protoc_insertion_point(destructor:Color)
+PBColor::~PBColor() {
+  // @@protoc_insertion_point(destructor:PBColor)
   SharedDtor();
 }
 
-void Color::SharedDtor() {
+void PBColor::SharedDtor() {
 }
 
-void Color::SetCachedSize(int size) const {
+void PBColor::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Color::descriptor() {
+const ::google::protobuf::Descriptor* PBColor::descriptor() {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[4].descriptor;
 }
 
-const Color& Color::default_instance() {
+const PBColor& PBColor::default_instance() {
   protobuf_SceneProtocol_2eproto::InitDefaults();
   return *internal_default_instance();
 }
 
-Color* Color::New(::google::protobuf::Arena* arena) const {
-  Color* n = new Color;
+PBColor* PBColor::New(::google::protobuf::Arena* arena) const {
+  PBColor* n = new PBColor;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void Color::Clear() {
-// @@protoc_insertion_point(message_clear_start:Color)
+void PBColor::Clear() {
+// @@protoc_insertion_point(message_clear_start:PBColor)
   if (_has_bits_[0 / 32] & 15u) {
     ::memset(&r_, 0, reinterpret_cast<char*>(&a_) -
       reinterpret_cast<char*>(&r_) + sizeof(a_));
@@ -2142,11 +2145,11 @@ void Color::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool Color::MergePartialFromCodedStream(
+bool PBColor::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Color)
+  // @@protoc_insertion_point(parse_start:PBColor)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -2218,17 +2221,17 @@ bool Color::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Color)
+  // @@protoc_insertion_point(parse_success:PBColor)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Color)
+  // @@protoc_insertion_point(parse_failure:PBColor)
   return false;
 #undef DO_
 }
 
-void Color::SerializeWithCachedSizes(
+void PBColor::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Color)
+  // @@protoc_insertion_point(serialize_start:PBColor)
   // required float r = 1;
   if (has_r()) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->r(), output);
@@ -2253,13 +2256,13 @@ void Color::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Color)
+  // @@protoc_insertion_point(serialize_end:PBColor)
 }
 
-::google::protobuf::uint8* Color::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBColor::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Color)
+  // @@protoc_insertion_point(serialize_to_array_start:PBColor)
   // required float r = 1;
   if (has_r()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->r(), target);
@@ -2284,12 +2287,12 @@ void Color::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Color)
+  // @@protoc_insertion_point(serialize_to_array_end:PBColor)
   return target;
 }
 
-size_t Color::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:Color)
+size_t PBColor::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:PBColor)
   size_t total_size = 0;
 
   if (has_r()) {
@@ -2314,8 +2317,8 @@ size_t Color::RequiredFieldsByteSizeFallback() const {
 
   return total_size;
 }
-size_t Color::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Color)
+size_t PBColor::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PBColor)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2346,23 +2349,23 @@ size_t Color::ByteSizeLong() const {
   return total_size;
 }
 
-void Color::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Color)
+void PBColor::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PBColor)
   GOOGLE_DCHECK_NE(&from, this);
-  const Color* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Color>(
+  const PBColor* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const PBColor>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Color)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PBColor)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Color)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PBColor)
     MergeFrom(*source);
   }
 }
 
-void Color::MergeFrom(const Color& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Color)
+void PBColor::MergeFrom(const PBColor& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PBColor)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from._has_bits_[0 / 32] & 15u) {
@@ -2381,30 +2384,30 @@ void Color::MergeFrom(const Color& from) {
   }
 }
 
-void Color::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Color)
+void PBColor::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PBColor)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Color::CopyFrom(const Color& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Color)
+void PBColor::CopyFrom(const PBColor& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PBColor)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Color::IsInitialized() const {
+bool PBColor::IsInitialized() const {
   if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
   return true;
 }
 
-void Color::Swap(Color* other) {
+void PBColor::Swap(PBColor* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Color::InternalSwap(Color* other) {
+void PBColor::InternalSwap(PBColor* other) {
   std::swap(r_, other->r_);
   std::swap(g_, other->g_);
   std::swap(b_, other->b_);
@@ -2414,108 +2417,108 @@ void Color::InternalSwap(Color* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata Color::GetMetadata() const {
+::google::protobuf::Metadata PBColor::GetMetadata() const {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[4];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// Color
+// PBColor
 
 // required float r = 1;
-bool Color::has_r() const {
+bool PBColor::has_r() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-void Color::set_has_r() {
+void PBColor::set_has_r() {
   _has_bits_[0] |= 0x00000001u;
 }
-void Color::clear_has_r() {
+void PBColor::clear_has_r() {
   _has_bits_[0] &= ~0x00000001u;
 }
-void Color::clear_r() {
+void PBColor::clear_r() {
   r_ = 0;
   clear_has_r();
 }
-float Color::r() const {
-  // @@protoc_insertion_point(field_get:Color.r)
+float PBColor::r() const {
+  // @@protoc_insertion_point(field_get:PBColor.r)
   return r_;
 }
-void Color::set_r(float value) {
+void PBColor::set_r(float value) {
   set_has_r();
   r_ = value;
-  // @@protoc_insertion_point(field_set:Color.r)
+  // @@protoc_insertion_point(field_set:PBColor.r)
 }
 
 // required float g = 2;
-bool Color::has_g() const {
+bool PBColor::has_g() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-void Color::set_has_g() {
+void PBColor::set_has_g() {
   _has_bits_[0] |= 0x00000002u;
 }
-void Color::clear_has_g() {
+void PBColor::clear_has_g() {
   _has_bits_[0] &= ~0x00000002u;
 }
-void Color::clear_g() {
+void PBColor::clear_g() {
   g_ = 0;
   clear_has_g();
 }
-float Color::g() const {
-  // @@protoc_insertion_point(field_get:Color.g)
+float PBColor::g() const {
+  // @@protoc_insertion_point(field_get:PBColor.g)
   return g_;
 }
-void Color::set_g(float value) {
+void PBColor::set_g(float value) {
   set_has_g();
   g_ = value;
-  // @@protoc_insertion_point(field_set:Color.g)
+  // @@protoc_insertion_point(field_set:PBColor.g)
 }
 
 // required float b = 3;
-bool Color::has_b() const {
+bool PBColor::has_b() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-void Color::set_has_b() {
+void PBColor::set_has_b() {
   _has_bits_[0] |= 0x00000004u;
 }
-void Color::clear_has_b() {
+void PBColor::clear_has_b() {
   _has_bits_[0] &= ~0x00000004u;
 }
-void Color::clear_b() {
+void PBColor::clear_b() {
   b_ = 0;
   clear_has_b();
 }
-float Color::b() const {
-  // @@protoc_insertion_point(field_get:Color.b)
+float PBColor::b() const {
+  // @@protoc_insertion_point(field_get:PBColor.b)
   return b_;
 }
-void Color::set_b(float value) {
+void PBColor::set_b(float value) {
   set_has_b();
   b_ = value;
-  // @@protoc_insertion_point(field_set:Color.b)
+  // @@protoc_insertion_point(field_set:PBColor.b)
 }
 
 // required float a = 4;
-bool Color::has_a() const {
+bool PBColor::has_a() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-void Color::set_has_a() {
+void PBColor::set_has_a() {
   _has_bits_[0] |= 0x00000008u;
 }
-void Color::clear_has_a() {
+void PBColor::clear_has_a() {
   _has_bits_[0] &= ~0x00000008u;
 }
-void Color::clear_a() {
+void PBColor::clear_a() {
   a_ = 0;
   clear_has_a();
 }
-float Color::a() const {
-  // @@protoc_insertion_point(field_get:Color.a)
+float PBColor::a() const {
+  // @@protoc_insertion_point(field_get:PBColor.a)
   return a_;
 }
-void Color::set_a(float value) {
+void PBColor::set_a(float value) {
   set_has_a();
   a_ = value;
-  // @@protoc_insertion_point(field_set:Color.a)
+  // @@protoc_insertion_point(field_set:PBColor.a)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -2523,23 +2526,24 @@ void Color::set_a(float value) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Material::kDiffuseColorFieldNumber;
-const int Material::kDiffuseMapURLFieldNumber;
-const int Material::kRoughnessFieldNumber;
-const int Material::kRoughnessMapURLFieldNumber;
-const int Material::kMetallicFieldNumber;
-const int Material::kMetallicMapURLFieldNumber;
+const int PBMaterial::kDiffuseColorFieldNumber;
+const int PBMaterial::kDiffuseMapURLFieldNumber;
+const int PBMaterial::kRoughnessFieldNumber;
+const int PBMaterial::kRoughnessMapURLFieldNumber;
+const int PBMaterial::kMetallicFieldNumber;
+const int PBMaterial::kMetallicMapURLFieldNumber;
+const int PBMaterial::kNormalMapURLFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-Material::Material()
+PBMaterial::PBMaterial()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
     protobuf_SceneProtocol_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Material)
+  // @@protoc_insertion_point(constructor:PBMaterial)
 }
-Material::Material(const Material& from)
+PBMaterial::PBMaterial(const PBMaterial& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_),
@@ -2557,66 +2561,72 @@ Material::Material(const Material& from)
   if (from.has_metallicmapurl()) {
     metallicmapurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.metallicmapurl_);
   }
+  normalmapurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.has_normalmapurl()) {
+    normalmapurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.normalmapurl_);
+  }
   if (from.has_diffusecolor()) {
-    diffusecolor_ = new ::Color(*from.diffusecolor_);
+    diffusecolor_ = new ::PBColor(*from.diffusecolor_);
   } else {
     diffusecolor_ = NULL;
   }
   ::memcpy(&roughness_, &from.roughness_,
     reinterpret_cast<char*>(&metallic_) -
     reinterpret_cast<char*>(&roughness_) + sizeof(metallic_));
-  // @@protoc_insertion_point(copy_constructor:Material)
+  // @@protoc_insertion_point(copy_constructor:PBMaterial)
 }
 
-void Material::SharedCtor() {
+void PBMaterial::SharedCtor() {
   _cached_size_ = 0;
   diffusemapurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   roughnessmapurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   metallicmapurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  normalmapurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&diffusecolor_, 0, reinterpret_cast<char*>(&metallic_) -
     reinterpret_cast<char*>(&diffusecolor_) + sizeof(metallic_));
 }
 
-Material::~Material() {
-  // @@protoc_insertion_point(destructor:Material)
+PBMaterial::~PBMaterial() {
+  // @@protoc_insertion_point(destructor:PBMaterial)
   SharedDtor();
 }
 
-void Material::SharedDtor() {
+void PBMaterial::SharedDtor() {
   diffusemapurl_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   roughnessmapurl_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   metallicmapurl_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  normalmapurl_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) {
     delete diffusecolor_;
   }
 }
 
-void Material::SetCachedSize(int size) const {
+void PBMaterial::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Material::descriptor() {
+const ::google::protobuf::Descriptor* PBMaterial::descriptor() {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[5].descriptor;
 }
 
-const Material& Material::default_instance() {
+const PBMaterial& PBMaterial::default_instance() {
   protobuf_SceneProtocol_2eproto::InitDefaults();
   return *internal_default_instance();
 }
 
-Material* Material::New(::google::protobuf::Arena* arena) const {
-  Material* n = new Material;
+PBMaterial* PBMaterial::New(::google::protobuf::Arena* arena) const {
+  PBMaterial* n = new PBMaterial;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void Material::Clear() {
-// @@protoc_insertion_point(message_clear_start:Material)
-  if (_has_bits_[0 / 32] & 15u) {
+void PBMaterial::Clear() {
+// @@protoc_insertion_point(message_clear_start:PBMaterial)
+  if (_has_bits_[0 / 32] & 31u) {
     if (has_diffusemapurl()) {
       GOOGLE_DCHECK(!diffusemapurl_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
       (*diffusemapurl_.UnsafeRawStringPointer())->clear();
@@ -2629,12 +2639,16 @@ void Material::Clear() {
       GOOGLE_DCHECK(!metallicmapurl_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
       (*metallicmapurl_.UnsafeRawStringPointer())->clear();
     }
+    if (has_normalmapurl()) {
+      GOOGLE_DCHECK(!normalmapurl_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
+      (*normalmapurl_.UnsafeRawStringPointer())->clear();
+    }
     if (has_diffusecolor()) {
       GOOGLE_DCHECK(diffusecolor_ != NULL);
-      diffusecolor_->::Color::Clear();
+      diffusecolor_->::PBColor::Clear();
     }
   }
-  if (_has_bits_[0 / 32] & 48u) {
+  if (_has_bits_[0 / 32] & 96u) {
     ::memset(&roughness_, 0, reinterpret_cast<char*>(&metallic_) -
       reinterpret_cast<char*>(&roughness_) + sizeof(metallic_));
   }
@@ -2642,17 +2656,17 @@ void Material::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool Material::MergePartialFromCodedStream(
+bool PBMaterial::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Material)
+  // @@protoc_insertion_point(parse_start:PBMaterial)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .Color diffuseColor = 1;
+      // optional .PBColor diffuseColor = 1;
       case 1: {
         if (tag == 10u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
@@ -2671,7 +2685,7 @@ bool Material::MergePartialFromCodedStream(
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
             this->diffusemapurl().data(), this->diffusemapurl().length(),
             ::google::protobuf::internal::WireFormat::PARSE,
-            "Material.diffuseMapURL");
+            "PBMaterial.diffuseMapURL");
         } else {
           goto handle_unusual;
         }
@@ -2699,7 +2713,7 @@ bool Material::MergePartialFromCodedStream(
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
             this->roughnessmapurl().data(), this->roughnessmapurl().length(),
             ::google::protobuf::internal::WireFormat::PARSE,
-            "Material.roughnessMapURL");
+            "PBMaterial.roughnessMapURL");
         } else {
           goto handle_unusual;
         }
@@ -2727,7 +2741,22 @@ bool Material::MergePartialFromCodedStream(
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
             this->metallicmapurl().data(), this->metallicmapurl().length(),
             ::google::protobuf::internal::WireFormat::PARSE,
-            "Material.metallicMapURL");
+            "PBMaterial.metallicMapURL");
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional string normalMapURL = 7;
+      case 7: {
+        if (tag == 58u) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_normalmapurl()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->normalmapurl().data(), this->normalmapurl().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "PBMaterial.normalMapURL");
         } else {
           goto handle_unusual;
         }
@@ -2748,18 +2777,18 @@ bool Material::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Material)
+  // @@protoc_insertion_point(parse_success:PBMaterial)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Material)
+  // @@protoc_insertion_point(parse_failure:PBMaterial)
   return false;
 #undef DO_
 }
 
-void Material::SerializeWithCachedSizes(
+void PBMaterial::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Material)
-  // optional .Color diffuseColor = 1;
+  // @@protoc_insertion_point(serialize_start:PBMaterial)
+  // optional .PBColor diffuseColor = 1;
   if (has_diffusecolor()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, *this->diffusecolor_, output);
@@ -2770,7 +2799,7 @@ void Material::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->diffusemapurl().data(), this->diffusemapurl().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "Material.diffuseMapURL");
+      "PBMaterial.diffuseMapURL");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->diffusemapurl(), output);
   }
@@ -2785,7 +2814,7 @@ void Material::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->roughnessmapurl().data(), this->roughnessmapurl().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "Material.roughnessMapURL");
+      "PBMaterial.roughnessMapURL");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       4, this->roughnessmapurl(), output);
   }
@@ -2800,23 +2829,33 @@ void Material::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->metallicmapurl().data(), this->metallicmapurl().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "Material.metallicMapURL");
+      "PBMaterial.metallicMapURL");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       6, this->metallicmapurl(), output);
+  }
+
+  // optional string normalMapURL = 7;
+  if (has_normalmapurl()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->normalmapurl().data(), this->normalmapurl().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "PBMaterial.normalMapURL");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      7, this->normalmapurl(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Material)
+  // @@protoc_insertion_point(serialize_end:PBMaterial)
 }
 
-::google::protobuf::uint8* Material::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBMaterial::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Material)
-  // optional .Color diffuseColor = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:PBMaterial)
+  // optional .PBColor diffuseColor = 1;
   if (has_diffusecolor()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
@@ -2828,7 +2867,7 @@ void Material::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->diffusemapurl().data(), this->diffusemapurl().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "Material.diffuseMapURL");
+      "PBMaterial.diffuseMapURL");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->diffusemapurl(), target);
@@ -2844,7 +2883,7 @@ void Material::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->roughnessmapurl().data(), this->roughnessmapurl().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "Material.roughnessMapURL");
+      "PBMaterial.roughnessMapURL");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         4, this->roughnessmapurl(), target);
@@ -2860,22 +2899,33 @@ void Material::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->metallicmapurl().data(), this->metallicmapurl().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "Material.metallicMapURL");
+      "PBMaterial.metallicMapURL");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         6, this->metallicmapurl(), target);
+  }
+
+  // optional string normalMapURL = 7;
+  if (has_normalmapurl()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->normalmapurl().data(), this->normalmapurl().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "PBMaterial.normalMapURL");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        7, this->normalmapurl(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Material)
+  // @@protoc_insertion_point(serialize_to_array_end:PBMaterial)
   return target;
 }
 
-size_t Material::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Material)
+size_t PBMaterial::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PBMaterial)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2883,7 +2933,7 @@ size_t Material::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
   }
-  if (_has_bits_[0 / 32] & 63u) {
+  if (_has_bits_[0 / 32] & 127u) {
     // optional string diffuseMapURL = 2;
     if (has_diffusemapurl()) {
       total_size += 1 +
@@ -2905,7 +2955,14 @@ size_t Material::ByteSizeLong() const {
           this->metallicmapurl());
     }
 
-    // optional .Color diffuseColor = 1;
+    // optional string normalMapURL = 7;
+    if (has_normalmapurl()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->normalmapurl());
+    }
+
+    // optional .PBColor diffuseColor = 1;
     if (has_diffusecolor()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -2930,26 +2987,26 @@ size_t Material::ByteSizeLong() const {
   return total_size;
 }
 
-void Material::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Material)
+void PBMaterial::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PBMaterial)
   GOOGLE_DCHECK_NE(&from, this);
-  const Material* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Material>(
+  const PBMaterial* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const PBMaterial>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Material)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PBMaterial)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Material)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PBMaterial)
     MergeFrom(*source);
   }
 }
 
-void Material::MergeFrom(const Material& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Material)
+void PBMaterial::MergeFrom(const PBMaterial& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PBMaterial)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from._has_bits_[0 / 32] & 63u) {
+  if (from._has_bits_[0 / 32] & 127u) {
     if (from.has_diffusemapurl()) {
       set_has_diffusemapurl();
       diffusemapurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.diffusemapurl_);
@@ -2962,8 +3019,12 @@ void Material::MergeFrom(const Material& from) {
       set_has_metallicmapurl();
       metallicmapurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.metallicmapurl_);
     }
+    if (from.has_normalmapurl()) {
+      set_has_normalmapurl();
+      normalmapurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.normalmapurl_);
+    }
     if (from.has_diffusecolor()) {
-      mutable_diffusecolor()->::Color::MergeFrom(from.diffusecolor());
+      mutable_diffusecolor()->::PBColor::MergeFrom(from.diffusecolor());
     }
     if (from.has_roughness()) {
       set_roughness(from.roughness());
@@ -2974,35 +3035,36 @@ void Material::MergeFrom(const Material& from) {
   }
 }
 
-void Material::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Material)
+void PBMaterial::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PBMaterial)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Material::CopyFrom(const Material& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Material)
+void PBMaterial::CopyFrom(const PBMaterial& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PBMaterial)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Material::IsInitialized() const {
+bool PBMaterial::IsInitialized() const {
   if (has_diffusecolor()) {
     if (!this->diffusecolor_->IsInitialized()) return false;
   }
   return true;
 }
 
-void Material::Swap(Material* other) {
+void PBMaterial::Swap(PBMaterial* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void Material::InternalSwap(Material* other) {
+void PBMaterial::InternalSwap(PBMaterial* other) {
   diffusemapurl_.Swap(&other->diffusemapurl_);
   roughnessmapurl_.Swap(&other->roughnessmapurl_);
   metallicmapurl_.Swap(&other->metallicmapurl_);
+  normalmapurl_.Swap(&other->normalmapurl_);
   std::swap(diffusecolor_, other->diffusecolor_);
   std::swap(roughness_, other->roughness_);
   std::swap(metallic_, other->metallic_);
@@ -3011,49 +3073,49 @@ void Material::InternalSwap(Material* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata Material::GetMetadata() const {
+::google::protobuf::Metadata PBMaterial::GetMetadata() const {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[5];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// Material
+// PBMaterial
 
-// optional .Color diffuseColor = 1;
-bool Material::has_diffusecolor() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+// optional .PBColor diffuseColor = 1;
+bool PBMaterial::has_diffusecolor() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
-void Material::set_has_diffusecolor() {
-  _has_bits_[0] |= 0x00000008u;
+void PBMaterial::set_has_diffusecolor() {
+  _has_bits_[0] |= 0x00000010u;
 }
-void Material::clear_has_diffusecolor() {
-  _has_bits_[0] &= ~0x00000008u;
+void PBMaterial::clear_has_diffusecolor() {
+  _has_bits_[0] &= ~0x00000010u;
 }
-void Material::clear_diffusecolor() {
-  if (diffusecolor_ != NULL) diffusecolor_->::Color::Clear();
+void PBMaterial::clear_diffusecolor() {
+  if (diffusecolor_ != NULL) diffusecolor_->::PBColor::Clear();
   clear_has_diffusecolor();
 }
-const ::Color& Material::diffusecolor() const {
-  // @@protoc_insertion_point(field_get:Material.diffuseColor)
+const ::PBColor& PBMaterial::diffusecolor() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.diffuseColor)
   return diffusecolor_ != NULL ? *diffusecolor_
-                         : *::Color::internal_default_instance();
+                         : *::PBColor::internal_default_instance();
 }
-::Color* Material::mutable_diffusecolor() {
+::PBColor* PBMaterial::mutable_diffusecolor() {
   set_has_diffusecolor();
   if (diffusecolor_ == NULL) {
-    diffusecolor_ = new ::Color;
+    diffusecolor_ = new ::PBColor;
   }
-  // @@protoc_insertion_point(field_mutable:Material.diffuseColor)
+  // @@protoc_insertion_point(field_mutable:PBMaterial.diffuseColor)
   return diffusecolor_;
 }
-::Color* Material::release_diffusecolor() {
-  // @@protoc_insertion_point(field_release:Material.diffuseColor)
+::PBColor* PBMaterial::release_diffusecolor() {
+  // @@protoc_insertion_point(field_release:PBMaterial.diffuseColor)
   clear_has_diffusecolor();
-  ::Color* temp = diffusecolor_;
+  ::PBColor* temp = diffusecolor_;
   diffusecolor_ = NULL;
   return temp;
 }
-void Material::set_allocated_diffusecolor(::Color* diffusecolor) {
+void PBMaterial::set_allocated_diffusecolor(::PBColor* diffusecolor) {
   delete diffusecolor_;
   diffusecolor_ = diffusecolor;
   if (diffusecolor) {
@@ -3061,241 +3123,303 @@ void Material::set_allocated_diffusecolor(::Color* diffusecolor) {
   } else {
     clear_has_diffusecolor();
   }
-  // @@protoc_insertion_point(field_set_allocated:Material.diffuseColor)
+  // @@protoc_insertion_point(field_set_allocated:PBMaterial.diffuseColor)
 }
 
 // optional string diffuseMapURL = 2;
-bool Material::has_diffusemapurl() const {
+bool PBMaterial::has_diffusemapurl() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-void Material::set_has_diffusemapurl() {
+void PBMaterial::set_has_diffusemapurl() {
   _has_bits_[0] |= 0x00000001u;
 }
-void Material::clear_has_diffusemapurl() {
+void PBMaterial::clear_has_diffusemapurl() {
   _has_bits_[0] &= ~0x00000001u;
 }
-void Material::clear_diffusemapurl() {
+void PBMaterial::clear_diffusemapurl() {
   diffusemapurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   clear_has_diffusemapurl();
 }
-const ::std::string& Material::diffusemapurl() const {
-  // @@protoc_insertion_point(field_get:Material.diffuseMapURL)
+const ::std::string& PBMaterial::diffusemapurl() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.diffuseMapURL)
   return diffusemapurl_.GetNoArena();
 }
-void Material::set_diffusemapurl(const ::std::string& value) {
+void PBMaterial::set_diffusemapurl(const ::std::string& value) {
   set_has_diffusemapurl();
   diffusemapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_set:PBMaterial.diffuseMapURL)
 }
 #if LANG_CXX11
-void Material::set_diffusemapurl(::std::string&& value) {
+void PBMaterial::set_diffusemapurl(::std::string&& value) {
   set_has_diffusemapurl();
   diffusemapurl_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_set_rvalue:PBMaterial.diffuseMapURL)
 }
 #endif
-void Material::set_diffusemapurl(const char* value) {
+void PBMaterial::set_diffusemapurl(const char* value) {
   set_has_diffusemapurl();
   diffusemapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_set_char:PBMaterial.diffuseMapURL)
 }
-void Material::set_diffusemapurl(const char* value, size_t size) {
+void PBMaterial::set_diffusemapurl(const char* value, size_t size) {
   set_has_diffusemapurl();
   diffusemapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_set_pointer:PBMaterial.diffuseMapURL)
 }
-::std::string* Material::mutable_diffusemapurl() {
+::std::string* PBMaterial::mutable_diffusemapurl() {
   set_has_diffusemapurl();
-  // @@protoc_insertion_point(field_mutable:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_mutable:PBMaterial.diffuseMapURL)
   return diffusemapurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-::std::string* Material::release_diffusemapurl() {
-  // @@protoc_insertion_point(field_release:Material.diffuseMapURL)
+::std::string* PBMaterial::release_diffusemapurl() {
+  // @@protoc_insertion_point(field_release:PBMaterial.diffuseMapURL)
   clear_has_diffusemapurl();
   return diffusemapurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-void Material::set_allocated_diffusemapurl(::std::string* diffusemapurl) {
+void PBMaterial::set_allocated_diffusemapurl(::std::string* diffusemapurl) {
   if (diffusemapurl != NULL) {
     set_has_diffusemapurl();
   } else {
     clear_has_diffusemapurl();
   }
   diffusemapurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diffusemapurl);
-  // @@protoc_insertion_point(field_set_allocated:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_set_allocated:PBMaterial.diffuseMapURL)
 }
 
 // optional float roughness = 3;
-bool Material::has_roughness() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+bool PBMaterial::has_roughness() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
-void Material::set_has_roughness() {
-  _has_bits_[0] |= 0x00000010u;
+void PBMaterial::set_has_roughness() {
+  _has_bits_[0] |= 0x00000020u;
 }
-void Material::clear_has_roughness() {
-  _has_bits_[0] &= ~0x00000010u;
+void PBMaterial::clear_has_roughness() {
+  _has_bits_[0] &= ~0x00000020u;
 }
-void Material::clear_roughness() {
+void PBMaterial::clear_roughness() {
   roughness_ = 0;
   clear_has_roughness();
 }
-float Material::roughness() const {
-  // @@protoc_insertion_point(field_get:Material.roughness)
+float PBMaterial::roughness() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.roughness)
   return roughness_;
 }
-void Material::set_roughness(float value) {
+void PBMaterial::set_roughness(float value) {
   set_has_roughness();
   roughness_ = value;
-  // @@protoc_insertion_point(field_set:Material.roughness)
+  // @@protoc_insertion_point(field_set:PBMaterial.roughness)
 }
 
 // optional string roughnessMapURL = 4;
-bool Material::has_roughnessmapurl() const {
+bool PBMaterial::has_roughnessmapurl() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-void Material::set_has_roughnessmapurl() {
+void PBMaterial::set_has_roughnessmapurl() {
   _has_bits_[0] |= 0x00000002u;
 }
-void Material::clear_has_roughnessmapurl() {
+void PBMaterial::clear_has_roughnessmapurl() {
   _has_bits_[0] &= ~0x00000002u;
 }
-void Material::clear_roughnessmapurl() {
+void PBMaterial::clear_roughnessmapurl() {
   roughnessmapurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   clear_has_roughnessmapurl();
 }
-const ::std::string& Material::roughnessmapurl() const {
-  // @@protoc_insertion_point(field_get:Material.roughnessMapURL)
+const ::std::string& PBMaterial::roughnessmapurl() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.roughnessMapURL)
   return roughnessmapurl_.GetNoArena();
 }
-void Material::set_roughnessmapurl(const ::std::string& value) {
+void PBMaterial::set_roughnessmapurl(const ::std::string& value) {
   set_has_roughnessmapurl();
   roughnessmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_set:PBMaterial.roughnessMapURL)
 }
 #if LANG_CXX11
-void Material::set_roughnessmapurl(::std::string&& value) {
+void PBMaterial::set_roughnessmapurl(::std::string&& value) {
   set_has_roughnessmapurl();
   roughnessmapurl_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_set_rvalue:PBMaterial.roughnessMapURL)
 }
 #endif
-void Material::set_roughnessmapurl(const char* value) {
+void PBMaterial::set_roughnessmapurl(const char* value) {
   set_has_roughnessmapurl();
   roughnessmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_set_char:PBMaterial.roughnessMapURL)
 }
-void Material::set_roughnessmapurl(const char* value, size_t size) {
+void PBMaterial::set_roughnessmapurl(const char* value, size_t size) {
   set_has_roughnessmapurl();
   roughnessmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_set_pointer:PBMaterial.roughnessMapURL)
 }
-::std::string* Material::mutable_roughnessmapurl() {
+::std::string* PBMaterial::mutable_roughnessmapurl() {
   set_has_roughnessmapurl();
-  // @@protoc_insertion_point(field_mutable:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_mutable:PBMaterial.roughnessMapURL)
   return roughnessmapurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-::std::string* Material::release_roughnessmapurl() {
-  // @@protoc_insertion_point(field_release:Material.roughnessMapURL)
+::std::string* PBMaterial::release_roughnessmapurl() {
+  // @@protoc_insertion_point(field_release:PBMaterial.roughnessMapURL)
   clear_has_roughnessmapurl();
   return roughnessmapurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-void Material::set_allocated_roughnessmapurl(::std::string* roughnessmapurl) {
+void PBMaterial::set_allocated_roughnessmapurl(::std::string* roughnessmapurl) {
   if (roughnessmapurl != NULL) {
     set_has_roughnessmapurl();
   } else {
     clear_has_roughnessmapurl();
   }
   roughnessmapurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), roughnessmapurl);
-  // @@protoc_insertion_point(field_set_allocated:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_set_allocated:PBMaterial.roughnessMapURL)
 }
 
 // optional float metallic = 5;
-bool Material::has_metallic() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+bool PBMaterial::has_metallic() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
-void Material::set_has_metallic() {
-  _has_bits_[0] |= 0x00000020u;
+void PBMaterial::set_has_metallic() {
+  _has_bits_[0] |= 0x00000040u;
 }
-void Material::clear_has_metallic() {
-  _has_bits_[0] &= ~0x00000020u;
+void PBMaterial::clear_has_metallic() {
+  _has_bits_[0] &= ~0x00000040u;
 }
-void Material::clear_metallic() {
+void PBMaterial::clear_metallic() {
   metallic_ = 0;
   clear_has_metallic();
 }
-float Material::metallic() const {
-  // @@protoc_insertion_point(field_get:Material.metallic)
+float PBMaterial::metallic() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.metallic)
   return metallic_;
 }
-void Material::set_metallic(float value) {
+void PBMaterial::set_metallic(float value) {
   set_has_metallic();
   metallic_ = value;
-  // @@protoc_insertion_point(field_set:Material.metallic)
+  // @@protoc_insertion_point(field_set:PBMaterial.metallic)
 }
 
 // optional string metallicMapURL = 6;
-bool Material::has_metallicmapurl() const {
+bool PBMaterial::has_metallicmapurl() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-void Material::set_has_metallicmapurl() {
+void PBMaterial::set_has_metallicmapurl() {
   _has_bits_[0] |= 0x00000004u;
 }
-void Material::clear_has_metallicmapurl() {
+void PBMaterial::clear_has_metallicmapurl() {
   _has_bits_[0] &= ~0x00000004u;
 }
-void Material::clear_metallicmapurl() {
+void PBMaterial::clear_metallicmapurl() {
   metallicmapurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   clear_has_metallicmapurl();
 }
-const ::std::string& Material::metallicmapurl() const {
-  // @@protoc_insertion_point(field_get:Material.metallicMapURL)
+const ::std::string& PBMaterial::metallicmapurl() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.metallicMapURL)
   return metallicmapurl_.GetNoArena();
 }
-void Material::set_metallicmapurl(const ::std::string& value) {
+void PBMaterial::set_metallicmapurl(const ::std::string& value) {
   set_has_metallicmapurl();
   metallicmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_set:PBMaterial.metallicMapURL)
 }
 #if LANG_CXX11
-void Material::set_metallicmapurl(::std::string&& value) {
+void PBMaterial::set_metallicmapurl(::std::string&& value) {
   set_has_metallicmapurl();
   metallicmapurl_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_set_rvalue:PBMaterial.metallicMapURL)
 }
 #endif
-void Material::set_metallicmapurl(const char* value) {
+void PBMaterial::set_metallicmapurl(const char* value) {
   set_has_metallicmapurl();
   metallicmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_set_char:PBMaterial.metallicMapURL)
 }
-void Material::set_metallicmapurl(const char* value, size_t size) {
+void PBMaterial::set_metallicmapurl(const char* value, size_t size) {
   set_has_metallicmapurl();
   metallicmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_set_pointer:PBMaterial.metallicMapURL)
 }
-::std::string* Material::mutable_metallicmapurl() {
+::std::string* PBMaterial::mutable_metallicmapurl() {
   set_has_metallicmapurl();
-  // @@protoc_insertion_point(field_mutable:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_mutable:PBMaterial.metallicMapURL)
   return metallicmapurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-::std::string* Material::release_metallicmapurl() {
-  // @@protoc_insertion_point(field_release:Material.metallicMapURL)
+::std::string* PBMaterial::release_metallicmapurl() {
+  // @@protoc_insertion_point(field_release:PBMaterial.metallicMapURL)
   clear_has_metallicmapurl();
   return metallicmapurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-void Material::set_allocated_metallicmapurl(::std::string* metallicmapurl) {
+void PBMaterial::set_allocated_metallicmapurl(::std::string* metallicmapurl) {
   if (metallicmapurl != NULL) {
     set_has_metallicmapurl();
   } else {
     clear_has_metallicmapurl();
   }
   metallicmapurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), metallicmapurl);
-  // @@protoc_insertion_point(field_set_allocated:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_set_allocated:PBMaterial.metallicMapURL)
+}
+
+// optional string normalMapURL = 7;
+bool PBMaterial::has_normalmapurl() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+void PBMaterial::set_has_normalmapurl() {
+  _has_bits_[0] |= 0x00000008u;
+}
+void PBMaterial::clear_has_normalmapurl() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+void PBMaterial::clear_normalmapurl() {
+  normalmapurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_normalmapurl();
+}
+const ::std::string& PBMaterial::normalmapurl() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.normalMapURL)
+  return normalmapurl_.GetNoArena();
+}
+void PBMaterial::set_normalmapurl(const ::std::string& value) {
+  set_has_normalmapurl();
+  normalmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:PBMaterial.normalMapURL)
+}
+#if LANG_CXX11
+void PBMaterial::set_normalmapurl(::std::string&& value) {
+  set_has_normalmapurl();
+  normalmapurl_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:PBMaterial.normalMapURL)
+}
+#endif
+void PBMaterial::set_normalmapurl(const char* value) {
+  set_has_normalmapurl();
+  normalmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:PBMaterial.normalMapURL)
+}
+void PBMaterial::set_normalmapurl(const char* value, size_t size) {
+  set_has_normalmapurl();
+  normalmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:PBMaterial.normalMapURL)
+}
+::std::string* PBMaterial::mutable_normalmapurl() {
+  set_has_normalmapurl();
+  // @@protoc_insertion_point(field_mutable:PBMaterial.normalMapURL)
+  return normalmapurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* PBMaterial::release_normalmapurl() {
+  // @@protoc_insertion_point(field_release:PBMaterial.normalMapURL)
+  clear_has_normalmapurl();
+  return normalmapurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void PBMaterial::set_allocated_normalmapurl(::std::string* normalmapurl) {
+  if (normalmapurl != NULL) {
+    set_has_normalmapurl();
+  } else {
+    clear_has_normalmapurl();
+  }
+  normalmapurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), normalmapurl);
+  // @@protoc_insertion_point(field_set_allocated:PBMaterial.normalMapURL)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -3303,20 +3427,20 @@ void Material::set_allocated_metallicmapurl(::std::string* metallicmapurl) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SceneNode::kWorldTransformFieldNumber;
-const int SceneNode::kMeshURLFieldNumber;
-const int SceneNode::kMaterialsFieldNumber;
+const int PBSceneNode::kWorldTransformFieldNumber;
+const int PBSceneNode::kMeshURLFieldNumber;
+const int PBSceneNode::kMaterialsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-SceneNode::SceneNode()
+PBSceneNode::PBSceneNode()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
     protobuf_SceneProtocol_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SceneNode)
+  // @@protoc_insertion_point(constructor:PBSceneNode)
 }
-SceneNode::SceneNode(const SceneNode& from)
+PBSceneNode::PBSceneNode(const PBSceneNode& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_),
@@ -3328,56 +3452,56 @@ SceneNode::SceneNode(const SceneNode& from)
     meshurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.meshurl_);
   }
   if (from.has_worldtransform()) {
-    worldtransform_ = new ::Transform(*from.worldtransform_);
+    worldtransform_ = new ::PBTransform(*from.worldtransform_);
   } else {
     worldtransform_ = NULL;
   }
-  // @@protoc_insertion_point(copy_constructor:SceneNode)
+  // @@protoc_insertion_point(copy_constructor:PBSceneNode)
 }
 
-void SceneNode::SharedCtor() {
+void PBSceneNode::SharedCtor() {
   _cached_size_ = 0;
   meshurl_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   worldtransform_ = NULL;
 }
 
-SceneNode::~SceneNode() {
-  // @@protoc_insertion_point(destructor:SceneNode)
+PBSceneNode::~PBSceneNode() {
+  // @@protoc_insertion_point(destructor:PBSceneNode)
   SharedDtor();
 }
 
-void SceneNode::SharedDtor() {
+void PBSceneNode::SharedDtor() {
   meshurl_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) {
     delete worldtransform_;
   }
 }
 
-void SceneNode::SetCachedSize(int size) const {
+void PBSceneNode::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* SceneNode::descriptor() {
+const ::google::protobuf::Descriptor* PBSceneNode::descriptor() {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[6].descriptor;
 }
 
-const SceneNode& SceneNode::default_instance() {
+const PBSceneNode& PBSceneNode::default_instance() {
   protobuf_SceneProtocol_2eproto::InitDefaults();
   return *internal_default_instance();
 }
 
-SceneNode* SceneNode::New(::google::protobuf::Arena* arena) const {
-  SceneNode* n = new SceneNode;
+PBSceneNode* PBSceneNode::New(::google::protobuf::Arena* arena) const {
+  PBSceneNode* n = new PBSceneNode;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void SceneNode::Clear() {
-// @@protoc_insertion_point(message_clear_start:SceneNode)
+void PBSceneNode::Clear() {
+// @@protoc_insertion_point(message_clear_start:PBSceneNode)
   materials_.Clear();
   if (_has_bits_[0 / 32] & 3u) {
     if (has_meshurl()) {
@@ -3386,24 +3510,24 @@ void SceneNode::Clear() {
     }
     if (has_worldtransform()) {
       GOOGLE_DCHECK(worldtransform_ != NULL);
-      worldtransform_->::Transform::Clear();
+      worldtransform_->::PBTransform::Clear();
     }
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
-bool SceneNode::MergePartialFromCodedStream(
+bool PBSceneNode::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SceneNode)
+  // @@protoc_insertion_point(parse_start:PBSceneNode)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .Transform worldTransform = 1;
+      // required .PBTransform worldTransform = 1;
       case 1: {
         if (tag == 10u) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
@@ -3422,14 +3546,14 @@ bool SceneNode::MergePartialFromCodedStream(
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
             this->meshurl().data(), this->meshurl().length(),
             ::google::protobuf::internal::WireFormat::PARSE,
-            "SceneNode.meshURL");
+            "PBSceneNode.meshURL");
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // repeated .Material materials = 3;
+      // repeated .PBMaterial materials = 3;
       case 3: {
         if (tag == 26u) {
           DO_(input->IncrementRecursionDepth());
@@ -3456,18 +3580,18 @@ bool SceneNode::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:SceneNode)
+  // @@protoc_insertion_point(parse_success:PBSceneNode)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:SceneNode)
+  // @@protoc_insertion_point(parse_failure:PBSceneNode)
   return false;
 #undef DO_
 }
 
-void SceneNode::SerializeWithCachedSizes(
+void PBSceneNode::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SceneNode)
-  // required .Transform worldTransform = 1;
+  // @@protoc_insertion_point(serialize_start:PBSceneNode)
+  // required .PBTransform worldTransform = 1;
   if (has_worldtransform()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, *this->worldtransform_, output);
@@ -3478,12 +3602,12 @@ void SceneNode::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->meshurl().data(), this->meshurl().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "SceneNode.meshURL");
+      "PBSceneNode.meshURL");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->meshurl(), output);
   }
 
-  // repeated .Material materials = 3;
+  // repeated .PBMaterial materials = 3;
   for (unsigned int i = 0, n = this->materials_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->materials(i), output);
@@ -3493,14 +3617,14 @@ void SceneNode::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:SceneNode)
+  // @@protoc_insertion_point(serialize_end:PBSceneNode)
 }
 
-::google::protobuf::uint8* SceneNode::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBSceneNode::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic;  // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:SceneNode)
-  // required .Transform worldTransform = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:PBSceneNode)
+  // required .PBTransform worldTransform = 1;
   if (has_worldtransform()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
@@ -3512,13 +3636,13 @@ void SceneNode::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->meshurl().data(), this->meshurl().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "SceneNode.meshURL");
+      "PBSceneNode.meshURL");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->meshurl(), target);
   }
 
-  // repeated .Material materials = 3;
+  // repeated .PBMaterial materials = 3;
   for (unsigned int i = 0, n = this->materials_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
@@ -3529,12 +3653,12 @@ void SceneNode::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SceneNode)
+  // @@protoc_insertion_point(serialize_to_array_end:PBSceneNode)
   return target;
 }
 
-size_t SceneNode::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:SceneNode)
+size_t PBSceneNode::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:PBSceneNode)
   size_t total_size = 0;
 
   if (has_meshurl()) {
@@ -3545,7 +3669,7 @@ size_t SceneNode::RequiredFieldsByteSizeFallback() const {
   }
 
   if (has_worldtransform()) {
-    // required .Transform worldTransform = 1;
+    // required .PBTransform worldTransform = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->worldtransform_);
@@ -3553,8 +3677,8 @@ size_t SceneNode::RequiredFieldsByteSizeFallback() const {
 
   return total_size;
 }
-size_t SceneNode::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SceneNode)
+size_t PBSceneNode::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PBSceneNode)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3568,7 +3692,7 @@ size_t SceneNode::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->meshurl());
 
-    // required .Transform worldTransform = 1;
+    // required .PBTransform worldTransform = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         *this->worldtransform_);
@@ -3576,7 +3700,7 @@ size_t SceneNode::ByteSizeLong() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  // repeated .Material materials = 3;
+  // repeated .PBMaterial materials = 3;
   {
     unsigned int count = this->materials_size();
     total_size += 1UL * count;
@@ -3594,23 +3718,23 @@ size_t SceneNode::ByteSizeLong() const {
   return total_size;
 }
 
-void SceneNode::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:SceneNode)
+void PBSceneNode::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PBSceneNode)
   GOOGLE_DCHECK_NE(&from, this);
-  const SceneNode* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SceneNode>(
+  const PBSceneNode* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const PBSceneNode>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:SceneNode)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PBSceneNode)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:SceneNode)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PBSceneNode)
     MergeFrom(*source);
   }
 }
 
-void SceneNode::MergeFrom(const SceneNode& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SceneNode)
+void PBSceneNode::MergeFrom(const PBSceneNode& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PBSceneNode)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   materials_.MergeFrom(from.materials_);
@@ -3620,26 +3744,26 @@ void SceneNode::MergeFrom(const SceneNode& from) {
       meshurl_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.meshurl_);
     }
     if (from.has_worldtransform()) {
-      mutable_worldtransform()->::Transform::MergeFrom(from.worldtransform());
+      mutable_worldtransform()->::PBTransform::MergeFrom(from.worldtransform());
     }
   }
 }
 
-void SceneNode::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:SceneNode)
+void PBSceneNode::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PBSceneNode)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void SceneNode::CopyFrom(const SceneNode& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SceneNode)
+void PBSceneNode::CopyFrom(const PBSceneNode& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PBSceneNode)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool SceneNode::IsInitialized() const {
+bool PBSceneNode::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->materials())) return false;
   if (has_worldtransform()) {
@@ -3648,11 +3772,11 @@ bool SceneNode::IsInitialized() const {
   return true;
 }
 
-void SceneNode::Swap(SceneNode* other) {
+void PBSceneNode::Swap(PBSceneNode* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void SceneNode::InternalSwap(SceneNode* other) {
+void PBSceneNode::InternalSwap(PBSceneNode* other) {
   materials_.UnsafeArenaSwap(&other->materials_);
   meshurl_.Swap(&other->meshurl_);
   std::swap(worldtransform_, other->worldtransform_);
@@ -3661,49 +3785,49 @@ void SceneNode::InternalSwap(SceneNode* other) {
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata SceneNode::GetMetadata() const {
+::google::protobuf::Metadata PBSceneNode::GetMetadata() const {
   protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_SceneProtocol_2eproto::file_level_metadata[6];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// SceneNode
+// PBSceneNode
 
-// required .Transform worldTransform = 1;
-bool SceneNode::has_worldtransform() const {
+// required .PBTransform worldTransform = 1;
+bool PBSceneNode::has_worldtransform() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-void SceneNode::set_has_worldtransform() {
+void PBSceneNode::set_has_worldtransform() {
   _has_bits_[0] |= 0x00000002u;
 }
-void SceneNode::clear_has_worldtransform() {
+void PBSceneNode::clear_has_worldtransform() {
   _has_bits_[0] &= ~0x00000002u;
 }
-void SceneNode::clear_worldtransform() {
-  if (worldtransform_ != NULL) worldtransform_->::Transform::Clear();
+void PBSceneNode::clear_worldtransform() {
+  if (worldtransform_ != NULL) worldtransform_->::PBTransform::Clear();
   clear_has_worldtransform();
 }
-const ::Transform& SceneNode::worldtransform() const {
-  // @@protoc_insertion_point(field_get:SceneNode.worldTransform)
+const ::PBTransform& PBSceneNode::worldtransform() const {
+  // @@protoc_insertion_point(field_get:PBSceneNode.worldTransform)
   return worldtransform_ != NULL ? *worldtransform_
-                         : *::Transform::internal_default_instance();
+                         : *::PBTransform::internal_default_instance();
 }
-::Transform* SceneNode::mutable_worldtransform() {
+::PBTransform* PBSceneNode::mutable_worldtransform() {
   set_has_worldtransform();
   if (worldtransform_ == NULL) {
-    worldtransform_ = new ::Transform;
+    worldtransform_ = new ::PBTransform;
   }
-  // @@protoc_insertion_point(field_mutable:SceneNode.worldTransform)
+  // @@protoc_insertion_point(field_mutable:PBSceneNode.worldTransform)
   return worldtransform_;
 }
-::Transform* SceneNode::release_worldtransform() {
-  // @@protoc_insertion_point(field_release:SceneNode.worldTransform)
+::PBTransform* PBSceneNode::release_worldtransform() {
+  // @@protoc_insertion_point(field_release:PBSceneNode.worldTransform)
   clear_has_worldtransform();
-  ::Transform* temp = worldtransform_;
+  ::PBTransform* temp = worldtransform_;
   worldtransform_ = NULL;
   return temp;
 }
-void SceneNode::set_allocated_worldtransform(::Transform* worldtransform) {
+void PBSceneNode::set_allocated_worldtransform(::PBTransform* worldtransform) {
   delete worldtransform_;
   worldtransform_ = worldtransform;
   if (worldtransform) {
@@ -3711,98 +3835,98 @@ void SceneNode::set_allocated_worldtransform(::Transform* worldtransform) {
   } else {
     clear_has_worldtransform();
   }
-  // @@protoc_insertion_point(field_set_allocated:SceneNode.worldTransform)
+  // @@protoc_insertion_point(field_set_allocated:PBSceneNode.worldTransform)
 }
 
 // required string meshURL = 2;
-bool SceneNode::has_meshurl() const {
+bool PBSceneNode::has_meshurl() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-void SceneNode::set_has_meshurl() {
+void PBSceneNode::set_has_meshurl() {
   _has_bits_[0] |= 0x00000001u;
 }
-void SceneNode::clear_has_meshurl() {
+void PBSceneNode::clear_has_meshurl() {
   _has_bits_[0] &= ~0x00000001u;
 }
-void SceneNode::clear_meshurl() {
+void PBSceneNode::clear_meshurl() {
   meshurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   clear_has_meshurl();
 }
-const ::std::string& SceneNode::meshurl() const {
-  // @@protoc_insertion_point(field_get:SceneNode.meshURL)
+const ::std::string& PBSceneNode::meshurl() const {
+  // @@protoc_insertion_point(field_get:PBSceneNode.meshURL)
   return meshurl_.GetNoArena();
 }
-void SceneNode::set_meshurl(const ::std::string& value) {
+void PBSceneNode::set_meshurl(const ::std::string& value) {
   set_has_meshurl();
   meshurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_set:PBSceneNode.meshURL)
 }
 #if LANG_CXX11
-void SceneNode::set_meshurl(::std::string&& value) {
+void PBSceneNode::set_meshurl(::std::string&& value) {
   set_has_meshurl();
   meshurl_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_set_rvalue:PBSceneNode.meshURL)
 }
 #endif
-void SceneNode::set_meshurl(const char* value) {
+void PBSceneNode::set_meshurl(const char* value) {
   set_has_meshurl();
   meshurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_set_char:PBSceneNode.meshURL)
 }
-void SceneNode::set_meshurl(const char* value, size_t size) {
+void PBSceneNode::set_meshurl(const char* value, size_t size) {
   set_has_meshurl();
   meshurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_set_pointer:PBSceneNode.meshURL)
 }
-::std::string* SceneNode::mutable_meshurl() {
+::std::string* PBSceneNode::mutable_meshurl() {
   set_has_meshurl();
-  // @@protoc_insertion_point(field_mutable:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_mutable:PBSceneNode.meshURL)
   return meshurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-::std::string* SceneNode::release_meshurl() {
-  // @@protoc_insertion_point(field_release:SceneNode.meshURL)
+::std::string* PBSceneNode::release_meshurl() {
+  // @@protoc_insertion_point(field_release:PBSceneNode.meshURL)
   clear_has_meshurl();
   return meshurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-void SceneNode::set_allocated_meshurl(::std::string* meshurl) {
+void PBSceneNode::set_allocated_meshurl(::std::string* meshurl) {
   if (meshurl != NULL) {
     set_has_meshurl();
   } else {
     clear_has_meshurl();
   }
   meshurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), meshurl);
-  // @@protoc_insertion_point(field_set_allocated:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_set_allocated:PBSceneNode.meshURL)
 }
 
-// repeated .Material materials = 3;
-int SceneNode::materials_size() const {
+// repeated .PBMaterial materials = 3;
+int PBSceneNode::materials_size() const {
   return materials_.size();
 }
-void SceneNode::clear_materials() {
+void PBSceneNode::clear_materials() {
   materials_.Clear();
 }
-const ::Material& SceneNode::materials(int index) const {
-  // @@protoc_insertion_point(field_get:SceneNode.materials)
+const ::PBMaterial& PBSceneNode::materials(int index) const {
+  // @@protoc_insertion_point(field_get:PBSceneNode.materials)
   return materials_.Get(index);
 }
-::Material* SceneNode::mutable_materials(int index) {
-  // @@protoc_insertion_point(field_mutable:SceneNode.materials)
+::PBMaterial* PBSceneNode::mutable_materials(int index) {
+  // @@protoc_insertion_point(field_mutable:PBSceneNode.materials)
   return materials_.Mutable(index);
 }
-::Material* SceneNode::add_materials() {
-  // @@protoc_insertion_point(field_add:SceneNode.materials)
+::PBMaterial* PBSceneNode::add_materials() {
+  // @@protoc_insertion_point(field_add:PBSceneNode.materials)
   return materials_.Add();
 }
-::google::protobuf::RepeatedPtrField< ::Material >*
-SceneNode::mutable_materials() {
-  // @@protoc_insertion_point(field_mutable_list:SceneNode.materials)
+::google::protobuf::RepeatedPtrField< ::PBMaterial >*
+PBSceneNode::mutable_materials() {
+  // @@protoc_insertion_point(field_mutable_list:PBSceneNode.materials)
   return &materials_;
 }
-const ::google::protobuf::RepeatedPtrField< ::Material >&
-SceneNode::materials() const {
-  // @@protoc_insertion_point(field_list:SceneNode.materials)
+const ::google::protobuf::RepeatedPtrField< ::PBMaterial >&
+PBSceneNode::materials() const {
+  // @@protoc_insertion_point(field_list:PBSceneNode.materials)
   return materials_;
 }
 

@@ -1,19 +1,19 @@
 syntax = "proto2";
 
-message Vector3 {
+message PBVector3 {
     required float x = 1;
     required float y = 2;
     required float z = 3;
 }
 
-message Vector4 {
+message PBVector4 {
     required float x = 1;
     required float y = 2;
     required float z = 3;
     required float w = 4;
 }
 
-message Quaternion {
+message PBQuaternion {
     required float x = 1;
     required float y = 2;
     required float z = 3;
@@ -21,23 +21,22 @@ message Quaternion {
 }
 
 // Scale,Rotation,Translation
-message Transform {
-    required Vector3 scale = 1; 
-    required Quaternion orientation = 2;
-    required Vector3 translation = 3;
+message PBTransform {
+    required PBVector3 scale = 1; 
+    required PBQuaternion orientation = 2;
+    required PBVector3 translation = 3;
 }
 
-message Color {
+message PBColor {
     required float r = 1;
     required float g = 2;
     required float b = 3;
     required float a = 4;
 }
 
-// PBR Material
-message Material {
+message PBMaterial {
     // Diffuse Channel
-    optional Color diffuseColor = 1;
+    optional PBColor diffuseColor = 1;
     optional string diffuseMapURL = 2;
     // Roughness Channel
     optional float roughness = 3;
@@ -46,10 +45,11 @@ message Material {
     optional float metallic = 5;
     optional string metallicMapURL = 6;
     // Normal Channel
+    optional string normalMapURL = 7;
 }
 
-message SceneNode {
-    required Transform worldTransform = 1;
+message PBSceneNode {
+    required PBTransform worldTransform = 1;
     required string meshURL = 2;
-    repeated Material materials = 3;
+    repeated PBMaterial materials = 3;
 }

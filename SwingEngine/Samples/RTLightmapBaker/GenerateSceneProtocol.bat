@@ -1,0 +1,1 @@
+..\..\bin\protoc.exe -I=.\  --cpp_out=.\  .\SceneProtocol.proto

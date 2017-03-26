@@ -29,27 +29,27 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
-class Color;
-class ColorDefaultTypeInternal;
-extern ColorDefaultTypeInternal _Color_default_instance_;
-class Material;
-class MaterialDefaultTypeInternal;
-extern MaterialDefaultTypeInternal _Material_default_instance_;
-class Quaternion;
-class QuaternionDefaultTypeInternal;
-extern QuaternionDefaultTypeInternal _Quaternion_default_instance_;
-class SceneNode;
-class SceneNodeDefaultTypeInternal;
-extern SceneNodeDefaultTypeInternal _SceneNode_default_instance_;
-class Transform;
-class TransformDefaultTypeInternal;
-extern TransformDefaultTypeInternal _Transform_default_instance_;
-class Vector3;
-class Vector3DefaultTypeInternal;
-extern Vector3DefaultTypeInternal _Vector3_default_instance_;
-class Vector4;
-class Vector4DefaultTypeInternal;
-extern Vector4DefaultTypeInternal _Vector4_default_instance_;
+class PBColor;
+class PBColorDefaultTypeInternal;
+extern PBColorDefaultTypeInternal _PBColor_default_instance_;
+class PBMaterial;
+class PBMaterialDefaultTypeInternal;
+extern PBMaterialDefaultTypeInternal _PBMaterial_default_instance_;
+class PBQuaternion;
+class PBQuaternionDefaultTypeInternal;
+extern PBQuaternionDefaultTypeInternal _PBQuaternion_default_instance_;
+class PBSceneNode;
+class PBSceneNodeDefaultTypeInternal;
+extern PBSceneNodeDefaultTypeInternal _PBSceneNode_default_instance_;
+class PBTransform;
+class PBTransformDefaultTypeInternal;
+extern PBTransformDefaultTypeInternal _PBTransform_default_instance_;
+class PBVector3;
+class PBVector3DefaultTypeInternal;
+extern PBVector3DefaultTypeInternal _PBVector3_default_instance_;
+class PBVector4;
+class PBVector4DefaultTypeInternal;
+extern PBVector4DefaultTypeInternal _PBVector4_default_instance_;
 
 namespace protobuf_SceneProtocol_2eproto {
 // Internal implementation detail -- do not call these.
@@ -64,14 +64,14 @@ void InitDefaults();
 
 // ===================================================================
 
-class Vector3 : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Vector3) */ {
+class PBVector3 : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PBVector3) */ {
  public:
-  Vector3();
-  virtual ~Vector3();
+  PBVector3();
+  virtual ~PBVector3();
 
-  Vector3(const Vector3& from);
+  PBVector3(const PBVector3& from);
 
-  inline Vector3& operator=(const Vector3& from) {
+  inline PBVector3& operator=(const PBVector3& from) {
     CopyFrom(from);
     return *this;
   }
@@ -85,24 +85,24 @@ class Vector3 : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Vector3& default_instance();
+  static const PBVector3& default_instance();
 
-  static inline const Vector3* internal_default_instance() {
-    return reinterpret_cast<const Vector3*>(
-               &_Vector3_default_instance_);
+  static inline const PBVector3* internal_default_instance() {
+    return reinterpret_cast<const PBVector3*>(
+               &_PBVector3_default_instance_);
   }
 
-  void Swap(Vector3* other);
+  void Swap(PBVector3* other);
 
   // implements Message ----------------------------------------------
 
-  inline Vector3* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline PBVector3* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Vector3* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  PBVector3* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Vector3& from);
-  void MergeFrom(const Vector3& from);
+  void CopyFrom(const PBVector3& from);
+  void MergeFrom(const PBVector3& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -123,7 +123,7 @@ class Vector3 : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Vector3* other);
+  void InternalSwap(PBVector3* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -160,7 +160,7 @@ class Vector3 : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   float z() const;
   void set_z(float value);
 
-  // @@protoc_insertion_point(class_scope:Vector3)
+  // @@protoc_insertion_point(class_scope:PBVector3)
  private:
   void set_has_x();
   void clear_has_x();
@@ -182,14 +182,14 @@ class Vector3 : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 };
 // -------------------------------------------------------------------
 
-class Vector4 : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Vector4) */ {
+class PBVector4 : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PBVector4) */ {
  public:
-  Vector4();
-  virtual ~Vector4();
+  PBVector4();
+  virtual ~PBVector4();
 
-  Vector4(const Vector4& from);
+  PBVector4(const PBVector4& from);
 
-  inline Vector4& operator=(const Vector4& from) {
+  inline PBVector4& operator=(const PBVector4& from) {
     CopyFrom(from);
     return *this;
   }
@@ -203,24 +203,24 @@ class Vector4 : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Vector4& default_instance();
+  static const PBVector4& default_instance();
 
-  static inline const Vector4* internal_default_instance() {
-    return reinterpret_cast<const Vector4*>(
-               &_Vector4_default_instance_);
+  static inline const PBVector4* internal_default_instance() {
+    return reinterpret_cast<const PBVector4*>(
+               &_PBVector4_default_instance_);
   }
 
-  void Swap(Vector4* other);
+  void Swap(PBVector4* other);
 
   // implements Message ----------------------------------------------
 
-  inline Vector4* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline PBVector4* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Vector4* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  PBVector4* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Vector4& from);
-  void MergeFrom(const Vector4& from);
+  void CopyFrom(const PBVector4& from);
+  void MergeFrom(const PBVector4& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -241,135 +241,7 @@ class Vector4 : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Vector4* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required float x = 1;
-  bool has_x() const;
-  void clear_x();
-  static const int kXFieldNumber = 1;
-  float x() const;
-  void set_x(float value);
-
-  // required float y = 2;
-  bool has_y() const;
-  void clear_y();
-  static const int kYFieldNumber = 2;
-  float y() const;
-  void set_y(float value);
-
-  // required float z = 3;
-  bool has_z() const;
-  void clear_z();
-  static const int kZFieldNumber = 3;
-  float z() const;
-  void set_z(float value);
-
-  // required float w = 4;
-  bool has_w() const;
-  void clear_w();
-  static const int kWFieldNumber = 4;
-  float w() const;
-  void set_w(float value);
-
-  // @@protoc_insertion_point(class_scope:Vector4)
- private:
-  void set_has_x();
-  void clear_has_x();
-  void set_has_y();
-  void clear_has_y();
-  void set_has_z();
-  void clear_has_z();
-  void set_has_w();
-  void clear_has_w();
-
-  // helper for ByteSizeLong()
-  size_t RequiredFieldsByteSizeFallback() const;
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
-  float x_;
-  float y_;
-  float z_;
-  float w_;
-  friend struct  protobuf_SceneProtocol_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class Quaternion : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Quaternion) */ {
- public:
-  Quaternion();
-  virtual ~Quaternion();
-
-  Quaternion(const Quaternion& from);
-
-  inline Quaternion& operator=(const Quaternion& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Quaternion& default_instance();
-
-  static inline const Quaternion* internal_default_instance() {
-    return reinterpret_cast<const Quaternion*>(
-               &_Quaternion_default_instance_);
-  }
-
-  void Swap(Quaternion* other);
-
-  // implements Message ----------------------------------------------
-
-  inline Quaternion* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  Quaternion* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Quaternion& from);
-  void MergeFrom(const Quaternion& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
-      const PROTOBUF_FINAL {
-    return InternalSerializeWithCachedSizesToArray(
-        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
-  }
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Quaternion* other);
+  void InternalSwap(PBVector4* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -413,7 +285,7 @@ class Quaternion : public ::google::protobuf::Message /* @@protoc_insertion_poin
   float w() const;
   void set_w(float value);
 
-  // @@protoc_insertion_point(class_scope:Quaternion)
+  // @@protoc_insertion_point(class_scope:PBVector4)
  private:
   void set_has_x();
   void clear_has_x();
@@ -438,14 +310,14 @@ class Quaternion : public ::google::protobuf::Message /* @@protoc_insertion_poin
 };
 // -------------------------------------------------------------------
 
-class Transform : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Transform) */ {
+class PBQuaternion : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PBQuaternion) */ {
  public:
-  Transform();
-  virtual ~Transform();
+  PBQuaternion();
+  virtual ~PBQuaternion();
 
-  Transform(const Transform& from);
+  PBQuaternion(const PBQuaternion& from);
 
-  inline Transform& operator=(const Transform& from) {
+  inline PBQuaternion& operator=(const PBQuaternion& from) {
     CopyFrom(from);
     return *this;
   }
@@ -459,24 +331,24 @@ class Transform : public ::google::protobuf::Message /* @@protoc_insertion_point
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Transform& default_instance();
+  static const PBQuaternion& default_instance();
 
-  static inline const Transform* internal_default_instance() {
-    return reinterpret_cast<const Transform*>(
-               &_Transform_default_instance_);
+  static inline const PBQuaternion* internal_default_instance() {
+    return reinterpret_cast<const PBQuaternion*>(
+               &_PBQuaternion_default_instance_);
   }
 
-  void Swap(Transform* other);
+  void Swap(PBQuaternion* other);
 
   // implements Message ----------------------------------------------
 
-  inline Transform* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline PBQuaternion* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Transform* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  PBQuaternion* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Transform& from);
-  void MergeFrom(const Transform& from);
+  void CopyFrom(const PBQuaternion& from);
+  void MergeFrom(const PBQuaternion& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -497,7 +369,7 @@ class Transform : public ::google::protobuf::Message /* @@protoc_insertion_point
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Transform* other);
+  void InternalSwap(PBQuaternion* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -513,34 +385,162 @@ class Transform : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // required .Vector3 scale = 1;
+  // required float x = 1;
+  bool has_x() const;
+  void clear_x();
+  static const int kXFieldNumber = 1;
+  float x() const;
+  void set_x(float value);
+
+  // required float y = 2;
+  bool has_y() const;
+  void clear_y();
+  static const int kYFieldNumber = 2;
+  float y() const;
+  void set_y(float value);
+
+  // required float z = 3;
+  bool has_z() const;
+  void clear_z();
+  static const int kZFieldNumber = 3;
+  float z() const;
+  void set_z(float value);
+
+  // required float w = 4;
+  bool has_w() const;
+  void clear_w();
+  static const int kWFieldNumber = 4;
+  float w() const;
+  void set_w(float value);
+
+  // @@protoc_insertion_point(class_scope:PBQuaternion)
+ private:
+  void set_has_x();
+  void clear_has_x();
+  void set_has_y();
+  void clear_has_y();
+  void set_has_z();
+  void clear_has_z();
+  void set_has_w();
+  void clear_has_w();
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable int _cached_size_;
+  float x_;
+  float y_;
+  float z_;
+  float w_;
+  friend struct  protobuf_SceneProtocol_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class PBTransform : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PBTransform) */ {
+ public:
+  PBTransform();
+  virtual ~PBTransform();
+
+  PBTransform(const PBTransform& from);
+
+  inline PBTransform& operator=(const PBTransform& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBTransform& default_instance();
+
+  static inline const PBTransform* internal_default_instance() {
+    return reinterpret_cast<const PBTransform*>(
+               &_PBTransform_default_instance_);
+  }
+
+  void Swap(PBTransform* other);
+
+  // implements Message ----------------------------------------------
+
+  inline PBTransform* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  PBTransform* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const PBTransform& from);
+  void MergeFrom(const PBTransform& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(PBTransform* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .PBVector3 scale = 1;
   bool has_scale() const;
   void clear_scale();
   static const int kScaleFieldNumber = 1;
-  const ::Vector3& scale() const;
-  ::Vector3* mutable_scale();
-  ::Vector3* release_scale();
-  void set_allocated_scale(::Vector3* scale);
+  const ::PBVector3& scale() const;
+  ::PBVector3* mutable_scale();
+  ::PBVector3* release_scale();
+  void set_allocated_scale(::PBVector3* scale);
 
-  // required .Quaternion orientation = 2;
+  // required .PBQuaternion orientation = 2;
   bool has_orientation() const;
   void clear_orientation();
   static const int kOrientationFieldNumber = 2;
-  const ::Quaternion& orientation() const;
-  ::Quaternion* mutable_orientation();
-  ::Quaternion* release_orientation();
-  void set_allocated_orientation(::Quaternion* orientation);
+  const ::PBQuaternion& orientation() const;
+  ::PBQuaternion* mutable_orientation();
+  ::PBQuaternion* release_orientation();
+  void set_allocated_orientation(::PBQuaternion* orientation);
 
-  // required .Vector3 translation = 3;
+  // required .PBVector3 translation = 3;
   bool has_translation() const;
   void clear_translation();
   static const int kTranslationFieldNumber = 3;
-  const ::Vector3& translation() const;
-  ::Vector3* mutable_translation();
-  ::Vector3* release_translation();
-  void set_allocated_translation(::Vector3* translation);
+  const ::PBVector3& translation() const;
+  ::PBVector3* mutable_translation();
+  ::PBVector3* release_translation();
+  void set_allocated_translation(::PBVector3* translation);
 
-  // @@protoc_insertion_point(class_scope:Transform)
+  // @@protoc_insertion_point(class_scope:PBTransform)
  private:
   void set_has_scale();
   void clear_has_scale();
@@ -555,21 +555,21 @@ class Transform : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable int _cached_size_;
-  ::Vector3* scale_;
-  ::Quaternion* orientation_;
-  ::Vector3* translation_;
+  ::PBVector3* scale_;
+  ::PBQuaternion* orientation_;
+  ::PBVector3* translation_;
   friend struct  protobuf_SceneProtocol_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class Color : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Color) */ {
+class PBColor : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PBColor) */ {
  public:
-  Color();
-  virtual ~Color();
+  PBColor();
+  virtual ~PBColor();
 
-  Color(const Color& from);
+  PBColor(const PBColor& from);
 
-  inline Color& operator=(const Color& from) {
+  inline PBColor& operator=(const PBColor& from) {
     CopyFrom(from);
     return *this;
   }
@@ -583,24 +583,24 @@ class Color : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Color& default_instance();
+  static const PBColor& default_instance();
 
-  static inline const Color* internal_default_instance() {
-    return reinterpret_cast<const Color*>(
-               &_Color_default_instance_);
+  static inline const PBColor* internal_default_instance() {
+    return reinterpret_cast<const PBColor*>(
+               &_PBColor_default_instance_);
   }
 
-  void Swap(Color* other);
+  void Swap(PBColor* other);
 
   // implements Message ----------------------------------------------
 
-  inline Color* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline PBColor* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Color* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  PBColor* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Color& from);
-  void MergeFrom(const Color& from);
+  void CopyFrom(const PBColor& from);
+  void MergeFrom(const PBColor& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -621,7 +621,7 @@ class Color : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Color* other);
+  void InternalSwap(PBColor* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -665,7 +665,7 @@ class Color : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
   float a() const;
   void set_a(float value);
 
-  // @@protoc_insertion_point(class_scope:Color)
+  // @@protoc_insertion_point(class_scope:PBColor)
  private:
   void set_has_r();
   void clear_has_r();
@@ -690,14 +690,14 @@ class Color : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
 };
 // -------------------------------------------------------------------
 
-class Material : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Material) */ {
+class PBMaterial : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PBMaterial) */ {
  public:
-  Material();
-  virtual ~Material();
+  PBMaterial();
+  virtual ~PBMaterial();
 
-  Material(const Material& from);
+  PBMaterial(const PBMaterial& from);
 
-  inline Material& operator=(const Material& from) {
+  inline PBMaterial& operator=(const PBMaterial& from) {
     CopyFrom(from);
     return *this;
   }
@@ -711,24 +711,24 @@ class Material : public ::google::protobuf::Message /* @@protoc_insertion_point(
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Material& default_instance();
+  static const PBMaterial& default_instance();
 
-  static inline const Material* internal_default_instance() {
-    return reinterpret_cast<const Material*>(
-               &_Material_default_instance_);
+  static inline const PBMaterial* internal_default_instance() {
+    return reinterpret_cast<const PBMaterial*>(
+               &_PBMaterial_default_instance_);
   }
 
-  void Swap(Material* other);
+  void Swap(PBMaterial* other);
 
   // implements Message ----------------------------------------------
 
-  inline Material* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline PBMaterial* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Material* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  PBMaterial* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Material& from);
-  void MergeFrom(const Material& from);
+  void CopyFrom(const PBMaterial& from);
+  void MergeFrom(const PBMaterial& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -749,7 +749,7 @@ class Material : public ::google::protobuf::Message /* @@protoc_insertion_point(
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Material* other);
+  void InternalSwap(PBMaterial* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -810,14 +810,29 @@ class Material : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::std::string* release_metallicmapurl();
   void set_allocated_metallicmapurl(::std::string* metallicmapurl);
 
-  // optional .Color diffuseColor = 1;
+  // optional string normalMapURL = 7;
+  bool has_normalmapurl() const;
+  void clear_normalmapurl();
+  static const int kNormalMapURLFieldNumber = 7;
+  const ::std::string& normalmapurl() const;
+  void set_normalmapurl(const ::std::string& value);
+  #if LANG_CXX11
+  void set_normalmapurl(::std::string&& value);
+  #endif
+  void set_normalmapurl(const char* value);
+  void set_normalmapurl(const char* value, size_t size);
+  ::std::string* mutable_normalmapurl();
+  ::std::string* release_normalmapurl();
+  void set_allocated_normalmapurl(::std::string* normalmapurl);
+
+  // optional .PBColor diffuseColor = 1;
   bool has_diffusecolor() const;
   void clear_diffusecolor();
   static const int kDiffuseColorFieldNumber = 1;
-  const ::Color& diffusecolor() const;
-  ::Color* mutable_diffusecolor();
-  ::Color* release_diffusecolor();
-  void set_allocated_diffusecolor(::Color* diffusecolor);
+  const ::PBColor& diffusecolor() const;
+  ::PBColor* mutable_diffusecolor();
+  ::PBColor* release_diffusecolor();
+  void set_allocated_diffusecolor(::PBColor* diffusecolor);
 
   // optional float roughness = 3;
   bool has_roughness() const;
@@ -833,7 +848,7 @@ class Material : public ::google::protobuf::Message /* @@protoc_insertion_point(
   float metallic() const;
   void set_metallic(float value);
 
-  // @@protoc_insertion_point(class_scope:Material)
+  // @@protoc_insertion_point(class_scope:PBMaterial)
  private:
   void set_has_diffusecolor();
   void clear_has_diffusecolor();
@@ -847,6 +862,8 @@ class Material : public ::google::protobuf::Message /* @@protoc_insertion_point(
   void clear_has_metallic();
   void set_has_metallicmapurl();
   void clear_has_metallicmapurl();
+  void set_has_normalmapurl();
+  void clear_has_normalmapurl();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
@@ -854,21 +871,22 @@ class Material : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::google::protobuf::internal::ArenaStringPtr diffusemapurl_;
   ::google::protobuf::internal::ArenaStringPtr roughnessmapurl_;
   ::google::protobuf::internal::ArenaStringPtr metallicmapurl_;
-  ::Color* diffusecolor_;
+  ::google::protobuf::internal::ArenaStringPtr normalmapurl_;
+  ::PBColor* diffusecolor_;
   float roughness_;
   float metallic_;
   friend struct  protobuf_SceneProtocol_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class SceneNode : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SceneNode) */ {
+class PBSceneNode : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PBSceneNode) */ {
  public:
-  SceneNode();
-  virtual ~SceneNode();
+  PBSceneNode();
+  virtual ~PBSceneNode();
 
-  SceneNode(const SceneNode& from);
+  PBSceneNode(const PBSceneNode& from);
 
-  inline SceneNode& operator=(const SceneNode& from) {
+  inline PBSceneNode& operator=(const PBSceneNode& from) {
     CopyFrom(from);
     return *this;
   }
@@ -882,24 +900,24 @@ class SceneNode : public ::google::protobuf::Message /* @@protoc_insertion_point
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const SceneNode& default_instance();
+  static const PBSceneNode& default_instance();
 
-  static inline const SceneNode* internal_default_instance() {
-    return reinterpret_cast<const SceneNode*>(
-               &_SceneNode_default_instance_);
+  static inline const PBSceneNode* internal_default_instance() {
+    return reinterpret_cast<const PBSceneNode*>(
+               &_PBSceneNode_default_instance_);
   }
 
-  void Swap(SceneNode* other);
+  void Swap(PBSceneNode* other);
 
   // implements Message ----------------------------------------------
 
-  inline SceneNode* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline PBSceneNode* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  SceneNode* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  PBSceneNode* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const SceneNode& from);
-  void MergeFrom(const SceneNode& from);
+  void CopyFrom(const PBSceneNode& from);
+  void MergeFrom(const PBSceneNode& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -920,7 +938,7 @@ class SceneNode : public ::google::protobuf::Message /* @@protoc_insertion_point
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(SceneNode* other);
+  void InternalSwap(PBSceneNode* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -936,16 +954,16 @@ class SceneNode : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // repeated .Material materials = 3;
+  // repeated .PBMaterial materials = 3;
   int materials_size() const;
   void clear_materials();
   static const int kMaterialsFieldNumber = 3;
-  const ::Material& materials(int index) const;
-  ::Material* mutable_materials(int index);
-  ::Material* add_materials();
-  ::google::protobuf::RepeatedPtrField< ::Material >*
+  const ::PBMaterial& materials(int index) const;
+  ::PBMaterial* mutable_materials(int index);
+  ::PBMaterial* add_materials();
+  ::google::protobuf::RepeatedPtrField< ::PBMaterial >*
       mutable_materials();
-  const ::google::protobuf::RepeatedPtrField< ::Material >&
+  const ::google::protobuf::RepeatedPtrField< ::PBMaterial >&
       materials() const;
 
   // required string meshURL = 2;
@@ -963,16 +981,16 @@ class SceneNode : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::std::string* release_meshurl();
   void set_allocated_meshurl(::std::string* meshurl);
 
-  // required .Transform worldTransform = 1;
+  // required .PBTransform worldTransform = 1;
   bool has_worldtransform() const;
   void clear_worldtransform();
   static const int kWorldTransformFieldNumber = 1;
-  const ::Transform& worldtransform() const;
-  ::Transform* mutable_worldtransform();
-  ::Transform* release_worldtransform();
-  void set_allocated_worldtransform(::Transform* worldtransform);
+  const ::PBTransform& worldtransform() const;
+  ::PBTransform* mutable_worldtransform();
+  ::PBTransform* release_worldtransform();
+  void set_allocated_worldtransform(::PBTransform* worldtransform);
 
-  // @@protoc_insertion_point(class_scope:SceneNode)
+  // @@protoc_insertion_point(class_scope:PBSceneNode)
  private:
   void set_has_worldtransform();
   void clear_has_worldtransform();
@@ -985,9 +1003,9 @@ class SceneNode : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::Material > materials_;
+  ::google::protobuf::RepeatedPtrField< ::PBMaterial > materials_;
   ::google::protobuf::internal::ArenaStringPtr meshurl_;
-  ::Transform* worldtransform_;
+  ::PBTransform* worldtransform_;
   friend struct  protobuf_SceneProtocol_2eproto::TableStruct;
 };
 // ===================================================================
@@ -996,319 +1014,319 @@ class SceneNode : public ::google::protobuf::Message /* @@protoc_insertion_point
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
-// Vector3
+// PBVector3
 
 // required float x = 1;
-inline bool Vector3::has_x() const {
+inline bool PBVector3::has_x() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Vector3::set_has_x() {
+inline void PBVector3::set_has_x() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Vector3::clear_has_x() {
+inline void PBVector3::clear_has_x() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Vector3::clear_x() {
+inline void PBVector3::clear_x() {
   x_ = 0;
   clear_has_x();
 }
-inline float Vector3::x() const {
-  // @@protoc_insertion_point(field_get:Vector3.x)
+inline float PBVector3::x() const {
+  // @@protoc_insertion_point(field_get:PBVector3.x)
   return x_;
 }
-inline void Vector3::set_x(float value) {
+inline void PBVector3::set_x(float value) {
   set_has_x();
   x_ = value;
-  // @@protoc_insertion_point(field_set:Vector3.x)
+  // @@protoc_insertion_point(field_set:PBVector3.x)
 }
 
 // required float y = 2;
-inline bool Vector3::has_y() const {
+inline bool PBVector3::has_y() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Vector3::set_has_y() {
+inline void PBVector3::set_has_y() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Vector3::clear_has_y() {
+inline void PBVector3::clear_has_y() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void Vector3::clear_y() {
+inline void PBVector3::clear_y() {
   y_ = 0;
   clear_has_y();
 }
-inline float Vector3::y() const {
-  // @@protoc_insertion_point(field_get:Vector3.y)
+inline float PBVector3::y() const {
+  // @@protoc_insertion_point(field_get:PBVector3.y)
   return y_;
 }
-inline void Vector3::set_y(float value) {
+inline void PBVector3::set_y(float value) {
   set_has_y();
   y_ = value;
-  // @@protoc_insertion_point(field_set:Vector3.y)
+  // @@protoc_insertion_point(field_set:PBVector3.y)
 }
 
 // required float z = 3;
-inline bool Vector3::has_z() const {
+inline bool PBVector3::has_z() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Vector3::set_has_z() {
+inline void PBVector3::set_has_z() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void Vector3::clear_has_z() {
+inline void PBVector3::clear_has_z() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void Vector3::clear_z() {
+inline void PBVector3::clear_z() {
   z_ = 0;
   clear_has_z();
 }
-inline float Vector3::z() const {
-  // @@protoc_insertion_point(field_get:Vector3.z)
+inline float PBVector3::z() const {
+  // @@protoc_insertion_point(field_get:PBVector3.z)
   return z_;
 }
-inline void Vector3::set_z(float value) {
+inline void PBVector3::set_z(float value) {
   set_has_z();
   z_ = value;
-  // @@protoc_insertion_point(field_set:Vector3.z)
+  // @@protoc_insertion_point(field_set:PBVector3.z)
 }
 
 // -------------------------------------------------------------------
 
-// Vector4
+// PBVector4
 
 // required float x = 1;
-inline bool Vector4::has_x() const {
+inline bool PBVector4::has_x() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Vector4::set_has_x() {
+inline void PBVector4::set_has_x() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Vector4::clear_has_x() {
+inline void PBVector4::clear_has_x() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Vector4::clear_x() {
+inline void PBVector4::clear_x() {
   x_ = 0;
   clear_has_x();
 }
-inline float Vector4::x() const {
-  // @@protoc_insertion_point(field_get:Vector4.x)
+inline float PBVector4::x() const {
+  // @@protoc_insertion_point(field_get:PBVector4.x)
   return x_;
 }
-inline void Vector4::set_x(float value) {
+inline void PBVector4::set_x(float value) {
   set_has_x();
   x_ = value;
-  // @@protoc_insertion_point(field_set:Vector4.x)
+  // @@protoc_insertion_point(field_set:PBVector4.x)
 }
 
 // required float y = 2;
-inline bool Vector4::has_y() const {
+inline bool PBVector4::has_y() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Vector4::set_has_y() {
+inline void PBVector4::set_has_y() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Vector4::clear_has_y() {
+inline void PBVector4::clear_has_y() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void Vector4::clear_y() {
+inline void PBVector4::clear_y() {
   y_ = 0;
   clear_has_y();
 }
-inline float Vector4::y() const {
-  // @@protoc_insertion_point(field_get:Vector4.y)
+inline float PBVector4::y() const {
+  // @@protoc_insertion_point(field_get:PBVector4.y)
   return y_;
 }
-inline void Vector4::set_y(float value) {
+inline void PBVector4::set_y(float value) {
   set_has_y();
   y_ = value;
-  // @@protoc_insertion_point(field_set:Vector4.y)
+  // @@protoc_insertion_point(field_set:PBVector4.y)
 }
 
 // required float z = 3;
-inline bool Vector4::has_z() const {
+inline bool PBVector4::has_z() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Vector4::set_has_z() {
+inline void PBVector4::set_has_z() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void Vector4::clear_has_z() {
+inline void PBVector4::clear_has_z() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void Vector4::clear_z() {
+inline void PBVector4::clear_z() {
   z_ = 0;
   clear_has_z();
 }
-inline float Vector4::z() const {
-  // @@protoc_insertion_point(field_get:Vector4.z)
+inline float PBVector4::z() const {
+  // @@protoc_insertion_point(field_get:PBVector4.z)
   return z_;
 }
-inline void Vector4::set_z(float value) {
+inline void PBVector4::set_z(float value) {
   set_has_z();
   z_ = value;
-  // @@protoc_insertion_point(field_set:Vector4.z)
+  // @@protoc_insertion_point(field_set:PBVector4.z)
 }
 
 // required float w = 4;
-inline bool Vector4::has_w() const {
+inline bool PBVector4::has_w() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void Vector4::set_has_w() {
+inline void PBVector4::set_has_w() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void Vector4::clear_has_w() {
+inline void PBVector4::clear_has_w() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void Vector4::clear_w() {
+inline void PBVector4::clear_w() {
   w_ = 0;
   clear_has_w();
 }
-inline float Vector4::w() const {
-  // @@protoc_insertion_point(field_get:Vector4.w)
+inline float PBVector4::w() const {
+  // @@protoc_insertion_point(field_get:PBVector4.w)
   return w_;
 }
-inline void Vector4::set_w(float value) {
+inline void PBVector4::set_w(float value) {
   set_has_w();
   w_ = value;
-  // @@protoc_insertion_point(field_set:Vector4.w)
+  // @@protoc_insertion_point(field_set:PBVector4.w)
 }
 
 // -------------------------------------------------------------------
 
-// Quaternion
+// PBQuaternion
 
 // required float x = 1;
-inline bool Quaternion::has_x() const {
+inline bool PBQuaternion::has_x() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Quaternion::set_has_x() {
+inline void PBQuaternion::set_has_x() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Quaternion::clear_has_x() {
+inline void PBQuaternion::clear_has_x() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Quaternion::clear_x() {
+inline void PBQuaternion::clear_x() {
   x_ = 0;
   clear_has_x();
 }
-inline float Quaternion::x() const {
-  // @@protoc_insertion_point(field_get:Quaternion.x)
+inline float PBQuaternion::x() const {
+  // @@protoc_insertion_point(field_get:PBQuaternion.x)
   return x_;
 }
-inline void Quaternion::set_x(float value) {
+inline void PBQuaternion::set_x(float value) {
   set_has_x();
   x_ = value;
-  // @@protoc_insertion_point(field_set:Quaternion.x)
+  // @@protoc_insertion_point(field_set:PBQuaternion.x)
 }
 
 // required float y = 2;
-inline bool Quaternion::has_y() const {
+inline bool PBQuaternion::has_y() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Quaternion::set_has_y() {
+inline void PBQuaternion::set_has_y() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Quaternion::clear_has_y() {
+inline void PBQuaternion::clear_has_y() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void Quaternion::clear_y() {
+inline void PBQuaternion::clear_y() {
   y_ = 0;
   clear_has_y();
 }
-inline float Quaternion::y() const {
-  // @@protoc_insertion_point(field_get:Quaternion.y)
+inline float PBQuaternion::y() const {
+  // @@protoc_insertion_point(field_get:PBQuaternion.y)
   return y_;
 }
-inline void Quaternion::set_y(float value) {
+inline void PBQuaternion::set_y(float value) {
   set_has_y();
   y_ = value;
-  // @@protoc_insertion_point(field_set:Quaternion.y)
+  // @@protoc_insertion_point(field_set:PBQuaternion.y)
 }
 
 // required float z = 3;
-inline bool Quaternion::has_z() const {
+inline bool PBQuaternion::has_z() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Quaternion::set_has_z() {
+inline void PBQuaternion::set_has_z() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void Quaternion::clear_has_z() {
+inline void PBQuaternion::clear_has_z() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void Quaternion::clear_z() {
+inline void PBQuaternion::clear_z() {
   z_ = 0;
   clear_has_z();
 }
-inline float Quaternion::z() const {
-  // @@protoc_insertion_point(field_get:Quaternion.z)
+inline float PBQuaternion::z() const {
+  // @@protoc_insertion_point(field_get:PBQuaternion.z)
   return z_;
 }
-inline void Quaternion::set_z(float value) {
+inline void PBQuaternion::set_z(float value) {
   set_has_z();
   z_ = value;
-  // @@protoc_insertion_point(field_set:Quaternion.z)
+  // @@protoc_insertion_point(field_set:PBQuaternion.z)
 }
 
 // required float w = 4;
-inline bool Quaternion::has_w() const {
+inline bool PBQuaternion::has_w() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void Quaternion::set_has_w() {
+inline void PBQuaternion::set_has_w() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void Quaternion::clear_has_w() {
+inline void PBQuaternion::clear_has_w() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void Quaternion::clear_w() {
+inline void PBQuaternion::clear_w() {
   w_ = 0;
   clear_has_w();
 }
-inline float Quaternion::w() const {
-  // @@protoc_insertion_point(field_get:Quaternion.w)
+inline float PBQuaternion::w() const {
+  // @@protoc_insertion_point(field_get:PBQuaternion.w)
   return w_;
 }
-inline void Quaternion::set_w(float value) {
+inline void PBQuaternion::set_w(float value) {
   set_has_w();
   w_ = value;
-  // @@protoc_insertion_point(field_set:Quaternion.w)
+  // @@protoc_insertion_point(field_set:PBQuaternion.w)
 }
 
 // -------------------------------------------------------------------
 
-// Transform
+// PBTransform
 
-// required .Vector3 scale = 1;
-inline bool Transform::has_scale() const {
+// required .PBVector3 scale = 1;
+inline bool PBTransform::has_scale() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Transform::set_has_scale() {
+inline void PBTransform::set_has_scale() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Transform::clear_has_scale() {
+inline void PBTransform::clear_has_scale() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Transform::clear_scale() {
-  if (scale_ != NULL) scale_->::Vector3::Clear();
+inline void PBTransform::clear_scale() {
+  if (scale_ != NULL) scale_->::PBVector3::Clear();
   clear_has_scale();
 }
-inline const ::Vector3& Transform::scale() const {
-  // @@protoc_insertion_point(field_get:Transform.scale)
+inline const ::PBVector3& PBTransform::scale() const {
+  // @@protoc_insertion_point(field_get:PBTransform.scale)
   return scale_ != NULL ? *scale_
-                         : *::Vector3::internal_default_instance();
+                         : *::PBVector3::internal_default_instance();
 }
-inline ::Vector3* Transform::mutable_scale() {
+inline ::PBVector3* PBTransform::mutable_scale() {
   set_has_scale();
   if (scale_ == NULL) {
-    scale_ = new ::Vector3;
+    scale_ = new ::PBVector3;
   }
-  // @@protoc_insertion_point(field_mutable:Transform.scale)
+  // @@protoc_insertion_point(field_mutable:PBTransform.scale)
   return scale_;
 }
-inline ::Vector3* Transform::release_scale() {
-  // @@protoc_insertion_point(field_release:Transform.scale)
+inline ::PBVector3* PBTransform::release_scale() {
+  // @@protoc_insertion_point(field_release:PBTransform.scale)
   clear_has_scale();
-  ::Vector3* temp = scale_;
+  ::PBVector3* temp = scale_;
   scale_ = NULL;
   return temp;
 }
-inline void Transform::set_allocated_scale(::Vector3* scale) {
+inline void PBTransform::set_allocated_scale(::PBVector3* scale) {
   delete scale_;
   scale_ = scale;
   if (scale) {
@@ -1316,44 +1334,44 @@ inline void Transform::set_allocated_scale(::Vector3* scale) {
   } else {
     clear_has_scale();
   }
-  // @@protoc_insertion_point(field_set_allocated:Transform.scale)
+  // @@protoc_insertion_point(field_set_allocated:PBTransform.scale)
 }
 
-// required .Quaternion orientation = 2;
-inline bool Transform::has_orientation() const {
+// required .PBQuaternion orientation = 2;
+inline bool PBTransform::has_orientation() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Transform::set_has_orientation() {
+inline void PBTransform::set_has_orientation() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Transform::clear_has_orientation() {
+inline void PBTransform::clear_has_orientation() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void Transform::clear_orientation() {
-  if (orientation_ != NULL) orientation_->::Quaternion::Clear();
+inline void PBTransform::clear_orientation() {
+  if (orientation_ != NULL) orientation_->::PBQuaternion::Clear();
   clear_has_orientation();
 }
-inline const ::Quaternion& Transform::orientation() const {
-  // @@protoc_insertion_point(field_get:Transform.orientation)
+inline const ::PBQuaternion& PBTransform::orientation() const {
+  // @@protoc_insertion_point(field_get:PBTransform.orientation)
   return orientation_ != NULL ? *orientation_
-                         : *::Quaternion::internal_default_instance();
+                         : *::PBQuaternion::internal_default_instance();
 }
-inline ::Quaternion* Transform::mutable_orientation() {
+inline ::PBQuaternion* PBTransform::mutable_orientation() {
   set_has_orientation();
   if (orientation_ == NULL) {
-    orientation_ = new ::Quaternion;
+    orientation_ = new ::PBQuaternion;
   }
-  // @@protoc_insertion_point(field_mutable:Transform.orientation)
+  // @@protoc_insertion_point(field_mutable:PBTransform.orientation)
   return orientation_;
 }
-inline ::Quaternion* Transform::release_orientation() {
-  // @@protoc_insertion_point(field_release:Transform.orientation)
+inline ::PBQuaternion* PBTransform::release_orientation() {
+  // @@protoc_insertion_point(field_release:PBTransform.orientation)
   clear_has_orientation();
-  ::Quaternion* temp = orientation_;
+  ::PBQuaternion* temp = orientation_;
   orientation_ = NULL;
   return temp;
 }
-inline void Transform::set_allocated_orientation(::Quaternion* orientation) {
+inline void PBTransform::set_allocated_orientation(::PBQuaternion* orientation) {
   delete orientation_;
   orientation_ = orientation;
   if (orientation) {
@@ -1361,44 +1379,44 @@ inline void Transform::set_allocated_orientation(::Quaternion* orientation) {
   } else {
     clear_has_orientation();
   }
-  // @@protoc_insertion_point(field_set_allocated:Transform.orientation)
+  // @@protoc_insertion_point(field_set_allocated:PBTransform.orientation)
 }
 
-// required .Vector3 translation = 3;
-inline bool Transform::has_translation() const {
+// required .PBVector3 translation = 3;
+inline bool PBTransform::has_translation() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Transform::set_has_translation() {
+inline void PBTransform::set_has_translation() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void Transform::clear_has_translation() {
+inline void PBTransform::clear_has_translation() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void Transform::clear_translation() {
-  if (translation_ != NULL) translation_->::Vector3::Clear();
+inline void PBTransform::clear_translation() {
+  if (translation_ != NULL) translation_->::PBVector3::Clear();
   clear_has_translation();
 }
-inline const ::Vector3& Transform::translation() const {
-  // @@protoc_insertion_point(field_get:Transform.translation)
+inline const ::PBVector3& PBTransform::translation() const {
+  // @@protoc_insertion_point(field_get:PBTransform.translation)
   return translation_ != NULL ? *translation_
-                         : *::Vector3::internal_default_instance();
+                         : *::PBVector3::internal_default_instance();
 }
-inline ::Vector3* Transform::mutable_translation() {
+inline ::PBVector3* PBTransform::mutable_translation() {
   set_has_translation();
   if (translation_ == NULL) {
-    translation_ = new ::Vector3;
+    translation_ = new ::PBVector3;
   }
-  // @@protoc_insertion_point(field_mutable:Transform.translation)
+  // @@protoc_insertion_point(field_mutable:PBTransform.translation)
   return translation_;
 }
-inline ::Vector3* Transform::release_translation() {
-  // @@protoc_insertion_point(field_release:Transform.translation)
+inline ::PBVector3* PBTransform::release_translation() {
+  // @@protoc_insertion_point(field_release:PBTransform.translation)
   clear_has_translation();
-  ::Vector3* temp = translation_;
+  ::PBVector3* temp = translation_;
   translation_ = NULL;
   return temp;
 }
-inline void Transform::set_allocated_translation(::Vector3* translation) {
+inline void PBTransform::set_allocated_translation(::PBVector3* translation) {
   delete translation_;
   translation_ = translation;
   if (translation) {
@@ -1406,148 +1424,148 @@ inline void Transform::set_allocated_translation(::Vector3* translation) {
   } else {
     clear_has_translation();
   }
-  // @@protoc_insertion_point(field_set_allocated:Transform.translation)
+  // @@protoc_insertion_point(field_set_allocated:PBTransform.translation)
 }
 
 // -------------------------------------------------------------------
 
-// Color
+// PBColor
 
 // required float r = 1;
-inline bool Color::has_r() const {
+inline bool PBColor::has_r() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Color::set_has_r() {
+inline void PBColor::set_has_r() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Color::clear_has_r() {
+inline void PBColor::clear_has_r() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Color::clear_r() {
+inline void PBColor::clear_r() {
   r_ = 0;
   clear_has_r();
 }
-inline float Color::r() const {
-  // @@protoc_insertion_point(field_get:Color.r)
+inline float PBColor::r() const {
+  // @@protoc_insertion_point(field_get:PBColor.r)
   return r_;
 }
-inline void Color::set_r(float value) {
+inline void PBColor::set_r(float value) {
   set_has_r();
   r_ = value;
-  // @@protoc_insertion_point(field_set:Color.r)
+  // @@protoc_insertion_point(field_set:PBColor.r)
 }
 
 // required float g = 2;
-inline bool Color::has_g() const {
+inline bool PBColor::has_g() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Color::set_has_g() {
+inline void PBColor::set_has_g() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Color::clear_has_g() {
+inline void PBColor::clear_has_g() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void Color::clear_g() {
+inline void PBColor::clear_g() {
   g_ = 0;
   clear_has_g();
 }
-inline float Color::g() const {
-  // @@protoc_insertion_point(field_get:Color.g)
+inline float PBColor::g() const {
+  // @@protoc_insertion_point(field_get:PBColor.g)
   return g_;
 }
-inline void Color::set_g(float value) {
+inline void PBColor::set_g(float value) {
   set_has_g();
   g_ = value;
-  // @@protoc_insertion_point(field_set:Color.g)
+  // @@protoc_insertion_point(field_set:PBColor.g)
 }
 
 // required float b = 3;
-inline bool Color::has_b() const {
+inline bool PBColor::has_b() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Color::set_has_b() {
+inline void PBColor::set_has_b() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void Color::clear_has_b() {
+inline void PBColor::clear_has_b() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void Color::clear_b() {
+inline void PBColor::clear_b() {
   b_ = 0;
   clear_has_b();
 }
-inline float Color::b() const {
-  // @@protoc_insertion_point(field_get:Color.b)
+inline float PBColor::b() const {
+  // @@protoc_insertion_point(field_get:PBColor.b)
   return b_;
 }
-inline void Color::set_b(float value) {
+inline void PBColor::set_b(float value) {
   set_has_b();
   b_ = value;
-  // @@protoc_insertion_point(field_set:Color.b)
+  // @@protoc_insertion_point(field_set:PBColor.b)
 }
 
 // required float a = 4;
-inline bool Color::has_a() const {
+inline bool PBColor::has_a() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void Color::set_has_a() {
+inline void PBColor::set_has_a() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void Color::clear_has_a() {
+inline void PBColor::clear_has_a() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void Color::clear_a() {
+inline void PBColor::clear_a() {
   a_ = 0;
   clear_has_a();
 }
-inline float Color::a() const {
-  // @@protoc_insertion_point(field_get:Color.a)
+inline float PBColor::a() const {
+  // @@protoc_insertion_point(field_get:PBColor.a)
   return a_;
 }
-inline void Color::set_a(float value) {
+inline void PBColor::set_a(float value) {
   set_has_a();
   a_ = value;
-  // @@protoc_insertion_point(field_set:Color.a)
+  // @@protoc_insertion_point(field_set:PBColor.a)
 }
 
 // -------------------------------------------------------------------
 
-// Material
+// PBMaterial
 
-// optional .Color diffuseColor = 1;
-inline bool Material::has_diffusecolor() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+// optional .PBColor diffuseColor = 1;
+inline bool PBMaterial::has_diffusecolor() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void Material::set_has_diffusecolor() {
-  _has_bits_[0] |= 0x00000008u;
+inline void PBMaterial::set_has_diffusecolor() {
+  _has_bits_[0] |= 0x00000010u;
 }
-inline void Material::clear_has_diffusecolor() {
-  _has_bits_[0] &= ~0x00000008u;
+inline void PBMaterial::clear_has_diffusecolor() {
+  _has_bits_[0] &= ~0x00000010u;
 }
-inline void Material::clear_diffusecolor() {
-  if (diffusecolor_ != NULL) diffusecolor_->::Color::Clear();
+inline void PBMaterial::clear_diffusecolor() {
+  if (diffusecolor_ != NULL) diffusecolor_->::PBColor::Clear();
   clear_has_diffusecolor();
 }
-inline const ::Color& Material::diffusecolor() const {
-  // @@protoc_insertion_point(field_get:Material.diffuseColor)
+inline const ::PBColor& PBMaterial::diffusecolor() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.diffuseColor)
   return diffusecolor_ != NULL ? *diffusecolor_
-                         : *::Color::internal_default_instance();
+                         : *::PBColor::internal_default_instance();
 }
-inline ::Color* Material::mutable_diffusecolor() {
+inline ::PBColor* PBMaterial::mutable_diffusecolor() {
   set_has_diffusecolor();
   if (diffusecolor_ == NULL) {
-    diffusecolor_ = new ::Color;
+    diffusecolor_ = new ::PBColor;
   }
-  // @@protoc_insertion_point(field_mutable:Material.diffuseColor)
+  // @@protoc_insertion_point(field_mutable:PBMaterial.diffuseColor)
   return diffusecolor_;
 }
-inline ::Color* Material::release_diffusecolor() {
-  // @@protoc_insertion_point(field_release:Material.diffuseColor)
+inline ::PBColor* PBMaterial::release_diffusecolor() {
+  // @@protoc_insertion_point(field_release:PBMaterial.diffuseColor)
   clear_has_diffusecolor();
-  ::Color* temp = diffusecolor_;
+  ::PBColor* temp = diffusecolor_;
   diffusecolor_ = NULL;
   return temp;
 }
-inline void Material::set_allocated_diffusecolor(::Color* diffusecolor) {
+inline void PBMaterial::set_allocated_diffusecolor(::PBColor* diffusecolor) {
   delete diffusecolor_;
   diffusecolor_ = diffusecolor;
   if (diffusecolor) {
@@ -1555,282 +1573,344 @@ inline void Material::set_allocated_diffusecolor(::Color* diffusecolor) {
   } else {
     clear_has_diffusecolor();
   }
-  // @@protoc_insertion_point(field_set_allocated:Material.diffuseColor)
+  // @@protoc_insertion_point(field_set_allocated:PBMaterial.diffuseColor)
 }
 
 // optional string diffuseMapURL = 2;
-inline bool Material::has_diffusemapurl() const {
+inline bool PBMaterial::has_diffusemapurl() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Material::set_has_diffusemapurl() {
+inline void PBMaterial::set_has_diffusemapurl() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Material::clear_has_diffusemapurl() {
+inline void PBMaterial::clear_has_diffusemapurl() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Material::clear_diffusemapurl() {
+inline void PBMaterial::clear_diffusemapurl() {
   diffusemapurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   clear_has_diffusemapurl();
 }
-inline const ::std::string& Material::diffusemapurl() const {
-  // @@protoc_insertion_point(field_get:Material.diffuseMapURL)
+inline const ::std::string& PBMaterial::diffusemapurl() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.diffuseMapURL)
   return diffusemapurl_.GetNoArena();
 }
-inline void Material::set_diffusemapurl(const ::std::string& value) {
+inline void PBMaterial::set_diffusemapurl(const ::std::string& value) {
   set_has_diffusemapurl();
   diffusemapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_set:PBMaterial.diffuseMapURL)
 }
 #if LANG_CXX11
-inline void Material::set_diffusemapurl(::std::string&& value) {
+inline void PBMaterial::set_diffusemapurl(::std::string&& value) {
   set_has_diffusemapurl();
   diffusemapurl_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_set_rvalue:PBMaterial.diffuseMapURL)
 }
 #endif
-inline void Material::set_diffusemapurl(const char* value) {
+inline void PBMaterial::set_diffusemapurl(const char* value) {
   set_has_diffusemapurl();
   diffusemapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_set_char:PBMaterial.diffuseMapURL)
 }
-inline void Material::set_diffusemapurl(const char* value, size_t size) {
+inline void PBMaterial::set_diffusemapurl(const char* value, size_t size) {
   set_has_diffusemapurl();
   diffusemapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_set_pointer:PBMaterial.diffuseMapURL)
 }
-inline ::std::string* Material::mutable_diffusemapurl() {
+inline ::std::string* PBMaterial::mutable_diffusemapurl() {
   set_has_diffusemapurl();
-  // @@protoc_insertion_point(field_mutable:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_mutable:PBMaterial.diffuseMapURL)
   return diffusemapurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* Material::release_diffusemapurl() {
-  // @@protoc_insertion_point(field_release:Material.diffuseMapURL)
+inline ::std::string* PBMaterial::release_diffusemapurl() {
+  // @@protoc_insertion_point(field_release:PBMaterial.diffuseMapURL)
   clear_has_diffusemapurl();
   return diffusemapurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void Material::set_allocated_diffusemapurl(::std::string* diffusemapurl) {
+inline void PBMaterial::set_allocated_diffusemapurl(::std::string* diffusemapurl) {
   if (diffusemapurl != NULL) {
     set_has_diffusemapurl();
   } else {
     clear_has_diffusemapurl();
   }
   diffusemapurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diffusemapurl);
-  // @@protoc_insertion_point(field_set_allocated:Material.diffuseMapURL)
+  // @@protoc_insertion_point(field_set_allocated:PBMaterial.diffuseMapURL)
 }
 
 // optional float roughness = 3;
-inline bool Material::has_roughness() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+inline bool PBMaterial::has_roughness() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void Material::set_has_roughness() {
-  _has_bits_[0] |= 0x00000010u;
+inline void PBMaterial::set_has_roughness() {
+  _has_bits_[0] |= 0x00000020u;
 }
-inline void Material::clear_has_roughness() {
-  _has_bits_[0] &= ~0x00000010u;
+inline void PBMaterial::clear_has_roughness() {
+  _has_bits_[0] &= ~0x00000020u;
 }
-inline void Material::clear_roughness() {
+inline void PBMaterial::clear_roughness() {
   roughness_ = 0;
   clear_has_roughness();
 }
-inline float Material::roughness() const {
-  // @@protoc_insertion_point(field_get:Material.roughness)
+inline float PBMaterial::roughness() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.roughness)
   return roughness_;
 }
-inline void Material::set_roughness(float value) {
+inline void PBMaterial::set_roughness(float value) {
   set_has_roughness();
   roughness_ = value;
-  // @@protoc_insertion_point(field_set:Material.roughness)
+  // @@protoc_insertion_point(field_set:PBMaterial.roughness)
 }
 
 // optional string roughnessMapURL = 4;
-inline bool Material::has_roughnessmapurl() const {
+inline bool PBMaterial::has_roughnessmapurl() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Material::set_has_roughnessmapurl() {
+inline void PBMaterial::set_has_roughnessmapurl() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Material::clear_has_roughnessmapurl() {
+inline void PBMaterial::clear_has_roughnessmapurl() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void Material::clear_roughnessmapurl() {
+inline void PBMaterial::clear_roughnessmapurl() {
   roughnessmapurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   clear_has_roughnessmapurl();
 }
-inline const ::std::string& Material::roughnessmapurl() const {
-  // @@protoc_insertion_point(field_get:Material.roughnessMapURL)
+inline const ::std::string& PBMaterial::roughnessmapurl() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.roughnessMapURL)
   return roughnessmapurl_.GetNoArena();
 }
-inline void Material::set_roughnessmapurl(const ::std::string& value) {
+inline void PBMaterial::set_roughnessmapurl(const ::std::string& value) {
   set_has_roughnessmapurl();
   roughnessmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_set:PBMaterial.roughnessMapURL)
 }
 #if LANG_CXX11
-inline void Material::set_roughnessmapurl(::std::string&& value) {
+inline void PBMaterial::set_roughnessmapurl(::std::string&& value) {
   set_has_roughnessmapurl();
   roughnessmapurl_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_set_rvalue:PBMaterial.roughnessMapURL)
 }
 #endif
-inline void Material::set_roughnessmapurl(const char* value) {
+inline void PBMaterial::set_roughnessmapurl(const char* value) {
   set_has_roughnessmapurl();
   roughnessmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_set_char:PBMaterial.roughnessMapURL)
 }
-inline void Material::set_roughnessmapurl(const char* value, size_t size) {
+inline void PBMaterial::set_roughnessmapurl(const char* value, size_t size) {
   set_has_roughnessmapurl();
   roughnessmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_set_pointer:PBMaterial.roughnessMapURL)
 }
-inline ::std::string* Material::mutable_roughnessmapurl() {
+inline ::std::string* PBMaterial::mutable_roughnessmapurl() {
   set_has_roughnessmapurl();
-  // @@protoc_insertion_point(field_mutable:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_mutable:PBMaterial.roughnessMapURL)
   return roughnessmapurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* Material::release_roughnessmapurl() {
-  // @@protoc_insertion_point(field_release:Material.roughnessMapURL)
+inline ::std::string* PBMaterial::release_roughnessmapurl() {
+  // @@protoc_insertion_point(field_release:PBMaterial.roughnessMapURL)
   clear_has_roughnessmapurl();
   return roughnessmapurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void Material::set_allocated_roughnessmapurl(::std::string* roughnessmapurl) {
+inline void PBMaterial::set_allocated_roughnessmapurl(::std::string* roughnessmapurl) {
   if (roughnessmapurl != NULL) {
     set_has_roughnessmapurl();
   } else {
     clear_has_roughnessmapurl();
   }
   roughnessmapurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), roughnessmapurl);
-  // @@protoc_insertion_point(field_set_allocated:Material.roughnessMapURL)
+  // @@protoc_insertion_point(field_set_allocated:PBMaterial.roughnessMapURL)
 }
 
 // optional float metallic = 5;
-inline bool Material::has_metallic() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+inline bool PBMaterial::has_metallic() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
-inline void Material::set_has_metallic() {
-  _has_bits_[0] |= 0x00000020u;
+inline void PBMaterial::set_has_metallic() {
+  _has_bits_[0] |= 0x00000040u;
 }
-inline void Material::clear_has_metallic() {
-  _has_bits_[0] &= ~0x00000020u;
+inline void PBMaterial::clear_has_metallic() {
+  _has_bits_[0] &= ~0x00000040u;
 }
-inline void Material::clear_metallic() {
+inline void PBMaterial::clear_metallic() {
   metallic_ = 0;
   clear_has_metallic();
 }
-inline float Material::metallic() const {
-  // @@protoc_insertion_point(field_get:Material.metallic)
+inline float PBMaterial::metallic() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.metallic)
   return metallic_;
 }
-inline void Material::set_metallic(float value) {
+inline void PBMaterial::set_metallic(float value) {
   set_has_metallic();
   metallic_ = value;
-  // @@protoc_insertion_point(field_set:Material.metallic)
+  // @@protoc_insertion_point(field_set:PBMaterial.metallic)
 }
 
 // optional string metallicMapURL = 6;
-inline bool Material::has_metallicmapurl() const {
+inline bool PBMaterial::has_metallicmapurl() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Material::set_has_metallicmapurl() {
+inline void PBMaterial::set_has_metallicmapurl() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void Material::clear_has_metallicmapurl() {
+inline void PBMaterial::clear_has_metallicmapurl() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void Material::clear_metallicmapurl() {
+inline void PBMaterial::clear_metallicmapurl() {
   metallicmapurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   clear_has_metallicmapurl();
 }
-inline const ::std::string& Material::metallicmapurl() const {
-  // @@protoc_insertion_point(field_get:Material.metallicMapURL)
+inline const ::std::string& PBMaterial::metallicmapurl() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.metallicMapURL)
   return metallicmapurl_.GetNoArena();
 }
-inline void Material::set_metallicmapurl(const ::std::string& value) {
+inline void PBMaterial::set_metallicmapurl(const ::std::string& value) {
   set_has_metallicmapurl();
   metallicmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_set:PBMaterial.metallicMapURL)
 }
 #if LANG_CXX11
-inline void Material::set_metallicmapurl(::std::string&& value) {
+inline void PBMaterial::set_metallicmapurl(::std::string&& value) {
   set_has_metallicmapurl();
   metallicmapurl_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_set_rvalue:PBMaterial.metallicMapURL)
 }
 #endif
-inline void Material::set_metallicmapurl(const char* value) {
+inline void PBMaterial::set_metallicmapurl(const char* value) {
   set_has_metallicmapurl();
   metallicmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_set_char:PBMaterial.metallicMapURL)
 }
-inline void Material::set_metallicmapurl(const char* value, size_t size) {
+inline void PBMaterial::set_metallicmapurl(const char* value, size_t size) {
   set_has_metallicmapurl();
   metallicmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_set_pointer:PBMaterial.metallicMapURL)
 }
-inline ::std::string* Material::mutable_metallicmapurl() {
+inline ::std::string* PBMaterial::mutable_metallicmapurl() {
   set_has_metallicmapurl();
-  // @@protoc_insertion_point(field_mutable:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_mutable:PBMaterial.metallicMapURL)
   return metallicmapurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* Material::release_metallicmapurl() {
-  // @@protoc_insertion_point(field_release:Material.metallicMapURL)
+inline ::std::string* PBMaterial::release_metallicmapurl() {
+  // @@protoc_insertion_point(field_release:PBMaterial.metallicMapURL)
   clear_has_metallicmapurl();
   return metallicmapurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void Material::set_allocated_metallicmapurl(::std::string* metallicmapurl) {
+inline void PBMaterial::set_allocated_metallicmapurl(::std::string* metallicmapurl) {
   if (metallicmapurl != NULL) {
     set_has_metallicmapurl();
   } else {
     clear_has_metallicmapurl();
   }
   metallicmapurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), metallicmapurl);
-  // @@protoc_insertion_point(field_set_allocated:Material.metallicMapURL)
+  // @@protoc_insertion_point(field_set_allocated:PBMaterial.metallicMapURL)
+}
+
+// optional string normalMapURL = 7;
+inline bool PBMaterial::has_normalmapurl() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PBMaterial::set_has_normalmapurl() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void PBMaterial::clear_has_normalmapurl() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void PBMaterial::clear_normalmapurl() {
+  normalmapurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_normalmapurl();
+}
+inline const ::std::string& PBMaterial::normalmapurl() const {
+  // @@protoc_insertion_point(field_get:PBMaterial.normalMapURL)
+  return normalmapurl_.GetNoArena();
+}
+inline void PBMaterial::set_normalmapurl(const ::std::string& value) {
+  set_has_normalmapurl();
+  normalmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:PBMaterial.normalMapURL)
+}
+#if LANG_CXX11
+inline void PBMaterial::set_normalmapurl(::std::string&& value) {
+  set_has_normalmapurl();
+  normalmapurl_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:PBMaterial.normalMapURL)
+}
+#endif
+inline void PBMaterial::set_normalmapurl(const char* value) {
+  set_has_normalmapurl();
+  normalmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:PBMaterial.normalMapURL)
+}
+inline void PBMaterial::set_normalmapurl(const char* value, size_t size) {
+  set_has_normalmapurl();
+  normalmapurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:PBMaterial.normalMapURL)
+}
+inline ::std::string* PBMaterial::mutable_normalmapurl() {
+  set_has_normalmapurl();
+  // @@protoc_insertion_point(field_mutable:PBMaterial.normalMapURL)
+  return normalmapurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PBMaterial::release_normalmapurl() {
+  // @@protoc_insertion_point(field_release:PBMaterial.normalMapURL)
+  clear_has_normalmapurl();
+  return normalmapurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PBMaterial::set_allocated_normalmapurl(::std::string* normalmapurl) {
+  if (normalmapurl != NULL) {
+    set_has_normalmapurl();
+  } else {
+    clear_has_normalmapurl();
+  }
+  normalmapurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), normalmapurl);
+  // @@protoc_insertion_point(field_set_allocated:PBMaterial.normalMapURL)
 }
 
 // -------------------------------------------------------------------
 
-// SceneNode
+// PBSceneNode
 
-// required .Transform worldTransform = 1;
-inline bool SceneNode::has_worldtransform() const {
+// required .PBTransform worldTransform = 1;
+inline bool PBSceneNode::has_worldtransform() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void SceneNode::set_has_worldtransform() {
+inline void PBSceneNode::set_has_worldtransform() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void SceneNode::clear_has_worldtransform() {
+inline void PBSceneNode::clear_has_worldtransform() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void SceneNode::clear_worldtransform() {
-  if (worldtransform_ != NULL) worldtransform_->::Transform::Clear();
+inline void PBSceneNode::clear_worldtransform() {
+  if (worldtransform_ != NULL) worldtransform_->::PBTransform::Clear();
   clear_has_worldtransform();
 }
-inline const ::Transform& SceneNode::worldtransform() const {
-  // @@protoc_insertion_point(field_get:SceneNode.worldTransform)
+inline const ::PBTransform& PBSceneNode::worldtransform() const {
+  // @@protoc_insertion_point(field_get:PBSceneNode.worldTransform)
   return worldtransform_ != NULL ? *worldtransform_
-                         : *::Transform::internal_default_instance();
+                         : *::PBTransform::internal_default_instance();
 }
-inline ::Transform* SceneNode::mutable_worldtransform() {
+inline ::PBTransform* PBSceneNode::mutable_worldtransform() {
   set_has_worldtransform();
   if (worldtransform_ == NULL) {
-    worldtransform_ = new ::Transform;
+    worldtransform_ = new ::PBTransform;
   }
-  // @@protoc_insertion_point(field_mutable:SceneNode.worldTransform)
+  // @@protoc_insertion_point(field_mutable:PBSceneNode.worldTransform)
   return worldtransform_;
 }
-inline ::Transform* SceneNode::release_worldtransform() {
-  // @@protoc_insertion_point(field_release:SceneNode.worldTransform)
+inline ::PBTransform* PBSceneNode::release_worldtransform() {
+  // @@protoc_insertion_point(field_release:PBSceneNode.worldTransform)
   clear_has_worldtransform();
-  ::Transform* temp = worldtransform_;
+  ::PBTransform* temp = worldtransform_;
   worldtransform_ = NULL;
   return temp;
 }
-inline void SceneNode::set_allocated_worldtransform(::Transform* worldtransform) {
+inline void PBSceneNode::set_allocated_worldtransform(::PBTransform* worldtransform) {
   delete worldtransform_;
   worldtransform_ = worldtransform;
   if (worldtransform) {
@@ -1838,98 +1918,98 @@ inline void SceneNode::set_allocated_worldtransform(::Transform* worldtransform)
   } else {
     clear_has_worldtransform();
   }
-  // @@protoc_insertion_point(field_set_allocated:SceneNode.worldTransform)
+  // @@protoc_insertion_point(field_set_allocated:PBSceneNode.worldTransform)
 }
 
 // required string meshURL = 2;
-inline bool SceneNode::has_meshurl() const {
+inline bool PBSceneNode::has_meshurl() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void SceneNode::set_has_meshurl() {
+inline void PBSceneNode::set_has_meshurl() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void SceneNode::clear_has_meshurl() {
+inline void PBSceneNode::clear_has_meshurl() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void SceneNode::clear_meshurl() {
+inline void PBSceneNode::clear_meshurl() {
   meshurl_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   clear_has_meshurl();
 }
-inline const ::std::string& SceneNode::meshurl() const {
-  // @@protoc_insertion_point(field_get:SceneNode.meshURL)
+inline const ::std::string& PBSceneNode::meshurl() const {
+  // @@protoc_insertion_point(field_get:PBSceneNode.meshURL)
   return meshurl_.GetNoArena();
 }
-inline void SceneNode::set_meshurl(const ::std::string& value) {
+inline void PBSceneNode::set_meshurl(const ::std::string& value) {
   set_has_meshurl();
   meshurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_set:PBSceneNode.meshURL)
 }
 #if LANG_CXX11
-inline void SceneNode::set_meshurl(::std::string&& value) {
+inline void PBSceneNode::set_meshurl(::std::string&& value) {
   set_has_meshurl();
   meshurl_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_set_rvalue:PBSceneNode.meshURL)
 }
 #endif
-inline void SceneNode::set_meshurl(const char* value) {
+inline void PBSceneNode::set_meshurl(const char* value) {
   set_has_meshurl();
   meshurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_set_char:PBSceneNode.meshURL)
 }
-inline void SceneNode::set_meshurl(const char* value, size_t size) {
+inline void PBSceneNode::set_meshurl(const char* value, size_t size) {
   set_has_meshurl();
   meshurl_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_set_pointer:PBSceneNode.meshURL)
 }
-inline ::std::string* SceneNode::mutable_meshurl() {
+inline ::std::string* PBSceneNode::mutable_meshurl() {
   set_has_meshurl();
-  // @@protoc_insertion_point(field_mutable:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_mutable:PBSceneNode.meshURL)
   return meshurl_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* SceneNode::release_meshurl() {
-  // @@protoc_insertion_point(field_release:SceneNode.meshURL)
+inline ::std::string* PBSceneNode::release_meshurl() {
+  // @@protoc_insertion_point(field_release:PBSceneNode.meshURL)
   clear_has_meshurl();
   return meshurl_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void SceneNode::set_allocated_meshurl(::std::string* meshurl) {
+inline void PBSceneNode::set_allocated_meshurl(::std::string* meshurl) {
   if (meshurl != NULL) {
     set_has_meshurl();
   } else {
     clear_has_meshurl();
   }
   meshurl_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), meshurl);
-  // @@protoc_insertion_point(field_set_allocated:SceneNode.meshURL)
+  // @@protoc_insertion_point(field_set_allocated:PBSceneNode.meshURL)
 }
 
-// repeated .Material materials = 3;
-inline int SceneNode::materials_size() const {
+// repeated .PBMaterial materials = 3;
+inline int PBSceneNode::materials_size() const {
   return materials_.size();
 }
-inline void SceneNode::clear_materials() {
+inline void PBSceneNode::clear_materials() {
   materials_.Clear();
 }
-inline const ::Material& SceneNode::materials(int index) const {
-  // @@protoc_insertion_point(field_get:SceneNode.materials)
+inline const ::PBMaterial& PBSceneNode::materials(int index) const {
+  // @@protoc_insertion_point(field_get:PBSceneNode.materials)
   return materials_.Get(index);
 }
-inline ::Material* SceneNode::mutable_materials(int index) {
-  // @@protoc_insertion_point(field_mutable:SceneNode.materials)
+inline ::PBMaterial* PBSceneNode::mutable_materials(int index) {
+  // @@protoc_insertion_point(field_mutable:PBSceneNode.materials)
   return materials_.Mutable(index);
 }
-inline ::Material* SceneNode::add_materials() {
-  // @@protoc_insertion_point(field_add:SceneNode.materials)
+inline ::PBMaterial* PBSceneNode::add_materials() {
+  // @@protoc_insertion_point(field_add:PBSceneNode.materials)
   return materials_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::Material >*
-SceneNode::mutable_materials() {
-  // @@protoc_insertion_point(field_mutable_list:SceneNode.materials)
+inline ::google::protobuf::RepeatedPtrField< ::PBMaterial >*
+PBSceneNode::mutable_materials() {
+  // @@protoc_insertion_point(field_mutable_list:PBSceneNode.materials)
   return &materials_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Material >&
-SceneNode::materials() const {
-  // @@protoc_insertion_point(field_list:SceneNode.materials)
+inline const ::google::protobuf::RepeatedPtrField< ::PBMaterial >&
+PBSceneNode::materials() const {
+  // @@protoc_insertion_point(field_list:PBSceneNode.materials)
   return materials_;
 }
 
