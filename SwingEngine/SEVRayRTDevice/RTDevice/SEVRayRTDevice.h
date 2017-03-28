@@ -7,6 +7,14 @@
 #include "SEVRayRTDeviceLIB.h"
 #include "SERayTracingDevice.h"
 
+namespace VRay
+{
+
+class VRayInit;
+class VRayRenderer;
+
+}
+
 namespace Swing
 {
 
@@ -25,6 +33,10 @@ private:
 
     void __Initialize(SERayTracingDeviceDescription* deviceDesc);
     void __Terminate();
+
+private:
+    VRay::VRayInit* mVRayInit;
+    VRay::VRayRenderer* mVRayRenderer;
 };
 
 typedef SESmartPointer<SEVRayRTDevice> SEVRayRTDevicePtr;

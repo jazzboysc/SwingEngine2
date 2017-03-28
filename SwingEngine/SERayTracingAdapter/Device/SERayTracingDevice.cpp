@@ -8,6 +8,8 @@ using namespace Swing;
 
 //----------------------------------------------------------------------------
 SERayTracingDevice::SERayTracingDevice()
+    :
+    mDeviceVendor(RTDV_Unknown)
 {
 }
 //----------------------------------------------------------------------------

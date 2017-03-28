@@ -36,6 +36,8 @@ struct SE_RAY_TRACING_ADAPTER_API SERayTracingDeviceDescription
     unsigned int ImageWidth;
     unsigned int ImageHeight;
     SERayTracingDeviceRenderMode RenderMode;
+
+    SERayTracingDeviceDescription() { memset(this, 0, sizeof(SERayTracingDeviceDescription)); }
 };
 
 class SERayTracingDevice;

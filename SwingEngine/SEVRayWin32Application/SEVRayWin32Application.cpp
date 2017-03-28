@@ -32,8 +32,14 @@ void SEVRayWin32Application::Initialize(SEApplicationDescription* ApplicationDes
     // Set working directory to resource folder.
     //chdir("..\\..\\Bin\\");
 
-    mGraphicsFeature = AGF_Rasterizer;
-    mGPUDevice = ApplicationDesc->GPUDevice;
+    mGraphicsFeature = AGF_RayTracer;
+    mGPUDevice = nullptr;
+    mRayTracingDevice = ApplicationDesc->RayTracingDevice;
+    
+    SERayTracingDeviceDescription deviceDesc;
+    deviceDesc.RenderMode = RTDRM_RT_GPU_CUDA;
+    mRayTracingDevice->Initialize(&deviceDesc);
+
 	mMainCamera = SE_NEW SERTGICamera;
 
 	// Call child class initialize
@@ -64,6 +70,8 @@ void SEVRayWin32Application::FrameFunc()
 //----------------------------------------------------------------------------
 void SEVRayWin32Application::Terminate()
 {
+    mRayTracingDevice = nullptr;
+
 	this->Terminate();
 	SE_DELETE mMainCamera;
 }
