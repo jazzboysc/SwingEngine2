@@ -60,6 +60,7 @@ SwingEngine/SDK/Lib/ReleaseMemory/*.*
 *.ilk
 *.log
 *.pdb
+*.db
 *.obj
 !SwingEngine/Bin/OBJ/dabrovic-sponza/*.obj
 !SwingEngine/Bin/OBJ/crytek-sponza/*.obj
