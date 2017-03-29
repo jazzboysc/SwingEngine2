@@ -37,6 +37,8 @@ private:
 private:
     VRay::VRayInit* mVRayInit;
     VRay::VRayRenderer* mVRayRenderer;
+
+    static const SE_UInt32 gsRenderMode[RTDRM_RT_MAX - 1];
 };
 
 typedef SESmartPointer<SEVRayRTDevice> SEVRayRTDevicePtr;

@@ -38,6 +38,8 @@ void SEVRayWin32Application::Initialize(SEApplicationDescription* ApplicationDes
     
     SERayTracingDeviceDescription deviceDesc;
     deviceDesc.RenderMode = RTDRM_RT_GPU_CUDA;
+    deviceDesc.ImageWidth = Width;
+    deviceDesc.ImageHeight = Height;
     mRayTracingDevice->Initialize(&deviceDesc);
 
 	mMainCamera = SE_NEW SERTGICamera;

@@ -605,6 +605,7 @@ copy /y *.h ..\SDK\Include</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\ThirdPartyLibs\VRaySDK\include\vraysdk.hpp" />
     <ClInclude Include="RTDevice\SEVRayRTDevice.h" />
     <ClInclude Include="SEVRayRTDeviceHeaders.h" />
     <ClInclude Include="SEVRayRTDeviceLIB.h" />

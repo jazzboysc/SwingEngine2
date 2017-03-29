@@ -16,6 +16,9 @@
     <ClInclude Include="RTDevice\SEVRayRTDevice.h">
       <Filter>RTDevice</Filter>
     </ClInclude>
+    <ClInclude Include="..\ThirdPartyLibs\VRaySDK\include\vraysdk.hpp">
+      <Filter>RTDevice</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="RTDevice">

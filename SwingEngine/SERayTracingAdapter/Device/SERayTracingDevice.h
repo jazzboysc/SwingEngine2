@@ -28,7 +28,8 @@ enum SERayTracingDeviceRenderMode
     RTDRM_Unknown = 0,
     RTDRM_RT_CPU,
     RTDRM_RT_GPU_CUDA,
-    RTDRM_RT_GPU_OPENCL
+    RTDRM_RT_GPU_OPENCL,
+    RTDRM_RT_MAX
 };
 
 struct SE_RAY_TRACING_ADAPTER_API SERayTracingDeviceDescription
