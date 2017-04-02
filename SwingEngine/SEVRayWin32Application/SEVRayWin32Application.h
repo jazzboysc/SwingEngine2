@@ -9,6 +9,12 @@
 
 #define WIN32_LEAN_AND_MEAN 1
 #include <windows.h>
+#include <Windowsx.h>
+#include <Commdlg.h>
+#include <Commctrl.h>
+
+#define _USE_MATH_DEFINES
+#include <cmath>
 
 #include <string>
 
