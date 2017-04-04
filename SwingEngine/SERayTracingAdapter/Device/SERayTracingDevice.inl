@@ -18,3 +18,21 @@ SERayTracingDeviceVendor SERayTracingDevice::GetDeviceVendor()
     return mDeviceVendor;
 }
 //----------------------------------------------------------------------------
+void SERayTracingDevice::RenderStartCallback(void* rtDevice)
+{
+    SERayTracingDevice*& me = reinterpret_cast<SERayTracingDevice*&>(rtDevice);
+    me->RenderStartDelegate(*me);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::ImageReadyCallback(void* rtDevice)
+{
+    SERayTracingDevice*& me = reinterpret_cast<SERayTracingDevice*&>(rtDevice);
+    me->ImageReadyDelegate(*me);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::DeviceCloseCallback(void* rtDevice)
+{
+    SERayTracingDevice*& me = reinterpret_cast<SERayTracingDevice*&>(rtDevice);
+    me->DeviceCloseDelegate(*me);
+}
+//----------------------------------------------------------------------------

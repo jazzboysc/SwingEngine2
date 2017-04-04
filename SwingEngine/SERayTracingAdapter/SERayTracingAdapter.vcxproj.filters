@@ -22,4 +22,9 @@
       <Filter>Device</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Device\SERayTracingDevice.inl">
+      <Filter>Device</Filter>
+    </None>
+  </ItemGroup>
 </Project>

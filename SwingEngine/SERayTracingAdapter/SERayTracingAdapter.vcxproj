@@ -640,6 +640,9 @@ copy /y *.h ..\SDK\Include
     </ClCompile>
     <ClCompile Include="SERayTracingAdapterRegister.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Device\SERayTracingDevice.inl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

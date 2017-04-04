@@ -49,49 +49,49 @@ typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
 //----------------------------------------------------------------------------
 class SERayTracingDeviceDelegate1
 {
-    typedef void (*tstub)(void* pobject, SERayTracingDevice& rtDevice, void* userObj);
-    typedef void (*tfunc)(SERayTracingDevice& rtDevice, void* userObj);
+    typedef void (*RayTracingDeviceDelegate1Stub)(void* pObject, SERayTracingDevice& rtDevice, void* userObj);
+    typedef void (*RayTracingDeviceDelegate1Func)(SERayTracingDevice& rtDevice, void* userObj);
 
 public:
     SERayTracingDeviceDelegate1() {}
 
     template <class T, void (T::*TMethod)(SERayTracingDevice&, void*)>
-    static SERayTracingDeviceDelegate1 FromMethod(T* pobject, void *puserObj)
+    static SERayTracingDeviceDelegate1 FromMethod(T* pObject, void *pUserObj)
     {
-        return SERayTracingDeviceDelegate1(pobject, &MethodStub<T, TMethod>, puserObj);
+        return SERayTracingDeviceDelegate1(pObject, &MethodStub<T, TMethod>, pUserObj);
     }
 
-    static SERayTracingDeviceDelegate1 FromFunction(tfunc pfunc, void *puserObj)
+    static SERayTracingDeviceDelegate1 FromFunction(RayTracingDeviceDelegate1Func pfunc, void *pUserObj)
     {
-        return SERayTracingDeviceDelegate1(pfunc, puserObj);
+        return SERayTracingDeviceDelegate1(pfunc, pUserObj);
     }
 
     void operator()(SERayTracingDevice& rtDevice) const
     {
-        return pobject ? (*pmethod.pstub)(pobject, rtDevice, puserObj) : (*pmethod.pfunc)(rtDevice, puserObj);
+        return pObject ? (*pMethod.pstub)(pObject, rtDevice, pUserObj) : (*pMethod.pfunc)(rtDevice, pUserObj);
     }
 
 private:
-    void* pobject;
+    void* pObject;
     union tmethod
     {
-        tstub pstub;
-        tfunc pfunc;
+        RayTracingDeviceDelegate1Stub pstub;
+        RayTracingDeviceDelegate1Func pfunc;
         tmethod() : pstub() {}
-        tmethod(tstub pstub) : pstub(pstub) {}
-        tmethod(tfunc pfunc) : pfunc(pfunc) {}
-    } pmethod;
-    void* puserObj;
+        tmethod(RayTracingDeviceDelegate1Stub pstub) : pstub(pstub) {}
+        tmethod(RayTracingDeviceDelegate1Func pfunc) : pfunc(pfunc) {}
+    } pMethod;
+    void* pUserObj;
 
     template <class T, void (T::*TMethod)(SERayTracingDevice&, void*)>
-    static void MethodStub(void* pobject, SERayTracingDevice& rtDevice, void *puserObj)
+    static void MethodStub(void* pObject, SERayTracingDevice& rtDevice, void *pUserObj)
     {
-        T* p = static_cast<T*>(pobject);
-        return (p->*TMethod)(rtDevice, puserObj);
+        T* p = static_cast<T*>(pObject);
+        return (p->*TMethod)(rtDevice, pUserObj);
     }
 
-    SERayTracingDeviceDelegate1(tfunc pfunc, void *puserObj) : pobject(nullptr), pmethod(pfunc), puserObj(puserObj) {}
-    SERayTracingDeviceDelegate1(void *pobject, tstub pstub, void *puserObj) : pobject(pobject), pmethod(pstub), puserObj(puserObj) {}
+    SERayTracingDeviceDelegate1(RayTracingDeviceDelegate1Func pfunc, void *pUserObj) : pObject(nullptr), pMethod(pfunc), pUserObj(pUserObj) {}
+    SERayTracingDeviceDelegate1(void *pObject, RayTracingDeviceDelegate1Stub pstub, void *pUserObj) : pObject(pObject), pMethod(pstub), pUserObj(pUserObj) {}
 };
 //----------------------------------------------------------------------------
 
@@ -114,9 +114,13 @@ protected:
     RayTracingDeviceInitialize               _Initialize;
     RayTracingDeviceTerminate                _Terminate;
 
-    SERayTracingDeviceDelegate1  mRenderStartDelegate;
-    SERayTracingDeviceDelegate1  mImageReadyDelegate;
-    SERayTracingDeviceDelegate1  mDeviceCloseDelegate;
+    SERayTracingDeviceDelegate1  RenderStartDelegate;
+    SERayTracingDeviceDelegate1  ImageReadyDelegate;
+    SERayTracingDeviceDelegate1  DeviceCloseDelegate;
+
+    static inline void RenderStartCallback(void* rtDevice);
+    static inline void ImageReadyCallback(void* rtDevice);
+    static inline void DeviceCloseCallback(void* rtDevice);
 
     SERayTracingDeviceDescription mDeviceDesc;
     SERayTracingDeviceVendor mDeviceVendor;
