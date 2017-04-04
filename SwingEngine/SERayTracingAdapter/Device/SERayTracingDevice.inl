@@ -63,12 +63,18 @@ void SERayTracingDevice::RenderStartCallback(void* rtDevice)
 void SERayTracingDevice::ImageReadyCallback(void* rtDevice)
 {
     SERayTracingDevice*& me = reinterpret_cast<SERayTracingDevice*&>(rtDevice);
-    me->ImageReadyDelegate(*me);
+    if( me->ImageReadyDelegate.IsValid() )
+    {
+        me->ImageReadyDelegate(*me);
+    }
 }
 //----------------------------------------------------------------------------
 void SERayTracingDevice::DeviceCloseCallback(void* rtDevice)
 {
     SERayTracingDevice*& me = reinterpret_cast<SERayTracingDevice*&>(rtDevice);
-    me->DeviceCloseDelegate(*me);
+    if( me->DeviceCloseDelegate.IsValid() )
+    {
+        me->DeviceCloseDelegate(*me);
+    }
 }
 //----------------------------------------------------------------------------

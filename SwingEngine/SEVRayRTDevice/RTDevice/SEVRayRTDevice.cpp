@@ -66,8 +66,26 @@ void SEVRayRTDevice::__Initialize(SERayTracingDeviceDescription* deviceDesc)
     options.rtNoiseThreshold = 0;
     options.renderMode = (RendererOptions::RenderMode)gsRenderMode[(int)deviceDesc->RenderMode - 1];
 
+    // Create VRay renderer.
     puts("Initializing Renderer...\n");
     mVRayRenderer = new VRayRenderer(options);
+    mVRayRenderer->setRTImageUpdateDifference(2);
+    mVRayRenderer->setRTImageUpdateTimeout(5000);
+    mVRayRenderer->setKeepRTframesInCallback(true);
+
+    // Setup renderer settings.
+    Plugin settingsRTEngine = mVRayRenderer->getInstanceOrCreate("settingsRTEngine", "SettingsRTEngine");
+    settingsRTEngine.setValue("undersampling", false);
+    settingsRTEngine.setValue("gi_depth", 1);
+    settingsRTEngine.setValue("gpu_bundle_size", 128);
+    settingsRTEngine.setValue("gpu_samples_per_pixel", 1);
+
+    // Setup callback functions.
+    mVRayRenderer->setOnRenderStart<SEVRayRTDevice, &SEVRayRTDevice::__OnRenderStart>(*this, nullptr);
+    mVRayRenderer->setOnImageReady<SEVRayRTDevice, &SEVRayRTDevice::__OnImageReady>(*this, nullptr);
+    mVRayRenderer->setOnRTImageUpdated<SEVRayRTDevice, &SEVRayRTDevice::__OnRTimageUpdated>(*this, nullptr);
+    mVRayRenderer->setOnRendererClose<SEVRayRTDevice, &SEVRayRTDevice::__OnDeviceClose>(*this, nullptr);
+    mVRayRenderer->setOnDumpMessage<SEVRayRTDevice, &SEVRayRTDevice::__OnDumpMessage>(*this, nullptr);
 }
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__Terminate()
@@ -79,5 +97,28 @@ void SEVRayRTDevice::__Terminate()
         mVRayInit = nullptr;
         puts("Done.");
     }
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__OnRenderStart(VRay::VRayRenderer&, void*)
+{
+    SERayTracingDevice::RenderStartCallback(this);
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__OnImageReady(VRay::VRayRenderer&, void*)
+{
+    SERayTracingDevice::ImageReadyCallback(this);
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__OnRTimageUpdated(VRay::VRayRenderer&, VRay::VRayImage*, void*)
+{
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__OnDeviceClose(VRay::VRayRenderer&, void*)
+{
+    SERayTracingDevice::DeviceCloseCallback(this);
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__OnDumpMessage(VRay::VRayRenderer&, const char*, int, void*)
+{
 }
 //----------------------------------------------------------------------------

@@ -12,6 +12,7 @@ namespace VRay
 
 class VRayInit;
 class VRayRenderer;
+struct VRayImage;
 
 }
 
@@ -33,6 +34,12 @@ private:
 
     void __Initialize(SERayTracingDeviceDescription* deviceDesc);
     void __Terminate();
+
+    void __OnRenderStart(VRay::VRayRenderer& r, void*);
+    void __OnImageReady(VRay::VRayRenderer& r, void*);
+    void __OnRTimageUpdated(VRay::VRayRenderer& r, VRay::VRayImage* img, void*);
+    void __OnDeviceClose(VRay::VRayRenderer& r, void*);
+    void __OnDumpMessage(VRay::VRayRenderer& r, const char* msg, int level, void*);
 
 private:
     VRay::VRayInit* mVRayInit;
