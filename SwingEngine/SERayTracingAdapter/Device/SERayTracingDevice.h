@@ -53,7 +53,7 @@ class SERayTracingDeviceDelegate1
     typedef void (*RayTracingDeviceDelegate1Func)(SERayTracingDevice& rtDevice, void* userObj);
 
 public:
-    SERayTracingDeviceDelegate1() {}
+    SERayTracingDeviceDelegate1() { pObject = nullptr; pMethod.pfunc = nullptr; pUserObj = nullptr; }
 
     template <class T, void (T::*TMethod)(SERayTracingDevice&, void*)>
     static SERayTracingDeviceDelegate1 FromMethod(T* pObject, void *pUserObj)
@@ -69,6 +69,11 @@ public:
     void operator()(SERayTracingDevice& rtDevice) const
     {
         return pObject ? (*pMethod.pstub)(pObject, rtDevice, pUserObj) : (*pMethod.pfunc)(rtDevice, pUserObj);
+    }
+
+    inline bool IsValid() const
+    {
+        return pMethod.pfunc ? true : false;
     }
 
 private:
@@ -109,6 +114,21 @@ public:
     inline 	void Terminate();
 
     inline SERayTracingDeviceVendor GetDeviceVendor();
+
+    inline void SetOnRenderStart(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData = nullptr);
+
+    template<class T, void (T::*TMethod)(SERayTracingDevice&, void*)>
+    inline void SetOnRenderStart(T& object, const void* userData = nullptr);
+
+    inline void SetOnImageReady(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData = nullptr);
+
+    template<class T, void (T::*TMethod)(SERayTracingDevice&, void*)>
+    inline void SetOnImageReady(T& object, const void* userData = nullptr);
+
+    inline void SetOnDeviceClose(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData = nullptr);
+
+    template<class T, void (T::*TMethod)(SERayTracingDevice&, void*)>
+    inline void SetOnDeviceClose(T& object, const void* userData = nullptr);
 
 protected:
     RayTracingDeviceInitialize               _Initialize;

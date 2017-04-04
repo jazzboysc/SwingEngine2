@@ -13,6 +13,39 @@ void SERayTracingDevice::Terminate()
     (this->*_Terminate)();
 }
 //----------------------------------------------------------------------------
+void SERayTracingDevice::SetOnRenderStart(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData)
+{
+    RenderStartDelegate = SERayTracingDeviceDelegate1::FromFunction(CallbackFunc, const_cast<void*>(userData));
+}
+//----------------------------------------------------------------------------
+template<class T, void (T::*TMethod)(SERayTracingDevice&, void*)>
+void SERayTracingDevice::SetOnRenderStart(T& object, const void* userData)
+{
+    RenderStartDelegate = SERayTracingDeviceDelegate1::FromMethod<T, TMethod>(&object, const_cast<void*>(userData));
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::SetOnImageReady(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData)
+{
+    ImageReadyDelegate = SERayTracingDeviceDelegate1::FromFunction(CallbackFunc, const_cast<void*>(userData));
+}
+//----------------------------------------------------------------------------
+template<class T, void (T::*TMethod)(SERayTracingDevice&, void*)>
+void SERayTracingDevice::SetOnImageReady(T& object, const void* userData)
+{
+    ImageReadyDelegate = SERayTracingDeviceDelegate1::FromMethod<T, TMethod>(&object, const_cast<void*>(userData));
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::SetOnDeviceClose(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData)
+{
+    DeviceCloseDelegate = SERayTracingDeviceDelegate1::FromFunction(CallbackFunc, const_cast<void*>(userData));
+}
+//----------------------------------------------------------------------------
+template<class T, void (T::*TMethod)(SERayTracingDevice&, void*)>
+void SERayTracingDevice::SetOnDeviceClose(T& object, const void* userData)
+{
+    DeviceCloseDelegate = SERayTracingDeviceDelegate1::FromMethod<T, TMethod>(&object, const_cast<void*>(userData));
+}
+//----------------------------------------------------------------------------
 SERayTracingDeviceVendor SERayTracingDevice::GetDeviceVendor()
 {
     return mDeviceVendor;
@@ -21,7 +54,10 @@ SERayTracingDeviceVendor SERayTracingDevice::GetDeviceVendor()
 void SERayTracingDevice::RenderStartCallback(void* rtDevice)
 {
     SERayTracingDevice*& me = reinterpret_cast<SERayTracingDevice*&>(rtDevice);
-    me->RenderStartDelegate(*me);
+    if( me->RenderStartDelegate.IsValid() )
+    {
+        me->RenderStartDelegate(*me);
+    }
 }
 //----------------------------------------------------------------------------
 void SERayTracingDevice::ImageReadyCallback(void* rtDevice)
