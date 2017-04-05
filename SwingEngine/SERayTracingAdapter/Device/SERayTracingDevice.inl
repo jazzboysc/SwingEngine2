@@ -13,6 +13,11 @@ void SERayTracingDevice::Terminate()
     (this->*_Terminate)();
 }
 //----------------------------------------------------------------------------
+bool SERayTracingDevice::LoadNativeScene(const char* fileName)
+{
+    (this->*_LoadNativeScene)(fileName);
+}
+//----------------------------------------------------------------------------
 void SERayTracingDevice::SetOnRenderStart(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData)
 {
     RenderStartDelegate = SERayTracingDeviceDelegate1::FromFunction(CallbackFunc, const_cast<void*>(userData));

@@ -46,6 +46,7 @@ class SERayTracingDeviceImage;
 
 typedef void (SERayTracingDevice::*RayTracingDeviceInitialize)(SERayTracingDeviceDescription* deviceDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
+typedef bool (SERayTracingDevice::*RayTracingDeviceLoadNativeScene)(const char* fileName);
 
 //----------------------------------------------------------------------------
 class SERayTracingDeviceDelegate1
@@ -218,6 +219,9 @@ public:
     inline 	void Initialize(SERayTracingDeviceDescription* deviceDesc);
     inline 	void Terminate();
 
+    // Load a renderer native scene, such as VRay's scene file format '.vrscene'.
+    inline  bool LoadNativeScene(const char* fileName);
+
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
     inline void SetOnRenderStart(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData = nullptr);
@@ -238,6 +242,7 @@ public:
 protected:
     RayTracingDeviceInitialize               _Initialize;
     RayTracingDeviceTerminate                _Terminate;
+    RayTracingDeviceLoadNativeScene          _LoadNativeScene;
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;
     SERayTracingDeviceDelegate1  ImageReadyDelegate;

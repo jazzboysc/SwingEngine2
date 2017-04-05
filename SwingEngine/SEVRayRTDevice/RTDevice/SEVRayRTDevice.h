@@ -35,6 +35,8 @@ private:
     void __Initialize(SERayTracingDeviceDescription* deviceDesc);
     void __Terminate();
 
+    bool __LoadNativeScene(const char* fileName);
+
     void __OnRenderStart(VRay::VRayRenderer& r, void*);
     void __OnImageReady(VRay::VRayRenderer& r, void*);
     void __OnRTimageUpdated(VRay::VRayRenderer& r, VRay::VRayImage* img, void*);

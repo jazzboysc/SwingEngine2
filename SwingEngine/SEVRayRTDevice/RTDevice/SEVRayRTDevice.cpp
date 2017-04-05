@@ -26,6 +26,7 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
 {
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(Initialize, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(Terminate, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(LoadNativeScene, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -97,6 +98,16 @@ void SEVRayRTDevice::__Terminate()
         mVRayInit = nullptr;
         puts("Done.");
     }
+}
+//----------------------------------------------------------------------------
+bool SEVRayRTDevice::__LoadNativeScene(const char* fileName)
+{
+    if( mVRayRenderer )
+    {
+        return mVRayRenderer->load(fileName) == 0 ? true : false;
+    }
+
+    return false;
 }
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__OnRenderStart(VRay::VRayRenderer&, void*)
