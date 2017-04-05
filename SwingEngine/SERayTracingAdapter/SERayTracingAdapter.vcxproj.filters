@@ -4,6 +4,9 @@
     <Filter Include="Device">
       <UniqueIdentifier>{4bfdf99c-8e9e-439b-ac39-8236ef9931f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Images">
+      <UniqueIdentifier>{6963c74d-ea9a-4870-a2c1-e6125e75db93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SERayTracingAdapterHeaders.h" />
@@ -14,12 +17,24 @@
     <ClInclude Include="Device\SERayTracingDevice.h">
       <Filter>Device</Filter>
     </ClInclude>
+    <ClInclude Include="Device\SERayTracingDeviceResource.h">
+      <Filter>Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Images\SERayTracingDeviceImage.h">
+      <Filter>Images</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SERayTracingAdapterPCH.cpp" />
     <ClCompile Include="SERayTracingAdapterRegister.cpp" />
     <ClCompile Include="Device\SERayTracingDevice.cpp">
       <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\SERayTracingDeviceResource.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Images\SERayTracingDeviceImage.cpp">
+      <Filter>Images</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

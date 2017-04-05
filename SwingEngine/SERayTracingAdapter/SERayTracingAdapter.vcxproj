@@ -280,7 +280,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -298,6 +298,8 @@
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -307,7 +309,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -324,6 +326,8 @@ copy /y *.h ..\SDK\Include
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -334,7 +338,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>false</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>false</FunctionLevelLinking>
@@ -350,6 +354,8 @@ copy /y *.h ..\SDK\Include
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -360,7 +366,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>false</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>false</FunctionLevelLinking>
@@ -376,6 +382,8 @@ copy /y *.h ..\SDK\Include
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -385,7 +393,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -411,6 +419,8 @@ copy /y *.h ..\SDK\Include
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -420,7 +430,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -445,6 +455,8 @@ copy /y *.h ..\SDK\Include
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -454,7 +466,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -471,6 +483,8 @@ copy /y *.h ..\SDK\Include
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -480,7 +494,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -496,6 +510,8 @@ copy /y *.h ..\SDK\Include
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -504,7 +520,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -526,6 +542,8 @@ copy /y *.h ..\SDK\Include
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -534,7 +552,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -556,6 +574,8 @@ copy /y *.h ..\SDK\Include
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -564,7 +584,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -579,6 +599,8 @@ copy /y *.h ..\SDK\Include
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -587,7 +609,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -602,6 +624,8 @@ copy /y *.h ..\SDK\Include
     <PostBuildEvent>
       <Command>copy /y Device\*.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
+copy /y Images\*.h ..\SDK\Include
+copy /y Images\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -616,6 +640,8 @@ copy /y *.h ..\SDK\Include
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Device\SERayTracingDevice.h" />
+    <ClInclude Include="Device\SERayTracingDeviceResource.h" />
+    <ClInclude Include="Images\SERayTracingDeviceImage.h" />
     <ClInclude Include="SERayTracingAdapterHeaders.h" />
     <ClInclude Include="SERayTracingAdapterLIB.h" />
     <ClInclude Include="SERayTracingAdapterPCH.h" />
@@ -624,6 +650,8 @@ copy /y *.h ..\SDK\Include
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Device\SERayTracingDevice.cpp" />
+    <ClCompile Include="Device\SERayTracingDeviceResource.cpp" />
+    <ClCompile Include="Images\SERayTracingDeviceImage.cpp" />
     <ClCompile Include="SERayTracingAdapterPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

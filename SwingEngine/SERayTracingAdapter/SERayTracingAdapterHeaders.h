@@ -4,5 +4,9 @@
 #ifndef Swing_RayTracingAdapterHeaders_H
 #define Swing_RayTracingAdapterHeaders_H
 
+#include "SERayTracingDevice.h"
+#include "SERayTracingDeviceResource.h"
+
+#include "SERayTracingDeviceImage.h"
 
 #endif
