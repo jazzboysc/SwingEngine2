@@ -83,3 +83,12 @@ void SERayTracingDevice::DeviceCloseCallback(void* rtDevice)
     }
 }
 //----------------------------------------------------------------------------
+void SERayTracingDevice::RTImageUpdatedCallback(void* rtDevice, SERayTracingDeviceImage* img)
+{
+	SERayTracingDevice*& me = reinterpret_cast<SERayTracingDevice*&>(rtDevice);
+	if (me->RTImageUpdatedDelegate.IsValid())
+	{
+		me->RTImageUpdatedDelegate(*me, img);
+	}
+}
+//----------------------------------------------------------------------------

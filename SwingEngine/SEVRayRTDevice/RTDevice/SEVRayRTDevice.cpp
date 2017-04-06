@@ -3,6 +3,7 @@
 
 #include "SEVRayRTDevicePCH.h"
 #include "SEVRayRTDevice.h"
+#include "SERayTracingDeviceImage.h"
 
 #ifdef _WIN32
 #pragma warning(disable:4189)
@@ -120,8 +121,13 @@ void SEVRayRTDevice::__OnImageReady(VRay::VRayRenderer&, void*)
     SERayTracingDevice::ImageReadyCallback(this);
 }
 //----------------------------------------------------------------------------
-void SEVRayRTDevice::__OnRTimageUpdated(VRay::VRayRenderer&, VRay::VRayImage*, void*)
+void SEVRayRTDevice::__OnRTimageUpdated(VRay::VRayRenderer&, VRay::VRayImage* img, void*)
 {
+	if( img )
+	{
+		SERayTracingDeviceImage* rtImage = SE_NEW SERayTracingDeviceImage();
+		SERayTracingDevice::RTImageUpdatedCallback(this, rtImage);
+	}
 }
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__OnDeviceClose(VRay::VRayRenderer&, void*)

@@ -6,6 +6,9 @@
     <ClCompile Include="RTDevice\SEVRayRTDevice.cpp">
       <Filter>RTDevice</Filter>
     </ClCompile>
+    <ClCompile Include="RTDevice\SEVRayRTDeviceResource.cpp">
+      <Filter>RTDevice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SEVRayRTDeviceHeaders.h" />
@@ -17,6 +20,9 @@
       <Filter>RTDevice</Filter>
     </ClInclude>
     <ClInclude Include="..\ThirdPartyLibs\VRaySDK\include\vraysdk.hpp">
+      <Filter>RTDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="RTDevice\SEVRayRTDeviceResource.h">
       <Filter>RTDevice</Filter>
     </ClInclude>
   </ItemGroup>

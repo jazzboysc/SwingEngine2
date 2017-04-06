@@ -5,5 +5,6 @@
 #define Swing_VRayRTDeviceHeaders_H
 
 #include "SEVRayRTDevice.h"
+#include "SEVRayRTDeviceResource.h"
 
 #endif

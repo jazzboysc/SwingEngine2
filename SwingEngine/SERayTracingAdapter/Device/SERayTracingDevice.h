@@ -253,6 +253,7 @@ protected:
     static inline void RenderStartCallback(void* rtDevice);
     static inline void ImageReadyCallback(void* rtDevice);
     static inline void DeviceCloseCallback(void* rtDevice);
+	static inline void RTImageUpdatedCallback(void* rtDevice, SERayTracingDeviceImage* img);
 
     SERayTracingDeviceDescription mDeviceDesc;
     SERayTracingDeviceVendor mDeviceVendor;

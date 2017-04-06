@@ -607,6 +607,7 @@ copy /y *.h ..\SDK\Include</Command>
   <ItemGroup>
     <ClInclude Include="..\ThirdPartyLibs\VRaySDK\include\vraysdk.hpp" />
     <ClInclude Include="RTDevice\SEVRayRTDevice.h" />
+    <ClInclude Include="RTDevice\SEVRayRTDeviceResource.h" />
     <ClInclude Include="SEVRayRTDeviceHeaders.h" />
     <ClInclude Include="SEVRayRTDeviceLIB.h" />
     <ClInclude Include="SEVRayRTDevicePCH.h" />
@@ -615,6 +616,7 @@ copy /y *.h ..\SDK\Include</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RTDevice\SEVRayRTDevice.cpp" />
+    <ClCompile Include="RTDevice\SEVRayRTDeviceResource.cpp" />
     <ClCompile Include="SEVRayRTDevicePCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
