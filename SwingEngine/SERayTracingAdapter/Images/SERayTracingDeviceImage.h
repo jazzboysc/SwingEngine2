@@ -23,6 +23,9 @@ public:
 	SERayTracingDeviceImage();
 	virtual ~SERayTracingDeviceImage();
 
+    SERTImageHandle* GetImageHandle();
+    void SetImageHandle(SERTImageHandle* imageHandle);
+
 protected:
 	SERTImageHandle* mImageHandle;
 };

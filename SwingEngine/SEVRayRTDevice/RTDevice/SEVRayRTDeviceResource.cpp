@@ -15,10 +15,5 @@ SEVRayRTImageHandle::SEVRayRTImageHandle()
 //----------------------------------------------------------------------------
 SEVRayRTImageHandle::~SEVRayRTImageHandle()
 {
-	if( mImage )
-	{
-		delete mImage;
-		mImage = nullptr;
-	}
 }
 //----------------------------------------------------------------------------

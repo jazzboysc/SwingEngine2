@@ -23,6 +23,9 @@
     <ClInclude Include="Images\SERayTracingDeviceImage.h">
       <Filter>Images</Filter>
     </ClInclude>
+    <ClInclude Include="Device\SERayTracingDeviceDelegate.h">
+      <Filter>Device</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SERayTracingAdapterPCH.cpp" />

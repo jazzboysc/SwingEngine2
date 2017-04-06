@@ -15,5 +15,20 @@ SERayTracingDeviceImage::SERayTracingDeviceImage()
 //----------------------------------------------------------------------------
 SERayTracingDeviceImage::~SERayTracingDeviceImage()
 {
+    if( mImageHandle )
+    {
+        mImageHandle->RTDevice->DeleteRTImage(this);
+        SE_DELETE mImageHandle;
+    }
+}
+//----------------------------------------------------------------------------
+SERTImageHandle* SERayTracingDeviceImage::GetImageHandle()
+{
+    return mImageHandle;
+}
+//----------------------------------------------------------------------------
+void SERayTracingDeviceImage::SetImageHandle(SERTImageHandle* imageHandle)
+{
+    mImageHandle = imageHandle;
 }
 //----------------------------------------------------------------------------

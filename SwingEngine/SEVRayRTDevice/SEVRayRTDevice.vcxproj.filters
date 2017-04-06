@@ -25,6 +25,9 @@
     <ClInclude Include="RTDevice\SEVRayRTDeviceResource.h">
       <Filter>RTDevice</Filter>
     </ClInclude>
+    <ClInclude Include="RTDevice\SEVRayTypes.h">
+      <Filter>RTDevice</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="RTDevice">

@@ -9,6 +9,7 @@
 #include "SEVector3.h"
 
 #pragma warning(disable:4996)
+#pragma warning(disable:4302)
 
 using namespace Swing;
 

@@ -7,14 +7,7 @@
 #include "SEVRayRTDeviceLIB.h"
 #include "SERayTracingDevice.h"
 
-namespace VRay
-{
-
-class VRayInit;
-class VRayRenderer;
-struct VRayImage;
-
-}
+#include "SEVRayTypes.h"
 
 namespace Swing
 {
@@ -36,6 +29,9 @@ private:
     void __Terminate();
 
     bool __LoadNativeScene(const char* fileName);
+
+    SERTImageHandle* __CreateRTImage(SERayTracingDeviceImage* img);
+    void __DeleteRTImage(SERayTracingDeviceImage* img);
 
     void __OnRenderStart(VRay::VRayRenderer& r, void*);
     void __OnImageReady(VRay::VRayRenderer& r, void*);

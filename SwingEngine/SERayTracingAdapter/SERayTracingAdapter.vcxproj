@@ -640,6 +640,7 @@ copy /y *.h ..\SDK\Include
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Device\SERayTracingDevice.h" />
+    <ClInclude Include="Device\SERayTracingDeviceDelegate.h" />
     <ClInclude Include="Device\SERayTracingDeviceResource.h" />
     <ClInclude Include="Images\SERayTracingDeviceImage.h" />
     <ClInclude Include="SERayTracingAdapterHeaders.h" />

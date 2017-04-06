@@ -7,10 +7,7 @@
 #include "SEVRayRTDeviceLIB.h"
 #include "SERayTracingDeviceResource.h"
 
-namespace VRay
-{
-struct VRayImage;
-}
+#include "SEVRayTypes.h"
 
 namespace Swing
 {

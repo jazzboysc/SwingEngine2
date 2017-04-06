@@ -111,6 +111,21 @@ bool SEVRayRTDevice::__LoadNativeScene(const char* fileName)
     return false;
 }
 //----------------------------------------------------------------------------
+SERTImageHandle* SEVRayRTDevice::__CreateRTImage(SERayTracingDeviceImage*)
+{
+    return SE_NEW SEVRayRTImageHandle();
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__DeleteRTImage(SERayTracingDeviceImage* img)
+{
+    if( img )
+    {
+        SEVRayRTImageHandle* imageHandle = (SEVRayRTImageHandle*)img->GetImageHandle();
+        delete imageHandle->mImage;
+        imageHandle->mImage = nullptr;
+    }
+}
+//----------------------------------------------------------------------------
 void SEVRayRTDevice::__OnRenderStart(VRay::VRayRenderer&, void*)
 {
     SERayTracingDevice::RenderStartCallback(this);
@@ -126,6 +141,9 @@ void SEVRayRTDevice::__OnRTimageUpdated(VRay::VRayRenderer&, VRay::VRayImage* im
 	if( img )
 	{
 		SERayTracingDeviceImage* rtImage = SE_NEW SERayTracingDeviceImage();
+        SEVRayRTImageHandle* imageHandle = (SEVRayRTImageHandle*)this->CreateRTImage(rtImage);
+        imageHandle->mImage = img;
+        rtImage->SetImageHandle(imageHandle);
 		SERayTracingDevice::RTImageUpdatedCallback(this, rtImage);
 	}
 }
@@ -135,7 +153,8 @@ void SEVRayRTDevice::__OnDeviceClose(VRay::VRayRenderer&, void*)
     SERayTracingDevice::DeviceCloseCallback(this);
 }
 //----------------------------------------------------------------------------
-void SEVRayRTDevice::__OnDumpMessage(VRay::VRayRenderer&, const char*, int, void*)
+void SEVRayRTDevice::__OnDumpMessage(VRay::VRayRenderer&, const char* msg, int level, void*)
 {
+    SERayTracingDevice::DumpMessageCallback(this, msg, level);
 }
 //----------------------------------------------------------------------------
