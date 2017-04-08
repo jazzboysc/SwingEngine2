@@ -30,13 +30,15 @@ class PBMaterialDefaultTypeInternal : public ::google::protobuf::internal::Expli
 } _PBMaterial_default_instance_;
 class PBSceneNodeDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<PBSceneNode> {
 } _PBSceneNode_default_instance_;
+class PBSceneDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<PBScene> {
+} _PBScene_default_instance_;
 
 namespace protobuf_SceneProtocol_2eproto {
 
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[7];
+::google::protobuf::Metadata file_level_metadata[8];
 
 }  // namespace
 
@@ -125,6 +127,12 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   1,
   0,
   ~0u,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBScene, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBScene, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBScene, scenenodes_),
+  ~0u,
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
@@ -135,6 +143,7 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 44, 52, sizeof(PBColor)},
   { 56, 67, sizeof(PBMaterial)},
   { 74, 81, sizeof(PBSceneNode)},
+  { 84, 89, sizeof(PBScene)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -145,6 +154,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_PBColor_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_PBMaterial_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_PBSceneNode_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_PBScene_default_instance_),
 };
 
 namespace {
@@ -165,7 +175,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 7);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 8);
 }
 
 }  // namespace
@@ -185,6 +195,8 @@ void TableStruct::Shutdown() {
   delete file_level_metadata[5].reflection;
   _PBSceneNode_default_instance_.Shutdown();
   delete file_level_metadata[6].reflection;
+  _PBScene_default_instance_.Shutdown();
+  delete file_level_metadata[7].reflection;
 }
 
 void TableStruct::InitDefaultsImpl() {
@@ -198,6 +210,7 @@ void TableStruct::InitDefaultsImpl() {
   _PBColor_default_instance_.DefaultConstruct();
   _PBMaterial_default_instance_.DefaultConstruct();
   _PBSceneNode_default_instance_.DefaultConstruct();
+  _PBScene_default_instance_.DefaultConstruct();
   _PBTransform_default_instance_.get_mutable()->scale_ = const_cast< ::PBVector3*>(
       ::PBVector3::internal_default_instance());
   _PBTransform_default_instance_.get_mutable()->orientation_ = const_cast< ::PBQuaternion*>(
@@ -232,10 +245,11 @@ void AddDescriptorsImpl() {
       "(\002\022\026\n\016metallicMapURL\030\006 \001(\t\022\024\n\014normalMapU"
       "RL\030\007 \001(\t\"d\n\013PBSceneNode\022$\n\016worldTransfor"
       "m\030\001 \002(\0132\014.PBTransform\022\017\n\007meshURL\030\002 \002(\t\022\036"
-      "\n\tmaterials\030\003 \003(\0132\013.PBMaterial"
+      "\n\tmaterials\030\003 \003(\0132\013.PBMaterial\"+\n\007PBScen"
+      "e\022 \n\nsceneNodes\030\001 \003(\0132\014.PBSceneNode"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 630);
+      descriptor, 675);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "SceneProtocol.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
@@ -3928,6 +3942,271 @@ const ::google::protobuf::RepeatedPtrField< ::PBMaterial >&
 PBSceneNode::materials() const {
   // @@protoc_insertion_point(field_list:PBSceneNode.materials)
   return materials_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int PBScene::kSceneNodesFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+PBScene::PBScene()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_SceneProtocol_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:PBScene)
+}
+PBScene::PBScene(const PBScene& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _has_bits_(from._has_bits_),
+      _cached_size_(0),
+      scenenodes_(from.scenenodes_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:PBScene)
+}
+
+void PBScene::SharedCtor() {
+  _cached_size_ = 0;
+}
+
+PBScene::~PBScene() {
+  // @@protoc_insertion_point(destructor:PBScene)
+  SharedDtor();
+}
+
+void PBScene::SharedDtor() {
+}
+
+void PBScene::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* PBScene::descriptor() {
+  protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_SceneProtocol_2eproto::file_level_metadata[7].descriptor;
+}
+
+const PBScene& PBScene::default_instance() {
+  protobuf_SceneProtocol_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+PBScene* PBScene::New(::google::protobuf::Arena* arena) const {
+  PBScene* n = new PBScene;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void PBScene::Clear() {
+// @@protoc_insertion_point(message_clear_start:PBScene)
+  scenenodes_.Clear();
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+bool PBScene::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:PBScene)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .PBSceneNode sceneNodes = 1;
+      case 1: {
+        if (tag == 10u) {
+          DO_(input->IncrementRecursionDepth());
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_scenenodes()));
+        } else {
+          goto handle_unusual;
+        }
+        input->UnsafeDecrementRecursionDepth();
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:PBScene)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:PBScene)
+  return false;
+#undef DO_
+}
+
+void PBScene::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:PBScene)
+  // repeated .PBSceneNode sceneNodes = 1;
+  for (unsigned int i = 0, n = this->scenenodes_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->scenenodes(i), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:PBScene)
+}
+
+::google::protobuf::uint8* PBScene::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:PBScene)
+  // repeated .PBSceneNode sceneNodes = 1;
+  for (unsigned int i = 0, n = this->scenenodes_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        1, this->scenenodes(i), false, target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PBScene)
+  return target;
+}
+
+size_t PBScene::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PBScene)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  // repeated .PBSceneNode sceneNodes = 1;
+  {
+    unsigned int count = this->scenenodes_size();
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->scenenodes(i));
+    }
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void PBScene::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PBScene)
+  GOOGLE_DCHECK_NE(&from, this);
+  const PBScene* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const PBScene>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PBScene)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PBScene)
+    MergeFrom(*source);
+  }
+}
+
+void PBScene::MergeFrom(const PBScene& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PBScene)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  scenenodes_.MergeFrom(from.scenenodes_);
+}
+
+void PBScene::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PBScene)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void PBScene::CopyFrom(const PBScene& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PBScene)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PBScene::IsInitialized() const {
+  if (!::google::protobuf::internal::AllAreInitialized(this->scenenodes())) return false;
+  return true;
+}
+
+void PBScene::Swap(PBScene* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void PBScene::InternalSwap(PBScene* other) {
+  scenenodes_.UnsafeArenaSwap(&other->scenenodes_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata PBScene::GetMetadata() const {
+  protobuf_SceneProtocol_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_SceneProtocol_2eproto::file_level_metadata[7];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// PBScene
+
+// repeated .PBSceneNode sceneNodes = 1;
+int PBScene::scenenodes_size() const {
+  return scenenodes_.size();
+}
+void PBScene::clear_scenenodes() {
+  scenenodes_.Clear();
+}
+const ::PBSceneNode& PBScene::scenenodes(int index) const {
+  // @@protoc_insertion_point(field_get:PBScene.sceneNodes)
+  return scenenodes_.Get(index);
+}
+::PBSceneNode* PBScene::mutable_scenenodes(int index) {
+  // @@protoc_insertion_point(field_mutable:PBScene.sceneNodes)
+  return scenenodes_.Mutable(index);
+}
+::PBSceneNode* PBScene::add_scenenodes() {
+  // @@protoc_insertion_point(field_add:PBScene.sceneNodes)
+  return scenenodes_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::PBSceneNode >*
+PBScene::mutable_scenenodes() {
+  // @@protoc_insertion_point(field_mutable_list:PBScene.sceneNodes)
+  return &scenenodes_;
+}
+const ::google::protobuf::RepeatedPtrField< ::PBSceneNode >&
+PBScene::scenenodes() const {
+  // @@protoc_insertion_point(field_list:PBScene.sceneNodes)
+  return scenenodes_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

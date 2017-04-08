@@ -53,3 +53,7 @@ message PBSceneNode {
     required string meshURL = 2;
     repeated PBMaterial materials = 3;
 }
+
+message  PBScene {
+    repeated  PBSceneNode sceneNodes = 1;
+}

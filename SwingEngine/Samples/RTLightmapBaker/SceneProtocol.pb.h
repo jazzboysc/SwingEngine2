@@ -38,6 +38,9 @@ extern PBMaterialDefaultTypeInternal _PBMaterial_default_instance_;
 class PBQuaternion;
 class PBQuaternionDefaultTypeInternal;
 extern PBQuaternionDefaultTypeInternal _PBQuaternion_default_instance_;
+class PBScene;
+class PBSceneDefaultTypeInternal;
+extern PBSceneDefaultTypeInternal _PBScene_default_instance_;
 class PBSceneNode;
 class PBSceneNodeDefaultTypeInternal;
 extern PBSceneNodeDefaultTypeInternal _PBSceneNode_default_instance_;
@@ -1006,6 +1009,104 @@ class PBSceneNode : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::google::protobuf::RepeatedPtrField< ::PBMaterial > materials_;
   ::google::protobuf::internal::ArenaStringPtr meshurl_;
   ::PBTransform* worldtransform_;
+  friend struct  protobuf_SceneProtocol_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class PBScene : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PBScene) */ {
+ public:
+  PBScene();
+  virtual ~PBScene();
+
+  PBScene(const PBScene& from);
+
+  inline PBScene& operator=(const PBScene& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBScene& default_instance();
+
+  static inline const PBScene* internal_default_instance() {
+    return reinterpret_cast<const PBScene*>(
+               &_PBScene_default_instance_);
+  }
+
+  void Swap(PBScene* other);
+
+  // implements Message ----------------------------------------------
+
+  inline PBScene* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  PBScene* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const PBScene& from);
+  void MergeFrom(const PBScene& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output)
+      const PROTOBUF_FINAL {
+    return InternalSerializeWithCachedSizesToArray(
+        ::google::protobuf::io::CodedOutputStream::IsDefaultSerializationDeterministic(), output);
+  }
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(PBScene* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .PBSceneNode sceneNodes = 1;
+  int scenenodes_size() const;
+  void clear_scenenodes();
+  static const int kSceneNodesFieldNumber = 1;
+  const ::PBSceneNode& scenenodes(int index) const;
+  ::PBSceneNode* mutable_scenenodes(int index);
+  ::PBSceneNode* add_scenenodes();
+  ::google::protobuf::RepeatedPtrField< ::PBSceneNode >*
+      mutable_scenenodes();
+  const ::google::protobuf::RepeatedPtrField< ::PBSceneNode >&
+      scenenodes() const;
+
+  // @@protoc_insertion_point(class_scope:PBScene)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::PBSceneNode > scenenodes_;
   friend struct  protobuf_SceneProtocol_2eproto::TableStruct;
 };
 // ===================================================================
@@ -2013,7 +2114,43 @@ PBSceneNode::materials() const {
   return materials_;
 }
 
+// -------------------------------------------------------------------
+
+// PBScene
+
+// repeated .PBSceneNode sceneNodes = 1;
+inline int PBScene::scenenodes_size() const {
+  return scenenodes_.size();
+}
+inline void PBScene::clear_scenenodes() {
+  scenenodes_.Clear();
+}
+inline const ::PBSceneNode& PBScene::scenenodes(int index) const {
+  // @@protoc_insertion_point(field_get:PBScene.sceneNodes)
+  return scenenodes_.Get(index);
+}
+inline ::PBSceneNode* PBScene::mutable_scenenodes(int index) {
+  // @@protoc_insertion_point(field_mutable:PBScene.sceneNodes)
+  return scenenodes_.Mutable(index);
+}
+inline ::PBSceneNode* PBScene::add_scenenodes() {
+  // @@protoc_insertion_point(field_add:PBScene.sceneNodes)
+  return scenenodes_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::PBSceneNode >*
+PBScene::mutable_scenenodes() {
+  // @@protoc_insertion_point(field_mutable_list:PBScene.sceneNodes)
+  return &scenenodes_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::PBSceneNode >&
+PBScene::scenenodes() const {
+  // @@protoc_insertion_point(field_list:PBScene.sceneNodes)
+  return scenenodes_;
+}
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
