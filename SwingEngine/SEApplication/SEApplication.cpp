@@ -34,3 +34,23 @@ SEApplication* SEApplication::GetInstance()
     return mInstance;
 }
 //----------------------------------------------------------------------------
+void SEApplication::OnSizing(int newWidth, int newHeight)
+{
+    Width = newWidth;
+    Height = newHeight;
+}
+//----------------------------------------------------------------------------
+void SEApplication::OnSize(int left, int top, int right, int bottom)
+{
+    Width = right - left;
+    Height = bottom - top;
+}
+//----------------------------------------------------------------------------
+void SEApplication::OnWindowClose()
+{
+}
+//----------------------------------------------------------------------------
+void SEApplication::OnPaint()
+{
+}
+//----------------------------------------------------------------------------

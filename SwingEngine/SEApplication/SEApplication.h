@@ -38,6 +38,7 @@ public:
 	SEApplication();
 	virtual ~SEApplication();
 
+    // Basic interfaces.
 	virtual void Initialize(SEApplicationDescription* ApplicationDesc) = 0;
 	virtual void Run() = 0;
 	virtual void Terminate() = 0;
@@ -46,6 +47,13 @@ public:
     virtual void UpdateMainCamera() = 0;
 	virtual void ProcessInput(int key, int scancode, int action, int mods) = 0;
 
+    // Window message callbacks.
+    virtual void OnSizing(int newWidth, int newHeight);
+    virtual void OnSize(int left, int top, int right, int bottom);
+    virtual void OnWindowClose();
+    virtual void OnPaint();
+
+    // Singleton access.
 	static SEApplication* GetInstance();
 
 	int Width = 1024, Height = 768;

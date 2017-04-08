@@ -17,7 +17,11 @@ public:
 	void FrameFunc() override;
 	void Terminate() override;
 
-
+    // Override SEApplication interface.
+    void OnSizing(int newWidth, int newHeight) override;
+    void OnSize(int left, int top, int right, int bottom) override;
+    void OnWindowClose() override;
+    void OnPaint() override;
 };
 
 }
