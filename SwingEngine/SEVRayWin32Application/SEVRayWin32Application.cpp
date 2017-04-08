@@ -63,6 +63,48 @@ public:
     }
 };
 //----------------------------------------------------------------------------
+class SEWin32FileDialogHelper : private OPENFILENAME
+{
+public:
+    const char* GetName(HWND hWndOwner = NULL, const char* filter = nullptr, const char* title = nullptr)
+    {
+        *mFileName = 0;
+        lStructSize = sizeof(OPENFILENAME);
+        hwndOwner = hWndOwner;
+        hInstance = GetModuleHandle(NULL);;
+        lpstrFilter = filter;
+        lpstrCustomFilter = NULL;
+        nMaxCustFilter = 0;
+        nFilterIndex = 1;
+        lpstrFile = mFileName;
+        nMaxFile = MAX_PATH;
+        lpstrFileTitle = NULL;
+        nMaxFileTitle = 0;
+        lpstrInitialDir = NULL;
+        lpstrTitle = title;
+        Flags = OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST | OFN_LONGNAMES | OFN_EXPLORER | OFN_HIDEREADONLY | OFN_ENABLESIZING;
+        lpstrDefExt = NULL;
+        lCustData = NULL;
+        lpfnHook = NULL;
+        lpTemplateName = NULL;
+        pvReserved = NULL;
+        dwReserved = 0;
+        FlagsEx = 0;
+
+        if( GetOpenFileName(this) )
+        {
+            return mFileName;
+        }
+        else
+        {
+            return nullptr;
+        }
+    }
+
+private:
+    char mFileName[MAX_PATH * 2];
+};
+//----------------------------------------------------------------------------
 class SEVRayWin32WindowHelper
 {
 public:
@@ -195,6 +237,11 @@ public:
         SetWindowPos(hWnd, NULL, 0, 0, width + dx, height + dy, SWP_NOMOVE | SWP_NOZORDER | SWP_FRAMECHANGED);
     }
 
+    HWND GetWindowHandle()
+    {
+        return hWnd;
+    }
+
 private:
     unsigned n;
     bool finished : 1;
@@ -220,6 +267,7 @@ private:
 
 
 SEVRayWin32WindowHelper* gVRayWin32WindowHelper = nullptr;
+SEWin32FileDialogHelper* gWin32FileDialogHelper = nullptr;
 //----------------------------------------------------------------------------
 SEVRayWin32Application::SEVRayWin32Application()
 {
@@ -238,6 +286,12 @@ void SEVRayWin32Application::Initialize(SEApplicationDescription* ApplicationDes
 
     // Set working directory to resource folder.
     //chdir("..\\..\\Bin\\");
+
+    // Win32 common control initialization.
+    InitCommonControls();
+
+    // Create file dialog helper.
+    gWin32FileDialogHelper = new SEWin32FileDialogHelper();
 
     mGraphicsFeature = AGF_RayTracer;
     mGPUDevice = nullptr;
@@ -292,6 +346,9 @@ void SEVRayWin32Application::Terminate()
 {
     mRayTracingDevice = nullptr;
 
+    delete gWin32FileDialogHelper;
+    gWin32FileDialogHelper = nullptr;
+
     delete gVRayWin32WindowHelper;
     gVRayWin32WindowHelper = nullptr;
 
@@ -301,5 +358,20 @@ void SEVRayWin32Application::Terminate()
 //----------------------------------------------------------------------------
 void SEVRayWin32Application::ProcessInput(int, int, int, int)
 {
+}
+//----------------------------------------------------------------------------
+const char* SEVRayWin32Application::OpenFileDialog(const char* filter, const char* title)
+{
+    if( gWin32FileDialogHelper )
+    {
+        HWND parentWindow = GetConsoleWindow();
+        if( gVRayWin32WindowHelper )
+        {
+            parentWindow = gVRayWin32WindowHelper->GetWindowHandle();
+        }
+        return gWin32FileDialogHelper->GetName(parentWindow, filter, title);
+    }
+
+    return nullptr;
 }
 //----------------------------------------------------------------------------

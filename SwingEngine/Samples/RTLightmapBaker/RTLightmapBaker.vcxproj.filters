@@ -19,6 +19,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="SceneProtocol.proto" />
+    <None Include="SceneProtocol.proto" />
   </ItemGroup>
 </Project>

@@ -16,6 +16,12 @@ RTLightmapBaker::~RTLightmapBaker()
 //----------------------------------------------------------------------------
 void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
 {
+    const char* sceneFileName = OpenFileDialog("V-Ray scene files (*.vrscene)\0*.vrscene\0All files (*.*)\0*.*\0", "Choose V-Ray scene file to load");
+    if( !sceneFileName )
+    {
+        puts("Scene file not loaded.");
+        return;
+    }
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::FrameFunc()

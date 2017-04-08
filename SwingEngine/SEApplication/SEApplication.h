@@ -53,6 +53,9 @@ public:
     virtual void OnWindowClose();
     virtual void OnPaint();
 
+    // Open file dialog helper.
+    virtual const char* OpenFileDialog(const char* filter, const char* title);
+
     // Singleton access.
 	static SEApplication* GetInstance();
 

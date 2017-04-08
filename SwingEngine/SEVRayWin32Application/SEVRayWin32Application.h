@@ -35,7 +35,7 @@ public:
 	virtual void FrameFunc() override;
     virtual void UpdateMainCamera() override;
 	virtual void ProcessInput(int key, int scancode, int action, int mods) override;
-
+    virtual const char* OpenFileDialog(const char* filter, const char* title) override;
 };
 
 }

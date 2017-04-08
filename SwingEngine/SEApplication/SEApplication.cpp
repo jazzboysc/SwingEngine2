@@ -54,3 +54,8 @@ void SEApplication::OnPaint()
 {
 }
 //----------------------------------------------------------------------------
+const char* SEApplication::OpenFileDialog(const char*, const char*)
+{
+    return nullptr;
+}
+//----------------------------------------------------------------------------
