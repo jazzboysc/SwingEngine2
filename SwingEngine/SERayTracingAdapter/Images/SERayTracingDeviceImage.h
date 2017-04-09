@@ -29,6 +29,8 @@ public:
 
     SERayTracingDeviceBitmap* CreateRTBitmap(int width, int height);
 
+    int Width, Height;
+
 protected:
 	SERTImageHandle* mImageHandle;
 };

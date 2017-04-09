@@ -220,6 +220,8 @@ void SEVRayRTDevice::__OnRTimageUpdated(VRay::VRayRenderer&, VRay::VRayImage* im
         SEVRayRTImageHandle* imageHandle = (SEVRayRTImageHandle*)this->CreateRTImage(rtImage);
         imageHandle->mImage = img;
         rtImage->SetImageHandle(imageHandle);
+        img->getSize(rtImage->Width, rtImage->Height);
+
 		SERayTracingDevice::RTImageUpdatedCallback(this, rtImage);
 	}
 }

@@ -9,6 +9,8 @@ using namespace Swing;
 //----------------------------------------------------------------------------
 SERayTracingDeviceImage::SERayTracingDeviceImage()
 	:
+    Width(0),
+    Height(0),
 	mImageHandle(nullptr)
 {
 }
