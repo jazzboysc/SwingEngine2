@@ -21,6 +21,14 @@ struct SE_VRAY_RT_DEVICE_API SEVRayRTImageHandle : public SERTImageHandle
 	~SEVRayRTImageHandle();
 };
 //----------------------------------------------------------------------------
+struct SE_VRAY_RT_DEVICE_API SEVRayRTBitmapHandle : public SERTBitmapHandle
+{
+    VRay::Bmp* mBitmap;
+
+    SEVRayRTBitmapHandle();
+    ~SEVRayRTBitmapHandle();
+};
+//----------------------------------------------------------------------------
 
 }
 

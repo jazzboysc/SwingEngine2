@@ -1,6 +1,8 @@
 #pragma once
 
 #include "SEVRayWin32Application.h"
+#include "SERayTracingDeviceImage.h"
+#include "SERayTracingDeviceBitmap.h"
 
 namespace Swing
 {
@@ -22,6 +24,21 @@ public:
     void OnSize(int left, int top, int right, int bottom) override;
     void OnWindowClose() override;
     void OnPaint() override;
+
+    // Implement device delegate.
+    void OnRenderStart(SERayTracingDevice& rtDevice, void* userObj);
+    void OnImageReady(SERayTracingDevice& rtDevice, void* userObj);
+    void OnDeviceClose(SERayTracingDevice& rtDevice, void* userObj);
+    void OnRTImageUpdated(SERayTracingDevice& rtDevice, SERayTracingDeviceImage* img, void* userObj);
+    void OnDumpMessage(SERayTracingDevice& rtDevice, const char* msg, int level, void* userObj);
+
+private:
+    unsigned int mFrameNumber;
+    bool mFinished;
+
+    void UpdateImage(SERayTracingDeviceImage* image);
+
+    SERayTracingDeviceBitmap* mBmp;
 };
 
 }

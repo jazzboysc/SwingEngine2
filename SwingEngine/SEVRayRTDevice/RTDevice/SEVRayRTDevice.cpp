@@ -4,6 +4,7 @@
 #include "SEVRayRTDevicePCH.h"
 #include "SEVRayRTDevice.h"
 #include "SERayTracingDeviceImage.h"
+#include "SERayTracingDeviceBitmap.h"
 
 #ifdef _WIN32
 #pragma warning(disable:4189)
@@ -30,6 +31,8 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(LoadNativeScene, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTImage, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTImage, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTBitmap, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTBitmap, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(GetImageSize, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(SetImageSize, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(Render, SEVRayRTDevice);
@@ -40,7 +43,8 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
 SEVRayRTDevice::SEVRayRTDevice()
     :
     mVRayInit(nullptr),
-    mVRayRenderer(nullptr)
+    mVRayRenderer(nullptr),
+    mImageOpMutex(nullptr)
 {
     InsertRayTracingDeviceFunctions();
 }
@@ -55,6 +59,8 @@ void SEVRayRTDevice::__Initialize(SERayTracingDeviceDescription* deviceDesc)
     {
         return;
     }
+
+    mImageOpMutex = SEMutex::Create();
 
     puts("Initializing VRay...");
     // Initializing without VRay framebuffer support.
@@ -104,6 +110,18 @@ void SEVRayRTDevice::__Terminate()
         mVRayInit = nullptr;
         puts("Done.");
     }
+
+    if( mVRayRenderer )
+    {
+        delete mVRayRenderer;
+        mVRayRenderer = nullptr;
+    }
+
+    if( mImageOpMutex )
+    {
+        SEMutex::Destroy(mImageOpMutex);
+        mImageOpMutex = nullptr;
+    }
 }
 //----------------------------------------------------------------------------
 bool SEVRayRTDevice::__LoadNativeScene(const char* fileName)
@@ -128,6 +146,31 @@ void SEVRayRTDevice::__DeleteRTImage(SERayTracingDeviceImage* img)
         SEVRayRTImageHandle* imageHandle = (SEVRayRTImageHandle*)img->GetImageHandle();
         delete imageHandle->mImage;
         imageHandle->mImage = nullptr;
+    }
+}
+//----------------------------------------------------------------------------
+SERTBitmapHandle* SEVRayRTDevice::__CreateRTBitmap(SERayTracingDeviceBitmap*, SERayTracingDeviceImage* img, int width, int height)
+{
+    SEMutexLock lock(*mImageOpMutex);
+
+    SEVRayRTBitmapHandle* bitmapHandle = SE_NEW SEVRayRTBitmapHandle();
+    SEVRayRTImageHandle* imageHandle = (SEVRayRTImageHandle*)img->GetImageHandle();
+    if( imageHandle && imageHandle->mImage )
+    {
+        VRay::VRayImage* image = imageHandle->mImage->downscale(width, height);
+        VRay::LocalVRayImage tempImage(image);
+        bitmapHandle->mBitmap = tempImage->getBmp();
+    }
+    return bitmapHandle;
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__DeleteRTBitmap(SERayTracingDeviceBitmap* bmp)
+{
+    if( bmp )
+    {
+        SEVRayRTBitmapHandle* bitmapHandle = (SEVRayRTBitmapHandle*)bmp->GetBitmapHandle();
+        delete bitmapHandle->mBitmap;
+        bitmapHandle->mBitmap = nullptr;
     }
 }
 //----------------------------------------------------------------------------

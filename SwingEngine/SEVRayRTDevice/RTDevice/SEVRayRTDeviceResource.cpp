@@ -17,3 +17,13 @@ SEVRayRTImageHandle::~SEVRayRTImageHandle()
 {
 }
 //----------------------------------------------------------------------------
+SEVRayRTBitmapHandle::SEVRayRTBitmapHandle()
+    :
+    mBitmap(nullptr)
+{
+}
+//----------------------------------------------------------------------------
+SEVRayRTBitmapHandle::~SEVRayRTBitmapHandle()
+{
+}
+//----------------------------------------------------------------------------

@@ -8,5 +8,6 @@
 #include "SERayTracingDeviceResource.h"
 
 #include "SERayTracingDeviceImage.h"
+#include "SERayTracingDeviceBitmap.h"
 
 #endif

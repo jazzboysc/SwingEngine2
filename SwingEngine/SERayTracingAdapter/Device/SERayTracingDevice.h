@@ -45,12 +45,15 @@ struct SE_RAY_TRACING_ADAPTER_API SERayTracingDeviceDescription
 
 class SERayTracingDevice;
 class SERayTracingDeviceImage;
+class SERayTracingDeviceBitmap;
 
 typedef void (SERayTracingDevice::*RayTracingDeviceInitialize)(SERayTracingDeviceDescription* deviceDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
 typedef bool (SERayTracingDevice::*RayTracingDeviceLoadNativeScene)(const char* fileName);
 typedef SERTImageHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTImage)(SERayTracingDeviceImage* img);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTImage)(SERayTracingDeviceImage* img);
+typedef SERTBitmapHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTBitmap)(SERayTracingDeviceBitmap* bmp, SERayTracingDeviceImage* img, int width, int height);
+typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTBitmap)(SERayTracingDeviceBitmap* bmp);
 typedef bool (SERayTracingDevice::*RayTracingDeviceGetImageSize)(int& width, int& height);
 typedef bool (SERayTracingDevice::*RayTracingDeviceSetImageSize)(int width, int height);
 typedef void (SERayTracingDevice::*RayTracingDeviceRender)();
@@ -73,6 +76,9 @@ public:
 
     inline  SERTImageHandle* CreateRTImage(SERayTracingDeviceImage* img);
     inline  void DeleteRTImage(SERayTracingDeviceImage* img);
+
+    inline  SERTBitmapHandle* CreateRTBitmap(SERayTracingDeviceBitmap* bmp, SERayTracingDeviceImage* img, int width, int height);
+    inline  void DeleteRTBitmap(SERayTracingDeviceBitmap* bmp);
 
     inline  bool GetImageSize(int& width, int& height);
     inline  bool SetImageSize(int width, int height);
@@ -111,6 +117,8 @@ protected:
     RayTracingDeviceLoadNativeScene          _LoadNativeScene;
     RayTracingDeviceCreateRTImage            _CreateRTImage;
     RayTracingDeviceDeleteRTImage            _DeleteRTImage;
+    RayTracingDeviceCreateRTBitmap           _CreateRTBitmap;
+    RayTracingDeviceDeleteRTBitmap           _DeleteRTBitmap;
     RayTracingDeviceGetImageSize             _GetImageSize;
     RayTracingDeviceSetImageSize             _SetImageSize;
     RayTracingDeviceRender                   _Render;

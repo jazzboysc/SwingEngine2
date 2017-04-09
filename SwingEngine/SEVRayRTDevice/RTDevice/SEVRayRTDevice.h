@@ -6,6 +6,7 @@
 
 #include "SEVRayRTDeviceLIB.h"
 #include "SERayTracingDevice.h"
+#include "SEMutex.h"
 
 #include "SEVRayTypes.h"
 
@@ -34,6 +35,9 @@ private:
     SERTImageHandle* __CreateRTImage(SERayTracingDeviceImage* img);
     void __DeleteRTImage(SERayTracingDeviceImage* img);
 
+    SERTBitmapHandle* __CreateRTBitmap(SERayTracingDeviceBitmap* bmp, SERayTracingDeviceImage* img, int width, int height);
+    void __DeleteRTBitmap(SERayTracingDeviceBitmap* bmp);
+
     bool __GetImageSize(int& width, int& height);
     bool __SetImageSize(int width, int height);
 
@@ -50,6 +54,8 @@ private:
 private:
     VRay::VRayInit* mVRayInit;
     VRay::VRayRenderer* mVRayRenderer;
+
+    SEMutex* mImageOpMutex;
 
     static const SE_UInt32 gsRenderMode[RTDRM_RT_MAX - 1];
 };

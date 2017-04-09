@@ -32,3 +32,16 @@ void SERayTracingDeviceImage::SetImageHandle(SERTImageHandle* imageHandle)
     mImageHandle = imageHandle;
 }
 //----------------------------------------------------------------------------
+SERayTracingDeviceBitmap* SERayTracingDeviceImage::CreateRTBitmap(int width, int height)
+{
+    SERayTracingDeviceBitmap* rtBitmap = nullptr;
+    if( mImageHandle )
+    {
+        rtBitmap = SE_NEW SERayTracingDeviceBitmap();
+        SERTBitmapHandle* bitmapHandle = mImageHandle->RTDevice->CreateRTBitmap(rtBitmap, this, width, height);
+        rtBitmap->SetBitmapHandle(bitmapHandle);
+    }
+
+    return rtBitmap;
+}
+//----------------------------------------------------------------------------

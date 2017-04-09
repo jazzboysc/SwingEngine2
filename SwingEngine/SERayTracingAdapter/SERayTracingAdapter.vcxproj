@@ -642,6 +642,7 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="Device\SERayTracingDevice.h" />
     <ClInclude Include="Device\SERayTracingDeviceDelegate.h" />
     <ClInclude Include="Device\SERayTracingDeviceResource.h" />
+    <ClInclude Include="Images\SERayTracingDeviceBitmap.h" />
     <ClInclude Include="Images\SERayTracingDeviceImage.h" />
     <ClInclude Include="SERayTracingAdapterHeaders.h" />
     <ClInclude Include="SERayTracingAdapterLIB.h" />
@@ -652,6 +653,7 @@ copy /y *.h ..\SDK\Include
   <ItemGroup>
     <ClCompile Include="Device\SERayTracingDevice.cpp" />
     <ClCompile Include="Device\SERayTracingDeviceResource.cpp" />
+    <ClCompile Include="Images\SERayTracingDeviceBitmap.cpp" />
     <ClCompile Include="Images\SERayTracingDeviceImage.cpp" />
     <ClCompile Include="SERayTracingAdapterPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

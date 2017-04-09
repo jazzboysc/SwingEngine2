@@ -28,6 +28,16 @@ void SERayTracingDevice::DeleteRTImage(SERayTracingDeviceImage* img)
     (this->*_DeleteRTImage)(img);
 }
 //----------------------------------------------------------------------------
+SERTBitmapHandle* SERayTracingDevice::CreateRTBitmap(SERayTracingDeviceBitmap* bmp, SERayTracingDeviceImage* img, int width, int height)
+{
+    return (this->*_CreateRTBitmap)(bmp, img, width, height);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::DeleteRTBitmap(SERayTracingDeviceBitmap* bmp)
+{
+    (this->*_DeleteRTBitmap)(bmp);
+}
+//----------------------------------------------------------------------------
 bool SERayTracingDevice::GetImageSize(int& width, int& height)
 {
     return (this->*_GetImageSize)(width, height);

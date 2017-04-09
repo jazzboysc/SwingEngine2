@@ -12,6 +12,7 @@ namespace VRay
 class VRayInit;
 class VRayRenderer;
 struct VRayImage;
+class Bmp;
 
 }
 

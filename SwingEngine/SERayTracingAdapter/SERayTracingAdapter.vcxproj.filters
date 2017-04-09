@@ -26,6 +26,9 @@
     <ClInclude Include="Device\SERayTracingDeviceDelegate.h">
       <Filter>Device</Filter>
     </ClInclude>
+    <ClInclude Include="Images\SERayTracingDeviceBitmap.h">
+      <Filter>Images</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SERayTracingAdapterPCH.cpp" />
@@ -37,6 +40,9 @@
       <Filter>Device</Filter>
     </ClCompile>
     <ClCompile Include="Images\SERayTracingDeviceImage.cpp">
+      <Filter>Images</Filter>
+    </ClCompile>
+    <ClCompile Include="Images\SERayTracingDeviceBitmap.cpp">
       <Filter>Images</Filter>
     </ClCompile>
   </ItemGroup>

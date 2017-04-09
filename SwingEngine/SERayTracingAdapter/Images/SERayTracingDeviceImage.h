@@ -12,6 +12,7 @@ namespace Swing
 {
 
 class SERayTracingDevice;
+class SERayTracingDeviceBitmap;
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -25,6 +26,8 @@ public:
 
     SERTImageHandle* GetImageHandle();
     void SetImageHandle(SERTImageHandle* imageHandle);
+
+    SERayTracingDeviceBitmap* CreateRTBitmap(int width, int height);
 
 protected:
 	SERTImageHandle* mImageHandle;
