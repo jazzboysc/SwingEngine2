@@ -59,3 +59,7 @@ const char* SEApplication::OpenFileDialog(const char*, const char*)
     return nullptr;
 }
 //----------------------------------------------------------------------------
+void SEApplication::Refresh(bool)
+{
+}
+//----------------------------------------------------------------------------

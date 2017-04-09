@@ -28,6 +28,21 @@ void SERayTracingDevice::DeleteRTImage(SERayTracingDeviceImage* img)
     (this->*_DeleteRTImage)(img);
 }
 //----------------------------------------------------------------------------
+bool SERayTracingDevice::GetImageSize(int& width, int& height)
+{
+    return (this->*_GetImageSize)(width, height);
+}
+//----------------------------------------------------------------------------
+bool SERayTracingDevice::SetImageSize(int width, int height)
+{
+    return (this->*_SetImageSize)(width, height);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::Render()
+{
+    (this->*_Render)();
+}
+//----------------------------------------------------------------------------
 void SERayTracingDevice::SetOnRenderStart(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData)
 {
     RenderStartDelegate = SERayTracingDeviceDelegate1::FromFunction(CallbackFunc, const_cast<void*>(userData));

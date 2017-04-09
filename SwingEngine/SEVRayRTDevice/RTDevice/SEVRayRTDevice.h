@@ -23,6 +23,7 @@ public:
     ~SEVRayRTDevice();
 
 private:
+    // Internal interface implementation.
     void InsertRayTracingDeviceFunctions();
 
     void __Initialize(SERayTracingDeviceDescription* deviceDesc);
@@ -33,6 +34,13 @@ private:
     SERTImageHandle* __CreateRTImage(SERayTracingDeviceImage* img);
     void __DeleteRTImage(SERayTracingDeviceImage* img);
 
+    bool __GetImageSize(int& width, int& height);
+    bool __SetImageSize(int width, int height);
+
+    void __Render();
+
+private:
+    // Renderer callback functions.
     void __OnRenderStart(VRay::VRayRenderer& r, void*);
     void __OnImageReady(VRay::VRayRenderer& r, void*);
     void __OnRTimageUpdated(VRay::VRayRenderer& r, VRay::VRayImage* img, void*);

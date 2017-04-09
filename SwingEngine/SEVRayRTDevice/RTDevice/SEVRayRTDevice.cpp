@@ -28,6 +28,11 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(Initialize, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(Terminate, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(LoadNativeScene, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTImage, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTImage, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(GetImageSize, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(SetImageSize, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(Render, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -123,6 +128,34 @@ void SEVRayRTDevice::__DeleteRTImage(SERayTracingDeviceImage* img)
         SEVRayRTImageHandle* imageHandle = (SEVRayRTImageHandle*)img->GetImageHandle();
         delete imageHandle->mImage;
         imageHandle->mImage = nullptr;
+    }
+}
+//----------------------------------------------------------------------------
+bool SEVRayRTDevice::__GetImageSize(int& width, int& height)
+{
+    if( mVRayRenderer )
+    {
+        return mVRayRenderer->getImageSize(width, height);
+    }
+
+    return false;
+}
+//----------------------------------------------------------------------------
+bool SEVRayRTDevice::__SetImageSize(int width, int height)
+{
+    if( mVRayRenderer )
+    {
+        return mVRayRenderer->setImageSize(width, height);
+    }
+
+    return false;
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__Render()
+{
+    if( mVRayRenderer )
+    {
+        mVRayRenderer->start();
     }
 }
 //----------------------------------------------------------------------------

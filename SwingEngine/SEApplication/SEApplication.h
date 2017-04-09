@@ -53,6 +53,9 @@ public:
     virtual void OnWindowClose();
     virtual void OnPaint();
 
+    // Client region updating.
+    virtual void Refresh(bool updateWindowSize = true);
+
     // Open file dialog helper.
     virtual const char* OpenFileDialog(const char* filter, const char* title);
 

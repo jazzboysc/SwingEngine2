@@ -375,3 +375,13 @@ const char* SEVRayWin32Application::OpenFileDialog(const char* filter, const cha
     return nullptr;
 }
 //----------------------------------------------------------------------------
+void SEVRayWin32Application::Refresh(bool updateWindowSize)
+{
+    HWND handle = gVRayWin32WindowHelper->GetWindowHandle();
+    if( updateWindowSize )
+    {
+        SendMessage(handle, WM_SIZE, 0, 0);
+    }
+    InvalidateRect(handle, NULL, FALSE);
+}
+//----------------------------------------------------------------------------

@@ -51,6 +51,9 @@ typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
 typedef bool (SERayTracingDevice::*RayTracingDeviceLoadNativeScene)(const char* fileName);
 typedef SERTImageHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTImage)(SERayTracingDeviceImage* img);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTImage)(SERayTracingDeviceImage* img);
+typedef bool (SERayTracingDevice::*RayTracingDeviceGetImageSize)(int& width, int& height);
+typedef bool (SERayTracingDevice::*RayTracingDeviceSetImageSize)(int width, int height);
+typedef void (SERayTracingDevice::*RayTracingDeviceRender)();
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -70,6 +73,11 @@ public:
 
     inline  SERTImageHandle* CreateRTImage(SERayTracingDeviceImage* img);
     inline  void DeleteRTImage(SERayTracingDeviceImage* img);
+
+    inline  bool GetImageSize(int& width, int& height);
+    inline  bool SetImageSize(int width, int height);
+
+    inline  void Render();
 
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
@@ -103,6 +111,9 @@ protected:
     RayTracingDeviceLoadNativeScene          _LoadNativeScene;
     RayTracingDeviceCreateRTImage            _CreateRTImage;
     RayTracingDeviceDeleteRTImage            _DeleteRTImage;
+    RayTracingDeviceGetImageSize             _GetImageSize;
+    RayTracingDeviceSetImageSize             _SetImageSize;
+    RayTracingDeviceRender                   _Render;
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;
     SERayTracingDeviceDelegate1  ImageReadyDelegate;
