@@ -3,6 +3,7 @@
 #include "SEVRayWin32Application.h"
 #include "SERayTracingDeviceImage.h"
 #include "SERayTracingDeviceBitmap.h"
+#include "SEMutex.h"
 
 namespace Swing
 {
@@ -33,11 +34,14 @@ public:
     void OnDumpMessage(SERayTracingDevice& rtDevice, const char* msg, int level, void* userObj);
 
 private:
-    unsigned int mFrameNumber;
-    bool mFinished;
-
     void UpdateImage(SERayTracingDeviceImage* image);
 
+    unsigned int mFrameNumber;
+    bool mFinished;
+    bool mStop;
+    SEMutex* mImgMutex;
+    SEMutex* mBmpMutex;
+    SERayTracingDeviceImage* mImg;
     SERayTracingDeviceBitmap* mBmp;
 };
 

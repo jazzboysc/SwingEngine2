@@ -36,6 +36,7 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(GetImageSize, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(SetImageSize, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(Render, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(GetImage, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -136,7 +137,9 @@ bool SEVRayRTDevice::__LoadNativeScene(const char* fileName)
 //----------------------------------------------------------------------------
 SERTImageHandle* SEVRayRTDevice::__CreateRTImage(SERayTracingDeviceImage*)
 {
-    return SE_NEW SEVRayRTImageHandle();
+    SERTImageHandle* imageHandle = SE_NEW SEVRayRTImageHandle();
+    imageHandle->RTDevice = this;
+    return imageHandle;
 }
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__DeleteRTImage(SERayTracingDeviceImage* img)
@@ -154,6 +157,8 @@ SERTBitmapHandle* SEVRayRTDevice::__CreateRTBitmap(SERayTracingDeviceBitmap*, SE
     SEMutexLock lock(*mImageOpMutex);
 
     SEVRayRTBitmapHandle* bitmapHandle = SE_NEW SEVRayRTBitmapHandle();
+    bitmapHandle->RTDevice = this;
+
     SEVRayRTImageHandle* imageHandle = (SEVRayRTImageHandle*)img->GetImageHandle();
     if( imageHandle && imageHandle->mImage )
     {
@@ -200,6 +205,26 @@ void SEVRayRTDevice::__Render()
     {
         mVRayRenderer->start();
     }
+}
+//----------------------------------------------------------------------------
+SERayTracingDeviceImage* SEVRayRTDevice::__GetImage()
+{
+    SERayTracingDeviceImage* res = nullptr;
+    if( mVRayRenderer )
+    {
+        VRay::VRayImage* img = mVRayRenderer->getImage();
+        if( img )
+        {
+            res = SE_NEW SERayTracingDeviceImage();
+            SEVRayRTImageHandle* imageHandle = (SEVRayRTImageHandle*)this->CreateRTImage(res);
+            imageHandle->mImage = img;
+            res->SetImageHandle(imageHandle);
+            img->getSize(res->Width, res->Height);
+        }
+
+    }
+
+    return res;
 }
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__OnRenderStart(VRay::VRayRenderer&, void*)

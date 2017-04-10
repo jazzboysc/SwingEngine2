@@ -176,8 +176,14 @@ public:
         {
 
         case WM_PAINT: 
+        {
+            RECT rect;
+            PAINTSTRUCT ps;
+            GetClientRect(hWnd, &rect);
+
             SEApplication::GetInstance()->OnPaint();
-            break;
+        }
+        break;
 
         case WM_SIZE:
         {

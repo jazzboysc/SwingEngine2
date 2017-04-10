@@ -43,6 +43,8 @@ private:
 
     void __Render();
 
+    SERayTracingDeviceImage* __GetImage();
+
 private:
     // Renderer callback functions.
     void __OnRenderStart(VRay::VRayRenderer& r, void*);

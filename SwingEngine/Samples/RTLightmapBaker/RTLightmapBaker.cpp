@@ -7,7 +7,15 @@ RTLightmapBaker::RTLightmapBaker(int width, int height)
 {
     Width = width;
     Height = height;
-    Title = "V-Ray Lightmap Baker";
+    Title = "Swing Engine V-Ray Lightmap Baker";
+
+    mImgMutex = nullptr;
+    mBmpMutex = nullptr;
+    mImg = nullptr;
+    mBmp = nullptr;
+    mFrameNumber = 0;
+    mFinished = false;
+    mStop = false;
 }
 //----------------------------------------------------------------------------
 RTLightmapBaker::~RTLightmapBaker()
@@ -16,6 +24,9 @@ RTLightmapBaker::~RTLightmapBaker()
 //----------------------------------------------------------------------------
 void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
 {
+    mImgMutex = SEMutex::Create();
+    mBmpMutex = SEMutex::Create();
+
     // Setup renderer delegate.
     mRayTracingDevice->SetOnRenderStart<RTLightmapBaker, &RTLightmapBaker::OnRenderStart>(*this, nullptr);
     mRayTracingDevice->SetOnImageReady<RTLightmapBaker, &RTLightmapBaker::OnImageReady>(*this, nullptr);
@@ -29,6 +40,15 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
         puts("Scene file not loaded.");
         return;
     }
+
+    printf("Loading %s...\n", sceneFileName);
+    bool sceneLoaded = mRayTracingDevice->LoadNativeScene(sceneFileName);
+    if( !sceneLoaded )
+    {
+        puts("Scene file is corrupted or doesn't exist.");
+    }
+
+    mRayTracingDevice->Render();
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::FrameFunc()
@@ -37,6 +57,17 @@ void RTLightmapBaker::FrameFunc()
 //----------------------------------------------------------------------------
 void RTLightmapBaker::Terminate()
 {
+    if( mImgMutex )
+    {
+        SEMutex::Destroy(mImgMutex);
+        mImgMutex = nullptr;
+    }
+
+    if( mBmpMutex )
+    {
+        SEMutex::Destroy(mBmpMutex);
+        mBmpMutex = nullptr;
+    }
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::ProcessInput()
@@ -45,14 +76,28 @@ void RTLightmapBaker::ProcessInput()
 //----------------------------------------------------------------------------
 void RTLightmapBaker::OnSizing(int newWidth, int newHeight)
 {
+    mRayTracingDevice->SetImageSize(newWidth, newHeight);
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::OnSize(int left, int top, int right, int bottom)
 {
+    if( !mImg )
+    {
+        return;
+    }
+
+    {
+        SEMutexLock lock(*mBmpMutex);
+
+        SERayTracingDeviceBitmap* newBmp = mImg->CreateRTBitmap(right, bottom);
+        SE_DELETE mBmp;
+        mBmp = newBmp;
+    }
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::OnWindowClose()
 {
+    mStop = true;
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::OnPaint()
@@ -64,13 +109,16 @@ void RTLightmapBaker::OnRenderStart(SERayTracingDevice& rtDevice, void*)
     mFrameNumber = 0;
     mFinished = false;
     mBmp = nullptr;
+
     printf("\n Rendering started. \n");
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::OnImageReady(SERayTracingDevice& rtDevice, void*)
 {
     mFinished = true;
-    UpdateImage(nullptr);
+    SERayTracingDeviceImage* img = rtDevice.GetImage();
+    UpdateImage(img);
+
     printf("\n Image is ready: %u \n", ++mFrameNumber);
 }
 //----------------------------------------------------------------------------
@@ -93,5 +141,18 @@ void RTLightmapBaker::OnDumpMessage(SERayTracingDevice& rtDevice, const char* ms
 //----------------------------------------------------------------------------
 void RTLightmapBaker::UpdateImage(SERayTracingDeviceImage* image)
 {
+    if( mStop || !image )
+    {
+        return;
+    }
+
+    SERayTracingDeviceImage* oldImage = this->mImg;
+    {
+        SEMutexLock lock(*mImgMutex);
+        mImg = image;
+    }
+    SE_DELETE oldImage;
+
+    Refresh();
 }
 //----------------------------------------------------------------------------

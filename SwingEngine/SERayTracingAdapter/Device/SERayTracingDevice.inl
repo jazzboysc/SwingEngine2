@@ -15,7 +15,7 @@ void SERayTracingDevice::Terminate()
 //----------------------------------------------------------------------------
 bool SERayTracingDevice::LoadNativeScene(const char* fileName)
 {
-    (this->*_LoadNativeScene)(fileName);
+    return (this->*_LoadNativeScene)(fileName);
 }
 //----------------------------------------------------------------------------
 SERTImageHandle* SERayTracingDevice::CreateRTImage(SERayTracingDeviceImage* img)
@@ -51,6 +51,11 @@ bool SERayTracingDevice::SetImageSize(int width, int height)
 void SERayTracingDevice::Render()
 {
     (this->*_Render)();
+}
+//----------------------------------------------------------------------------
+SERayTracingDeviceImage* SERayTracingDevice::GetImage()
+{
+    return (this->*_GetImage)();
 }
 //----------------------------------------------------------------------------
 void SERayTracingDevice::SetOnRenderStart(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData)

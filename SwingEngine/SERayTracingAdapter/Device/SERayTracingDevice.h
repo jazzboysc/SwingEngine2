@@ -57,6 +57,7 @@ typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTBitmap)(SERayTracingD
 typedef bool (SERayTracingDevice::*RayTracingDeviceGetImageSize)(int& width, int& height);
 typedef bool (SERayTracingDevice::*RayTracingDeviceSetImageSize)(int width, int height);
 typedef void (SERayTracingDevice::*RayTracingDeviceRender)();
+typedef SERayTracingDeviceImage* (SERayTracingDevice::*RayTracingDeviceGetImage)();
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -84,6 +85,8 @@ public:
     inline  bool SetImageSize(int width, int height);
 
     inline  void Render();
+
+    inline  SERayTracingDeviceImage* GetImage();
 
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
@@ -122,6 +125,7 @@ protected:
     RayTracingDeviceGetImageSize             _GetImageSize;
     RayTracingDeviceSetImageSize             _SetImageSize;
     RayTracingDeviceRender                   _Render;
+    RayTracingDeviceGetImage                 _GetImage;
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;
     SERayTracingDeviceDelegate1  ImageReadyDelegate;
