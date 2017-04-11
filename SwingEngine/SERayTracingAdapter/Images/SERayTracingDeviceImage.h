@@ -29,6 +29,8 @@ public:
 
     SERayTracingDeviceBitmap* CreateRTBitmap(int width, int height);
 
+    bool SaveToBmpFile(const std::string& fileName, bool preserveAlpha, bool invertChannels);
+
     int Width, Height;
 
 protected:

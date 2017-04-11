@@ -45,6 +45,11 @@ private:
 
     SERayTracingDeviceImage* __GetImage();
 
+    void* __RTBitmapGetPixels(SERayTracingDeviceBitmap* bmp);
+    void* __RTBitmapGetInfoHeader(SERayTracingDeviceBitmap* bmp);
+
+    bool __RTImageSaveToBmpFile(SERayTracingDeviceImage* img, const std::string& fileName, bool preserveAlpha, bool invertChannels);
+
 private:
     // Renderer callback functions.
     void __OnRenderStart(VRay::VRayRenderer& r, void*);

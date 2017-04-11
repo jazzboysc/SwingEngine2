@@ -181,7 +181,19 @@ public:
             PAINTSTRUCT ps;
             GetClientRect(hWnd, &rect);
 
-            SEApplication::GetInstance()->OnPaint();
+            if( TryEnterCriticalSection(&me.cs_bmp) )
+            {
+                void* bitmapPixels = nullptr;
+                void* bitmapInfoHeader = nullptr;
+                SEApplication::GetInstance()->OnPaintGetBitmapData(bitmapPixels, bitmapInfoHeader);
+                if( bitmapPixels && bitmapInfoHeader )
+                {
+                    SetDIBitsToDevice(BeginPaint(hWnd, &ps), 0, 0, rect.right, rect.bottom, 0, 0, 0, rect.bottom, bitmapPixels,
+                        reinterpret_cast<BITMAPINFO*>(bitmapInfoHeader), DIB_RGB_COLORS);
+                }
+                LeaveCriticalSection(&me.cs_bmp);
+                EndPaint(hWnd, &ps);
+            }
         }
         break;
 

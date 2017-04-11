@@ -17,7 +17,7 @@ SERayTracingDeviceBitmap::~SERayTracingDeviceBitmap()
 {
     if( mBitmapHandle )
     {
-        //mBitmapHandle->RTDevice->DeleteRTImage(this);
+        mBitmapHandle->RTDevice->DeleteRTBitmap(this);
         SE_DELETE mBitmapHandle;
     }
 }
@@ -30,5 +30,27 @@ SERTBitmapHandle* SERayTracingDeviceBitmap::GetBitmapHandle()
 void SERayTracingDeviceBitmap::SetBitmapHandle(SERTBitmapHandle* bitmapHandle)
 {
     mBitmapHandle = bitmapHandle;
+}
+//----------------------------------------------------------------------------
+void* SERayTracingDeviceBitmap::GetPixels()
+{
+    void* res = nullptr;
+    if( mBitmapHandle )
+    {
+        res = mBitmapHandle->RTDevice->RTBitmapGetPixels(this);
+    }
+
+    return res;
+}
+//----------------------------------------------------------------------------
+void* SERayTracingDeviceBitmap::GetBitmapInfoHeader()
+{
+    void* res = nullptr;
+    if( mBitmapHandle )
+    {
+        res = mBitmapHandle->RTDevice->RTBitmapGetInfoHeader(this);
+    }
+
+    return res;
 }
 //----------------------------------------------------------------------------

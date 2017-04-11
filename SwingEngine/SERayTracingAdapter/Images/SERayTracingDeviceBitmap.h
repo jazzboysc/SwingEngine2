@@ -26,6 +26,9 @@ public:
     SERTBitmapHandle* GetBitmapHandle();
     void SetBitmapHandle(SERTBitmapHandle* bitmapHandle);
 
+    void* GetPixels();
+    void* GetBitmapInfoHeader();
+
 protected:
 	SERTBitmapHandle* mBitmapHandle;
 };

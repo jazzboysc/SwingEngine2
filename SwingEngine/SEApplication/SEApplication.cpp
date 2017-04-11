@@ -50,7 +50,7 @@ void SEApplication::OnWindowClose()
 {
 }
 //----------------------------------------------------------------------------
-void SEApplication::OnPaint()
+void SEApplication::OnPaintGetBitmapData(void*&, void*&)
 {
 }
 //----------------------------------------------------------------------------

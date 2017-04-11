@@ -47,3 +47,14 @@ SERayTracingDeviceBitmap* SERayTracingDeviceImage::CreateRTBitmap(int width, int
     return rtBitmap;
 }
 //----------------------------------------------------------------------------
+bool SERayTracingDeviceImage::SaveToBmpFile(const std::string& fileName, bool preserveAlpha, bool invertChannels)
+{
+    bool res = false;
+    if( mImageHandle )
+    {
+        res = mImageHandle->RTDevice->RTImageSaveToBmpFile(this, fileName, preserveAlpha, invertChannels);
+    }
+
+    return res;
+}
+//----------------------------------------------------------------------------

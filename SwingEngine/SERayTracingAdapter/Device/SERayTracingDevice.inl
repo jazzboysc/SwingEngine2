@@ -58,6 +58,21 @@ SERayTracingDeviceImage* SERayTracingDevice::GetImage()
     return (this->*_GetImage)();
 }
 //----------------------------------------------------------------------------
+void* SERayTracingDevice::RTBitmapGetPixels(SERayTracingDeviceBitmap* bmp)
+{
+    return (this->*_RTBitmapGetPixels)(bmp);
+}
+//----------------------------------------------------------------------------
+void* SERayTracingDevice::RTBitmapGetInfoHeader(SERayTracingDeviceBitmap* bmp)
+{
+    return (this->*_RTBitmapGetInfoHeader)(bmp);
+}
+//----------------------------------------------------------------------------
+bool SERayTracingDevice::RTImageSaveToBmpFile(SERayTracingDeviceImage* img, const std::string& fileName, bool preserveAlpha, bool invertChannels)
+{
+    return (this->*_RTImageSaveToBmpFile)(img, fileName, preserveAlpha, invertChannels);
+}
+//----------------------------------------------------------------------------
 void SERayTracingDevice::SetOnRenderStart(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData)
 {
     RenderStartDelegate = SERayTracingDeviceDelegate1::FromFunction(CallbackFunc, const_cast<void*>(userData));

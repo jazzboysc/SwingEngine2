@@ -24,7 +24,7 @@ public:
     void OnSizing(int newWidth, int newHeight) override;
     void OnSize(int left, int top, int right, int bottom) override;
     void OnWindowClose() override;
-    void OnPaint() override;
+    void OnPaintGetBitmapData(void*& bitmapPixels, void*& bitmapInfoHeader) override;
 
     // Implement device delegate.
     void OnRenderStart(SERayTracingDevice& rtDevice, void* userObj);

@@ -58,6 +58,9 @@ typedef bool (SERayTracingDevice::*RayTracingDeviceGetImageSize)(int& width, int
 typedef bool (SERayTracingDevice::*RayTracingDeviceSetImageSize)(int width, int height);
 typedef void (SERayTracingDevice::*RayTracingDeviceRender)();
 typedef SERayTracingDeviceImage* (SERayTracingDevice::*RayTracingDeviceGetImage)();
+typedef void* (SERayTracingDevice::*RayTracingDeviceRTBitmapGetPixels)(SERayTracingDeviceBitmap* bmp);
+typedef void* (SERayTracingDevice::*RayTracingDeviceRTBitmapGetInfoHeader)(SERayTracingDeviceBitmap* bmp);
+typedef bool (SERayTracingDevice::*RayTracingDeviceRTImageSaveToBmpFile)(SERayTracingDeviceImage* img, const std::string& fileName, bool preserveAlpha, bool invertChannels);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -88,6 +91,11 @@ public:
 
     inline  SERayTracingDeviceImage* GetImage();
 
+    inline  void* RTBitmapGetPixels(SERayTracingDeviceBitmap* bmp);
+    inline  void* RTBitmapGetInfoHeader(SERayTracingDeviceBitmap* bmp);
+
+    inline  bool RTImageSaveToBmpFile(SERayTracingDeviceImage* img, const std::string& fileName, bool preserveAlpha, bool invertChannels);
+
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
     // ------------------- Delegate Interface ------------------- //
@@ -115,17 +123,20 @@ public:
     // ---------------------------------------------------------- //
 
 protected:
-    RayTracingDeviceInitialize               _Initialize;
-    RayTracingDeviceTerminate                _Terminate;
-    RayTracingDeviceLoadNativeScene          _LoadNativeScene;
-    RayTracingDeviceCreateRTImage            _CreateRTImage;
-    RayTracingDeviceDeleteRTImage            _DeleteRTImage;
-    RayTracingDeviceCreateRTBitmap           _CreateRTBitmap;
-    RayTracingDeviceDeleteRTBitmap           _DeleteRTBitmap;
-    RayTracingDeviceGetImageSize             _GetImageSize;
-    RayTracingDeviceSetImageSize             _SetImageSize;
-    RayTracingDeviceRender                   _Render;
-    RayTracingDeviceGetImage                 _GetImage;
+    RayTracingDeviceInitialize                   _Initialize;
+    RayTracingDeviceTerminate                    _Terminate;
+    RayTracingDeviceLoadNativeScene              _LoadNativeScene;
+    RayTracingDeviceCreateRTImage                _CreateRTImage;
+    RayTracingDeviceDeleteRTImage                _DeleteRTImage;
+    RayTracingDeviceCreateRTBitmap               _CreateRTBitmap;
+    RayTracingDeviceDeleteRTBitmap               _DeleteRTBitmap;
+    RayTracingDeviceGetImageSize                 _GetImageSize;
+    RayTracingDeviceSetImageSize                 _SetImageSize;
+    RayTracingDeviceRender                       _Render;
+    RayTracingDeviceGetImage                     _GetImage;
+    RayTracingDeviceRTBitmapGetPixels            _RTBitmapGetPixels;
+    RayTracingDeviceRTBitmapGetInfoHeader        _RTBitmapGetInfoHeader;
+    RayTracingDeviceRTImageSaveToBmpFile         _RTImageSaveToBmpFile;
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;
     SERayTracingDeviceDelegate1  ImageReadyDelegate;

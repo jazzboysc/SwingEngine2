@@ -37,6 +37,9 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(SetImageSize, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(Render, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(GetImage, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(RTBitmapGetPixels, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(RTBitmapGetInfoHeader, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(RTImageSaveToBmpFile, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -226,6 +229,55 @@ SERayTracingDeviceImage* SEVRayRTDevice::__GetImage()
 
     return res;
 }
+//----------------------------------------------------------------------------
+void* SEVRayRTDevice::__RTBitmapGetPixels(SERayTracingDeviceBitmap* bmp)
+{
+    void* res = nullptr;
+    if( bmp )
+    {
+        SEVRayRTBitmapHandle* bitmapHandle = (SEVRayRTBitmapHandle*)bmp->GetBitmapHandle();
+        if( bitmapHandle && bitmapHandle->mBitmap )
+        {
+            res = bitmapHandle->mBitmap->getPixels();
+        }
+    }
+
+    return res;
+}
+//----------------------------------------------------------------------------
+void* SEVRayRTDevice::__RTBitmapGetInfoHeader(SERayTracingDeviceBitmap* bmp)
+{
+    void* res = nullptr;
+    if( bmp )
+    {
+        SEVRayRTBitmapHandle* bitmapHandle = (SEVRayRTBitmapHandle*)bmp->GetBitmapHandle();
+        if( bitmapHandle )
+        {
+            res = (void*)bitmapHandle->mBitmap;
+        }
+    }
+
+    return res;
+}
+//----------------------------------------------------------------------------
+bool SEVRayRTDevice::__RTImageSaveToBmpFile(SERayTracingDeviceImage* img, const std::string& fileName, bool preserveAlpha, bool invertChannels)
+{
+    bool res = false;
+    if( img )
+    {
+        SEVRayRTImageHandle* imageHandle = (SEVRayRTImageHandle*)img->GetImageHandle();
+        if( imageHandle )
+        {
+            res = imageHandle->mImage->saveToBmpFile(fileName, preserveAlpha, invertChannels);
+        }
+    }
+
+    return res;
+}
+//----------------------------------------------------------------------------
+
+
+
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__OnRenderStart(VRay::VRayRenderer&, void*)
 {

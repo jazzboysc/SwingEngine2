@@ -51,7 +51,7 @@ public:
     virtual void OnSizing(int newWidth, int newHeight);
     virtual void OnSize(int left, int top, int right, int bottom);
     virtual void OnWindowClose();
-    virtual void OnPaint();
+    virtual void OnPaintGetBitmapData(void*& bitmapPixels, void*& bitmapInfoHeader);
 
     // Client region updating.
     virtual void Refresh(bool updateWindowSize = true);
