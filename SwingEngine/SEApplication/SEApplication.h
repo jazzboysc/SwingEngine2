@@ -24,6 +24,7 @@ struct SE_APPLICATION_API SEApplicationDescription
 {
     SEApplicationGraphicsFeature GraphicsFeature;
     SEGPUDeviceBase* GPUDevice;
+    SERayTracingDeviceDescription RayTracingDeviceDescription;
     SERayTracingDevice* RayTracingDevice;
 };
 

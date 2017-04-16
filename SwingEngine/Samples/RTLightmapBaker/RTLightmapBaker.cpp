@@ -136,12 +136,12 @@ void RTLightmapBaker::OnRTImageUpdated(SERayTracingDevice& rtDevice, SERayTracin
 {
     printf("Image updated: %u \n", ++mFrameNumber);
 
-    if( mFrameNumber == 20 )
-    {
-        bool res = img->SaveToBmpFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\test.bmp", false, false);
-        //bool res = img->SaveToBmpFile("test.bmp", false, false);
-        int stopHere = 0;
-    }
+    //if( mFrameNumber == 20 )
+    //{
+    //    bool res = img->SaveToBmpFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\test.bmp", false, false);
+    //    //bool res = img->SaveToBmpFile("test.bmp", false, false);
+    //    int stopHere = 0;
+    //}
     UpdateImage(img);
 }
 //----------------------------------------------------------------------------

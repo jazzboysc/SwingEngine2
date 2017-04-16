@@ -16,11 +16,14 @@
 using namespace Swing;
 using namespace VRay;
 
-const SE_UInt32 SEVRayRTDevice::gsRenderMode[RTDRM_RT_MAX - 1] =
+const SE_Int32 SEVRayRTDevice::gsRenderMode[RTDRM_MAX - 1] =
 {
     RendererOptions::RENDER_MODE_RT_CPU,
     RendererOptions::RENDER_MODE_RT_GPU_CUDA,
-    RendererOptions::RENDER_MODE_RT_GPU_OPENCL
+    RendererOptions::RENDER_MODE_RT_GPU_OPENCL,
+    RendererOptions::RENDER_MODE_PRODUCTION,
+    RendererOptions::RENDER_MODE_PRODUCTION_CUDA,
+    RendererOptions::RENDER_MODE_PRODUCTION_OPENCL
 };
 
 //----------------------------------------------------------------------------

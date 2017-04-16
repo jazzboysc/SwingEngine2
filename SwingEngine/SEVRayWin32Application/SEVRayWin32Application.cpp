@@ -297,7 +297,7 @@ SEVRayWin32Application::~SEVRayWin32Application()
 //----------------------------------------------------------------------------
 void SEVRayWin32Application::Initialize(SEApplicationDescription* ApplicationDesc)
 {
-    if (mInitialized)
+    if( mInitialized || !ApplicationDesc )
     {
         return;
     }
@@ -311,15 +311,10 @@ void SEVRayWin32Application::Initialize(SEApplicationDescription* ApplicationDes
     // Create file dialog helper.
     gWin32FileDialogHelper = new SEWin32FileDialogHelper();
 
-    mGraphicsFeature = AGF_RayTracer;
-    mGPUDevice = nullptr;
+    mGraphicsFeature = ApplicationDesc->GraphicsFeature;
+    mGPUDevice = ApplicationDesc->GPUDevice;
     mRayTracingDevice = ApplicationDesc->RayTracingDevice;
-    
-    SERayTracingDeviceDescription deviceDesc;
-    deviceDesc.RenderMode = RTDRM_RT_GPU_CUDA;
-    deviceDesc.ImageWidth = Width;
-    deviceDesc.ImageHeight = Height;
-    mRayTracingDevice->Initialize(&deviceDesc);
+    mRayTracingDevice->Initialize(&(ApplicationDesc->RayTracingDeviceDescription));
 
     // Create rendering window.
     gVRayWin32WindowHelper = new SEVRayWin32WindowHelper();

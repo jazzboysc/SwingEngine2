@@ -64,7 +64,7 @@ private:
 
     SEMutex* mImageOpMutex;
 
-    static const SE_UInt32 gsRenderMode[RTDRM_RT_MAX - 1];
+    static const SE_Int32 gsRenderMode[RTDRM_MAX - 1];
 };
 
 typedef SESmartPointer<SEVRayRTDevice> SEVRayRTDevicePtr;
