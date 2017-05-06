@@ -280,7 +280,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -300,6 +300,8 @@
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -309,7 +311,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -328,6 +330,8 @@ copy /y *.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -338,7 +342,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>false</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>false</FunctionLevelLinking>
@@ -356,6 +360,8 @@ copy /y *.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -366,7 +372,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>false</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>false</FunctionLevelLinking>
@@ -384,6 +390,8 @@ copy /y *.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -393,7 +401,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -421,6 +429,8 @@ copy /y *.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -430,7 +440,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -457,6 +467,8 @@ copy /y *.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -466,7 +478,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -485,6 +497,8 @@ copy /y *.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -494,7 +508,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -512,6 +526,8 @@ copy /y *.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -520,7 +536,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -544,6 +560,8 @@ copy /y *.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -552,7 +570,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -576,6 +594,8 @@ copy /y *.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -584,7 +604,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -601,6 +621,8 @@ copy /y *.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -609,7 +631,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -626,6 +648,8 @@ copy /y *.h ..\SDK\Include
 copy /y Device\*.inl ..\SDK\Include
 copy /y Images\*.h ..\SDK\Include
 copy /y Images\*.inl ..\SDK\Include
+copy /y Cameras\*.h ..\SDK\Include
+copy /y Cameras\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -639,6 +663,7 @@ copy /y *.h ..\SDK\Include
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cameras\SERTDeviceCamera.h" />
     <ClInclude Include="Device\SERayTracingDevice.h" />
     <ClInclude Include="Device\SERayTracingDeviceDelegate.h" />
     <ClInclude Include="Device\SERayTracingDeviceResource.h" />
@@ -651,6 +676,7 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="SwingEngineRayTracingAdapter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cameras\SERTDeviceCamera.cpp" />
     <ClCompile Include="Device\SERayTracingDevice.cpp" />
     <ClCompile Include="Device\SERayTracingDeviceResource.cpp" />
     <ClCompile Include="Images\SERayTracingDeviceBitmap.cpp" />

@@ -49,6 +49,7 @@ struct SE_RAY_TRACING_ADAPTER_API SERayTracingDeviceDescription
 class SERayTracingDevice;
 class SERayTracingDeviceImage;
 class SERayTracingDeviceBitmap;
+class SERTDeviceCamera;
 
 typedef void (SERayTracingDevice::*RayTracingDeviceInitialize)(SERayTracingDeviceDescription* deviceDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
@@ -64,6 +65,8 @@ typedef SERayTracingDeviceImage* (SERayTracingDevice::*RayTracingDeviceGetImage)
 typedef void* (SERayTracingDevice::*RayTracingDeviceRTBitmapGetPixels)(SERayTracingDeviceBitmap* bmp);
 typedef void* (SERayTracingDevice::*RayTracingDeviceRTBitmapGetInfoHeader)(SERayTracingDeviceBitmap* bmp);
 typedef bool (SERayTracingDevice::*RayTracingDeviceRTImageSaveToBmpFile)(SERayTracingDeviceImage* img, const std::string& fileName, bool preserveAlpha, bool invertChannels);
+typedef SERTDeviceCameraHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceCamera)(SERTDeviceCamera* camera);
+typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceCamera)(SERTDeviceCamera* camera);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -98,6 +101,9 @@ public:
     inline  void* RTBitmapGetInfoHeader(SERayTracingDeviceBitmap* bmp);
 
     inline  bool RTImageSaveToBmpFile(SERayTracingDeviceImage* img, const std::string& fileName, bool preserveAlpha, bool invertChannels);
+
+    inline  SERTDeviceCameraHandle* CreateRTDeviceCamera(SERTDeviceCamera* camera);
+    inline  void DeleteRTDeviceCamera(SERTDeviceCamera* camera);
 
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
@@ -140,6 +146,8 @@ protected:
     RayTracingDeviceRTBitmapGetPixels            _RTBitmapGetPixels;
     RayTracingDeviceRTBitmapGetInfoHeader        _RTBitmapGetInfoHeader;
     RayTracingDeviceRTImageSaveToBmpFile         _RTImageSaveToBmpFile;
+    RayTracingDeviceCreateRTDeviceCamera         _CreateRTDeviceCamera;
+    RayTracingDeviceDeleteRTDeviceCamera         _DeleteRTDeviceCamera;
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;
     SERayTracingDeviceDelegate1  ImageReadyDelegate;

@@ -7,6 +7,9 @@
     <Filter Include="Images">
       <UniqueIdentifier>{6963c74d-ea9a-4870-a2c1-e6125e75db93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Cameras">
+      <UniqueIdentifier>{10841584-e51d-4948-a0f6-567aa49a8f0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SERayTracingAdapterHeaders.h" />
@@ -29,6 +32,9 @@
     <ClInclude Include="Images\SERayTracingDeviceBitmap.h">
       <Filter>Images</Filter>
     </ClInclude>
+    <ClInclude Include="Cameras\SERTDeviceCamera.h">
+      <Filter>Cameras</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SERayTracingAdapterPCH.cpp" />
@@ -44,6 +50,9 @@
     </ClCompile>
     <ClCompile Include="Images\SERayTracingDeviceBitmap.cpp">
       <Filter>Images</Filter>
+    </ClCompile>
+    <ClCompile Include="Cameras\SERTDeviceCamera.cpp">
+      <Filter>Cameras</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

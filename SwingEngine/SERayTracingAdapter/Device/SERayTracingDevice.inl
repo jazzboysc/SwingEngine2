@@ -73,6 +73,16 @@ bool SERayTracingDevice::RTImageSaveToBmpFile(SERayTracingDeviceImage* img, cons
     return (this->*_RTImageSaveToBmpFile)(img, fileName, preserveAlpha, invertChannels);
 }
 //----------------------------------------------------------------------------
+SERTDeviceCameraHandle* SERayTracingDevice::CreateRTDeviceCamera(SERTDeviceCamera* camera)
+{
+    return (this->*_CreateRTDeviceCamera)(camera);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::DeleteRTDeviceCamera(SERTDeviceCamera* camera)
+{
+    (this->*_DeleteRTDeviceCamera)(camera);
+}
+//----------------------------------------------------------------------------
 void SERayTracingDevice::SetOnRenderStart(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData)
 {
     RenderStartDelegate = SERayTracingDeviceDelegate1::FromFunction(CallbackFunc, const_cast<void*>(userData));

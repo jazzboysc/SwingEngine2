@@ -35,6 +35,10 @@ struct SE_RAY_TRACING_ADAPTER_API SERTBitmapHandle : public SERayTracingDeviceRe
 {
 };
 
+struct SE_RAY_TRACING_ADAPTER_API SERTDeviceCameraHandle : public SERayTracingDeviceResource
+{
+};
+
 }
 
 #endif
