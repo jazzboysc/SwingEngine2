@@ -51,6 +51,7 @@ public:
 	SEVector3f GetLocation() const;
 	SEVector3f GetDirection() const;
 	SEVector3f GetRight() const;
+    SEVector3f GetUp() const;
 
 	void GetAngle(float& horizontalAngle, float& verticalAngle);
 	float GetFoV() const;

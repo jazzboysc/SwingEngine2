@@ -201,6 +201,11 @@ SEVector3f SERTGICamera::GetRight() const
 	return mRight;
 }
 //----------------------------------------------------------------------------
+SEVector3f SERTGICamera::GetUp() const
+{
+    return mUp;
+}
+//----------------------------------------------------------------------------
 void SERTGICamera::SetAngle(const float& horizontalAngle, const float& verticalAngle)
 {
     mRot.FromEulerAngles(SEVector3f(verticalAngle*SEMathf::DEG_TO_RAD,
