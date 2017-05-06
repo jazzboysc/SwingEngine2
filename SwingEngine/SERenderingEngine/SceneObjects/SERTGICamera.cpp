@@ -119,7 +119,7 @@ void SERTGICamera::GetNearFarPlane(float* nearFarPlane) const
     nearFarPlane[1] = mFrustum[VF_DMAX];
 }
 //----------------------------------------------------------------------------
-SEMatrix4f SERTGICamera::GetViewTransform()
+SEMatrix4f SERTGICamera::GetViewTransform() const
 {
 	SEMatrix4f res;
 
@@ -148,6 +148,25 @@ SEMatrix4f SERTGICamera::GetViewTransform()
 	res[3][3] = 1.0f;
 
 	return res;
+}
+//----------------------------------------------------------------------------
+SEMatrix3f SERTGICamera::GetRotation() const
+{
+    SEMatrix3f res;
+
+    res[0][0] = mRight.X;
+    res[0][1] = mRight.Y;
+    res[0][2] = mRight.Z;
+
+    res[1][0] = mUp.X;
+    res[1][1] = mUp.Y;
+    res[1][2] = mUp.Z;
+
+    res[2][0] = mDirection.X;
+    res[2][1] = mDirection.Y;
+    res[2][2] = mDirection.Z;
+
+    return res;
 }
 //----------------------------------------------------------------------------
 SEMatrix4f SERTGICamera::GetProjectionTransform()

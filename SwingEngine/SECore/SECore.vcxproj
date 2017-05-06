@@ -280,7 +280,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -308,6 +308,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -316,7 +317,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -343,6 +344,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -352,7 +354,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>false</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>false</FunctionLevelLinking>
@@ -378,6 +380,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -387,7 +390,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>false</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>false</FunctionLevelLinking>
@@ -413,6 +416,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -421,7 +425,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_CORE_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -455,6 +459,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -463,7 +468,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_CORE_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -496,6 +501,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -504,7 +510,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -531,6 +537,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -539,7 +546,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -565,6 +572,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -572,7 +580,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_CORE_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -603,6 +611,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -610,7 +619,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_CORE_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -641,6 +650,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -648,7 +658,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -673,6 +683,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -680,7 +691,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Math;.\ObjectSystem;.\System;.\Threading;.\SharedArrays;.\Interfaces;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -705,6 +716,7 @@ copy /y System\*.h ..\SDK\Include
 copy /y System\*.inl ..\SDK\Include
 copy /y SharedArrays\*.h ..\SDK\Include
 copy /y SharedArrays\*.inl ..\SDK\Include
+copy /y Interfaces\*.h ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 </Command>
@@ -718,6 +730,8 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="Base\SEPriorityQueue.h" />
     <ClInclude Include="Base\SEStringHashTable.h" />
     <ClInclude Include="Base\SETuple.h" />
+    <ClInclude Include="Interfaces\SEICamera.h" />
+    <ClInclude Include="Math\SECoordinateSystemAdapter.h" />
     <ClInclude Include="ObjectSystem\SEReferencable.h" />
     <ClInclude Include="System\SEAssert.h" />
     <ClInclude Include="System\SECommand.h" />
@@ -859,6 +873,7 @@ copy /y *.h ..\SDK\Include
     <None Include="SharedArrays\SESharedArray.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Math\SECoordinateSystemAdapter.cpp" />
     <ClCompile Include="ObjectSystem\SEReferencable.cpp" />
     <ClCompile Include="System\SECommand.cpp" />
     <ClCompile Include="System\SEMemory.cpp" />

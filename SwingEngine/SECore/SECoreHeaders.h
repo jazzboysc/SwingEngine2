@@ -76,6 +76,7 @@
 #include "SEDistribution1D.h"
 #include "SEDistribution2D.h"
 #include "SEPermutedHalton.h"
+#include "SECoordinateSystemAdapter.h"
 
 // Object System
 #include "SEReferencable.h"
@@ -129,5 +130,8 @@
 #include "SEVector2Array.h"
 #include "SEVector3Array.h"
 #include "SEVector4Array.h"
+
+// Interfaces
+#include "SEICamera.h"
 
 #endif

@@ -19,6 +19,9 @@
     <Filter Include="SharedArrays">
       <UniqueIdentifier>{c5ef8133-d899-4f1b-ad8a-63ba9caabf67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Interfaces">
+      <UniqueIdentifier>{edb943cf-b0a2-4216-8702-acb2e7789e47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\SEBlockedArray.h">
@@ -334,6 +337,12 @@
     <ClInclude Include="SwingEngineCore.h" />
     <ClInclude Include="ObjectSystem\SEReferencable.h">
       <Filter>ObjectSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\SEICamera.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\SECoordinateSystemAdapter.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -691,6 +700,9 @@
     <ClCompile Include="SECoreRegister.cpp" />
     <ClCompile Include="ObjectSystem\SEReferencable.cpp">
       <Filter>ObjectSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\SECoordinateSystemAdapter.cpp">
+      <Filter>Math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

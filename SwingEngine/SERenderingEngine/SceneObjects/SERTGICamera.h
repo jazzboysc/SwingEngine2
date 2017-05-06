@@ -9,6 +9,7 @@
 #include "SEVector3.h"
 #include "SEMatrix4.h"
 #include "SEQuaternion.h"
+#include "SEICamera.h"
 
 namespace Swing
 {
@@ -17,25 +18,11 @@ namespace Swing
 // Author: Che Sun
 // Date: 09/29/2013
 //----------------------------------------------------------------------------
-class SE_RENDERING_ENGINE_API SERTGICamera
+class SE_RENDERING_ENGINE_API SERTGICamera : public SEICamera
 {
 public:
 	SERTGICamera(bool IsPerspective = true);
 	~SERTGICamera();
-
-	// Camera frame
-	//
-	//       U
-	//       |    D 
-	//       |  / 
-	//       | / 
-	//       |/_________R
-	//       E
-
-    // Default location  E = (0,0,0)
-    // Default direction R = (1,0,0)
-    // Default up        U = (0,1,0)
-    // Default right     D = (0,0,1)
 
 	void SetLookAt(const SEVector3f& location, const SEVector3f& lookAt, const SEVector3f& up);
     void SetLocation(const SEVector3f& location);
@@ -48,16 +35,18 @@ public:
 
     void Rotate(const SEVector3f& eulerAngles);
 
-	SEVector3f GetLocation() const;
-	SEVector3f GetDirection() const;
-	SEVector3f GetRight() const;
-    SEVector3f GetUp() const;
+    // Implement interfaces.
+	virtual SEVector3f GetLocation() const override;
+	virtual SEVector3f GetRight() const override;
+    virtual SEVector3f GetUp() const override;
+	virtual SEVector3f GetDirection() const override;
+    virtual SEMatrix4f GetViewTransform() const override;
+    virtual SEMatrix3f GetRotation() const override;
 
 	void GetAngle(float& horizontalAngle, float& verticalAngle);
 	float GetFoV() const;
     void GetNearFarPlane(float* nearFarPlane) const;
 
-	SEMatrix4f GetViewTransform();
 	SEMatrix4f GetProjectionTransform();
     SEMatrix4f GetViewCacheTransform();
     SEMatrix4f GetProjectionCacheTransform();
