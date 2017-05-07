@@ -27,3 +27,13 @@ SEVRayRTBitmapHandle::~SEVRayRTBitmapHandle()
 {
 }
 //----------------------------------------------------------------------------
+SEVRayRTDeviceCameraHandle::SEVRayRTDeviceCameraHandle()
+    :
+    mRenderView(nullptr)
+{
+}
+//----------------------------------------------------------------------------
+SEVRayRTDeviceCameraHandle::~SEVRayRTDeviceCameraHandle()
+{
+}
+//----------------------------------------------------------------------------

@@ -50,6 +50,9 @@ private:
 
     bool __RTImageSaveToBmpFile(SERayTracingDeviceImage* img, const std::string& fileName, bool preserveAlpha, bool invertChannels);
 
+    SERTDeviceCameraHandle* __CreateRTDeviceCamera(SERTDeviceCamera* camera);
+    void __DeleteRTDeviceCamera(SERTDeviceCamera* camera);
+
 private:
     // Renderer callback functions.
     void __OnRenderStart(VRay::VRayRenderer& r, void*);

@@ -14,6 +14,11 @@ class VRayRenderer;
 struct VRayImage;
 class Bmp;
 
+namespace Plugins
+{
+class RenderView;
+}
+
 }
 
 #endif

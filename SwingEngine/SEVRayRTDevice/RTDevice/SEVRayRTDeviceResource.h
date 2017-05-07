@@ -29,6 +29,14 @@ struct SE_VRAY_RT_DEVICE_API SEVRayRTBitmapHandle : public SERTBitmapHandle
     ~SEVRayRTBitmapHandle();
 };
 //----------------------------------------------------------------------------
+struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceCameraHandle : public SERTDeviceCameraHandle
+{
+    VRay::Plugins::RenderView* mRenderView;
+
+    SEVRayRTDeviceCameraHandle();
+    ~SEVRayRTDeviceCameraHandle();
+};
+//----------------------------------------------------------------------------
 
 }
 

@@ -12,9 +12,11 @@
 
 #define VRAY_RUNTIME_LOAD_PRIMARY
 #include "vraysdk.hpp"
+#include "vrayplugins.hpp"
 
 using namespace Swing;
 using namespace VRay;
+using namespace VRay::Plugins;
 
 const SE_Int32 SEVRayRTDevice::gsRenderMode[RTDRM_MAX - 1] =
 {
@@ -43,6 +45,8 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(RTBitmapGetPixels, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(RTBitmapGetInfoHeader, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(RTImageSaveToBmpFile, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTDeviceCamera, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTDeviceCamera, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -276,6 +280,25 @@ bool SEVRayRTDevice::__RTImageSaveToBmpFile(SERayTracingDeviceImage* img, const 
     }
 
     return res;
+}
+//----------------------------------------------------------------------------
+SERTDeviceCameraHandle* SEVRayRTDevice::__CreateRTDeviceCamera(SERTDeviceCamera* camera)
+{
+    SEVRayRTDeviceCameraHandle* cameraHandle = nullptr;
+    if( camera )
+    {
+        cameraHandle = SE_NEW SEVRayRTDeviceCameraHandle();
+        cameraHandle->RTDevice = this;
+        cameraHandle->mRenderView = new VRay::Plugins::RenderView();
+        *(cameraHandle->mRenderView) = mVRayRenderer->newPlugin<RenderView>();
+    }
+
+    return cameraHandle;
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__DeleteRTDeviceCamera(SERTDeviceCamera* camera)
+{
+
 }
 //----------------------------------------------------------------------------
 
