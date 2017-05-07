@@ -3,6 +3,7 @@
 #include "SEVRayWin32Application.h"
 #include "SERayTracingDeviceImage.h"
 #include "SERayTracingDeviceBitmap.h"
+#include "SERTDeviceCamera.h"
 #include "SEMutex.h"
 
 namespace Swing
@@ -43,6 +44,7 @@ private:
     SEMutex* mBmpMutex;
     SERayTracingDeviceImage* mImg;
     SERayTracingDeviceBitmap* mBmp;
+    SERTDeviceCameraPtr mRTDeviceCamera;
 };
 
 }

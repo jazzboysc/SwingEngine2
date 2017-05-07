@@ -320,7 +320,7 @@ void SEVRayWin32Application::Initialize(SEApplicationDescription* ApplicationDes
     gVRayWin32WindowHelper = new SEVRayWin32WindowHelper();
     gVRayWin32WindowHelper->CreateMainWindow(Width, Height, GetConsoleWindow());
 
-	mMainCamera = SE_NEW SERTGICamera;
+	mMainCamera = SE_NEW SERTGICamera();
 
 	// Call child class initialize
 	this->Initialize(ApplicationDesc);
@@ -357,8 +357,6 @@ void SEVRayWin32Application::FrameFunc()
 //----------------------------------------------------------------------------
 void SEVRayWin32Application::Terminate()
 {
-    mRayTracingDevice = nullptr;
-
     delete gWin32FileDialogHelper;
     gWin32FileDialogHelper = nullptr;
 
@@ -367,6 +365,8 @@ void SEVRayWin32Application::Terminate()
 
 	this->Terminate();
 	SE_DELETE mMainCamera;
+
+    mRayTracingDevice = nullptr;
 }
 //----------------------------------------------------------------------------
 void SEVRayWin32Application::ProcessInput(int, int, int, int)

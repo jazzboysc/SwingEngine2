@@ -5,6 +5,7 @@
 #include "SEVRayRTDevice.h"
 #include "SERayTracingDeviceImage.h"
 #include "SERayTracingDeviceBitmap.h"
+#include "SERTDeviceCamera.h"
 
 #ifdef _WIN32
 #pragma warning(disable:4189)
@@ -47,6 +48,7 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(RTImageSaveToBmpFile, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTDeviceCamera, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTDeviceCamera, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(SetTransformFromCamera, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -290,7 +292,8 @@ SERTDeviceCameraHandle* SEVRayRTDevice::__CreateRTDeviceCamera(SERTDeviceCamera*
         cameraHandle = SE_NEW SEVRayRTDeviceCameraHandle();
         cameraHandle->RTDevice = this;
         cameraHandle->mRenderView = new VRay::Plugins::RenderView();
-        *(cameraHandle->mRenderView) = mVRayRenderer->newPlugin<RenderView>();
+        //*(cameraHandle->mRenderView) = mVRayRenderer->newPlugin<RenderView>();
+        *(cameraHandle->mRenderView) = mVRayRenderer->getOrCreatePlugin<RenderView>("renderView");
     }
 
     return cameraHandle;
@@ -298,10 +301,39 @@ SERTDeviceCameraHandle* SEVRayRTDevice::__CreateRTDeviceCamera(SERTDeviceCamera*
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__DeleteRTDeviceCamera(SERTDeviceCamera* camera)
 {
-
+    if( camera )
+    {
+        SEVRayRTDeviceCameraHandle* cameraHandle = (SEVRayRTDeviceCameraHandle*)camera->GetCameraHandle();
+        if( cameraHandle )
+        {
+            delete cameraHandle->mRenderView;
+            cameraHandle->mRenderView = nullptr;
+        }
+    }
 }
 //----------------------------------------------------------------------------
+void SEVRayRTDevice::__SetTransformFromCamera(SEICamera* srcCamera, SERTDeviceCamera* dstCamera)
+{
+    if( srcCamera && dstCamera )
+    {
+        SEVRayRTDeviceCameraHandle* cameraHandle = (SEVRayRTDeviceCameraHandle*)dstCamera->GetCameraHandle();
+        if( cameraHandle )
+        {
+            SEVector3f srcLoc = srcCamera->GetLocation();
+            Vector dstLoc;
+            dstLoc.x = srcLoc.X;
+            dstLoc.y = srcLoc.Z;
+            dstLoc.z = srcLoc.Y;
+            //Matrix rot(Vector(1.0f, 0.0f, 0.0f), Vector(0.0f, 1.0f, 0.0f), Vector(0.0f, 0.0f, 1.0f));
+            Matrix rot(Vector(0.999998, 0.00206546, 0.0), Vector(0.000153214, -0.0741788, 0.997245), Vector(0.00205977, -0.997243, -0.074179));
+            Transform trans(rot, dstLoc);
 
+            RenderView& renderView = *cameraHandle->mRenderView;
+            renderView.set_transform(trans);
+        }
+    }
+}
+//----------------------------------------------------------------------------
 
 
 //----------------------------------------------------------------------------

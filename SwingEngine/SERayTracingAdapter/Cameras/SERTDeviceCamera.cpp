@@ -19,18 +19,28 @@ SERTDeviceCamera::~SERTDeviceCamera()
     {
         mCameraHandle->RTDevice->DeleteRTDeviceCamera(this);
         SE_DELETE mCameraHandle;
+        mCameraHandle = nullptr;
     }
 }
 //----------------------------------------------------------------------------
 void SERTDeviceCamera::CreateDeviceResource(SERayTracingDevice& device)
 {
-    mCameraHandle = device.CreateRTDeviceCamera(this);
+    if( !mCameraHandle )
+    {
+        mCameraHandle = device.CreateRTDeviceCamera(this);
+    }
 }
 //----------------------------------------------------------------------------
 void SERTDeviceCamera::SetTransformFromCamera(SEICamera* camera)
 {
-    if( camera )
+    if( camera && mCameraHandle )
     {
+        mCameraHandle->RTDevice->SetTransformFromCamera(camera, this);
     }
+}
+//----------------------------------------------------------------------------
+SERTDeviceCameraHandle* SERTDeviceCamera::GetCameraHandle()
+{
+    return mCameraHandle;
 }
 //----------------------------------------------------------------------------

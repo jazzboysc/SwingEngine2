@@ -83,6 +83,11 @@ void SERayTracingDevice::DeleteRTDeviceCamera(SERTDeviceCamera* camera)
     (this->*_DeleteRTDeviceCamera)(camera);
 }
 //----------------------------------------------------------------------------
+void SERayTracingDevice::SetTransformFromCamera(SEICamera* srcCamera, SERTDeviceCamera* dstCamera)
+{
+    (this->*_SetTransformFromCamera)(srcCamera, dstCamera);
+}
+//----------------------------------------------------------------------------
 void SERayTracingDevice::SetOnRenderStart(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData)
 {
     RenderStartDelegate = SERayTracingDeviceDelegate1::FromFunction(CallbackFunc, const_cast<void*>(userData));

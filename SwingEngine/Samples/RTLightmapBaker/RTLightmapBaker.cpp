@@ -1,4 +1,5 @@
 #include "RTLightmapBaker.h"
+#include "SERTGICamera.h"
 
 using namespace Swing;
 
@@ -48,6 +49,11 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
         puts("Scene file is corrupted or doesn't exist.");
     }
 
+    mMainCamera->SetLocation(SEVector3f(2.53571f, 82.6768f, -135.814f));
+    mRTDeviceCamera = SE_NEW SERTDeviceCamera();
+    mRTDeviceCamera->CreateDeviceResource(*mRayTracingDevice);
+    mRTDeviceCamera->SetTransformFromCamera((SEICamera*)mMainCamera);
+
     mRayTracingDevice->Render();
 }
 //----------------------------------------------------------------------------
@@ -68,6 +74,8 @@ void RTLightmapBaker::Terminate()
         SEMutex::Destroy(mBmpMutex);
         mBmpMutex = nullptr;
     }
+
+    mRTDeviceCamera = nullptr;
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::ProcessInput()

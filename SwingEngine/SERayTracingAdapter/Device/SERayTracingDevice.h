@@ -8,6 +8,7 @@
 #include "SEReferencable.h"
 #include "SERayTracingDeviceResource.h"
 #include "SERayTracingDeviceDelegate.h"
+#include "SEICamera.h"
 
 namespace Swing
 {
@@ -67,6 +68,7 @@ typedef void* (SERayTracingDevice::*RayTracingDeviceRTBitmapGetInfoHeader)(SERay
 typedef bool (SERayTracingDevice::*RayTracingDeviceRTImageSaveToBmpFile)(SERayTracingDeviceImage* img, const std::string& fileName, bool preserveAlpha, bool invertChannels);
 typedef SERTDeviceCameraHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceCamera)(SERTDeviceCamera* camera);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceCamera)(SERTDeviceCamera* camera);
+typedef void (SERayTracingDevice::*RayTracingDeviceSetTransformFromCamera)(SEICamera* srcCamera, SERTDeviceCamera* dstCamera);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -104,6 +106,7 @@ public:
 
     inline  SERTDeviceCameraHandle* CreateRTDeviceCamera(SERTDeviceCamera* camera);
     inline  void DeleteRTDeviceCamera(SERTDeviceCamera* camera);
+    inline  void SetTransformFromCamera(SEICamera* srcCamera, SERTDeviceCamera* dstCamera);
 
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
@@ -148,6 +151,7 @@ protected:
     RayTracingDeviceRTImageSaveToBmpFile         _RTImageSaveToBmpFile;
     RayTracingDeviceCreateRTDeviceCamera         _CreateRTDeviceCamera;
     RayTracingDeviceDeleteRTDeviceCamera         _DeleteRTDeviceCamera;
+    RayTracingDeviceSetTransformFromCamera       _SetTransformFromCamera;
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;
     SERayTracingDeviceDelegate1  ImageReadyDelegate;

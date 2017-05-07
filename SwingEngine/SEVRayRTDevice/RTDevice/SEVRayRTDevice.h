@@ -52,6 +52,7 @@ private:
 
     SERTDeviceCameraHandle* __CreateRTDeviceCamera(SERTDeviceCamera* camera);
     void __DeleteRTDeviceCamera(SERTDeviceCamera* camera);
+    void __SetTransformFromCamera(SEICamera* srcCamera, SERTDeviceCamera* dstCamera);
 
 private:
     // Renderer callback functions.

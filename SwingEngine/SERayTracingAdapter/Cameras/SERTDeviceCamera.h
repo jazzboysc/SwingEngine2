@@ -26,6 +26,7 @@ public:
 
     void CreateDeviceResource(SERayTracingDevice& device);
     void SetTransformFromCamera(SEICamera* camera);
+    SERTDeviceCameraHandle* GetCameraHandle();
 
 protected:
     SERTDeviceCameraHandle* mCameraHandle;
