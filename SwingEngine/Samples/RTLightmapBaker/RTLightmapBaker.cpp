@@ -49,7 +49,8 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
         puts("Scene file is corrupted or doesn't exist.");
     }
 
-    mMainCamera->SetLocation(SEVector3f(2.53571f, 82.6768f, -135.814f));
+    //mMainCamera->SetLocation(SEVector3f(2.53571f, 282.6768f, -135.814f));
+    mMainCamera->SetLookAt(SEVector3f(2.53571f, 82.6768f, -140.814f), SEVector3f(2.53571f, 582.6768f, 0.0f), SEVector3f(0.0f, 1.0f, 0.0f));
     mRTDeviceCamera = SE_NEW SERTDeviceCamera();
     mRTDeviceCamera->CreateDeviceResource(*mRayTracingDevice);
     mRTDeviceCamera->SetTransformFromCamera((SEICamera*)mMainCamera);

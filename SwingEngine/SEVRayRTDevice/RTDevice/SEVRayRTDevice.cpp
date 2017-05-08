@@ -320,13 +320,29 @@ void SEVRayRTDevice::__SetTransformFromCamera(SEICamera* srcCamera, SERTDeviceCa
         if( cameraHandle )
         {
             SEVector3f srcLoc = srcCamera->GetLocation();
+            SEVector3f r = srcCamera->GetRight();
+            SEVector3f u = srcCamera->GetUp();
+            SEVector3f d = srcCamera->GetDirection();
+            SEMatrix3f srcRot(r, u, d);
+            srcRot.Transpose();
+
+            Matrix dstRot;
+            dstRot[0][0] = srcRot[0][0];
+            dstRot[0][1] = srcRot[2][0];
+            dstRot[0][2] = srcRot[1][0];
+            dstRot[1][0] = srcRot[0][2];
+            dstRot[1][1] = srcRot[2][2];
+            dstRot[1][2] = srcRot[1][2];
+            dstRot[2][0] = srcRot[0][1];
+            dstRot[2][1] = srcRot[2][1];
+            dstRot[2][2] = srcRot[1][1];
+
             Vector dstLoc;
             dstLoc.x = srcLoc.X;
             dstLoc.y = srcLoc.Z;
             dstLoc.z = srcLoc.Y;
-            //Matrix rot(Vector(1.0f, 0.0f, 0.0f), Vector(0.0f, 1.0f, 0.0f), Vector(0.0f, 0.0f, 1.0f));
-            Matrix rot(Vector(0.999998, 0.00206546, 0.0), Vector(0.000153214, -0.0741788, 0.997245), Vector(0.00205977, -0.997243, -0.074179));
-            Transform trans(rot, dstLoc);
+
+            Transform trans(dstRot, dstLoc);
 
             RenderView& renderView = *cameraHandle->mRenderView;
             renderView.set_transform(trans);
