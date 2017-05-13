@@ -344,6 +344,9 @@
     <ClInclude Include="Math\SECoordinateSystemAdapter.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="Interfaces\SEILight.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Base\SEBlockedArray.inl">

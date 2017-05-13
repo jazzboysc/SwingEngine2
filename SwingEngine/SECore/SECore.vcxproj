@@ -731,6 +731,7 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="Base\SEStringHashTable.h" />
     <ClInclude Include="Base\SETuple.h" />
     <ClInclude Include="Interfaces\SEICamera.h" />
+    <ClInclude Include="Interfaces\SEILight.h" />
     <ClInclude Include="Math\SECoordinateSystemAdapter.h" />
     <ClInclude Include="ObjectSystem\SEReferencable.h" />
     <ClInclude Include="System\SEAssert.h" />

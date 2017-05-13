@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     appDesc.GraphicsFeature = AGF_RayTracer;
     appDesc.RayTracingDevice = rtDevice;
     appDesc.GPUDevice = nullptr;
-    appDesc.RayTracingDeviceDescription.RenderMode = RTDRM_RT_CPU;
+    appDesc.RayTracingDeviceDescription.RenderMode = RTDRM_RT_GPU_CUDA;
     appDesc.RayTracingDeviceDescription.ImageWidth = width;
     appDesc.RayTracingDeviceDescription.ImageHeight = height;
 

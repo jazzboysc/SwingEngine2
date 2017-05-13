@@ -104,8 +104,8 @@ void SEVRayRTDevice::__Initialize(SERayTracingDeviceDescription* deviceDesc)
     settingsRTEngine.setValue("undersampling", false);
     settingsRTEngine.setValue("gi_depth", 1);
     settingsRTEngine.setValue("gpu_bundle_size", 128);
-    settingsRTEngine.setValue("gpu_samples_per_pixel", 1);
-
+    settingsRTEngine.setValue("gpu_samples_per_pixel", 16);
+    
     // Setup callback functions.
     mVRayRenderer->setOnRenderStart<SEVRayRTDevice, &SEVRayRTDevice::__OnRenderStart>(*this, nullptr);
     mVRayRenderer->setOnImageReady<SEVRayRTDevice, &SEVRayRTDevice::__OnImageReady>(*this, nullptr);
