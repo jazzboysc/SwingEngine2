@@ -8,6 +8,7 @@
 #include "SEReferencable.h"
 #include "SERTGICamera.h"
 #include "SETriangleMesh.h"
+#include "SEILight.h"
 
 namespace Swing
 {
@@ -33,7 +34,9 @@ struct SE_RENDERING_ENGINE_API SESceneLight
 enum SERTGILightType
 {
     LT_Point = 1,
-    LT_Spot  = 2
+    LT_Spot  = 2,
+    LT_Rectangle = 3,
+    LT_Sky = 4
 };
 
 class SELightManager;
@@ -42,7 +45,7 @@ class SELightManager;
 // Author: Che Sun
 // Date: 11/14/2013
 //----------------------------------------------------------------------------
-class SE_RENDERING_ENGINE_API SERTGILight : public SEReferencable
+class SE_RENDERING_ENGINE_API SERTGILight : public SEReferencable, public SEILight
 {
 public:
     SERTGILight(SERTGILightType type = LT_Point);
@@ -53,7 +56,6 @@ public:
     void SetProjector(SERTGICamera* projector);
     SERTGICamera* GetProjector() const;
     void SetLocation(const SEVector3f& location);
-    SEVector3f GetLocation() const;
 
     void SetLightMesh(SETriangleMesh* lightMesh);
     SETriangleMesh* GetLightMesh() const;
@@ -63,6 +65,24 @@ public:
 
     // Called by light manager to update shader uniform buffer for this light.
     virtual void OnUpdateLightBufferCache(SESceneLight* cache);
+
+    // Implement common light interface.
+    virtual SEMatrix3f GetRotation() const override;
+    virtual SEVector3f GetLocation() const override;
+    virtual SEColorRGB GetColor() const override;
+    virtual float GetIntensity() const override;
+    virtual SE_UInt32 GetSampleCount() const override;
+    virtual bool CastShadow() const override;
+    virtual bool IsVisible() const override;
+
+    // Implement light rectangle interface.
+    virtual float GetWidth() const override;
+    virtual float GetHeight() const override;
+
+    // Implement sky light interface.
+    virtual bool IsSpherical() const override;
+    virtual bool UseHDRFile() const override;
+    virtual const char* GetHDRFilePath() const override;
    
 protected:
     friend class SELightManager;

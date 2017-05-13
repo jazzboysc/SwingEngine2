@@ -43,11 +43,6 @@ void SERTGILight::SetLocation(const SEVector3f& location)
     mLocation = location;
 }
 //----------------------------------------------------------------------------
-SEVector3f SERTGILight::GetLocation() const
-{
-    return mLocation;
-}
-//----------------------------------------------------------------------------
 void SERTGILight::SetLightMesh(SETriangleMesh* lightMesh)
 {
     mLightMesh = lightMesh;
@@ -96,5 +91,69 @@ void SERTGILight::OnUpdateLightBufferCache(SESceneLight* cache)
                 (float*)&cache->LightProjectorNearFar);
         }
     }
+}
+//----------------------------------------------------------------------------
+SEMatrix3f SERTGILight::GetRotation() const
+{
+    // TODO:
+    SEMatrix3f res;
+    return res;
+}
+//----------------------------------------------------------------------------
+SEVector3f SERTGILight::GetLocation() const
+{
+    return mLocation;
+}
+//----------------------------------------------------------------------------
+SEColorRGB SERTGILight::GetColor() const
+{
+    // TODO:
+    SEColorRGB res;
+    return res;
+}
+//----------------------------------------------------------------------------
+float SERTGILight::GetIntensity() const
+{
+    return 1.0f;
+}
+//----------------------------------------------------------------------------
+SE_UInt32 SERTGILight::GetSampleCount() const
+{
+    return 8;
+}
+//----------------------------------------------------------------------------
+bool SERTGILight::CastShadow() const
+{
+    return true;
+}
+//----------------------------------------------------------------------------
+bool SERTGILight::IsVisible() const
+{
+    return true;
+}
+//----------------------------------------------------------------------------
+float SERTGILight::GetWidth() const
+{
+    return 1.0f;
+}
+//----------------------------------------------------------------------------
+float SERTGILight::GetHeight() const
+{
+    return 1.0f;
+}
+//----------------------------------------------------------------------------
+bool SERTGILight::IsSpherical() const
+{
+    return false;
+}
+//----------------------------------------------------------------------------
+bool SERTGILight::UseHDRFile() const
+{
+    return false;
+}
+//----------------------------------------------------------------------------
+const char* SERTGILight::GetHDRFilePath() const
+{
+    return nullptr;
 }
 //----------------------------------------------------------------------------
