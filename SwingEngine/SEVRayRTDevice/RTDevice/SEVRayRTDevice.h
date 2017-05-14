@@ -54,6 +54,12 @@ private:
     void __DeleteRTDeviceCamera(SERTDeviceCamera* camera);
     void __SetTransformFromCamera(SEICamera* srcCamera, SERTDeviceCamera* dstCamera);
 
+    SERTDeviceLightRectangleHandle* __CreateRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle, SEILight* srcLight);
+    void __DeleteRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle);
+
+    SERTDeviceSkyLightHandle* __CreateRTDeviceSkyLight(SERTDeviceSkyLight* skyLight, SEILight* srcLight);
+    void __DeleteRTDeviceSkyLight(SERTDeviceSkyLight* skyLight);
+
 private:
     // Renderer callback functions.
     void __OnRenderStart(VRay::VRayRenderer& r, void*);

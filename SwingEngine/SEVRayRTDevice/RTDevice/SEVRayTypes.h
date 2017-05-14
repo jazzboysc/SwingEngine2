@@ -13,11 +13,18 @@ class VRayInit;
 class VRayRenderer;
 struct VRayImage;
 class Bmp;
+class Plugin;
 
-namespace Plugins
-{
-class RenderView;
-}
+    namespace Plugins
+    {
+
+    class RenderView;
+    class LightRectangle;
+    class LightDome;
+    class Node;
+    class GeomStaticMesh;
+
+    }
 
 }
 

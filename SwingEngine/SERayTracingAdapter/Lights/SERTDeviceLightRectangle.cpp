@@ -23,11 +23,11 @@ SERTDeviceLightRectangle::~SERTDeviceLightRectangle()
     }
 }
 //----------------------------------------------------------------------------
-void SERTDeviceLightRectangle::CreateDeviceResource(SERayTracingDevice& device)
+void SERTDeviceLightRectangle::CreateDeviceResource(SERayTracingDevice& device, SEILight* srcLight)
 {
     if( !mLightRectangleHandle )
     {
-        mLightRectangleHandle = device.CreateRTDeviceLightRectangle(this);
+        mLightRectangleHandle = device.CreateRTDeviceLightRectangle(this, srcLight);
     }
 }
 //----------------------------------------------------------------------------

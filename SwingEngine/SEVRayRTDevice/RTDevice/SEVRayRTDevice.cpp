@@ -6,6 +6,8 @@
 #include "SERayTracingDeviceImage.h"
 #include "SERayTracingDeviceBitmap.h"
 #include "SERTDeviceCamera.h"
+#include "SERTDeviceLightRectangle.h"
+#include "SERTDeviceSkyLight.h"
 
 #ifdef _WIN32
 #pragma warning(disable:4189)
@@ -49,6 +51,8 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTDeviceCamera, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTDeviceCamera, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(SetTransformFromCamera, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTDeviceLightRectangle, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTDeviceLightRectangle, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -346,6 +350,130 @@ void SEVRayRTDevice::__SetTransformFromCamera(SEICamera* srcCamera, SERTDeviceCa
 
             RenderView& renderView = *cameraHandle->mRenderView;
             renderView.set_transform(trans);
+        }
+    }
+}
+//----------------------------------------------------------------------------
+SERTDeviceLightRectangleHandle* SEVRayRTDevice::__CreateRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle, SEILight* srcLight)
+{
+    SEVRayRTDeviceLightRectangleHandle* lightRectangleHandle = nullptr;
+    if( lightRectangle )
+    {
+        lightRectangleHandle = SE_NEW SEVRayRTDeviceLightRectangleHandle();
+        lightRectangleHandle->RTDevice = this;
+        lightRectangleHandle->mLightRectangle = new VRay::Plugins::LightRectangle();
+        *(lightRectangleHandle->mLightRectangle) = mVRayRenderer->newPlugin<LightRectangle>();
+
+        if( srcLight )
+        {
+            SEVector3f srcLoc = srcLight->GetLocation();
+            SEMatrix3f srcRot = srcLight->GetRotation();
+            srcRot.Transpose();
+
+            Matrix dstRot;
+            dstRot[0][0] = srcRot[0][0];
+            dstRot[0][1] = srcRot[2][0];
+            dstRot[0][2] = srcRot[1][0];
+            dstRot[1][0] = srcRot[0][2];
+            dstRot[1][1] = srcRot[2][2];
+            dstRot[1][2] = srcRot[1][2];
+            dstRot[2][0] = srcRot[0][1];
+            dstRot[2][1] = srcRot[2][1];
+            dstRot[2][2] = srcRot[1][1];
+
+            Vector dstLoc;
+            dstLoc.x = srcLoc.X;
+            dstLoc.y = srcLoc.Z;
+            dstLoc.z = srcLoc.Y;
+
+            Transform trans(dstRot, dstLoc);
+            lightRectangleHandle->mLightRectangle->set_transform(trans);
+
+            SEColorRGB srcColor = srcLight->GetColor();
+            Color dstColor;
+            dstColor.r = srcColor.R;
+            dstColor.g = srcColor.G;
+            dstColor.b = srcColor.B;
+            lightRectangleHandle->mLightRectangle->set_color(dstColor);
+
+            lightRectangleHandle->mLightRectangle->set_u_size(srcLight->GetWidth());
+            lightRectangleHandle->mLightRectangle->set_v_size(srcLight->GetHeight());
+        }
+    }
+
+    return lightRectangleHandle;
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__DeleteRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle)
+{
+    if( lightRectangle )
+    {
+        SEVRayRTDeviceLightRectangleHandle* lightRectangleHandle = (SEVRayRTDeviceLightRectangleHandle*)lightRectangle->GetLightRectangleHandle();
+        if( lightRectangleHandle )
+        {
+            delete lightRectangleHandle->mLightRectangle;
+            lightRectangleHandle->mLightRectangle = nullptr;
+        }
+    }
+}
+//----------------------------------------------------------------------------
+SERTDeviceSkyLightHandle* SEVRayRTDevice::__CreateRTDeviceSkyLight(SERTDeviceSkyLight* skyLight, SEILight* srcLight)
+{
+    SEVRayRTDeviceSkyLightHandle* skyLightHandle = nullptr;
+    if( skyLight )
+    {
+        skyLightHandle = SE_NEW SEVRayRTDeviceSkyLightHandle();
+        skyLightHandle->RTDevice = this;
+        skyLightHandle->mLightDome = new VRay::Plugins::LightDome();
+        *(skyLightHandle->mLightDome) = mVRayRenderer->newPlugin<LightDome>();
+
+        if( srcLight )
+        {
+            SEVector3f srcLoc = srcLight->GetLocation();
+            SEMatrix3f srcRot = srcLight->GetRotation();
+            srcRot.Transpose();
+
+            Matrix dstRot;
+            dstRot[0][0] = srcRot[0][0];
+            dstRot[0][1] = srcRot[2][0];
+            dstRot[0][2] = srcRot[1][0];
+            dstRot[1][0] = srcRot[0][2];
+            dstRot[1][1] = srcRot[2][2];
+            dstRot[1][2] = srcRot[1][2];
+            dstRot[2][0] = srcRot[0][1];
+            dstRot[2][1] = srcRot[2][1];
+            dstRot[2][2] = srcRot[1][1];
+
+            Vector dstLoc;
+            dstLoc.x = srcLoc.X;
+            dstLoc.y = srcLoc.Z;
+            dstLoc.z = srcLoc.Y;
+
+            Transform trans(dstRot, dstLoc);
+            skyLightHandle->mLightDome->set_transform(trans);
+
+            SEColorRGB srcColor = srcLight->GetColor();
+            Color dstColor;
+            dstColor.r = srcColor.R;
+            dstColor.g = srcColor.G;
+            dstColor.b = srcColor.B;
+            skyLightHandle->mLightDome->set_color(dstColor);
+
+        }
+    }
+
+    return skyLightHandle;
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__DeleteRTDeviceSkyLight(SERTDeviceSkyLight* skyLight)
+{
+    if( skyLight )
+    {
+        SEVRayRTDeviceSkyLightHandle* skyLightHandle = (SEVRayRTDeviceSkyLightHandle*)skyLight->GetSkyLightHandle();
+        if( skyLightHandle )
+        {
+            delete skyLightHandle->mLightDome;
+            skyLightHandle->mLightDome = nullptr;
         }
     }
 }

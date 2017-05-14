@@ -24,7 +24,7 @@ public:
     SERTDeviceLightRectangle();
     virtual ~SERTDeviceLightRectangle();
 
-    void CreateDeviceResource(SERayTracingDevice& device);
+    void CreateDeviceResource(SERayTracingDevice& device, SEILight* srcLight = nullptr);
     SERTDeviceLightRectangleHandle* GetLightRectangleHandle();
 
 protected:

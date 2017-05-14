@@ -88,9 +88,9 @@ void SERayTracingDevice::SetTransformFromCamera(SEICamera* srcCamera, SERTDevice
     (this->*_SetTransformFromCamera)(srcCamera, dstCamera);
 }
 //----------------------------------------------------------------------------
-SERTDeviceLightRectangleHandle* SERayTracingDevice::CreateRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle)
+SERTDeviceLightRectangleHandle* SERayTracingDevice::CreateRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle, SEILight* srcLight)
 {
-    return (this->*_CreateRTDeviceLightRectangle)(lightRectangle);
+    return (this->*_CreateRTDeviceLightRectangle)(lightRectangle, srcLight);
 }
 //----------------------------------------------------------------------------
 void SERayTracingDevice::DeleteRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle)
@@ -98,9 +98,9 @@ void SERayTracingDevice::DeleteRTDeviceLightRectangle(SERTDeviceLightRectangle* 
     (this->*_DeleteRTDeviceLightRectangle)(lightRectangle);
 }
 //----------------------------------------------------------------------------
-SERTDeviceSkyLightHandle* SERayTracingDevice::CreateRTDeviceSkyLight(SERTDeviceSkyLight* skyLight)
+SERTDeviceSkyLightHandle* SERayTracingDevice::CreateRTDeviceSkyLight(SERTDeviceSkyLight* skyLight, SEILight* srcLight)
 {
-    return (this->*_CreateRTDeviceSkyLight)(skyLight);
+    return (this->*_CreateRTDeviceSkyLight)(skyLight, srcLight);
 }
 //----------------------------------------------------------------------------
 void SERayTracingDevice::DeleteRTDeviceSkyLight(SERTDeviceSkyLight* skyLight)

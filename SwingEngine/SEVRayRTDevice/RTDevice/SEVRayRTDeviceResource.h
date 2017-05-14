@@ -37,6 +37,22 @@ struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceCameraHandle : public SERTDeviceCamer
     ~SEVRayRTDeviceCameraHandle();
 };
 //----------------------------------------------------------------------------
+struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceLightRectangleHandle : public SERTDeviceLightRectangleHandle
+{
+    VRay::Plugins::LightRectangle* mLightRectangle;
+
+    SEVRayRTDeviceLightRectangleHandle();
+    ~SEVRayRTDeviceLightRectangleHandle();
+};
+//----------------------------------------------------------------------------
+struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceSkyLightHandle : public SERTDeviceSkyLightHandle
+{
+    VRay::Plugins::LightDome* mLightDome;
+
+    SEVRayRTDeviceSkyLightHandle();
+    ~SEVRayRTDeviceSkyLightHandle();
+};
+//----------------------------------------------------------------------------
 
 }
 

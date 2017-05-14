@@ -9,6 +9,7 @@
 #include "SERayTracingDeviceResource.h"
 #include "SERayTracingDeviceDelegate.h"
 #include "SEICamera.h"
+#include "SEILight.h"
 
 namespace Swing
 {
@@ -71,9 +72,9 @@ typedef bool (SERayTracingDevice::*RayTracingDeviceRTImageSaveToBmpFile)(SERayTr
 typedef SERTDeviceCameraHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceCamera)(SERTDeviceCamera* camera);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceCamera)(SERTDeviceCamera* camera);
 typedef void (SERayTracingDevice::*RayTracingDeviceSetTransformFromCamera)(SEICamera* srcCamera, SERTDeviceCamera* dstCamera);
-typedef SERTDeviceLightRectangleHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceLightRectangle)(SERTDeviceLightRectangle* lightRectangle);
+typedef SERTDeviceLightRectangleHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceLightRectangle)(SERTDeviceLightRectangle* lightRectangle, SEILight* srcLight);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceLightRectangle)(SERTDeviceLightRectangle* lightRectangle);
-typedef SERTDeviceSkyLightHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceSkyLight)(SERTDeviceSkyLight* skyLight);
+typedef SERTDeviceSkyLightHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceSkyLight)(SERTDeviceSkyLight* skyLight, SEILight* srcLight);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceSkyLight)(SERTDeviceSkyLight* skyLight);
 
 //----------------------------------------------------------------------------
@@ -114,10 +115,10 @@ public:
     inline  void DeleteRTDeviceCamera(SERTDeviceCamera* camera);
     inline  void SetTransformFromCamera(SEICamera* srcCamera, SERTDeviceCamera* dstCamera);
 
-    inline  SERTDeviceLightRectangleHandle* CreateRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle);
+    inline  SERTDeviceLightRectangleHandle* CreateRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle, SEILight* srcLight);
     inline  void DeleteRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle);
 
-    inline  SERTDeviceSkyLightHandle* CreateRTDeviceSkyLight(SERTDeviceSkyLight* skyLight);
+    inline  SERTDeviceSkyLightHandle* CreateRTDeviceSkyLight(SERTDeviceSkyLight* skyLight, SEILight* srcLight);
     inline  void DeleteRTDeviceSkyLight(SERTDeviceSkyLight* skyLight);
 
     inline SERayTracingDeviceVendor GetDeviceVendor();

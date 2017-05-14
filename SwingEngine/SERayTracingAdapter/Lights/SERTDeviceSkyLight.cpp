@@ -23,11 +23,11 @@ SERTDeviceSkyLight::~SERTDeviceSkyLight()
     }
 }
 //----------------------------------------------------------------------------
-void SERTDeviceSkyLight::CreateDeviceResource(SERayTracingDevice& device)
+void SERTDeviceSkyLight::CreateDeviceResource(SERayTracingDevice& device, SEILight* srcLight)
 {
     if( !mSkyLightHandle )
     {
-        mSkyLightHandle = device.CreateRTDeviceSkyLight(this);
+        mSkyLightHandle = device.CreateRTDeviceSkyLight(this, srcLight);
     }
 }
 //----------------------------------------------------------------------------

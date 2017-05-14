@@ -24,7 +24,7 @@ public:
     SERTDeviceSkyLight();
     virtual ~SERTDeviceSkyLight();
 
-    void CreateDeviceResource(SERayTracingDevice& device);
+    void CreateDeviceResource(SERayTracingDevice& device, SEILight* srcLight = nullptr);
     SERTDeviceSkyLightHandle* GetSkyLightHandle();
 
 protected:

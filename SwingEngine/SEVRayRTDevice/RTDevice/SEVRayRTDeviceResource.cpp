@@ -37,3 +37,23 @@ SEVRayRTDeviceCameraHandle::~SEVRayRTDeviceCameraHandle()
 {
 }
 //----------------------------------------------------------------------------
+SEVRayRTDeviceLightRectangleHandle::SEVRayRTDeviceLightRectangleHandle()
+    :
+    mLightRectangle(nullptr)
+{
+}
+//----------------------------------------------------------------------------
+SEVRayRTDeviceLightRectangleHandle::~SEVRayRTDeviceLightRectangleHandle()
+{
+}
+//----------------------------------------------------------------------------
+SEVRayRTDeviceSkyLightHandle::SEVRayRTDeviceSkyLightHandle()
+    :
+    mLightDome(nullptr)
+{
+}
+//----------------------------------------------------------------------------
+SEVRayRTDeviceSkyLightHandle::~SEVRayRTDeviceSkyLightHandle()
+{
+}
+//----------------------------------------------------------------------------
