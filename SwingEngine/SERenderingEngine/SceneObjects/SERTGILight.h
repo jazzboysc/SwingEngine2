@@ -83,6 +83,17 @@ public:
     virtual bool IsSpherical() const override;
     virtual bool UseHDRFile() const override;
     virtual const char* GetHDRFilePath() const override;
+
+    SEColorRGB Color;
+    float ColorIntensity;
+    SE_UInt32 SampleCount;
+    bool CanCastShadow;
+    bool Visible;
+    float Width;
+    float Height;
+    bool Spherical;
+    bool HDRFile;
+    std::string HDRFilePath;
    
 protected:
     friend class SELightManager;

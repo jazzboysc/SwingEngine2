@@ -39,6 +39,14 @@ struct SE_RAY_TRACING_ADAPTER_API SERTDeviceCameraHandle : public SERayTracingDe
 {
 };
 
+struct SE_RAY_TRACING_ADAPTER_API SERTDeviceLightRectangleHandle : public SERayTracingDeviceResource
+{
+};
+
+struct SE_RAY_TRACING_ADAPTER_API SERTDeviceSkyLightHandle : public SERayTracingDeviceResource
+{
+};
+
 }
 
 #endif

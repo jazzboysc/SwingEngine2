@@ -13,7 +13,16 @@ SERTGILight::SERTGILight(SERTGILightType type)
     mLightType(type),
     mProjector(0),
     mParams1(0.0f, 0.0f, 0.0f, 0.0f),
-    mParams2(0.0f, 0.0f, 0.0f, 0.0f)
+    mParams2(0.0f, 0.0f, 0.0f, 0.0f),
+    Color(1.0f, 1.0f, 1.0f),
+    ColorIntensity(10.0f),
+    SampleCount(8),
+    CanCastShadow(true),
+    Visible(true),
+    Width(1.0f),
+    Height(1.0f),
+    Spherical(false),
+    HDRFile(false)
 {
 }
 //----------------------------------------------------------------------------
@@ -95,9 +104,7 @@ void SERTGILight::OnUpdateLightBufferCache(SESceneLight* cache)
 //----------------------------------------------------------------------------
 SEMatrix3f SERTGILight::GetRotation() const
 {
-    // TODO:
-    SEMatrix3f res;
-    return res;
+    return mProjector->GetRotation();
 }
 //----------------------------------------------------------------------------
 SEVector3f SERTGILight::GetLocation() const
@@ -107,53 +114,51 @@ SEVector3f SERTGILight::GetLocation() const
 //----------------------------------------------------------------------------
 SEColorRGB SERTGILight::GetColor() const
 {
-    // TODO:
-    SEColorRGB res;
-    return res;
+    return Color;
 }
 //----------------------------------------------------------------------------
 float SERTGILight::GetIntensity() const
 {
-    return 1.0f;
+    return ColorIntensity;
 }
 //----------------------------------------------------------------------------
 SE_UInt32 SERTGILight::GetSampleCount() const
 {
-    return 8;
+    return SampleCount;
 }
 //----------------------------------------------------------------------------
 bool SERTGILight::CastShadow() const
 {
-    return true;
+    return CanCastShadow;
 }
 //----------------------------------------------------------------------------
 bool SERTGILight::IsVisible() const
 {
-    return true;
+    return Visible;
 }
 //----------------------------------------------------------------------------
 float SERTGILight::GetWidth() const
 {
-    return 1.0f;
+    return Width;
 }
 //----------------------------------------------------------------------------
 float SERTGILight::GetHeight() const
 {
-    return 1.0f;
+    return Height;
 }
 //----------------------------------------------------------------------------
 bool SERTGILight::IsSpherical() const
 {
-    return false;
+    return Spherical;
 }
 //----------------------------------------------------------------------------
 bool SERTGILight::UseHDRFile() const
 {
-    return false;
+    return HDRFile;
 }
 //----------------------------------------------------------------------------
 const char* SERTGILight::GetHDRFilePath() const
 {
-    return nullptr;
+    return HDRFilePath.c_str();
 }
 //----------------------------------------------------------------------------

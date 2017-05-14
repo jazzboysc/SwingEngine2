@@ -10,6 +10,9 @@
     <Filter Include="Cameras">
       <UniqueIdentifier>{10841584-e51d-4948-a0f6-567aa49a8f0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lights">
+      <UniqueIdentifier>{37d9b440-6831-4dfb-80a4-785f3e63d767}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SERayTracingAdapterHeaders.h" />
@@ -35,6 +38,12 @@
     <ClInclude Include="Cameras\SERTDeviceCamera.h">
       <Filter>Cameras</Filter>
     </ClInclude>
+    <ClInclude Include="Lights\SERTDeviceLightRectangle.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\SERTDeviceSkyLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SERayTracingAdapterPCH.cpp" />
@@ -53,6 +62,12 @@
     </ClCompile>
     <ClCompile Include="Cameras\SERTDeviceCamera.cpp">
       <Filter>Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\SERTDeviceLightRectangle.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\SERTDeviceSkyLight.cpp">
+      <Filter>Lights</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

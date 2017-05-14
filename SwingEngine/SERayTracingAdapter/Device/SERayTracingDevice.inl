@@ -88,6 +88,29 @@ void SERayTracingDevice::SetTransformFromCamera(SEICamera* srcCamera, SERTDevice
     (this->*_SetTransformFromCamera)(srcCamera, dstCamera);
 }
 //----------------------------------------------------------------------------
+SERTDeviceLightRectangleHandle* SERayTracingDevice::CreateRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle)
+{
+    return (this->*_CreateRTDeviceLightRectangle)(lightRectangle);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::DeleteRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle)
+{
+    (this->*_DeleteRTDeviceLightRectangle)(lightRectangle);
+}
+//----------------------------------------------------------------------------
+SERTDeviceSkyLightHandle* SERayTracingDevice::CreateRTDeviceSkyLight(SERTDeviceSkyLight* skyLight)
+{
+    return (this->*_CreateRTDeviceSkyLight)(skyLight);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::DeleteRTDeviceSkyLight(SERTDeviceSkyLight* skyLight)
+{
+    (this->*_DeleteRTDeviceSkyLight)(skyLight);
+}
+//----------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------
 void SERayTracingDevice::SetOnRenderStart(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData)
 {
     RenderStartDelegate = SERayTracingDeviceDelegate1::FromFunction(CallbackFunc, const_cast<void*>(userData));

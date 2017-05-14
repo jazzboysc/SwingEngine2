@@ -51,6 +51,8 @@ class SERayTracingDevice;
 class SERayTracingDeviceImage;
 class SERayTracingDeviceBitmap;
 class SERTDeviceCamera;
+class SERTDeviceLightRectangle;
+class SERTDeviceSkyLight;
 
 typedef void (SERayTracingDevice::*RayTracingDeviceInitialize)(SERayTracingDeviceDescription* deviceDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
@@ -69,6 +71,10 @@ typedef bool (SERayTracingDevice::*RayTracingDeviceRTImageSaveToBmpFile)(SERayTr
 typedef SERTDeviceCameraHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceCamera)(SERTDeviceCamera* camera);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceCamera)(SERTDeviceCamera* camera);
 typedef void (SERayTracingDevice::*RayTracingDeviceSetTransformFromCamera)(SEICamera* srcCamera, SERTDeviceCamera* dstCamera);
+typedef SERTDeviceLightRectangleHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceLightRectangle)(SERTDeviceLightRectangle* lightRectangle);
+typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceLightRectangle)(SERTDeviceLightRectangle* lightRectangle);
+typedef SERTDeviceSkyLightHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceSkyLight)(SERTDeviceSkyLight* skyLight);
+typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceSkyLight)(SERTDeviceSkyLight* skyLight);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -108,6 +114,12 @@ public:
     inline  void DeleteRTDeviceCamera(SERTDeviceCamera* camera);
     inline  void SetTransformFromCamera(SEICamera* srcCamera, SERTDeviceCamera* dstCamera);
 
+    inline  SERTDeviceLightRectangleHandle* CreateRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle);
+    inline  void DeleteRTDeviceLightRectangle(SERTDeviceLightRectangle* lightRectangle);
+
+    inline  SERTDeviceSkyLightHandle* CreateRTDeviceSkyLight(SERTDeviceSkyLight* skyLight);
+    inline  void DeleteRTDeviceSkyLight(SERTDeviceSkyLight* skyLight);
+
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
     // ------------------- Delegate Interface ------------------- //
@@ -135,23 +147,28 @@ public:
     // ---------------------------------------------------------- //
 
 protected:
-    RayTracingDeviceInitialize                   _Initialize;
-    RayTracingDeviceTerminate                    _Terminate;
-    RayTracingDeviceLoadNativeScene              _LoadNativeScene;
-    RayTracingDeviceCreateRTImage                _CreateRTImage;
-    RayTracingDeviceDeleteRTImage                _DeleteRTImage;
-    RayTracingDeviceCreateRTBitmap               _CreateRTBitmap;
-    RayTracingDeviceDeleteRTBitmap               _DeleteRTBitmap;
-    RayTracingDeviceGetImageSize                 _GetImageSize;
-    RayTracingDeviceSetImageSize                 _SetImageSize;
-    RayTracingDeviceRender                       _Render;
-    RayTracingDeviceGetImage                     _GetImage;
-    RayTracingDeviceRTBitmapGetPixels            _RTBitmapGetPixels;
-    RayTracingDeviceRTBitmapGetInfoHeader        _RTBitmapGetInfoHeader;
-    RayTracingDeviceRTImageSaveToBmpFile         _RTImageSaveToBmpFile;
-    RayTracingDeviceCreateRTDeviceCamera         _CreateRTDeviceCamera;
-    RayTracingDeviceDeleteRTDeviceCamera         _DeleteRTDeviceCamera;
-    RayTracingDeviceSetTransformFromCamera       _SetTransformFromCamera;
+    RayTracingDeviceInitialize                          _Initialize;
+    RayTracingDeviceTerminate                           _Terminate;
+    RayTracingDeviceLoadNativeScene                     _LoadNativeScene;
+    RayTracingDeviceCreateRTImage                       _CreateRTImage;
+    RayTracingDeviceDeleteRTImage                       _DeleteRTImage;
+    RayTracingDeviceCreateRTBitmap                      _CreateRTBitmap;
+    RayTracingDeviceDeleteRTBitmap                      _DeleteRTBitmap;
+    RayTracingDeviceGetImageSize                        _GetImageSize;
+    RayTracingDeviceSetImageSize                        _SetImageSize;
+    RayTracingDeviceRender                              _Render;
+    RayTracingDeviceGetImage                            _GetImage;
+    RayTracingDeviceRTBitmapGetPixels                   _RTBitmapGetPixels;
+    RayTracingDeviceRTBitmapGetInfoHeader               _RTBitmapGetInfoHeader;
+    RayTracingDeviceRTImageSaveToBmpFile                _RTImageSaveToBmpFile;
+    RayTracingDeviceCreateRTDeviceCamera                _CreateRTDeviceCamera;
+    RayTracingDeviceDeleteRTDeviceCamera                _DeleteRTDeviceCamera;
+    RayTracingDeviceSetTransformFromCamera              _SetTransformFromCamera;
+    RayTracingDeviceCreateRTDeviceLightRectangle        _CreateRTDeviceLightRectangle;
+    RayTracingDeviceDeleteRTDeviceLightRectangle        _DeleteRTDeviceLightRectangle;
+    RayTracingDeviceCreateRTDeviceSkyLight              _CreateRTDeviceSkyLight;
+    RayTracingDeviceDeleteRTDeviceSkyLight              _DeleteRTDeviceSkyLight;
+
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;
     SERayTracingDeviceDelegate1  ImageReadyDelegate;

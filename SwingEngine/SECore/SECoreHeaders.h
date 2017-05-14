@@ -133,5 +133,6 @@
 
 // Interfaces
 #include "SEICamera.h"
+#include "SEILight.h"
 
 #endif
