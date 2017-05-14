@@ -8,6 +8,7 @@
 #include "SERTDeviceCamera.h"
 #include "SERTDeviceLightRectangle.h"
 #include "SERTDeviceSkyLight.h"
+#include "SECoordinateSystemAdapter.h"
 
 #ifdef _WIN32
 #pragma warning(disable:4189)
@@ -53,6 +54,8 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(SetTransformFromCamera, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTDeviceLightRectangle, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTDeviceLightRectangle, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTDeviceSkyLight, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTDeviceSkyLight, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -324,28 +327,11 @@ void SEVRayRTDevice::__SetTransformFromCamera(SEICamera* srcCamera, SERTDeviceCa
         if( cameraHandle )
         {
             SEVector3f srcLoc = srcCamera->GetLocation();
-            SEVector3f r = srcCamera->GetRight();
-            SEVector3f u = srcCamera->GetUp();
-            SEVector3f d = srcCamera->GetDirection();
-            SEMatrix3f srcRot(r, u, d);
-            srcRot.Transpose();
-
+            SEMatrix3f srcRot = srcCamera->GetRotation();
             Matrix dstRot;
-            dstRot[0][0] = srcRot[0][0];
-            dstRot[0][1] = srcRot[2][0];
-            dstRot[0][2] = srcRot[1][0];
-            dstRot[1][0] = srcRot[0][2];
-            dstRot[1][1] = srcRot[2][2];
-            dstRot[1][2] = srcRot[1][2];
-            dstRot[2][0] = srcRot[0][1];
-            dstRot[2][1] = srcRot[2][1];
-            dstRot[2][2] = srcRot[1][1];
-
             Vector dstLoc;
-            dstLoc.x = srcLoc.X;
-            dstLoc.y = srcLoc.Z;
-            dstLoc.z = srcLoc.Y;
 
+            SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Matrix, Vector>(srcRot, srcLoc, dstRot, dstLoc);
             Transform trans(dstRot, dstLoc);
 
             RenderView& renderView = *cameraHandle->mRenderView;
@@ -368,24 +354,10 @@ SERTDeviceLightRectangleHandle* SEVRayRTDevice::__CreateRTDeviceLightRectangle(S
         {
             SEVector3f srcLoc = srcLight->GetLocation();
             SEMatrix3f srcRot = srcLight->GetRotation();
-            srcRot.Transpose();
-
             Matrix dstRot;
-            dstRot[0][0] = srcRot[0][0];
-            dstRot[0][1] = srcRot[2][0];
-            dstRot[0][2] = srcRot[1][0];
-            dstRot[1][0] = srcRot[0][2];
-            dstRot[1][1] = srcRot[2][2];
-            dstRot[1][2] = srcRot[1][2];
-            dstRot[2][0] = srcRot[0][1];
-            dstRot[2][1] = srcRot[2][1];
-            dstRot[2][2] = srcRot[1][1];
-
             Vector dstLoc;
-            dstLoc.x = srcLoc.X;
-            dstLoc.y = srcLoc.Z;
-            dstLoc.z = srcLoc.Y;
 
+            SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Matrix, Vector>(srcRot, srcLoc, dstRot, dstLoc);
             Transform trans(dstRot, dstLoc);
             lightRectangleHandle->mLightRectangle->set_transform(trans);
 
@@ -431,24 +403,10 @@ SERTDeviceSkyLightHandle* SEVRayRTDevice::__CreateRTDeviceSkyLight(SERTDeviceSky
         {
             SEVector3f srcLoc = srcLight->GetLocation();
             SEMatrix3f srcRot = srcLight->GetRotation();
-            srcRot.Transpose();
-
             Matrix dstRot;
-            dstRot[0][0] = srcRot[0][0];
-            dstRot[0][1] = srcRot[2][0];
-            dstRot[0][2] = srcRot[1][0];
-            dstRot[1][0] = srcRot[0][2];
-            dstRot[1][1] = srcRot[2][2];
-            dstRot[1][2] = srcRot[1][2];
-            dstRot[2][0] = srcRot[0][1];
-            dstRot[2][1] = srcRot[2][1];
-            dstRot[2][2] = srcRot[1][1];
-
             Vector dstLoc;
-            dstLoc.x = srcLoc.X;
-            dstLoc.y = srcLoc.Z;
-            dstLoc.z = srcLoc.Y;
 
+            SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Matrix, Vector>(srcRot, srcLoc, dstRot, dstLoc);
             Transform trans(dstRot, dstLoc);
             skyLightHandle->mLightDome->set_transform(trans);
 

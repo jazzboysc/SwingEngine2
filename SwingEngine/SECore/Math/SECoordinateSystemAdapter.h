@@ -19,8 +19,11 @@ namespace Swing
 class SE_CORE_API SECoordinateSystemAdapter
 {
 public:
-
+    template <class Matrix3, class Vector3>
+    static void SEToZUpRHColumnMajorOrder(const SEMatrix3f& srcRotation, const SEVector3f& srcLocation, Matrix3& dstRotation, Vector3& dstLocation);
 };
+
+#include "SECoordinateSystemAdapter.inl"
 
 }
 

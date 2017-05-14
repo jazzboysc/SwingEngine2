@@ -842,6 +842,7 @@ copy /y *.h ..\SDK\Include
     <None Include="Base\SEKdTree.inl" />
     <None Include="Base\SEStringHashTable.inl" />
     <None Include="Base\SETuple.inl" />
+    <None Include="Math\SECoordinateSystemAdapter.inl" />
     <None Include="ObjectSystem\SEReferencable.inl" />
     <None Include="System\SEMemory.inl" />
     <None Include="System\SEMemoryArena.inl" />

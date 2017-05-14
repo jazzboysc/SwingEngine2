@@ -457,6 +457,9 @@
     <None Include="ObjectSystem\SEReferencable.inl">
       <Filter>ObjectSystem</Filter>
     </None>
+    <None Include="Math\SECoordinateSystemAdapter.inl">
+      <Filter>Math</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="System\SECommand.cpp">
