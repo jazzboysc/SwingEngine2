@@ -104,7 +104,14 @@ void SERTGILight::OnUpdateLightBufferCache(SESceneLight* cache)
 //----------------------------------------------------------------------------
 SEMatrix3f SERTGILight::GetRotation() const
 {
-    return mProjector->GetRotation();
+    if( mProjector )
+    {
+        return mProjector->GetRotation();
+    }
+    else
+    {
+        return SEMatrix3f::IDENTITY;
+    }
 }
 //----------------------------------------------------------------------------
 SEVector3f SERTGILight::GetLocation() const

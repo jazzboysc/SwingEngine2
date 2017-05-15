@@ -34,4 +34,9 @@
       <UniqueIdentifier>{84b1c7aa-a30d-4032-be28-ff6264682050}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="RTDevice\SEVRayRTDevice.inl">
+      <Filter>RTDevice</Filter>
+    </None>
+  </ItemGroup>
 </Project>

@@ -352,22 +352,9 @@ SERTDeviceLightRectangleHandle* SEVRayRTDevice::__CreateRTDeviceLightRectangle(S
 
         if( srcLight )
         {
-            SEVector3f srcLoc = srcLight->GetLocation();
-            SEMatrix3f srcRot = srcLight->GetRotation();
-            Matrix dstRot;
-            Vector dstLoc;
+            SetLightCommon<LightRectangle>(srcLight, lightRectangleHandle->mLightRectangle);
 
-            SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Matrix, Vector>(srcRot, srcLoc, dstRot, dstLoc);
-            Transform trans(dstRot, dstLoc);
-            lightRectangleHandle->mLightRectangle->set_transform(trans);
-
-            SEColorRGB srcColor = srcLight->GetColor();
-            Color dstColor;
-            dstColor.r = srcColor.R;
-            dstColor.g = srcColor.G;
-            dstColor.b = srcColor.B;
-            lightRectangleHandle->mLightRectangle->set_color(dstColor);
-
+            // Set light rectangle parameters.
             lightRectangleHandle->mLightRectangle->set_u_size(srcLight->GetWidth());
             lightRectangleHandle->mLightRectangle->set_v_size(srcLight->GetHeight());
         }
@@ -401,22 +388,7 @@ SERTDeviceSkyLightHandle* SEVRayRTDevice::__CreateRTDeviceSkyLight(SERTDeviceSky
 
         if( srcLight )
         {
-            SEVector3f srcLoc = srcLight->GetLocation();
-            SEMatrix3f srcRot = srcLight->GetRotation();
-            Matrix dstRot;
-            Vector dstLoc;
-
-            SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Matrix, Vector>(srcRot, srcLoc, dstRot, dstLoc);
-            Transform trans(dstRot, dstLoc);
-            skyLightHandle->mLightDome->set_transform(trans);
-
-            SEColorRGB srcColor = srcLight->GetColor();
-            Color dstColor;
-            dstColor.r = srcColor.R;
-            dstColor.g = srcColor.G;
-            dstColor.b = srcColor.B;
-            skyLightHandle->mLightDome->set_color(dstColor);
-
+            SetLightCommon<LightDome>(srcLight, skyLightHandle->mLightDome);
         }
     }
 

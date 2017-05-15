@@ -60,6 +60,9 @@ private:
     SERTDeviceSkyLightHandle* __CreateRTDeviceSkyLight(SERTDeviceSkyLight* skyLight, SEILight* srcLight);
     void __DeleteRTDeviceSkyLight(SERTDeviceSkyLight* skyLight);
 
+    template <class T>
+    void SetLightCommon(SEILight* srcLight, T* dstLight);
+
 private:
     // Renderer callback functions.
     void __OnRenderStart(VRay::VRayRenderer& r, void*);
@@ -78,6 +81,8 @@ private:
 };
 
 typedef SESmartPointer<SEVRayRTDevice> SEVRayRTDevicePtr;
+
+#include "SEVRayRTDevice.inl"
 
 }
 

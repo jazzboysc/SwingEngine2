@@ -55,6 +55,15 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
     mRTDeviceCamera->CreateDeviceResource(*mRayTracingDevice);
     mRTDeviceCamera->SetTransformFromCamera((SEICamera*)mMainCamera);
 
+    mLightRect01 = SE_NEW SERTGILight(LT_Rectangle);
+    mLightRect01->Color = SEColorRGB(30.0f, 30.0f, 30.0f);
+    mLightRect01->SetLocation(SEVector3f(16.0f, 156.0f, 0.0f));
+    mLightRect01->Width = 30.0f;
+    mLightRect01->Height = 30.0f;
+
+    mRTDeviceLightRect01 = SE_NEW SERTDeviceLightRectangle();
+    mRTDeviceLightRect01->CreateDeviceResource(*mRayTracingDevice, (SEILight*)mLightRect01);
+
     mRayTracingDevice->Render();
 }
 //----------------------------------------------------------------------------
@@ -77,6 +86,8 @@ void RTLightmapBaker::Terminate()
     }
 
     mRTDeviceCamera = nullptr;
+    mLightRect01 = nullptr;
+    mRTDeviceLightRect01 = nullptr;
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::ProcessInput()

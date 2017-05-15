@@ -5,6 +5,9 @@
 #include "SERayTracingDeviceBitmap.h"
 #include "SERTDeviceCamera.h"
 #include "SEMutex.h"
+#include "SERTGILight.h"
+#include "SERTDeviceLightRectangle.h"
+#include "SERTDeviceSkyLight.h"
 
 namespace Swing
 {
@@ -45,6 +48,9 @@ private:
     SERayTracingDeviceImage* mImg;
     SERayTracingDeviceBitmap* mBmp;
     SERTDeviceCameraPtr mRTDeviceCamera;
+
+    SERTGILightPtr mLightRect01;
+    SERTDeviceLightRectanglePtr mRTDeviceLightRect01;
 };
 
 }

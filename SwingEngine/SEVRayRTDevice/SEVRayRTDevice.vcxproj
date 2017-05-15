@@ -646,6 +646,9 @@ copy /y *.h ..\SDK\Include</Command>
     </ClCompile>
     <ClCompile Include="SEVRayRTDeviceRegister.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="RTDevice\SEVRayRTDevice.inl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
