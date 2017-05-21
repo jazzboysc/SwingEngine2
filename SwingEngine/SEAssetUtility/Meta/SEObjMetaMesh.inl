@@ -22,16 +22,6 @@ SE_Int32 SEObjMetaMesh::GetFaceCount() const
     return mFaceCount;
 }
 //----------------------------------------------------------------------------
-bool SEObjMetaMesh::HasTCoord() const
-{
-    return mTCoordCount > 0;
-}
-//----------------------------------------------------------------------------
-bool SEObjMetaMesh::HasNormal() const
-{
-    return mVertexNormalCount > 0;
-}
-//----------------------------------------------------------------------------
 SE_UInt32 SEObjMetaMesh::GetFaceFlag() const
 {
 	return mFaceFlag;

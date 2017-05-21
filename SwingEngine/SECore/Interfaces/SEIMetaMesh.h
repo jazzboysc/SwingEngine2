@@ -42,6 +42,8 @@ public:
     virtual std::vector<SEVector3f>& GetVertexNormalData() = 0;
     virtual std::vector<SEVector3f>& GetFaceNormalData() = 0;
     virtual std::vector<MetaMeshFaceIndex>& GetIndexData() = 0;
+    virtual bool HasTCoord() const = 0;
+    virtual bool HasNormal() const = 0;
 
 protected:
     // Abstract interface.

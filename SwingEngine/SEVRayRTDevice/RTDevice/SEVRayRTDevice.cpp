@@ -424,7 +424,6 @@ SERTDeviceStaticMeshHandle* SEVRayRTDevice::__CreateRTDeviceStaticMesh(SERTDevic
         if( srcMesh )
         {
             std::vector<SEVector3f>& srcVertices = srcMesh->GetVertexData();
-            std::vector<SEVector3f>& srcNormals = srcMesh->GetVertexNormalData();
             std::vector<MetaMeshFaceIndex>& srcIndices = srcMesh->GetIndexData();
 
             // Get vertex data.
@@ -451,6 +450,41 @@ SERTDeviceStaticMeshHandle* SEVRayRTDevice::__CreateRTDeviceStaticMesh(SERTDevic
                 dstFaces.push_back(srcIndices[i].VertexIndices[2]);
             }
             staticMeshHandle->mStaticMesh->set_faces(dstFaces.data(), dstFaces.size());
+
+            // Get vertex normal data.
+            if( srcMesh->HasNormal() )
+            {
+                std::vector<SEVector3f>& srcNormals = srcMesh->GetVertexNormalData();
+
+                std::vector<Vector> dstNormals;
+                dstNormals.reserve(srcNormals.size());
+                for( unsigned int i = 0; i < srcNormals.size(); ++i )
+                {
+                    Vector n;
+                    n.x = srcNormals[i].X;
+                    n.y = -srcNormals[i].Z;
+                    n.z = srcNormals[i].Y;
+
+                    dstNormals.push_back(n);
+                }
+
+                // Get vertex normal face index data.
+                std::vector<int> dstFaceNormals;
+                dstFaceNormals.reserve(srcIndices.size() * 3);
+                for( unsigned int i = 0; i < srcIndices.size(); ++i )
+                {
+                    dstFaceNormals.push_back(srcIndices[i].VertexNormalIndices[0]);
+                    dstFaceNormals.push_back(srcIndices[i].VertexNormalIndices[1]);
+                    dstFaceNormals.push_back(srcIndices[i].VertexNormalIndices[2]);
+                }
+                staticMeshHandle->mStaticMesh->set_faceNormals(dstFaceNormals.data(), dstFaceNormals.size());
+            }
+
+            // Get vertex texture coord data.
+            if( srcMesh->HasTCoord() )
+            {
+                // TODO:
+            }
         }
     }
 

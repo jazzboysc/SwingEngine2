@@ -27,8 +27,6 @@ public:
 	inline SE_Int32 GetTCoordCount() const;
     inline SE_Int32 GetVertexNormalCount() const;
     inline SE_Int32 GetFaceCount() const;
-    inline bool HasTCoord() const;
-    inline bool HasNormal() const;
 
 	// Indicate what kind of polygon this mesh has.
 	// Only support triangle and quad for now.
@@ -41,6 +39,8 @@ public:
     virtual std::vector<SEVector3f>& GetVertexNormalData() override;
     virtual std::vector<SEVector3f>& GetFaceNormalData() override;
 	virtual std::vector<MetaMeshFaceIndex>& GetIndexData() override;
+    virtual bool HasTCoord() const override;
+    virtual bool HasNormal() const override;
 
     void AppendVertex(SEVector3f& vertex);
 	void AppendTCoord(SEVector3f& tCoord);

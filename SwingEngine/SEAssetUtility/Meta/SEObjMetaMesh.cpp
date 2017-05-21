@@ -101,6 +101,16 @@ std::vector<MetaMeshFaceIndex>& SEObjMetaMesh::GetIndexData()
     return mIndexData;
 }
 //----------------------------------------------------------------------------
+bool SEObjMetaMesh::HasTCoord() const
+{
+    return mTCoordCount > 0;
+}
+//----------------------------------------------------------------------------
+bool SEObjMetaMesh::HasNormal() const
+{
+    return mVertexNormalCount > 0;
+}
+//----------------------------------------------------------------------------
 void SEObjMetaMesh::AppendVertex(SEVector3f& vertex)
 {
     mVertexData.push_back(vertex);
