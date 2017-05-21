@@ -8,6 +8,7 @@
 #include "SERTDeviceCamera.h"
 #include "SERTDeviceLightRectangle.h"
 #include "SERTDeviceSkyLight.h"
+#include "SERTDeviceStaticMesh.h"
 #include "SECoordinateSystemAdapter.h"
 
 #ifdef _WIN32
@@ -56,6 +57,8 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTDeviceLightRectangle, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTDeviceSkyLight, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTDeviceSkyLight, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTDeviceStaticMesh, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTDeviceStaticMesh, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -404,6 +407,65 @@ void SEVRayRTDevice::__DeleteRTDeviceSkyLight(SERTDeviceSkyLight* skyLight)
         {
             delete skyLightHandle->mLightDome;
             skyLightHandle->mLightDome = nullptr;
+        }
+    }
+}
+//----------------------------------------------------------------------------
+SERTDeviceStaticMeshHandle* SEVRayRTDevice::__CreateRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh, SEIMetaMesh* srcMesh)
+{
+    SEVRayRTDeviceStaticMeshHandle* staticMeshHandle = nullptr;
+    if( staticMesh )
+    {
+        staticMeshHandle = SE_NEW SEVRayRTDeviceStaticMeshHandle();
+        staticMeshHandle->RTDevice = this;
+        staticMeshHandle->mStaticMesh = new VRay::Plugins::GeomStaticMesh();
+        *(staticMeshHandle->mStaticMesh) = mVRayRenderer->newPlugin<GeomStaticMesh>();
+
+        if( srcMesh )
+        {
+            std::vector<SEVector3f>& srcVertices = srcMesh->GetVertexData();
+            std::vector<SEVector3f>& srcNormals = srcMesh->GetVertexNormalData();
+            std::vector<MetaMeshFaceIndex>& srcIndices = srcMesh->GetIndexData();
+
+            // Get vertex data.
+            std::vector<Vector> dstVertices;
+            dstVertices.reserve(srcVertices.size());
+            for( unsigned int i = 0; i < srcVertices.size(); ++i )
+            {
+                Vector v;
+                v.x = srcVertices[i].X;
+                v.y = -srcVertices[i].Z;
+                v.z = srcVertices[i].Y;
+
+                dstVertices.push_back(v);
+            }
+            staticMeshHandle->mStaticMesh->set_vertices(dstVertices.data(), dstVertices.size());
+
+            // Get vertex face index data.
+            std::vector<int> dstFaces;
+            dstFaces.reserve(srcIndices.size()*3);
+            for( unsigned int i = 0; i < srcIndices.size(); ++i )
+            {
+                dstFaces.push_back(srcIndices[i].VertexIndices[0]);
+                dstFaces.push_back(srcIndices[i].VertexIndices[1]);
+                dstFaces.push_back(srcIndices[i].VertexIndices[2]);
+            }
+            staticMeshHandle->mStaticMesh->set_faces(dstFaces.data(), dstFaces.size());
+        }
+    }
+
+    return staticMeshHandle;
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__DeleteRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh)
+{
+    if( staticMesh )
+    {
+        SEVRayRTDeviceStaticMeshHandle* staticMeshHandle = (SEVRayRTDeviceStaticMeshHandle*)staticMesh->GetStaticMeshHandle();
+        if( staticMeshHandle )
+        {
+            delete staticMeshHandle->mStaticMesh;
+            staticMeshHandle->mStaticMesh = nullptr;
         }
     }
 }

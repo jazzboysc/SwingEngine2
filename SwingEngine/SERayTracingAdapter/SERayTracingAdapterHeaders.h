@@ -19,4 +19,7 @@
 #include "SERTDeviceLightRectangle.h"
 #include "SERTDeviceSkyLight.h"
 
+// Meshes
+#include "SERTDeviceStaticMesh.h"
+
 #endif

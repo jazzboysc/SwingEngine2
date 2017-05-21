@@ -60,6 +60,9 @@ private:
     SERTDeviceSkyLightHandle* __CreateRTDeviceSkyLight(SERTDeviceSkyLight* skyLight, SEILight* srcLight);
     void __DeleteRTDeviceSkyLight(SERTDeviceSkyLight* skyLight);
 
+    SERTDeviceStaticMeshHandle* __CreateRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh, SEIMetaMesh* srcMesh);
+    void __DeleteRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh);
+
     template <class T>
     void SetLightCommon(SEILight* srcLight, T* dstLight);
 

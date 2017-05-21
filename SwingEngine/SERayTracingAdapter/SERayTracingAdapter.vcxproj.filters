@@ -13,6 +13,9 @@
     <Filter Include="Lights">
       <UniqueIdentifier>{37d9b440-6831-4dfb-80a4-785f3e63d767}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Meshes">
+      <UniqueIdentifier>{f87481dd-4cda-4d8a-a561-5464858553a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SERayTracingAdapterHeaders.h" />
@@ -44,6 +47,9 @@
     <ClInclude Include="Lights\SERTDeviceSkyLight.h">
       <Filter>Lights</Filter>
     </ClInclude>
+    <ClInclude Include="Meshes\SERTDeviceStaticMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SERayTracingAdapterPCH.cpp" />
@@ -68,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="Lights\SERTDeviceSkyLight.cpp">
       <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes\SERTDeviceStaticMesh.cpp">
+      <Filter>Meshes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

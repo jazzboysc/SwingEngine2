@@ -33,7 +33,7 @@ bool SEObjLoader::Load(const std::string& filePath,
     std::string token;
     std::vector<std::string> tokens;
     bool foundNewMesh = false;
-    SEObjMetaMesh* newMesh = 0;
+    SEObjMetaMesh* newMesh = nullptr;
 	std::string newMeshName;
 	std::string newMeshMaterialName;
     int newFaceIndexCount = 0;
@@ -43,7 +43,7 @@ bool SEObjLoader::Load(const std::string& filePath,
 	SE_UInt32 globalTCoordListCount = 0;
     SE_UInt32 globalVertexNormalIndexOffset = 0;
     SE_UInt32 globalVertexNormalListCount = 0;
-	SEObjMetaMaterialLib* materialLib = 0;
+	SEObjMetaMaterialLib* materialLib = nullptr;
 
     while( getline(fileData, curLine) )
     {

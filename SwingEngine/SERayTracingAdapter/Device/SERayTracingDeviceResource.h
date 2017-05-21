@@ -47,6 +47,10 @@ struct SE_RAY_TRACING_ADAPTER_API SERTDeviceSkyLightHandle : public SERayTracing
 {
 };
 
+struct SE_RAY_TRACING_ADAPTER_API SERTDeviceStaticMeshHandle : public SERayTracingDeviceResource
+{
+};
+
 }
 
 #endif

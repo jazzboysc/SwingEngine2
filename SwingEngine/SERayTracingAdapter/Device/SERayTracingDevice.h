@@ -10,6 +10,7 @@
 #include "SERayTracingDeviceDelegate.h"
 #include "SEICamera.h"
 #include "SEILight.h"
+#include "SEIMetaMesh.h"
 
 namespace Swing
 {
@@ -54,6 +55,7 @@ class SERayTracingDeviceBitmap;
 class SERTDeviceCamera;
 class SERTDeviceLightRectangle;
 class SERTDeviceSkyLight;
+class SERTDeviceStaticMesh;
 
 typedef void (SERayTracingDevice::*RayTracingDeviceInitialize)(SERayTracingDeviceDescription* deviceDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
@@ -76,6 +78,8 @@ typedef SERTDeviceLightRectangleHandle* (SERayTracingDevice::*RayTracingDeviceCr
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceLightRectangle)(SERTDeviceLightRectangle* lightRectangle);
 typedef SERTDeviceSkyLightHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceSkyLight)(SERTDeviceSkyLight* skyLight, SEILight* srcLight);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceSkyLight)(SERTDeviceSkyLight* skyLight);
+typedef SERTDeviceStaticMeshHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceStaticMesh)(SERTDeviceStaticMesh* staticMesh, SEIMetaMesh* srcMesh);
+typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceStaticMesh)(SERTDeviceStaticMesh* staticMesh);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -120,6 +124,9 @@ public:
 
     inline  SERTDeviceSkyLightHandle* CreateRTDeviceSkyLight(SERTDeviceSkyLight* skyLight, SEILight* srcLight);
     inline  void DeleteRTDeviceSkyLight(SERTDeviceSkyLight* skyLight);
+
+    inline  SERTDeviceStaticMeshHandle* CreateRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh, SEIMetaMesh* srcMesh);
+    inline  void DeleteRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh);
 
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
@@ -169,6 +176,8 @@ protected:
     RayTracingDeviceDeleteRTDeviceLightRectangle        _DeleteRTDeviceLightRectangle;
     RayTracingDeviceCreateRTDeviceSkyLight              _CreateRTDeviceSkyLight;
     RayTracingDeviceDeleteRTDeviceSkyLight              _DeleteRTDeviceSkyLight;
+    RayTracingDeviceCreateRTDeviceStaticMesh            _CreateRTDeviceStaticMesh;
+    RayTracingDeviceDeleteRTDeviceStaticMesh            _DeleteRTDeviceStaticMesh;
 
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;

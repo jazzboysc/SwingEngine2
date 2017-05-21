@@ -108,6 +108,16 @@ void SERayTracingDevice::DeleteRTDeviceSkyLight(SERTDeviceSkyLight* skyLight)
     (this->*_DeleteRTDeviceSkyLight)(skyLight);
 }
 //----------------------------------------------------------------------------
+SERTDeviceStaticMeshHandle* SERayTracingDevice::CreateRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh, SEIMetaMesh* srcMesh)
+{
+    return (this->*_CreateRTDeviceStaticMesh)(staticMesh, srcMesh);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::DeleteRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh)
+{
+    (this->*_DeleteRTDeviceStaticMesh)(staticMesh);
+}
+//----------------------------------------------------------------------------
 
 
 //----------------------------------------------------------------------------

@@ -76,6 +76,31 @@ SEObjMetaMesh::~SEObjMetaMesh()
 {
 }
 //----------------------------------------------------------------------------
+std::vector<SEVector3f>& SEObjMetaMesh::GetVertexData()
+{
+    return mVertexData;
+}
+//----------------------------------------------------------------------------
+std::vector<SEVector3f>& SEObjMetaMesh::GetTCoordData()
+{
+    return mTCoordData;
+}
+//----------------------------------------------------------------------------
+std::vector<SEVector3f>& SEObjMetaMesh::GetVertexNormalData()
+{
+    return mVertexNormalData;
+}
+//----------------------------------------------------------------------------
+std::vector<SEVector3f>& SEObjMetaMesh::GetFaceNormalData()
+{
+    return mFaceNormalData;
+}
+//----------------------------------------------------------------------------
+std::vector<MetaMeshFaceIndex>& SEObjMetaMesh::GetIndexData()
+{
+    return mIndexData;
+}
+//----------------------------------------------------------------------------
 void SEObjMetaMesh::AppendVertex(SEVector3f& vertex)
 {
     mVertexData.push_back(vertex);

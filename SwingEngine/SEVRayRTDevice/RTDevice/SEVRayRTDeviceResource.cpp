@@ -57,3 +57,13 @@ SEVRayRTDeviceSkyLightHandle::~SEVRayRTDeviceSkyLightHandle()
 {
 }
 //----------------------------------------------------------------------------
+SEVRayRTDeviceStaticMeshHandle::SEVRayRTDeviceStaticMeshHandle()
+    :
+    mStaticMesh(nullptr)
+{
+}
+//----------------------------------------------------------------------------
+SEVRayRTDeviceStaticMeshHandle::~SEVRayRTDeviceStaticMeshHandle()
+{
+}
+//----------------------------------------------------------------------------

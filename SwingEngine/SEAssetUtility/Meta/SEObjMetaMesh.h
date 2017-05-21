@@ -8,29 +8,16 @@
 #include "SEReferencable.h"
 #include "SEVector3.h"
 #include "SEObjMetaMaterial.h"
+#include "SEIMetaMesh.h"
 
 namespace Swing
 {
-
-enum MetaMeshFaceType
-{
-	MMFT_Unknown       = 0,
-	MMFT_TriangleIndex = 1,
-	MMFT_QuadIndex     = 2
-};
-
-struct MetaMeshFaceIndex
-{
-	std::vector<SE_UInt32> VertexIndices;
-	std::vector<SE_UInt32> TCoordIndices;
-    std::vector<SE_UInt32> VertexNormalIndices;
-};
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
 // Date: 07/01/2015
 //----------------------------------------------------------------------------
-class SE_ASSET_UTILITY_API SEObjMetaMesh : public SEReferencable
+class SE_ASSET_UTILITY_API SEObjMetaMesh : public SEReferencable, public SEIMetaMesh
 {
 public:
     SEObjMetaMesh();
@@ -48,11 +35,12 @@ public:
 	inline SE_UInt32 GetFaceFlag() const;
 	inline void SetFaceFlag(SE_UInt32 faceFlag);
 
-    inline std::vector<SEVector3f>& GetVertexData();
-    inline std::vector<SEVector3f>& GetTCoordData();
-    inline std::vector<SEVector3f>& GetVertexNormalData();
-    inline std::vector<SEVector3f>& GetFaceNormalData();
-	inline std::vector<MetaMeshFaceIndex>& GetIndexData();
+    // Implement mesh data access interface.
+    virtual std::vector<SEVector3f>& GetVertexData() override;
+    virtual std::vector<SEVector3f>& GetTCoordData() override;
+    virtual std::vector<SEVector3f>& GetVertexNormalData() override;
+    virtual std::vector<SEVector3f>& GetFaceNormalData() override;
+	virtual std::vector<MetaMeshFaceIndex>& GetIndexData() override;
 
     void AppendVertex(SEVector3f& vertex);
 	void AppendTCoord(SEVector3f& tCoord);
