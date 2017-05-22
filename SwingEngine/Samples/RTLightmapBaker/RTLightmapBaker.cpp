@@ -1,5 +1,6 @@
 #include "RTLightmapBaker.h"
 #include "SERTGICamera.h"
+#include "SEObjLoader.h"
 
 using namespace Swing;
 
@@ -49,7 +50,6 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
         puts("Scene file is corrupted or doesn't exist.");
     }
 
-    //mMainCamera->SetLocation(SEVector3f(2.53571f, 282.6768f, -135.814f));
     mMainCamera->SetLookAt(SEVector3f(2.53571f, 82.6768f, -140.814f), SEVector3f(2.53571f, 582.6768f, 0.0f), SEVector3f(0.0f, 1.0f, 0.0f));
     mRTDeviceCamera = SE_NEW SERTDeviceCamera();
     mRTDeviceCamera->CreateDeviceResource(*mRayTracingDevice);
@@ -57,12 +57,19 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
 
     mLightRect01 = SE_NEW SERTGILight(LT_Rectangle);
     mLightRect01->Color = SEColorRGB(30.0f, 30.0f, 30.0f);
-    mLightRect01->SetLocation(SEVector3f(16.0f, 156.0f, 0.0f));
+    mLightRect01->SetLocation(SEVector3f(16.0f, 196.0f, 0.0f));
     mLightRect01->Width = 30.0f;
     mLightRect01->Height = 30.0f;
 
     mRTDeviceLightRect01 = SE_NEW SERTDeviceLightRectangle();
     mRTDeviceLightRect01->CreateDeviceResource(*mRayTracingDevice, (SEILight*)mLightRect01);
+
+    SEObjLoader objLoader;
+    std::vector<SEObjMetaMeshPtr> objMeshes;
+    objLoader.Load("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\OBJ\\elephant-gallop\\", "elephant-gallop-1.obj", objMeshes);
+
+    mRTDeviceMesh01 = SE_NEW SERTDeviceStaticMesh();
+    mRTDeviceMesh01->CreateDeviceResource(*mRayTracingDevice, (SEIMetaMesh*)objMeshes[0]);
 
     mRayTracingDevice->Render();
 }
@@ -88,6 +95,7 @@ void RTLightmapBaker::Terminate()
     mRTDeviceCamera = nullptr;
     mLightRect01 = nullptr;
     mRTDeviceLightRect01 = nullptr;
+    mRTDeviceMesh01 = nullptr;
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::ProcessInput()

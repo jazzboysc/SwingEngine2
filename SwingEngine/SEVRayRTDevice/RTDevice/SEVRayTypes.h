@@ -23,6 +23,8 @@ class Plugin;
     class LightDome;
     class Node;
     class GeomStaticMesh;
+    class BRDFDiffuse;
+    class MtlSingleBRDF;
 
     }
 

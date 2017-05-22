@@ -8,6 +8,7 @@
 #include "SERTGILight.h"
 #include "SERTDeviceLightRectangle.h"
 #include "SERTDeviceSkyLight.h"
+#include "SERTDeviceStaticMesh.h"
 
 namespace Swing
 {
@@ -51,6 +52,7 @@ private:
 
     SERTGILightPtr mLightRect01;
     SERTDeviceLightRectanglePtr mRTDeviceLightRect01;
+    SERTDeviceStaticMeshPtr mRTDeviceMesh01;
 };
 
 }

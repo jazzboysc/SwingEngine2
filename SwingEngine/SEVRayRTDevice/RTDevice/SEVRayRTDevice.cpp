@@ -485,6 +485,22 @@ SERTDeviceStaticMeshHandle* SEVRayRTDevice::__CreateRTDeviceStaticMesh(SERTDevic
             {
                 // TODO:
             }
+
+            staticMeshHandle->mBRDF = new BRDFDiffuse();
+            *(staticMeshHandle->mBRDF) = mVRayRenderer->newPlugin<BRDFDiffuse>();
+            staticMeshHandle->mBRDF->set_color(Color(0.6f, 0.6f, 0.6f));
+
+            staticMeshHandle->mMaterial = new MtlSingleBRDF();
+            *(staticMeshHandle->mMaterial) = mVRayRenderer->newPlugin<MtlSingleBRDF>();
+            staticMeshHandle->mMaterial->set_brdf(*staticMeshHandle->mBRDF);
+
+            staticMeshHandle->mNode = new Node();
+            *(staticMeshHandle->mNode) = mVRayRenderer->newPlugin<Node>();
+            staticMeshHandle->mNode->set_material(*staticMeshHandle->mMaterial);
+            staticMeshHandle->mNode->set_geometry(*staticMeshHandle->mStaticMesh);
+            staticMeshHandle->mNode->set_transform(Transform(Matrix(Vector(80.0f, 0.0f, 0.0f),
+                Vector(0.0f, 80.0f, 0.0f), Vector(0.0f, 0.0f, 80.0f)), Vector(43.5471f, -28.614f, 20.0f)));
+
         }
     }
 
@@ -498,8 +514,17 @@ void SEVRayRTDevice::__DeleteRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh
         SEVRayRTDeviceStaticMeshHandle* staticMeshHandle = (SEVRayRTDeviceStaticMeshHandle*)staticMesh->GetStaticMeshHandle();
         if( staticMeshHandle )
         {
+            delete staticMeshHandle->mNode;
+            staticMeshHandle->mNode = nullptr;
+
             delete staticMeshHandle->mStaticMesh;
             staticMeshHandle->mStaticMesh = nullptr;
+
+            delete staticMeshHandle->mMaterial;
+            staticMeshHandle->mMaterial = nullptr;
+
+            delete staticMeshHandle->mBRDF;
+            staticMeshHandle->mBRDF = nullptr;
         }
     }
 }
