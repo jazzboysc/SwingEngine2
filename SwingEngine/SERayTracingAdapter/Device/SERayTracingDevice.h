@@ -11,6 +11,7 @@
 #include "SEICamera.h"
 #include "SEILight.h"
 #include "SEIMetaMesh.h"
+#include "SEISpatialInfo.h"
 
 namespace Swing
 {
@@ -56,6 +57,7 @@ class SERTDeviceCamera;
 class SERTDeviceLightRectangle;
 class SERTDeviceSkyLight;
 class SERTDeviceStaticMesh;
+class SERTDeviceSceneNode;
 
 typedef void (SERayTracingDevice::*RayTracingDeviceInitialize)(SERayTracingDeviceDescription* deviceDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
@@ -80,6 +82,9 @@ typedef SERTDeviceSkyLightHandle* (SERayTracingDevice::*RayTracingDeviceCreateRT
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceSkyLight)(SERTDeviceSkyLight* skyLight);
 typedef SERTDeviceStaticMeshHandle* (SERayTracingDevice::*RayTracingDeviceCreateRTDeviceStaticMesh)(SERTDeviceStaticMesh* staticMesh, SEIMetaMesh* srcMesh);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceStaticMesh)(SERTDeviceStaticMesh* staticMesh);
+typedef SERTDeviceSceneNodeHandle* (SERayTracingDevice::*RayTracingDeviceCreateSceneNode)(SERTDeviceSceneNode* sceneNode, SEISpatialInfo* spatialInfo);
+typedef void (SERayTracingDevice::*RayTracingDeviceDeleteSceneNode)(SERTDeviceSceneNode* sceneNode);
+typedef void (SERayTracingDevice::*RayTracingDeviceSceneNodeSetTransform)(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -127,6 +132,10 @@ public:
 
     inline  SERTDeviceStaticMeshHandle* CreateRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh, SEIMetaMesh* srcMesh);
     inline  void DeleteRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh);
+
+    inline  SERTDeviceSceneNodeHandle* CreateSceneNode(SERTDeviceSceneNode* sceneNode, SEISpatialInfo* spatialInfo);
+    inline  void DeleteSceneNode(SERTDeviceSceneNode* sceneNode);
+    inline  void SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation);
 
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
@@ -178,6 +187,9 @@ protected:
     RayTracingDeviceDeleteRTDeviceSkyLight              _DeleteRTDeviceSkyLight;
     RayTracingDeviceCreateRTDeviceStaticMesh            _CreateRTDeviceStaticMesh;
     RayTracingDeviceDeleteRTDeviceStaticMesh            _DeleteRTDeviceStaticMesh;
+    RayTracingDeviceCreateSceneNode                     _CreateSceneNode;
+    RayTracingDeviceDeleteSceneNode                     _DeleteSceneNode;
+    RayTracingDeviceSceneNodeSetTransform               _SceneNodeSetTransform;
 
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;

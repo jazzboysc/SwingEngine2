@@ -733,6 +733,7 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="Interfaces\SEICamera.h" />
     <ClInclude Include="Interfaces\SEILight.h" />
     <ClInclude Include="Interfaces\SEIMetaMesh.h" />
+    <ClInclude Include="Interfaces\SEISpatialInfo.h" />
     <ClInclude Include="Math\SECoordinateSystemAdapter.h" />
     <ClInclude Include="ObjectSystem\SEReferencable.h" />
     <ClInclude Include="System\SEAssert.h" />

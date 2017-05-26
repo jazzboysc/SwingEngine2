@@ -350,6 +350,9 @@
     <ClInclude Include="Interfaces\SEIMetaMesh.h">
       <Filter>Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="Interfaces\SEISpatialInfo.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Base\SEBlockedArray.inl">

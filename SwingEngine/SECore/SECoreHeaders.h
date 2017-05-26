@@ -135,5 +135,6 @@
 #include "SEICamera.h"
 #include "SEILight.h"
 #include "SEIMetaMesh.h"
+#include "SEISpatialInfo.h"
 
 #endif

@@ -64,6 +64,14 @@ struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceStaticMeshHandle : public SERTDeviceS
     ~SEVRayRTDeviceStaticMeshHandle();
 };
 //----------------------------------------------------------------------------
+struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceSceneNodeHandle : public SERTDeviceSceneNodeHandle
+{
+    VRay::Plugins::Node* mNode;
+
+    SEVRayRTDeviceSceneNodeHandle();
+    ~SEVRayRTDeviceSceneNodeHandle();
+};
+//----------------------------------------------------------------------------
 
 }
 

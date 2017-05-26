@@ -51,6 +51,14 @@ struct SE_RAY_TRACING_ADAPTER_API SERTDeviceStaticMeshHandle : public SERayTraci
 {
 };
 
+struct SE_RAY_TRACING_ADAPTER_API SERTDeviceSceneNodeHandle : public SERayTracingDeviceResource
+{
+};
+
+struct SE_RAY_TRACING_ADAPTER_API SERTDeviceMaterialHandle : public SERayTracingDeviceResource
+{
+};
+
 }
 
 #endif

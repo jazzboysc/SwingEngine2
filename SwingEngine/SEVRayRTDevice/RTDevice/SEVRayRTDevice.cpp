@@ -10,6 +10,7 @@
 #include "SERTDeviceSkyLight.h"
 #include "SERTDeviceStaticMesh.h"
 #include "SECoordinateSystemAdapter.h"
+#include "SERTDeviceSceneNode.h"
 
 #ifdef _WIN32
 #pragma warning(disable:4189)
@@ -59,6 +60,9 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTDeviceSkyLight, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateRTDeviceStaticMesh, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRTDeviceStaticMesh, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateSceneNode, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteSceneNode, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(SceneNodeSetTransform, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -525,6 +529,59 @@ void SEVRayRTDevice::__DeleteRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh
 
             delete staticMeshHandle->mBRDF;
             staticMeshHandle->mBRDF = nullptr;
+        }
+    }
+}
+//----------------------------------------------------------------------------
+SERTDeviceSceneNodeHandle* SEVRayRTDevice::__CreateSceneNode(SERTDeviceSceneNode* sceneNode, SEISpatialInfo* spatialInfo)
+{
+    SEVRayRTDeviceSceneNodeHandle* sceneNodeHandle = nullptr;
+    if( sceneNode )
+    {
+        sceneNodeHandle = SE_NEW SEVRayRTDeviceSceneNodeHandle();
+        sceneNodeHandle->RTDevice = this;
+        sceneNodeHandle->mNode = new VRay::Plugins::Node();
+        *(sceneNodeHandle->mNode) = mVRayRenderer->newPlugin<Node>();
+
+        if( spatialInfo )
+        {
+            // TODO:
+            //spatialInfo->GetRotation();
+        }
+    }
+
+    return sceneNodeHandle;
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__DeleteSceneNode(SERTDeviceSceneNode* sceneNode)
+{
+    if( sceneNode )
+    {
+        SEVRayRTDeviceSceneNodeHandle* sceneNodeHandle = (SEVRayRTDeviceSceneNodeHandle*)sceneNode->GetSceneNodeHandle();
+        if( sceneNodeHandle )
+        {
+            delete sceneNodeHandle->mNode;
+            sceneNodeHandle->mNode = nullptr;
+        }
+    }
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation)
+{
+    if( sceneNode )
+    {
+        SEVRayRTDeviceSceneNodeHandle* sceneNodeHandle = (SEVRayRTDeviceSceneNodeHandle*)sceneNode->GetSceneNodeHandle();
+
+        if( sceneNodeHandle )
+        {
+            if( srcRotation && srcLocation )
+            {
+                // TODO:
+            }
+            else
+            {
+                VRay::Transform curTrans = sceneNodeHandle->mNode->get_transform();
+            }
         }
     }
 }

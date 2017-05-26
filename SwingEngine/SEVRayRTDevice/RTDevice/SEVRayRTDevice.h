@@ -63,6 +63,10 @@ private:
     SERTDeviceStaticMeshHandle* __CreateRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh, SEIMetaMesh* srcMesh);
     void __DeleteRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh);
 
+    SERTDeviceSceneNodeHandle* __CreateSceneNode(SERTDeviceSceneNode* sceneNode, SEISpatialInfo* spatialInfo);
+    void __DeleteSceneNode(SERTDeviceSceneNode* sceneNode);
+    void __SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation);
+
     template <class T>
     void SetLightCommon(SEILight* srcLight, T* dstLight);
 

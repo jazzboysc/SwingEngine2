@@ -280,7 +280,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -306,6 +306,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -315,7 +317,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -340,6 +342,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -350,7 +354,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>false</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>false</FunctionLevelLinking>
@@ -374,6 +378,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -384,7 +390,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>false</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>false</FunctionLevelLinking>
@@ -408,6 +414,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -417,7 +425,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -451,6 +459,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -460,7 +470,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -493,6 +503,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -502,7 +514,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -527,6 +539,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -536,7 +550,7 @@ copy /y *.h ..\SDK\Include
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Memory|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -560,6 +574,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -568,7 +584,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -598,6 +614,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -606,7 +624,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_RAY_TRACING_ADAPTER_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -636,6 +654,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -644,7 +664,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -667,6 +687,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -675,7 +697,7 @@ copy /y *.h ..\SDK\Include
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Memory|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\Device;.\Images;.\Lights;.\Meshes;.\SceneObjects;.\Cameras;..\SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SE_USE_PRECOMPILED_HEADERS;SE_MEMORY_MANAGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -698,6 +720,8 @@ copy /y Lights\*.h ..\SDK\Include
 copy /y Lights\*.inl ..\SDK\Include
 copy /y Meshes\*.h ..\SDK\Include
 copy /y Meshes\*.inl ..\SDK\Include
+copy /y SceneObjects\*.h ..\SDK\Include
+copy /y SceneObjects\*.inl ..\SDK\Include
 
 copy /y *.h ..\SDK\Include
 
@@ -720,6 +744,7 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="Lights\SERTDeviceLightRectangle.h" />
     <ClInclude Include="Lights\SERTDeviceSkyLight.h" />
     <ClInclude Include="Meshes\SERTDeviceStaticMesh.h" />
+    <ClInclude Include="SceneObjects\SERTDeviceSceneNode.h" />
     <ClInclude Include="SERayTracingAdapterHeaders.h" />
     <ClInclude Include="SERayTracingAdapterLIB.h" />
     <ClInclude Include="SERayTracingAdapterPCH.h" />
@@ -735,6 +760,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile Include="Lights\SERTDeviceLightRectangle.cpp" />
     <ClCompile Include="Lights\SERTDeviceSkyLight.cpp" />
     <ClCompile Include="Meshes\SERTDeviceStaticMesh.cpp" />
+    <ClCompile Include="SceneObjects\SERTDeviceSceneNode.cpp" />
     <ClCompile Include="SERayTracingAdapterPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

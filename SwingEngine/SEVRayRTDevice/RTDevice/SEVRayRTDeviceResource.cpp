@@ -67,3 +67,13 @@ SEVRayRTDeviceStaticMeshHandle::~SEVRayRTDeviceStaticMeshHandle()
 {
 }
 //----------------------------------------------------------------------------
+SEVRayRTDeviceSceneNodeHandle::SEVRayRTDeviceSceneNodeHandle()
+    :
+    mNode(nullptr)
+{
+}
+//----------------------------------------------------------------------------
+SEVRayRTDeviceSceneNodeHandle::~SEVRayRTDeviceSceneNodeHandle()
+{
+}
+//----------------------------------------------------------------------------

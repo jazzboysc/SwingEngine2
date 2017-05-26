@@ -118,6 +118,21 @@ void SERayTracingDevice::DeleteRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMe
     (this->*_DeleteRTDeviceStaticMesh)(staticMesh);
 }
 //----------------------------------------------------------------------------
+SERTDeviceSceneNodeHandle* SERayTracingDevice::CreateSceneNode(SERTDeviceSceneNode* sceneNode, SEISpatialInfo* spatialInfo)
+{
+    return (this->*_CreateSceneNode)(sceneNode, spatialInfo);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::DeleteSceneNode(SERTDeviceSceneNode* sceneNode)
+{
+    (this->*_DeleteSceneNode)(sceneNode);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation)
+{
+    (this->*_SceneNodeSetTransform)(sceneNode, srcRotation, srcLocation);
+}
+//----------------------------------------------------------------------------
 
 
 //----------------------------------------------------------------------------

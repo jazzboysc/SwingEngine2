@@ -16,6 +16,9 @@
     <Filter Include="Meshes">
       <UniqueIdentifier>{f87481dd-4cda-4d8a-a561-5464858553a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SceneObjects">
+      <UniqueIdentifier>{0bcb60ad-7748-4b67-b4dd-1a703c48552b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SERayTracingAdapterHeaders.h" />
@@ -50,6 +53,9 @@
     <ClInclude Include="Meshes\SERTDeviceStaticMesh.h">
       <Filter>Meshes</Filter>
     </ClInclude>
+    <ClInclude Include="SceneObjects\SERTDeviceSceneNode.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SERayTracingAdapterPCH.cpp" />
@@ -77,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="Meshes\SERTDeviceStaticMesh.cpp">
       <Filter>Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SERTDeviceSceneNode.cpp">
+      <Filter>SceneObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
