@@ -22,3 +22,39 @@ void SEVRayRTDevice::SetLightCommon(SEILight* srcLight, T* dstLight)
     dstLight->set_color(dstColor);
 }
 //----------------------------------------------------------------------------
+template <class T>
+void SEVRayRTDevice::SetTransformHelper(T* sceneObject, SEMatrix3f* srcRotation, SEVector3f* srcLocation)
+{
+    if( srcRotation && srcLocation )
+    {
+        Matrix dstRot;
+        Vector dstLoc;
+
+        SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Matrix, Vector>(*srcRotation, *srcLocation, dstRot, dstLoc);
+        Transform trans(dstRot, dstLoc);
+        sceneObject->set_transform(trans);
+    }
+    else
+    {
+        if( srcRotation )
+        {
+            Matrix dstRot;
+            Vector dstLoc(0.0f, 0.0f, 0.0f);
+
+            SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Matrix>(*srcRotation, dstRot);
+            Transform trans(dstRot, dstLoc);
+            sceneObject->set_transform(trans);
+        }
+        else
+        {
+            Matrix dstRot;
+            dstRot.makeIdentity();
+            Vector dstLoc;
+
+            SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Vector>(*srcLocation, dstLoc);
+            Transform trans(dstRot, dstLoc);
+            sceneObject->set_transform(trans);
+        }
+    }
+}
+//----------------------------------------------------------------------------

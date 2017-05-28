@@ -545,8 +545,9 @@ SERTDeviceSceneNodeHandle* SEVRayRTDevice::__CreateSceneNode(SERTDeviceSceneNode
 
         if( spatialInfo )
         {
-            // TODO:
-            //spatialInfo->GetRotation();
+            SEMatrix3f srcRot = spatialInfo->GetRotation();
+            SEVector3f srcLoc = spatialInfo->GetLocation();
+            SetTransformHelper<VRay::Plugins::Node>(sceneNodeHandle->mNode, &srcRot, &srcLoc);
         }
     }
 
@@ -572,15 +573,39 @@ void SEVRayRTDevice::__SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEM
     {
         SEVRayRTDeviceSceneNodeHandle* sceneNodeHandle = (SEVRayRTDeviceSceneNodeHandle*)sceneNode->GetSceneNodeHandle();
 
-        if( sceneNodeHandle )
+        if( sceneNodeHandle && sceneNodeHandle->mNode )
         {
-            if( srcRotation && srcLocation )
+            SetTransformHelper<VRay::Plugins::Node>(sceneNodeHandle->mNode, srcRotation, srcLocation);
+        }
+    }
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__SceneNodeSetGeometry(SERTDeviceSceneNode* sceneNode, SERTDeviceGeometry* geometry)
+{
+    if( sceneNode )
+    {
+        SEVRayRTDeviceSceneNodeHandle* sceneNodeHandle = (SEVRayRTDeviceSceneNodeHandle*)sceneNode->GetSceneNodeHandle();
+
+        if( sceneNodeHandle && sceneNodeHandle->mNode )
+        {
+            SERTDeviceGeometryType geometryType = geometry->GetGeometryType();
+            switch( geometryType )
             {
-                // TODO:
-            }
-            else
-            {
-                VRay::Transform curTrans = sceneNodeHandle->mNode->get_transform();
+                case Swing::RTDGT_StaticMesh:
+                {
+                    SERTDeviceStaticMesh* staticMesh = static_cast<SERTDeviceStaticMesh*>(geometry);
+                    SEVRayRTDeviceStaticMeshHandle* staticMeshHandle = static_cast<SEVRayRTDeviceStaticMeshHandle*>(staticMesh->GetStaticMeshHandle());
+                    if( staticMeshHandle )
+                    {
+                        sceneNodeHandle->mNode->set_geometry(*staticMeshHandle->mStaticMesh);
+                    }
+                }
+                break;
+
+                case Swing::RTDGT_Unknown:
+                    break;
+                default:
+                    break;
             }
         }
     }

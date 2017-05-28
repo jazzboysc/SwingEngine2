@@ -744,6 +744,7 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="Lights\SERTDeviceLightRectangle.h" />
     <ClInclude Include="Lights\SERTDeviceSkyLight.h" />
     <ClInclude Include="Meshes\SERTDeviceStaticMesh.h" />
+    <ClInclude Include="SceneObjects\SERTDeviceGeometry.h" />
     <ClInclude Include="SceneObjects\SERTDeviceSceneNode.h" />
     <ClInclude Include="SERayTracingAdapterHeaders.h" />
     <ClInclude Include="SERayTracingAdapterLIB.h" />
@@ -760,6 +761,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile Include="Lights\SERTDeviceLightRectangle.cpp" />
     <ClCompile Include="Lights\SERTDeviceSkyLight.cpp" />
     <ClCompile Include="Meshes\SERTDeviceStaticMesh.cpp" />
+    <ClCompile Include="SceneObjects\SERTDeviceGeometry.cpp" />
     <ClCompile Include="SceneObjects\SERTDeviceSceneNode.cpp" />
     <ClCompile Include="SERayTracingAdapterPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

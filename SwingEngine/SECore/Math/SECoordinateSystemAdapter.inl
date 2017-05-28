@@ -19,3 +19,25 @@ void SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder(const SEMatrix3f& srcR
     dstLocation[2] = srcLocation[1];
 }
 //----------------------------------------------------------------------------
+template <class Matrix3>
+void SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder(const SEMatrix3f& srcRotation, Matrix3& dstRotation)
+{
+    dstRotation[0][0] = srcRotation[0][0];
+    dstRotation[0][1] = srcRotation[0][2];
+    dstRotation[0][2] = srcRotation[0][1];
+    dstRotation[1][0] = srcRotation[2][0];
+    dstRotation[1][1] = srcRotation[2][2];
+    dstRotation[1][2] = srcRotation[2][1];
+    dstRotation[2][0] = srcRotation[1][0];
+    dstRotation[2][1] = srcRotation[1][2];
+    dstRotation[2][2] = srcRotation[1][1];
+}
+//----------------------------------------------------------------------------
+template <class Vector3>
+void SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder(const SEVector3f& srcLocation, Vector3& dstLocation)
+{
+    dstLocation[0] = srcLocation[0];
+    dstLocation[1] = srcLocation[2];
+    dstLocation[2] = srcLocation[1];
+}
+//----------------------------------------------------------------------------

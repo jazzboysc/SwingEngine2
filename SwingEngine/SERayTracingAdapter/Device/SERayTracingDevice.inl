@@ -133,6 +133,11 @@ void SERayTracingDevice::SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, S
     (this->*_SceneNodeSetTransform)(sceneNode, srcRotation, srcLocation);
 }
 //----------------------------------------------------------------------------
+void SERayTracingDevice::SceneNodeSetGeometry(SERTDeviceSceneNode* sceneNode, SERTDeviceGeometry* geometry)
+{
+    (this->*_SceneNodeSetGeometry)(sceneNode, geometry);
+}
+//----------------------------------------------------------------------------
 
 
 //----------------------------------------------------------------------------

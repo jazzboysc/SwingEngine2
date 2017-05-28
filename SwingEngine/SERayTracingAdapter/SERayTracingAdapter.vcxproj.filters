@@ -56,6 +56,9 @@
     <ClInclude Include="SceneObjects\SERTDeviceSceneNode.h">
       <Filter>SceneObjects</Filter>
     </ClInclude>
+    <ClInclude Include="SceneObjects\SERTDeviceGeometry.h">
+      <Filter>SceneObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SERayTracingAdapterPCH.cpp" />
@@ -85,6 +88,9 @@
       <Filter>Meshes</Filter>
     </ClCompile>
     <ClCompile Include="SceneObjects\SERTDeviceSceneNode.cpp">
+      <Filter>SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObjects\SERTDeviceGeometry.cpp">
       <Filter>SceneObjects</Filter>
     </ClCompile>
   </ItemGroup>

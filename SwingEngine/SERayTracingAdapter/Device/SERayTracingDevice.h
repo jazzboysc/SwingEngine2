@@ -56,6 +56,7 @@ class SERayTracingDeviceBitmap;
 class SERTDeviceCamera;
 class SERTDeviceLightRectangle;
 class SERTDeviceSkyLight;
+class SERTDeviceGeometry;
 class SERTDeviceStaticMesh;
 class SERTDeviceSceneNode;
 
@@ -85,6 +86,7 @@ typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceStaticMesh)(SER
 typedef SERTDeviceSceneNodeHandle* (SERayTracingDevice::*RayTracingDeviceCreateSceneNode)(SERTDeviceSceneNode* sceneNode, SEISpatialInfo* spatialInfo);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteSceneNode)(SERTDeviceSceneNode* sceneNode);
 typedef void (SERayTracingDevice::*RayTracingDeviceSceneNodeSetTransform)(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation);
+typedef void (SERayTracingDevice::*RayTracingDeviceSceneNodeSetGeometry)(SERTDeviceSceneNode* sceneNode, SERTDeviceGeometry* geometry);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -136,6 +138,7 @@ public:
     inline  SERTDeviceSceneNodeHandle* CreateSceneNode(SERTDeviceSceneNode* sceneNode, SEISpatialInfo* spatialInfo);
     inline  void DeleteSceneNode(SERTDeviceSceneNode* sceneNode);
     inline  void SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation);
+    inline  void SceneNodeSetGeometry(SERTDeviceSceneNode* sceneNode, SERTDeviceGeometry* geometry);
 
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
@@ -190,6 +193,7 @@ protected:
     RayTracingDeviceCreateSceneNode                     _CreateSceneNode;
     RayTracingDeviceDeleteSceneNode                     _DeleteSceneNode;
     RayTracingDeviceSceneNodeSetTransform               _SceneNodeSetTransform;
+    RayTracingDeviceSceneNodeSetGeometry                _SceneNodeSetGeometry;
 
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;

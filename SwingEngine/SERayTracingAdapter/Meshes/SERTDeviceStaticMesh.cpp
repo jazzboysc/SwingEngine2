@@ -9,6 +9,7 @@ using namespace Swing;
 //----------------------------------------------------------------------------
 SERTDeviceStaticMesh::SERTDeviceStaticMesh()
     :
+    SERTDeviceGeometry(RTDGT_StaticMesh),
     mStaticMeshHandle(nullptr)
 {
 }

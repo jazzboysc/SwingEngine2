@@ -23,6 +23,7 @@
 #include "SERTDeviceStaticMesh.h"
 
 // SceneObjects
+#include "SERTDeviceGeometry.h"
 #include "SERTDeviceSceneNode.h"
 
 #endif

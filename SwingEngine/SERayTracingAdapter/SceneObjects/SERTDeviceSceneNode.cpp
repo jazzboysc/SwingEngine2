@@ -44,3 +44,11 @@ void SERTDeviceSceneNode::SetTransform(SEMatrix3f* srcRotation, SEVector3f* srcL
     }
 }
 //----------------------------------------------------------------------------
+void SERTDeviceSceneNode::SetGeometry(SERTDeviceGeometry* geometry)
+{
+    if( !mSceneNodeHandle )
+    {
+        mSceneNodeHandle->RTDevice->SceneNodeSetGeometry(this, geometry);
+    }
+}
+//----------------------------------------------------------------------------

@@ -8,6 +8,7 @@
 #include "SEReferencable.h"
 #include "SERayTracingDeviceResource.h"
 #include "SEIMetaMesh.h"
+#include "SERTDeviceGeometry.h"
 
 namespace Swing
 {
@@ -18,7 +19,7 @@ class SERayTracingDevice;
 // Author: Che Sun
 // Date: 05/21/2017
 //----------------------------------------------------------------------------
-class SE_RAY_TRACING_ADAPTER_API SERTDeviceStaticMesh : public SEReferencable
+class SE_RAY_TRACING_ADAPTER_API SERTDeviceStaticMesh : public SERTDeviceGeometry
 {
 public:
     SERTDeviceStaticMesh();
