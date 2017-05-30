@@ -9,6 +9,7 @@
 #include "SERayTracingDeviceResource.h"
 #include "SEISpatialInfo.h"
 #include "SERTDeviceGeometry.h"
+#include "SERTDeviceMaterial.h"
 
 namespace Swing
 {
@@ -27,9 +28,11 @@ public:
 
     void CreateDeviceResource(SERayTracingDevice& device, SEISpatialInfo* spatialInfo = nullptr);
 
-    void SetTransform(SEMatrix3f* srcRotation = nullptr, SEVector3f* srcLocation = nullptr);
+    void SetTransform(SEMatrix3f* srcMatrix = nullptr, SEVector3f* srcOffset = nullptr);
 
     void SetGeometry(SERTDeviceGeometry* geometry);
+
+    void SetMaterial(SERTDeviceMaterial* material);
 
     SERTDeviceSceneNodeHandle* GetSceneNodeHandle();
 

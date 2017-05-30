@@ -64,12 +64,29 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
     mRTDeviceLightRect01 = SE_NEW SERTDeviceLightRectangle();
     mRTDeviceLightRect01->CreateDeviceResource(*mRayTracingDevice, (SEILight*)mLightRect01);
 
+    // Create elephant mesh.
     SEObjLoader objLoader;
     std::vector<SEObjMetaMeshPtr> objMeshes;
     objLoader.Load("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\OBJ\\elephant-gallop\\", "elephant-gallop-1.obj", objMeshes);
 
     mRTDeviceMesh01 = SE_NEW SERTDeviceStaticMesh();
     mRTDeviceMesh01->CreateDeviceResource(*mRayTracingDevice, (SEIMetaMesh*)objMeshes[0]);
+
+    // Create elephant material.
+    mRTDeviceMesh01Material = SE_NEW SERTDeviceSingleBRDFMaterial();
+    mRTDeviceMesh01Material->CreateDeviceResource(*mRayTracingDevice);
+
+    // Create elephant node.
+    mRTDeviceMesh01Node = SE_NEW SERTDeviceSceneNode();
+    mRTDeviceMesh01Node->CreateDeviceResource(*mRayTracingDevice);
+    mRTDeviceMesh01Node->SetGeometry((SERTDeviceGeometry*)mRTDeviceMesh01);
+    mRTDeviceMesh01Node->SetMaterial((SERTDeviceMaterial*)mRTDeviceMesh01Material);
+
+    SEMatrix3f mat(80.0f, 0.0f, 0.0f,
+        0.0f, 80.0f, 0.0f,
+        0.0f, 0.0f, 80.0f);
+    SEVector3f vec(43.5471f, 20.0f, -28.614f);
+    mRTDeviceMesh01Node->SetTransform(&mat, &vec);
 
     mRayTracingDevice->Render();
 }
@@ -95,7 +112,10 @@ void RTLightmapBaker::Terminate()
     mRTDeviceCamera = nullptr;
     mLightRect01 = nullptr;
     mRTDeviceLightRect01 = nullptr;
+
+    mRTDeviceMesh01Node = nullptr;
     mRTDeviceMesh01 = nullptr;
+    mRTDeviceMesh01Material = nullptr;
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::ProcessInput()

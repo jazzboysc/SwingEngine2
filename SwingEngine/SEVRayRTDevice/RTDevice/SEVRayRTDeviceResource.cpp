@@ -77,3 +77,14 @@ SEVRayRTDeviceSceneNodeHandle::~SEVRayRTDeviceSceneNodeHandle()
 {
 }
 //----------------------------------------------------------------------------
+SEVRayRTDeviceMaterialHandle::SEVRayRTDeviceMaterialHandle()
+    :
+    mBRDF(nullptr),
+    mMaterial(nullptr)
+{
+}
+//----------------------------------------------------------------------------
+SEVRayRTDeviceMaterialHandle::~SEVRayRTDeviceMaterialHandle()
+{
+}
+//----------------------------------------------------------------------------

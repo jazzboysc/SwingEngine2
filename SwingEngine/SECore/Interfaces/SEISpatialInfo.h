@@ -21,6 +21,7 @@ class SE_CORE_API SEISpatialInfo
 public:
     virtual ~SEISpatialInfo() {}
 
+    virtual SEVector3f GetScale() const = 0;
     virtual SEMatrix3f GetRotation() const = 0;
     virtual SEVector3f GetLocation() const = 0;
 

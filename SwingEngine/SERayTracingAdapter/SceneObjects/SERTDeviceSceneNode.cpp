@@ -36,19 +36,27 @@ SERTDeviceSceneNodeHandle* SERTDeviceSceneNode::GetSceneNodeHandle()
     return mSceneNodeHandle;
 }
 //----------------------------------------------------------------------------
-void SERTDeviceSceneNode::SetTransform(SEMatrix3f* srcRotation, SEVector3f* srcLocation)
+void SERTDeviceSceneNode::SetTransform(SEMatrix3f* srcMatrix, SEVector3f* srcOffset)
 {
-    if( !mSceneNodeHandle )
+    if( mSceneNodeHandle )
     {
-        mSceneNodeHandle->RTDevice->SceneNodeSetTransform(this, srcRotation, srcLocation);
+        mSceneNodeHandle->RTDevice->SceneNodeSetTransform(this, srcMatrix, srcOffset);
     }
 }
 //----------------------------------------------------------------------------
 void SERTDeviceSceneNode::SetGeometry(SERTDeviceGeometry* geometry)
 {
-    if( !mSceneNodeHandle )
+    if( mSceneNodeHandle )
     {
         mSceneNodeHandle->RTDevice->SceneNodeSetGeometry(this, geometry);
+    }
+}
+//----------------------------------------------------------------------------
+void SERTDeviceSceneNode::SetMaterial(SERTDeviceMaterial* material)
+{
+    if( mSceneNodeHandle )
+    {
+        mSceneNodeHandle->RTDevice->SceneNodeSetMaterial(this, material);
     }
 }
 //----------------------------------------------------------------------------

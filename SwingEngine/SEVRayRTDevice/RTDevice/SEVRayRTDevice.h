@@ -65,8 +65,12 @@ private:
 
     SERTDeviceSceneNodeHandle* __CreateSceneNode(SERTDeviceSceneNode* sceneNode, SEISpatialInfo* spatialInfo);
     void __DeleteSceneNode(SERTDeviceSceneNode* sceneNode);
-    void __SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation);
+    void __SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcMatrix, SEVector3f* srcOffset);
     void __SceneNodeSetGeometry(SERTDeviceSceneNode* sceneNode, SERTDeviceGeometry* geometry);
+    void __SceneNodeSetMaterial(SERTDeviceSceneNode* sceneNode, SERTDeviceMaterial* material);
+
+    SERTDeviceMaterialHandle* __CreateMaterial(SERTDeviceMaterial* material);
+    void __DeleteMaterial(SERTDeviceMaterial* material);
 
 private:
 
@@ -74,7 +78,7 @@ private:
     void SetLightCommon(SEILight* srcLight, T* dstLight);
 
     template <class T>
-    void SetTransformHelper(T* sceneObject, SEMatrix3f* srcRotation, SEVector3f* srcLocation);
+    void SetTransformHelper(T* sceneObject, SEMatrix3f* srcMatrix, SEVector3f* srcOffset);
 
 private:
     // Renderer callback functions.

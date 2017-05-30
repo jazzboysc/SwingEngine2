@@ -128,14 +128,29 @@ void SERayTracingDevice::DeleteSceneNode(SERTDeviceSceneNode* sceneNode)
     (this->*_DeleteSceneNode)(sceneNode);
 }
 //----------------------------------------------------------------------------
-void SERayTracingDevice::SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation)
+void SERayTracingDevice::SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcMatrix, SEVector3f* srcOffset)
 {
-    (this->*_SceneNodeSetTransform)(sceneNode, srcRotation, srcLocation);
+    (this->*_SceneNodeSetTransform)(sceneNode, srcMatrix, srcOffset);
 }
 //----------------------------------------------------------------------------
 void SERayTracingDevice::SceneNodeSetGeometry(SERTDeviceSceneNode* sceneNode, SERTDeviceGeometry* geometry)
 {
     (this->*_SceneNodeSetGeometry)(sceneNode, geometry);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::SceneNodeSetMaterial(SERTDeviceSceneNode* sceneNode, SERTDeviceMaterial* material)
+{
+    (this->*_SceneNodeSetMaterial)(sceneNode, material);
+}
+//----------------------------------------------------------------------------
+SERTDeviceMaterialHandle* SERayTracingDevice::CreateMaterial(SERTDeviceMaterial* material)
+{
+    return (this->*_CreateMaterial)(material);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::DeleteMaterial(SERTDeviceMaterial* material)
+{
+    (this->*_DeleteMaterial)(material);
 }
 //----------------------------------------------------------------------------
 

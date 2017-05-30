@@ -26,4 +26,8 @@
 #include "SERTDeviceGeometry.h"
 #include "SERTDeviceSceneNode.h"
 
+// Materials
+#include "SERTDeviceMaterial.h"
+#include "SERTDeviceSingleBRDFMaterial.h"
+
 #endif

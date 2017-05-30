@@ -59,6 +59,7 @@ class SERTDeviceSkyLight;
 class SERTDeviceGeometry;
 class SERTDeviceStaticMesh;
 class SERTDeviceSceneNode;
+class SERTDeviceMaterial;
 
 typedef void (SERayTracingDevice::*RayTracingDeviceInitialize)(SERayTracingDeviceDescription* deviceDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
@@ -85,8 +86,11 @@ typedef SERTDeviceStaticMeshHandle* (SERayTracingDevice::*RayTracingDeviceCreate
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRTDeviceStaticMesh)(SERTDeviceStaticMesh* staticMesh);
 typedef SERTDeviceSceneNodeHandle* (SERayTracingDevice::*RayTracingDeviceCreateSceneNode)(SERTDeviceSceneNode* sceneNode, SEISpatialInfo* spatialInfo);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteSceneNode)(SERTDeviceSceneNode* sceneNode);
-typedef void (SERayTracingDevice::*RayTracingDeviceSceneNodeSetTransform)(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation);
+typedef void (SERayTracingDevice::*RayTracingDeviceSceneNodeSetTransform)(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcMatrix, SEVector3f* srcOffset);
 typedef void (SERayTracingDevice::*RayTracingDeviceSceneNodeSetGeometry)(SERTDeviceSceneNode* sceneNode, SERTDeviceGeometry* geometry);
+typedef void (SERayTracingDevice::*RayTracingDeviceSceneNodeSetMaterial)(SERTDeviceSceneNode* sceneNode, SERTDeviceMaterial* material);
+typedef SERTDeviceMaterialHandle* (SERayTracingDevice::*RayTracingDeviceCreateMaterial)(SERTDeviceMaterial* material);
+typedef void (SERayTracingDevice::*RayTracingDeviceDeleteMaterial)(SERTDeviceMaterial* material);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -137,8 +141,12 @@ public:
 
     inline  SERTDeviceSceneNodeHandle* CreateSceneNode(SERTDeviceSceneNode* sceneNode, SEISpatialInfo* spatialInfo);
     inline  void DeleteSceneNode(SERTDeviceSceneNode* sceneNode);
-    inline  void SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation);
+    inline  void SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcMatrix, SEVector3f* srcOffset);
     inline  void SceneNodeSetGeometry(SERTDeviceSceneNode* sceneNode, SERTDeviceGeometry* geometry);
+    inline  void SceneNodeSetMaterial(SERTDeviceSceneNode* sceneNode, SERTDeviceMaterial* material);
+
+    inline  SERTDeviceMaterialHandle* CreateMaterial(SERTDeviceMaterial* material);
+    inline  void DeleteMaterial(SERTDeviceMaterial* material);
 
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
@@ -194,6 +202,9 @@ protected:
     RayTracingDeviceDeleteSceneNode                     _DeleteSceneNode;
     RayTracingDeviceSceneNodeSetTransform               _SceneNodeSetTransform;
     RayTracingDeviceSceneNodeSetGeometry                _SceneNodeSetGeometry;
+    RayTracingDeviceSceneNodeSetMaterial                _SceneNodeSetMaterial;
+    RayTracingDeviceCreateMaterial                      _CreateMaterial;
+    RayTracingDeviceDeleteMaterial                      _DeleteMaterial;
 
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;

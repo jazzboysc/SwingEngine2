@@ -63,6 +63,10 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateSceneNode, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteSceneNode, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(SceneNodeSetTransform, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(SceneNodeSetGeometry, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(SceneNodeSetMaterial, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateMaterial, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteMaterial, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -489,22 +493,6 @@ SERTDeviceStaticMeshHandle* SEVRayRTDevice::__CreateRTDeviceStaticMesh(SERTDevic
             {
                 // TODO:
             }
-
-            staticMeshHandle->mBRDF = new BRDFDiffuse();
-            *(staticMeshHandle->mBRDF) = mVRayRenderer->newPlugin<BRDFDiffuse>();
-            staticMeshHandle->mBRDF->set_color(Color(0.6f, 0.6f, 0.6f));
-
-            staticMeshHandle->mMaterial = new MtlSingleBRDF();
-            *(staticMeshHandle->mMaterial) = mVRayRenderer->newPlugin<MtlSingleBRDF>();
-            staticMeshHandle->mMaterial->set_brdf(*staticMeshHandle->mBRDF);
-
-            staticMeshHandle->mNode = new Node();
-            *(staticMeshHandle->mNode) = mVRayRenderer->newPlugin<Node>();
-            staticMeshHandle->mNode->set_material(*staticMeshHandle->mMaterial);
-            staticMeshHandle->mNode->set_geometry(*staticMeshHandle->mStaticMesh);
-            staticMeshHandle->mNode->set_transform(Transform(Matrix(Vector(80.0f, 0.0f, 0.0f),
-                Vector(0.0f, 80.0f, 0.0f), Vector(0.0f, 0.0f, 80.0f)), Vector(43.5471f, -28.614f, 20.0f)));
-
         }
     }
 
@@ -518,17 +506,8 @@ void SEVRayRTDevice::__DeleteRTDeviceStaticMesh(SERTDeviceStaticMesh* staticMesh
         SEVRayRTDeviceStaticMeshHandle* staticMeshHandle = (SEVRayRTDeviceStaticMeshHandle*)staticMesh->GetStaticMeshHandle();
         if( staticMeshHandle )
         {
-            delete staticMeshHandle->mNode;
-            staticMeshHandle->mNode = nullptr;
-
             delete staticMeshHandle->mStaticMesh;
             staticMeshHandle->mStaticMesh = nullptr;
-
-            delete staticMeshHandle->mMaterial;
-            staticMeshHandle->mMaterial = nullptr;
-
-            delete staticMeshHandle->mBRDF;
-            staticMeshHandle->mBRDF = nullptr;
         }
     }
 }
@@ -545,7 +524,11 @@ SERTDeviceSceneNodeHandle* SEVRayRTDevice::__CreateSceneNode(SERTDeviceSceneNode
 
         if( spatialInfo )
         {
+            SEVector3f srcScale = spatialInfo->GetScale();
             SEMatrix3f srcRot = spatialInfo->GetRotation();
+            srcRot[0][0] *= srcScale[0];
+            srcRot[1][1] *= srcScale[1];
+            srcRot[2][2] *= srcScale[2];
             SEVector3f srcLoc = spatialInfo->GetLocation();
             SetTransformHelper<VRay::Plugins::Node>(sceneNodeHandle->mNode, &srcRot, &srcLoc);
         }
@@ -567,7 +550,7 @@ void SEVRayRTDevice::__DeleteSceneNode(SERTDeviceSceneNode* sceneNode)
     }
 }
 //----------------------------------------------------------------------------
-void SEVRayRTDevice::__SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcRotation, SEVector3f* srcLocation)
+void SEVRayRTDevice::__SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEMatrix3f* srcMatrix, SEVector3f* srcOffset)
 {
     if( sceneNode )
     {
@@ -575,14 +558,14 @@ void SEVRayRTDevice::__SceneNodeSetTransform(SERTDeviceSceneNode* sceneNode, SEM
 
         if( sceneNodeHandle && sceneNodeHandle->mNode )
         {
-            SetTransformHelper<VRay::Plugins::Node>(sceneNodeHandle->mNode, srcRotation, srcLocation);
+            SetTransformHelper<VRay::Plugins::Node>(sceneNodeHandle->mNode, srcMatrix, srcOffset);
         }
     }
 }
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__SceneNodeSetGeometry(SERTDeviceSceneNode* sceneNode, SERTDeviceGeometry* geometry)
 {
-    if( sceneNode )
+    if( sceneNode && geometry )
     {
         SEVRayRTDeviceSceneNodeHandle* sceneNodeHandle = (SEVRayRTDeviceSceneNodeHandle*)sceneNode->GetSceneNodeHandle();
 
@@ -607,6 +590,59 @@ void SEVRayRTDevice::__SceneNodeSetGeometry(SERTDeviceSceneNode* sceneNode, SERT
                 default:
                     break;
             }
+        }
+    }
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__SceneNodeSetMaterial(SERTDeviceSceneNode* sceneNode, SERTDeviceMaterial* material)
+{
+    if( sceneNode && material )
+    {
+        SEVRayRTDeviceSceneNodeHandle* sceneNodeHandle = static_cast<SEVRayRTDeviceSceneNodeHandle*>(sceneNode->GetSceneNodeHandle());
+
+        if( sceneNodeHandle && sceneNodeHandle->mNode )
+        {
+            SEVRayRTDeviceMaterialHandle* materialHandle = static_cast<SEVRayRTDeviceMaterialHandle*>(material->GetMaterialHandle());
+            if( materialHandle )
+            {
+                sceneNodeHandle->mNode->set_material(*materialHandle->mMaterial);
+            }
+        }
+    }
+}
+//----------------------------------------------------------------------------
+SERTDeviceMaterialHandle* SEVRayRTDevice::__CreateMaterial(SERTDeviceMaterial* material)
+{
+    SEVRayRTDeviceMaterialHandle* materialHandle = nullptr;
+    if( material )
+    {
+        materialHandle = SE_NEW SEVRayRTDeviceMaterialHandle();
+        materialHandle->RTDevice = this;
+
+        materialHandle->mBRDF = new BRDFDiffuse();
+        *(materialHandle->mBRDF) = mVRayRenderer->newPlugin<BRDFDiffuse>();
+        materialHandle->mBRDF->set_color(Color(0.6f, 0.6f, 0.6f));
+
+        materialHandle->mMaterial = new MtlSingleBRDF();
+        *(materialHandle->mMaterial) = mVRayRenderer->newPlugin<MtlSingleBRDF>();
+        materialHandle->mMaterial->set_brdf(*materialHandle->mBRDF);
+    }
+
+    return materialHandle;
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__DeleteMaterial(SERTDeviceMaterial* material)
+{
+    if( material )
+    {
+        SEVRayRTDeviceMaterialHandle* materialHandle = (SEVRayRTDeviceMaterialHandle*)material->GetMaterialHandle();
+        if( materialHandle )
+        {
+            delete materialHandle->mMaterial;
+            materialHandle->mMaterial = nullptr;
+
+            delete materialHandle->mBRDF;
+            materialHandle->mBRDF = nullptr;
         }
     }
 }

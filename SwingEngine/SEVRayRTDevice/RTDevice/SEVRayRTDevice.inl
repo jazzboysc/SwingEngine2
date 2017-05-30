@@ -23,36 +23,36 @@ void SEVRayRTDevice::SetLightCommon(SEILight* srcLight, T* dstLight)
 }
 //----------------------------------------------------------------------------
 template <class T>
-void SEVRayRTDevice::SetTransformHelper(T* sceneObject, SEMatrix3f* srcRotation, SEVector3f* srcLocation)
+void SEVRayRTDevice::SetTransformHelper(T* sceneObject, SEMatrix3f* srcMatrix, SEVector3f* srcOffset)
 {
-    if( srcRotation && srcLocation )
+    if( srcMatrix && srcOffset )
     {
-        Matrix dstRot;
-        Vector dstLoc;
+        Matrix dstMatrix;
+        Vector dstOffset;
 
-        SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Matrix, Vector>(*srcRotation, *srcLocation, dstRot, dstLoc);
-        Transform trans(dstRot, dstLoc);
+        SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Matrix, Vector>(*srcMatrix, *srcOffset, dstMatrix, dstOffset);
+        Transform trans(dstMatrix, dstOffset);
         sceneObject->set_transform(trans);
     }
     else
     {
-        if( srcRotation )
+        if( srcMatrix )
         {
-            Matrix dstRot;
-            Vector dstLoc(0.0f, 0.0f, 0.0f);
+            Matrix dstMatrix;
+            Vector dstOffset(0.0f, 0.0f, 0.0f);
 
-            SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Matrix>(*srcRotation, dstRot);
-            Transform trans(dstRot, dstLoc);
+            SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Matrix>(*srcMatrix, dstMatrix);
+            Transform trans(dstMatrix, dstOffset);
             sceneObject->set_transform(trans);
         }
         else
         {
-            Matrix dstRot;
-            dstRot.makeIdentity();
-            Vector dstLoc;
+            Matrix dstMatrix;
+            dstMatrix.makeIdentity();
+            Vector dstOffset;
 
-            SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Vector>(*srcLocation, dstLoc);
-            Transform trans(dstRot, dstLoc);
+            SECoordinateSystemAdapter::SEToZUpRHColumnMajorOrder<Vector>(*srcOffset, dstOffset);
+            Transform trans(dstMatrix, dstOffset);
             sceneObject->set_transform(trans);
         }
     }

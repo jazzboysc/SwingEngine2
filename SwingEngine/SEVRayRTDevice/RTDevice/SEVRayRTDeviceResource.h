@@ -56,9 +56,6 @@ struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceSkyLightHandle : public SERTDeviceSky
 struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceStaticMeshHandle : public SERTDeviceStaticMeshHandle
 {
     VRay::Plugins::GeomStaticMesh* mStaticMesh;
-    VRay::Plugins::BRDFDiffuse* mBRDF;
-    VRay::Plugins::MtlSingleBRDF* mMaterial;
-    VRay::Plugins::Node* mNode;
 
     SEVRayRTDeviceStaticMeshHandle();
     ~SEVRayRTDeviceStaticMeshHandle();
@@ -70,6 +67,15 @@ struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceSceneNodeHandle : public SERTDeviceSc
 
     SEVRayRTDeviceSceneNodeHandle();
     ~SEVRayRTDeviceSceneNodeHandle();
+};
+//----------------------------------------------------------------------------
+struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceMaterialHandle : public SERTDeviceMaterialHandle
+{
+    VRay::Plugins::BRDFDiffuse* mBRDF;
+    VRay::Plugins::MtlSingleBRDF* mMaterial;
+
+    SEVRayRTDeviceMaterialHandle();
+    ~SEVRayRTDeviceMaterialHandle();
 };
 //----------------------------------------------------------------------------
 
