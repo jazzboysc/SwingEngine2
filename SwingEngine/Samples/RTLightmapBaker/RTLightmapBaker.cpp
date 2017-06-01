@@ -67,7 +67,7 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
     // Create elephant mesh.
     SEObjLoader objLoader;
     std::vector<SEObjMetaMeshPtr> objMeshes;
-    objLoader.Load("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\OBJ\\elephant-gallop\\", "elephant-gallop-1.obj", objMeshes);
+    objLoader.Load("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\OBJ\\", "couch.obj", objMeshes);
 
     mRTDeviceMesh01 = SE_NEW SERTDeviceStaticMesh();
     mRTDeviceMesh01->CreateDeviceResource(*mRayTracingDevice, (SEIMetaMesh*)objMeshes[0]);
@@ -82,10 +82,14 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
     mRTDeviceMesh01Node->SetGeometry((SERTDeviceGeometry*)mRTDeviceMesh01);
     mRTDeviceMesh01Node->SetMaterial((SERTDeviceMaterial*)mRTDeviceMesh01Material);
 
-    SEMatrix3f mat(80.0f, 0.0f, 0.0f,
-        0.0f, 80.0f, 0.0f,
-        0.0f, 0.0f, 80.0f);
-    SEVector3f vec(43.5471f, 20.0f, -28.614f);
+    SEMatrix3f scale(0.5f, 0.0f, 0.0f,
+        0.0f, 0.5f, 0.0f,
+        0.0f, 0.0f, 0.5f);
+    SEMatrix3f rot;
+    rot.FromAxisAngle(SEVector3f(0.0f, 1.0f, 0.0f), -90.0f*SEMathf::DEG_TO_RAD);
+    SEMatrix3f mat = scale*rot;
+
+    SEVector3f vec(43.5471f, 20.0f, -10.0f);
     mRTDeviceMesh01Node->SetTransform(&mat, &vec);
 
     mRayTracingDevice->Render();
