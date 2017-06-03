@@ -475,6 +475,7 @@ SERTDeviceStaticMeshHandle* SEVRayRTDevice::__CreateRTDeviceStaticMesh(SERTDevic
 
                     dstNormals.push_back(n);
                 }
+                staticMeshHandle->mStaticMesh->set_normals(dstNormals.data(), dstNormals.size());
 
                 // Get vertex normal face index data.
                 std::vector<int> dstFaceNormals;
