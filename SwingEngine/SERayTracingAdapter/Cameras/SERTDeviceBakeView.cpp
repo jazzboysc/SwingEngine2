@@ -23,11 +23,11 @@ SERTDeviceBakeView::~SERTDeviceBakeView()
     }
 }
 //----------------------------------------------------------------------------
-void SERTDeviceBakeView::CreateDeviceResource(SERayTracingDevice& device)
+void SERTDeviceBakeView::CreateDeviceResource(SERayTracingDevice& device, SERTDeviceBakeViewDescription* bakeViewDesc)
 {
     if( !mBakeViewHandle )
     {
-        mBakeViewHandle = device.CreateBakeView(this);
+        mBakeViewHandle = device.CreateBakeView(this, bakeViewDesc);
     }
 }
 //----------------------------------------------------------------------------

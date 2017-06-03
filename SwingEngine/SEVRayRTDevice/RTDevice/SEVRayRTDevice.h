@@ -72,7 +72,7 @@ private:
     SERTDeviceMaterialHandle* __CreateMaterial(SERTDeviceMaterial* material);
     void __DeleteMaterial(SERTDeviceMaterial* material);
 
-    SERTDeviceBakeViewHandle* __CreateBakeView(SERTDeviceBakeView* bakeView);
+    SERTDeviceBakeViewHandle* __CreateBakeView(SERTDeviceBakeView* bakeView, SERTDeviceBakeViewDescription* bakeViewDesc);
     void __DeleteBakeView(SERTDeviceBakeView* bakeView);
 
 private:

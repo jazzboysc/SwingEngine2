@@ -62,6 +62,8 @@ class SERTDeviceSceneNode;
 class SERTDeviceMaterial;
 class SERTDeviceBakeView;
 
+struct SERTDeviceBakeViewDescription;
+
 typedef void (SERayTracingDevice::*RayTracingDeviceInitialize)(SERayTracingDeviceDescription* deviceDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
 typedef bool (SERayTracingDevice::*RayTracingDeviceLoadNativeScene)(const char* fileName);
@@ -92,7 +94,7 @@ typedef void (SERayTracingDevice::*RayTracingDeviceSceneNodeSetGeometry)(SERTDev
 typedef void (SERayTracingDevice::*RayTracingDeviceSceneNodeSetMaterial)(SERTDeviceSceneNode* sceneNode, SERTDeviceMaterial* material);
 typedef SERTDeviceMaterialHandle* (SERayTracingDevice::*RayTracingDeviceCreateMaterial)(SERTDeviceMaterial* material);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteMaterial)(SERTDeviceMaterial* material);
-typedef SERTDeviceBakeViewHandle* (SERayTracingDevice::*RayTracingDeviceCreateBakeView)(SERTDeviceBakeView* bakeView);
+typedef SERTDeviceBakeViewHandle* (SERayTracingDevice::*RayTracingDeviceCreateBakeView)(SERTDeviceBakeView* bakeView, SERTDeviceBakeViewDescription* bakeViewDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteBakeView)(SERTDeviceBakeView* bakeView);
 
 //----------------------------------------------------------------------------
@@ -151,7 +153,7 @@ public:
     inline  SERTDeviceMaterialHandle* CreateMaterial(SERTDeviceMaterial* material);
     inline  void DeleteMaterial(SERTDeviceMaterial* material);
 
-    inline  SERTDeviceBakeViewHandle* CreateBakeView(SERTDeviceBakeView* bakeView);
+    inline  SERTDeviceBakeViewHandle* CreateBakeView(SERTDeviceBakeView* bakeView, SERTDeviceBakeViewDescription* bakeViewDesc);
     inline  void DeleteBakeView(SERTDeviceBakeView* bakeView);
 
     inline SERayTracingDeviceVendor GetDeviceVendor();

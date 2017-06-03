@@ -88,3 +88,14 @@ SEVRayRTDeviceMaterialHandle::~SEVRayRTDeviceMaterialHandle()
 {
 }
 //----------------------------------------------------------------------------
+SEVRayRTDeviceBakeViewHandle::SEVRayRTDeviceBakeViewHandle()
+    :
+    mBakeView(nullptr),
+    mUVWGenChannel(nullptr)
+{
+}
+//----------------------------------------------------------------------------
+SEVRayRTDeviceBakeViewHandle::~SEVRayRTDeviceBakeViewHandle()
+{
+}
+//----------------------------------------------------------------------------

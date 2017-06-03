@@ -11,6 +11,7 @@
 #include "SERTDeviceStaticMesh.h"
 #include "SERTDeviceSingleBRDFMaterial.h"
 #include "SERTDeviceSceneNode.h"
+#include "SERTDeviceBakeView.h"
 
 namespace Swing
 {
@@ -58,6 +59,8 @@ private:
     SERTDeviceStaticMeshPtr mRTDeviceMesh01;
     SERTDeviceSingleBRDFMaterialPtr mRTDeviceMesh01Material;
     SERTDeviceSceneNodePtr mRTDeviceMesh01Node;
+
+    SERTDeviceBakeViewPtr mRTDeviceMesh01BakeView;
 };
 
 }

@@ -64,7 +64,7 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
     mRTDeviceLightRect01 = SE_NEW SERTDeviceLightRectangle();
     mRTDeviceLightRect01->CreateDeviceResource(*mRayTracingDevice, (SEILight*)mLightRect01);
 
-    // Create elephant mesh.
+    // Create couch mesh.
     SEObjLoader objLoader;
     std::vector<SEObjMetaMeshPtr> objMeshes;
     objLoader.Load("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\OBJ\\", "couch.obj", objMeshes);
@@ -72,11 +72,11 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
     mRTDeviceMesh01 = SE_NEW SERTDeviceStaticMesh();
     mRTDeviceMesh01->CreateDeviceResource(*mRayTracingDevice, (SEIMetaMesh*)objMeshes[0]);
 
-    // Create elephant material.
+    // Create couch material.
     mRTDeviceMesh01Material = SE_NEW SERTDeviceSingleBRDFMaterial();
     mRTDeviceMesh01Material->CreateDeviceResource(*mRayTracingDevice);
 
-    // Create elephant node.
+    // Create couch node.
     mRTDeviceMesh01Node = SE_NEW SERTDeviceSceneNode();
     mRTDeviceMesh01Node->CreateDeviceResource(*mRayTracingDevice);
     mRTDeviceMesh01Node->SetGeometry((SERTDeviceGeometry*)mRTDeviceMesh01);
@@ -91,6 +91,13 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
 
     SEVector3f vec(43.5471f, 20.0f, -10.0f);
     mRTDeviceMesh01Node->SetTransform(&mat, &vec);
+
+    // Create couch node bake view.
+    //SERTDeviceBakeViewDescription bakeViewDesc;
+    //bakeViewDesc.BakeNode = mRTDeviceMesh01Node;
+
+    //mRTDeviceMesh01BakeView = SE_NEW SERTDeviceBakeView();
+    //mRTDeviceMesh01BakeView->CreateDeviceResource(*mRayTracingDevice, &bakeViewDesc);
 
     mRayTracingDevice->Render();
 }
@@ -120,6 +127,8 @@ void RTLightmapBaker::Terminate()
     mRTDeviceMesh01Node = nullptr;
     mRTDeviceMesh01 = nullptr;
     mRTDeviceMesh01Material = nullptr;
+
+    mRTDeviceMesh01BakeView = nullptr;
 }
 //----------------------------------------------------------------------------
 void RTLightmapBaker::ProcessInput()

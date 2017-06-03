@@ -19,6 +19,8 @@ class Plugin;
     {
 
     class RenderView;
+    class BakeView;
+    class UVWGenChannel;
     class LightRectangle;
     class LightDome;
     class Node;

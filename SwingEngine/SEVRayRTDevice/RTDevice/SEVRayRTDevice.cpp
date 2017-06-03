@@ -11,6 +11,7 @@
 #include "SERTDeviceStaticMesh.h"
 #include "SECoordinateSystemAdapter.h"
 #include "SERTDeviceSceneNode.h"
+#include "SERTDeviceBakeView.h"
 
 #ifdef _WIN32
 #pragma warning(disable:4189)
@@ -624,7 +625,7 @@ SERTDeviceMaterialHandle* SEVRayRTDevice::__CreateMaterial(SERTDeviceMaterial* m
 
         materialHandle->mBRDF = new BRDFDiffuse();
         *(materialHandle->mBRDF) = mVRayRenderer->newPlugin<BRDFDiffuse>();
-        materialHandle->mBRDF->set_color(Color(0.6f, 0.6f, 0.6f));
+        materialHandle->mBRDF->set_color(Color(0.0f, 0.6f, 0.6f));
 
         materialHandle->mMaterial = new MtlSingleBRDF();
         *(materialHandle->mMaterial) = mVRayRenderer->newPlugin<MtlSingleBRDF>();
@@ -638,7 +639,7 @@ void SEVRayRTDevice::__DeleteMaterial(SERTDeviceMaterial* material)
 {
     if( material )
     {
-        SEVRayRTDeviceMaterialHandle* materialHandle = (SEVRayRTDeviceMaterialHandle*)material->GetMaterialHandle();
+        SEVRayRTDeviceMaterialHandle* materialHandle = static_cast<SEVRayRTDeviceMaterialHandle*>(material->GetMaterialHandle());
         if( materialHandle )
         {
             delete materialHandle->mMaterial;
@@ -650,14 +651,59 @@ void SEVRayRTDevice::__DeleteMaterial(SERTDeviceMaterial* material)
     }
 }
 //----------------------------------------------------------------------------
-SERTDeviceBakeViewHandle* SEVRayRTDevice::__CreateBakeView(SERTDeviceBakeView* bakeView)
+SERTDeviceBakeViewHandle* SEVRayRTDevice::__CreateBakeView(SERTDeviceBakeView* bakeView, SERTDeviceBakeViewDescription* bakeViewDesc)
 {
-    return nullptr;
+    SEVRayRTDeviceBakeViewHandle* bakeViewHandle = nullptr;
+    if( bakeView )
+    {
+        bakeViewHandle = SE_NEW SEVRayRTDeviceBakeViewHandle();
+        bakeViewHandle->RTDevice = this;
+
+        bakeViewHandle->mUVWGenChannel = new UVWGenChannel();
+        *(bakeViewHandle->mUVWGenChannel) = mVRayRenderer->newPlugin<UVWGenChannel>();
+
+        bakeViewHandle->mBakeView = new BakeView();
+        *(bakeViewHandle->mBakeView) = mVRayRenderer->newPlugin<BakeView>();
+        bakeViewHandle->mBakeView->set_bake_uvwgen(*bakeViewHandle->mUVWGenChannel);
+
+        if( bakeViewDesc )
+        {
+            if( bakeViewDesc->BakeNode )
+            {
+                SEVRayRTDeviceSceneNodeHandle* sceneNodeHandle = static_cast<SEVRayRTDeviceSceneNodeHandle*>(bakeViewDesc->BakeNode->GetSceneNodeHandle());
+                if( sceneNodeHandle->mNode )
+                {
+                    bakeViewHandle->mBakeView->set_bake_node(*sceneNodeHandle->mNode);
+                }
+            }
+
+            bakeViewHandle->mBakeView->set_dilation(bakeViewDesc->Dilation);
+            bakeViewHandle->mUVWGenChannel->set_uvw_channel(bakeViewDesc->UVChannel);
+            bakeViewHandle->mBakeView->set_from_camera(bakeViewDesc->FromCamera);
+            bakeViewHandle->mBakeView->set_u_min(bakeViewDesc->UMin);
+            bakeViewHandle->mBakeView->set_u_max(bakeViewDesc->UMax);
+            bakeViewHandle->mBakeView->set_v_min(bakeViewDesc->VMin);
+            bakeViewHandle->mBakeView->set_v_max(bakeViewDesc->VMax);
+        }
+    }
+
+    return bakeViewHandle;
 }
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__DeleteBakeView(SERTDeviceBakeView* bakeView)
 {
+    if( bakeView )
+    {
+        SEVRayRTDeviceBakeViewHandle* bakeViewHandle = static_cast<SEVRayRTDeviceBakeViewHandle*>(bakeView->GetBakeViewHandle());
+        if( bakeViewHandle )
+        {
+            delete bakeViewHandle->mBakeView;
+            bakeViewHandle->mBakeView = nullptr;
 
+            delete bakeViewHandle->mUVWGenChannel;
+            bakeViewHandle->mUVWGenChannel = nullptr;
+        }
+    }
 }
 //----------------------------------------------------------------------------
 

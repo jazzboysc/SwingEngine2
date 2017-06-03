@@ -78,6 +78,14 @@ struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceMaterialHandle : public SERTDeviceMat
     ~SEVRayRTDeviceMaterialHandle();
 };
 //----------------------------------------------------------------------------
+struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceBakeViewHandle : public SERTDeviceBakeViewHandle
+{
+    VRay::Plugins::BakeView* mBakeView;
+    VRay::Plugins::UVWGenChannel* mUVWGenChannel;
+
+    SEVRayRTDeviceBakeViewHandle();
+    ~SEVRayRTDeviceBakeViewHandle();
+};
 
 }
 
