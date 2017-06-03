@@ -759,6 +759,7 @@ copy /y *.h ..\SDK\Include
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cameras\SERTDeviceBakeView.h" />
     <ClInclude Include="Cameras\SERTDeviceCamera.h" />
     <ClInclude Include="Device\SERayTracingDevice.h" />
     <ClInclude Include="Device\SERayTracingDeviceDelegate.h" />
@@ -779,6 +780,7 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="SwingEngineRayTracingAdapter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cameras\SERTDeviceBakeView.cpp" />
     <ClCompile Include="Cameras\SERTDeviceCamera.cpp" />
     <ClCompile Include="Device\SERayTracingDevice.cpp" />
     <ClCompile Include="Device\SERayTracingDeviceResource.cpp" />

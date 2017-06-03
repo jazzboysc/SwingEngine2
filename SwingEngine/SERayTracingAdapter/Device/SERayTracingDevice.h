@@ -60,6 +60,7 @@ class SERTDeviceGeometry;
 class SERTDeviceStaticMesh;
 class SERTDeviceSceneNode;
 class SERTDeviceMaterial;
+class SERTDeviceBakeView;
 
 typedef void (SERayTracingDevice::*RayTracingDeviceInitialize)(SERayTracingDeviceDescription* deviceDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
@@ -91,6 +92,8 @@ typedef void (SERayTracingDevice::*RayTracingDeviceSceneNodeSetGeometry)(SERTDev
 typedef void (SERayTracingDevice::*RayTracingDeviceSceneNodeSetMaterial)(SERTDeviceSceneNode* sceneNode, SERTDeviceMaterial* material);
 typedef SERTDeviceMaterialHandle* (SERayTracingDevice::*RayTracingDeviceCreateMaterial)(SERTDeviceMaterial* material);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteMaterial)(SERTDeviceMaterial* material);
+typedef SERTDeviceBakeViewHandle* (SERayTracingDevice::*RayTracingDeviceCreateBakeView)(SERTDeviceBakeView* bakeView);
+typedef void (SERayTracingDevice::*RayTracingDeviceDeleteBakeView)(SERTDeviceBakeView* bakeView);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -147,6 +150,9 @@ public:
 
     inline  SERTDeviceMaterialHandle* CreateMaterial(SERTDeviceMaterial* material);
     inline  void DeleteMaterial(SERTDeviceMaterial* material);
+
+    inline  SERTDeviceBakeViewHandle* CreateBakeView(SERTDeviceBakeView* bakeView);
+    inline  void DeleteBakeView(SERTDeviceBakeView* bakeView);
 
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
@@ -205,6 +211,8 @@ protected:
     RayTracingDeviceSceneNodeSetMaterial                _SceneNodeSetMaterial;
     RayTracingDeviceCreateMaterial                      _CreateMaterial;
     RayTracingDeviceDeleteMaterial                      _DeleteMaterial;
+    RayTracingDeviceCreateBakeView                      _CreateBakeView;
+    RayTracingDeviceDeleteBakeView                      _DeleteBakeView;
 
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;

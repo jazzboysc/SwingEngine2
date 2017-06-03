@@ -59,6 +59,10 @@ struct SE_RAY_TRACING_ADAPTER_API SERTDeviceMaterialHandle : public SERayTracing
 {
 };
 
+struct SE_RAY_TRACING_ADAPTER_API SERTDeviceBakeViewHandle : public SERayTracingDeviceResource
+{
+};
+
 }
 
 #endif

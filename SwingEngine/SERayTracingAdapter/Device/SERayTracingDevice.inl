@@ -153,7 +153,16 @@ void SERayTracingDevice::DeleteMaterial(SERTDeviceMaterial* material)
     (this->*_DeleteMaterial)(material);
 }
 //----------------------------------------------------------------------------
-
+SERTDeviceBakeViewHandle* SERayTracingDevice::CreateBakeView(SERTDeviceBakeView* bakeView)
+{
+    return (this->*_CreateBakeView)(bakeView);
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::DeleteBakeView(SERTDeviceBakeView* bakeView)
+{
+    (this->*_DeleteBakeView)(bakeView);
+}
+//----------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------
 void SERayTracingDevice::SetOnRenderStart(void (*CallbackFunc)(SERayTracingDevice&, void*), const void* userData)

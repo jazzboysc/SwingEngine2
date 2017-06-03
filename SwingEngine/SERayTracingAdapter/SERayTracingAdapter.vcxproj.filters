@@ -68,6 +68,9 @@
     <ClInclude Include="Materials\SERTDeviceSingleBRDFMaterial.h">
       <Filter>Materials</Filter>
     </ClInclude>
+    <ClInclude Include="Cameras\SERTDeviceBakeView.h">
+      <Filter>Cameras</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SERayTracingAdapterPCH.cpp" />
@@ -107,6 +110,9 @@
     </ClCompile>
     <ClCompile Include="Materials\SERTDeviceSingleBRDFMaterial.cpp">
       <Filter>Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="Cameras\SERTDeviceBakeView.cpp">
+      <Filter>Cameras</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

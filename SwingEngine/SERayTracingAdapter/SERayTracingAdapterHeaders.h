@@ -14,6 +14,7 @@
 
 // Cameras
 #include "SERTDeviceCamera.h"
+#include "SERTDeviceBakeView.h"
 
 // Lights
 #include "SERTDeviceLightRectangle.h"

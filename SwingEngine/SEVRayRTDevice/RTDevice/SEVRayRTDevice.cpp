@@ -67,6 +67,8 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(SceneNodeSetMaterial, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateMaterial, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteMaterial, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateBakeView, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteBakeView, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -646,6 +648,16 @@ void SEVRayRTDevice::__DeleteMaterial(SERTDeviceMaterial* material)
             materialHandle->mBRDF = nullptr;
         }
     }
+}
+//----------------------------------------------------------------------------
+SERTDeviceBakeViewHandle* SEVRayRTDevice::__CreateBakeView(SERTDeviceBakeView* bakeView)
+{
+    return nullptr;
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__DeleteBakeView(SERTDeviceBakeView* bakeView)
+{
+
 }
 //----------------------------------------------------------------------------
 
