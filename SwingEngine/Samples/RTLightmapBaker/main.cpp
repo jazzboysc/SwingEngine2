@@ -8,8 +8,8 @@ SEVRayWin32Application* app = 0;
 int main(int argc, char **argv)
 {
 	unsigned int width, height;
-	width = 1280;
-	height = 720;
+	width = 512;
+	height = 512;
 
     // Create ray tracing device.
     SEVRayRTDevice* rtDevice = SE_NEW SEVRayRTDevice();

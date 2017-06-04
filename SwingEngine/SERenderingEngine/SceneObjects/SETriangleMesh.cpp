@@ -482,9 +482,9 @@ bool SETriangleMesh::LoadFromSEMetaMesh(SEObjMetaMesh* metaMesh)
 	mFaceCount = (int)mIndexData.size() / 3;
 
     // Get texture coordinates.
-    if( metaMesh->HasTCoord() )
+    if( metaMesh->HasTCoord(0) )
     {
-        std::vector<SEVector3f>& tCoordData = metaMesh->GetTCoordData();
+        std::vector<SEVector3f>& tCoordData = metaMesh->GetTCoordData(0);
         mTCoordData.reserve(tCoordData.size());
 
         for( int i = 0; i < (int)tCoordData.size(); ++i )

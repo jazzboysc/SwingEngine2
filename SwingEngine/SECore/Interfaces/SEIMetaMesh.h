@@ -38,12 +38,13 @@ public:
 
     // Mesh data access interface.
     virtual std::vector<SEVector3f>& GetVertexData() = 0;
-    virtual std::vector<SEVector3f>& GetTCoordData() = 0;
+    virtual std::vector<SEVector3f>& GetTCoordData(unsigned int channel) = 0;
     virtual std::vector<SEVector3f>& GetVertexNormalData() = 0;
     virtual std::vector<SEVector3f>& GetFaceNormalData() = 0;
     virtual std::vector<MetaMeshFaceIndex>& GetIndexData() = 0;
-    virtual bool HasTCoord() const = 0;
+    virtual bool HasTCoord(unsigned int channel) const = 0;
     virtual bool HasNormal() const = 0;
+    virtual unsigned int GetTCoordChannelCount() const = 0;
 
 protected:
     // Abstract interface.

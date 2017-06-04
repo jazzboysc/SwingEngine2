@@ -34,13 +34,15 @@ public:
 	inline void SetFaceFlag(SE_UInt32 faceFlag);
 
     // Implement mesh data access interface.
+    // Note that obj format only allows one uvw channel.
     virtual std::vector<SEVector3f>& GetVertexData() override;
-    virtual std::vector<SEVector3f>& GetTCoordData() override;
+    virtual std::vector<SEVector3f>& GetTCoordData(unsigned int channel) override;
     virtual std::vector<SEVector3f>& GetVertexNormalData() override;
     virtual std::vector<SEVector3f>& GetFaceNormalData() override;
 	virtual std::vector<MetaMeshFaceIndex>& GetIndexData() override;
-    virtual bool HasTCoord() const override;
+    virtual bool HasTCoord(unsigned int channel) const override;
     virtual bool HasNormal() const override;
+    virtual unsigned int GetTCoordChannelCount() const override;
 
     void AppendVertex(SEVector3f& vertex);
 	void AppendTCoord(SEVector3f& tCoord);

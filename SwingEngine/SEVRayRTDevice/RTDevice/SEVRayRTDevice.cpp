@@ -493,9 +493,43 @@ SERTDeviceStaticMeshHandle* SEVRayRTDevice::__CreateRTDeviceStaticMesh(SERTDevic
             }
 
             // Get vertex texture coord data.
-            if( srcMesh->HasTCoord() )
+            // TODO:
+            // Only support one uvw channel for now.
+            unsigned int channelCount = srcMesh->GetTCoordChannelCount();
+            if( channelCount > 0 )
             {
-                // TODO:
+                // Get texture coordinates.
+                std::vector<SEVector3f>& srcTCoords = srcMesh->GetTCoordData(0);
+                std::vector<Vector> dstTCoords;
+                dstTCoords.reserve(srcTCoords.size());
+                for( unsigned int i = 0; i < srcTCoords.size(); ++i )
+                {
+                    Vector t;
+                    t.x = srcTCoords[i].X;
+                    t.y = srcTCoords[i].Y;
+                    t.z = srcTCoords[i].Z;
+
+                    dstTCoords.push_back(t);
+                }
+
+                // Get uvw face index data.
+                std::vector<int> dstFaceTCoords;
+                dstFaceTCoords.reserve(srcIndices.size() * 3);
+                for( unsigned int i = 0; i < srcIndices.size(); ++i )
+                {
+                    dstFaceTCoords.push_back(srcIndices[i].TCoordIndices[0]);
+                    dstFaceTCoords.push_back(srcIndices[i].TCoordIndices[1]);
+                    dstFaceTCoords.push_back(srcIndices[i].TCoordIndices[2]);
+                }
+
+                ValueList uvwChannel;
+                uvwChannel.push_back(Value(0));
+                uvwChannel.push_back(Value(VectorList(dstTCoords.data(), dstTCoords.data() + dstTCoords.size())));
+                uvwChannel.push_back(Value(IntList(dstFaceTCoords.data(), dstFaceTCoords.data() + dstFaceTCoords.size())));
+
+                ValueList mapChannels;
+                mapChannels.push_back(Value(uvwChannel));
+                staticMeshHandle->mStaticMesh->set_map_channels(mapChannels);
             }
         }
     }

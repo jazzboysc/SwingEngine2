@@ -81,8 +81,9 @@ std::vector<SEVector3f>& SEObjMetaMesh::GetVertexData()
     return mVertexData;
 }
 //----------------------------------------------------------------------------
-std::vector<SEVector3f>& SEObjMetaMesh::GetTCoordData()
+std::vector<SEVector3f>& SEObjMetaMesh::GetTCoordData(unsigned int channel)
 {
+    SE_ASSERT(channel == 0);
     return mTCoordData;
 }
 //----------------------------------------------------------------------------
@@ -101,14 +102,24 @@ std::vector<MetaMeshFaceIndex>& SEObjMetaMesh::GetIndexData()
     return mIndexData;
 }
 //----------------------------------------------------------------------------
-bool SEObjMetaMesh::HasTCoord() const
+bool SEObjMetaMesh::HasTCoord(unsigned int channel) const
 {
-    return mTCoordCount > 0;
+    if( channel == 0 )
+    {
+        return mTCoordCount > 0;
+    }
+    
+    return false;
 }
 //----------------------------------------------------------------------------
 bool SEObjMetaMesh::HasNormal() const
 {
     return mVertexNormalCount > 0;
+}
+//----------------------------------------------------------------------------
+unsigned int SEObjMetaMesh::GetTCoordChannelCount() const
+{
+    return mTCoordCount > 0 ? 1 : 0;
 }
 //----------------------------------------------------------------------------
 void SEObjMetaMesh::AppendVertex(SEVector3f& vertex)
@@ -171,7 +182,7 @@ void SEObjMetaMesh::ConvertToTriangleMesh()
 				triangle1.VertexIndices.push_back(vi2);
 				triangle1.VertexIndices.push_back(vi3);
 
-				if( HasTCoord() )
+				if( HasTCoord(0) )
 				{
 					SE_UInt32 ti0 = mIndexData[i].TCoordIndices[0];
 					SE_UInt32 ti1 = mIndexData[i].TCoordIndices[1];

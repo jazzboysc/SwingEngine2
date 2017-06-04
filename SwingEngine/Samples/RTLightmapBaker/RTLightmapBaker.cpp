@@ -93,11 +93,11 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
     mRTDeviceMesh01Node->SetTransform(&mat, &vec);
 
     // Create couch node bake view.
-    //SERTDeviceBakeViewDescription bakeViewDesc;
-    //bakeViewDesc.BakeNode = mRTDeviceMesh01Node;
+    SERTDeviceBakeViewDescription bakeViewDesc;
+    bakeViewDesc.BakeNode = mRTDeviceMesh01Node;
 
-    //mRTDeviceMesh01BakeView = SE_NEW SERTDeviceBakeView();
-    //mRTDeviceMesh01BakeView->CreateDeviceResource(*mRayTracingDevice, &bakeViewDesc);
+    mRTDeviceMesh01BakeView = SE_NEW SERTDeviceBakeView();
+    mRTDeviceMesh01BakeView->CreateDeviceResource(*mRayTracingDevice, &bakeViewDesc);
 
     mRayTracingDevice->Render();
 }
