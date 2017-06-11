@@ -11,6 +11,7 @@
 // Images
 #include "SERayTracingDeviceImage.h"
 #include "SERayTracingDeviceBitmap.h"
+#include "SERTDeviceRenderElement.h"
 
 // Cameras
 #include "SERTDeviceCamera.h"

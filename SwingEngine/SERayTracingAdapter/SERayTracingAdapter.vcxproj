@@ -766,6 +766,7 @@ copy /y *.h ..\SDK\Include
     <ClInclude Include="Device\SERayTracingDeviceResource.h" />
     <ClInclude Include="Images\SERayTracingDeviceBitmap.h" />
     <ClInclude Include="Images\SERayTracingDeviceImage.h" />
+    <ClInclude Include="Images\SERTDeviceRenderElement.h" />
     <ClInclude Include="Lights\SERTDeviceLightRectangle.h" />
     <ClInclude Include="Lights\SERTDeviceSkyLight.h" />
     <ClInclude Include="Materials\SERTDeviceMaterial.h" />
@@ -786,6 +787,7 @@ copy /y *.h ..\SDK\Include
     <ClCompile Include="Device\SERayTracingDeviceResource.cpp" />
     <ClCompile Include="Images\SERayTracingDeviceBitmap.cpp" />
     <ClCompile Include="Images\SERayTracingDeviceImage.cpp" />
+    <ClCompile Include="Images\SERTDeviceRenderElement.cpp" />
     <ClCompile Include="Lights\SERTDeviceLightRectangle.cpp" />
     <ClCompile Include="Lights\SERTDeviceSkyLight.cpp" />
     <ClCompile Include="Materials\SERTDeviceMaterial.cpp" />

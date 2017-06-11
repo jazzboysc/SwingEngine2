@@ -71,6 +71,9 @@
     <ClInclude Include="Cameras\SERTDeviceBakeView.h">
       <Filter>Cameras</Filter>
     </ClInclude>
+    <ClInclude Include="Images\SERTDeviceRenderElement.h">
+      <Filter>Images</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SERayTracingAdapterPCH.cpp" />
@@ -113,6 +116,9 @@
     </ClCompile>
     <ClCompile Include="Cameras\SERTDeviceBakeView.cpp">
       <Filter>Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="Images\SERTDeviceRenderElement.cpp">
+      <Filter>Images</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
