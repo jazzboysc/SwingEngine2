@@ -777,6 +777,10 @@ namespace VRay {
 				setObjectID(objectID);
 			}
 
+			explicit Value(const Plugin &plugin) {
+				setPlugin(plugin);
+			}
+
 			/// Copy constructor
 			Value(const Value &v) {
 				copy(v);
@@ -952,6 +956,20 @@ namespace VRay {
 			}
 			void setObjectID(const ObjectID &id) {
 				this->objectID = id;
+				valueType = OBJECTID;
+			}
+
+
+			// Plugin
+			const Plugin getPlugin(VRayRenderer &renderer) {
+				struct PluginWrap : public Plugin {
+					PluginWrap(VRayRenderer& renderer, InstanceId id)
+						: Plugin(renderer, id) { }
+				};
+				return PluginWrap(renderer, this->objectID.id);
+			}
+			void setPlugin(const Plugin &plugin) {
+				this->objectID.id = plugin.getId();
 				valueType = OBJECTID;
 			}
 

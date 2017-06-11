@@ -12,6 +12,7 @@
 namespace Internal {
 
 class VRayExportSettings_Internal;
+struct LicenseServerSettings_Internal;
 
 struct CropRegion {
 	int srcWidth;
@@ -43,6 +44,7 @@ typedef void(*OnProgress)(const char* message, int progress, int total, void* us
 typedef void(*OnRenderViewChanged)(const char* propName, void* userObject);
 typedef void(*OnRenderLast)(int flags, void* userObject);
 typedef void(*OnVFBClosed)(void* userObject);
+typedef void(*OnPostEffectsUpdated)(void* userObject);
 
 VRAYSDK_FUNC(unsigned, VRay_getSDKVersion, void)
 VRAYSDK_FUNC(const char*, VRay_getSDKVersionDetails, void)
@@ -51,8 +53,7 @@ VRAYSDK_FUNC(const char*, VRay_getVRayVersionDetails, void)
 VRAYSDK_FUNC(char*, VRay_getLicenseErrorTextStringFromErrorCode, size_t);
 VRAYSDK_FUNC(const char*, VRay_getSimpleLicenseErrorTextStringFromErrorCode, int);
 VRAYSDK_FUNC(int, VRay_encodeBRDFScannedParams, int* data, int size, const ScannedMaterialParams* params, size_t vrScansPrmSize, int* licErr);
-VRAYSDK_FUNC(int, VRay_LicenseManager_setLicenseServers, const char*);
-VRAYSDK_FUNC(const char*, VRay_LicenseManager_getLicenseServers);
+VRAYSDK_FUNC(int, VRay_LicenseManager_setLicenseServers, const LicenseServerSettings_Internal* settings);
 
 // VRayRenderer
 VRAYSDK_FUNC(void, VRay_enableFrameBuffer, Bool isEnabled)
@@ -73,6 +74,7 @@ VRAYSDK_FUNC(const char*, VRay_VRayRenderer_getLastParserErrorText, VRayRenderer
 VRAYSDK_FUNC(Bool, VRay_VRayRenderer_setRenderMode, VRayRendererNative* renderer, int renderMode)
 VRAYSDK_FUNC(int, VRay_VRayRenderer_getRenderMode, VRayRendererNative* renderer)
 VRAYSDK_FUNC(Bool, VRay_VRayRenderer_setRenderOptions, VRayRendererNative* renderer, const RendererOptions* options)
+VRAYSDK_FUNC(int, VRay_VRayRenderer_serializeScene, VRayRendererNative* renderer)
 VRAYSDK_FUNC(RendererOptions*, VRay_VRayRenderer_getRenderOptions, VRayRendererNative* renderer)
 VRAYSDK_FUNC(void, VRay_VRayRenderer_showFrameBuffer, VRayRendererNative* renderer, Bool show, Bool setFocus)
 VRAYSDK_FUNC(Bool, VRay_VRayRenderer_isFrameBufferShown, VRayRendererNative* renderer)
@@ -143,6 +145,7 @@ VRAYSDK_FUNC(Bool, VRay_VRayRenderer_pluginClassExists, VRayRendererNative* rend
 // VRAYSDK_FUNC(Bool, VRay_VRayRenderer_propertyExists, VRayRendererNative* renderer, const char* pluginName, const char* propertyName)
 VRAYSDK_FUNC(InstanceId, VRay_VRayRenderer_getPluginID, VRayRendererNative* renderer, const char* pluginName)
 VRAYSDK_FUNC(char*, VRay_VRayRenderer_getPluginName, VRayRendererNative* renderer, InstanceId pluginID)
+VRAYSDK_FUNC(int, VRay_VRayRenderer_renamePluginByID, VRayRendererNative* renderer, InstanceId pluginID, const char* newName)
 VRAYSDK_FUNC(void, VRay_VRayRenderer_stop, VRayRendererNative* renderer)
 VRAYSDK_FUNC(VRayImage*, VRay_VRayRenderer_getImage, VRayRendererNative* renderer, const GetImageOptions *options)
 VRAYSDK_FUNC(int, VRay_VRayRenderer_saveVfbToFile, VRayRendererNative* renderer, const char* fileName, const ImageWriterOptions* options)
@@ -182,6 +185,7 @@ VRAYSDK_FUNC(void, VRay_VRayRenderer_setProgressCallback, VRayRendererNative* re
 VRAYSDK_FUNC(void, VRay_VRayRenderer_setRenderViewChangedCallback, VRayRendererNative* renderer, OnRenderViewChanged onRenderViewChanged, void* userObject)
 VRAYSDK_FUNC(void, VRay_VRayRenderer_setRenderLastCallback, VRayRendererNative* renderer, OnRenderLast onRenderLast, void* userObject)
 VRAYSDK_FUNC(void, VRay_VRayRenderer_setVFBClosedCallback, VRayRendererNative* renderer, OnVFBClosed onVFBClosed, void* userObject)
+VRAYSDK_FUNC(void, VRay_VRayRenderer_setPostEffectsUpdatedCallback, VRayRendererNative* renderer, OnPostEffectsUpdated onPostEffectsUpdated, void* userObject)
 
 VRAYSDK_FUNC(float, VRay_VRayRenderer_setRTImageUpdateDifference, VRayRendererNative* renderer, float difference)
 VRAYSDK_FUNC(unsigned long, VRay_VRayRenderer_setRTImageUpdateTimeout, VRayRendererNative* renderer, unsigned long timeout)
@@ -246,6 +250,12 @@ VRAYSDK_FUNC(int, VRay_VRayRenderer_getDeviceListOpenCL, VRayRendererNative* ren
 VRAYSDK_FUNC(int, VRay_VRayRenderer_setDeviceListCUDA, VRayRendererNative* renderer, const int *indices, size_t count)
 VRAYSDK_FUNC(int, VRay_VRayRenderer_setDeviceListOpenCL, VRayRendererNative* renderer, const int *indices, size_t count)
 
+// Resumable rendering
+VRAYSDK_FUNC(Bool, VRay_VRayRenderer_setResumableRendering, VRayRendererNative* renderer, Bool enable, const ResumableRenderingOptions *options)
+
+// Denoising
+VRAYSDK_FUNC(Bool, VRay_VRayRenderer_denoiseNow, VRayRendererNative* renderer)
+
 // LicenseManager
 VRAYSDK_FUNC(void, VRay_LicenseManager_releaseLicense, void)
 
@@ -281,6 +291,9 @@ VRAYSDK_FUNC(VRayImage*, VRayImage_cutIn, const VRayImage* img, int width, int h
 VRAYSDK_FUNC(VRayImage*, VRayImage_crop_downscale, const VRayImage* img, int x, int y, int srcWidth, int srcHeight, int dstWidth, int dstHeight)
 VRAYSDK_FUNC(VRayImage*, VRayImage_clone, const VRayImage* img)
 VRAYSDK_FUNC(VRayImage*, VRayImage_create, int width, int height)
+VRAYSDK_FUNC(VRayImage*, VRayImage_createFromBmp, const byte* bmpData, size_t size, VRayRendererNative* renderer)
+VRAYSDK_FUNC(VRayImage*, VRayImage_createFromJpeg, const byte* jpgData, size_t size, VRayRendererNative* renderer)
+VRAYSDK_FUNC(VRayImage*, VRayImage_createFromPng, const byte* pngData, size_t size, VRayRendererNative* renderer)
 VRAYSDK_FUNC(Bool, VRayImage_getSize, const VRayImage* img, int* width, int* height)
 VRAYSDK_FUNC(size_t, VRayImage_getMemorySize, const VRayImage* img)
 VRAYSDK_FUNC(void*, VRayImage_getPixelDataPointerAndPixelCount, const VRayImage* img, size_t* size)

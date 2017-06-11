@@ -20,7 +20,7 @@ namespace {
 			sprintf_s(errBuf, 1024, "%s [%s]", msg, errAsString);
 			LocalFree(errAsString);
 		} else {
-			sprintf_s(errBuf, 1024, "%s [%u]", msg, errorMessageID);
+			sprintf_s(errBuf, 1024, "%s [%lu]", msg, errorMessageID);
 		}
 #else
 #   if __cplusplus >= 201103L
@@ -80,8 +80,6 @@ void VRay::VRayInit::initialize(const char* libraryFileName) {
 		PROC_IMPORT_FAIL("Cannot find VRay_getVRayVersionDetails in library.");
 	if (!(PROC_TYPE Internal::VRay_LicenseManager_setLicenseServers = GET_PROC_ADDR(hLib, "VRay_LicenseManager_setLicenseServers")))
 		PROC_IMPORT_FAIL("Cannot find VRay_LicenseManager_setLicenseServers in library.");
-	if (!(PROC_TYPE Internal::VRay_LicenseManager_getLicenseServers = GET_PROC_ADDR(hLib, "VRay_LicenseManager_getLicenseServers")))
-		PROC_IMPORT_FAIL("Cannot find VRay_LicenseManager_getLicenseServers in library.");
 
 	if (!(PROC_TYPE Internal::VRay_getLicenseErrorTextStringFromErrorCode = GET_PROC_ADDR(hLib, "VRay_getLicenseErrorTextStringFromErrorCode")))
 		PROC_IMPORT_FAIL("Cannot find VRay_getLicenseErrorTextStringFromErrorCode in library.");
@@ -137,6 +135,9 @@ void VRay::VRayInit::initialize(const char* libraryFileName) {
 
 	if (!(PROC_TYPE Internal::VRay_VRayRenderer_getRenderOptions = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_getRenderOptions")))
 		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_getRenderOptions in library.");
+
+	if (!(PROC_TYPE Internal::VRay_VRayRenderer_serializeScene = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_serializeScene")))
+		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_serializeScene in library.");
 
 	if (!(PROC_TYPE Internal::VRay_VRayRenderer_showFrameBuffer = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_showFrameBuffer")))
 		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_showFrameBuffer in library.");
@@ -345,6 +346,9 @@ void VRay::VRayInit::initialize(const char* libraryFileName) {
 	if (!(PROC_TYPE Internal::VRay_VRayRenderer_getPluginName = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_getPluginName")))
 		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_getPluginName in library.");
 
+	if (!(PROC_TYPE Internal::VRay_VRayRenderer_renamePluginByID = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_renamePluginByID")))
+		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_renamePluginByID in library.");
+
 	if (!(PROC_TYPE Internal::VRay_VRayRenderer_stop = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_stop")))
 		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_stop in library.");
 
@@ -455,6 +459,9 @@ void VRay::VRayInit::initialize(const char* libraryFileName) {
 
 	if (!(PROC_TYPE Internal::VRay_VRayRenderer_setVFBClosedCallback = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_setVFBClosedCallback")))
 		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_setVFBClosedCallback in library.");
+
+	if (!(PROC_TYPE Internal::VRay_VRayRenderer_setPostEffectsUpdatedCallback = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_setPostEffectsUpdatedCallback")))
+		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_setPostEffectsUpdatedCallback in library.");
 
 	if (!(PROC_TYPE Internal::VRay_VRayRenderer_setRTImageUpdateDifference = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_setRTImageUpdateDifference")))
 		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_setRTImageUpdateDifference in library.");
@@ -606,6 +613,12 @@ void VRay::VRayInit::initialize(const char* libraryFileName) {
 	if (!(PROC_TYPE Internal::VRay_VRayRenderer_setDeviceListOpenCL = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_setDeviceListOpenCL")))
 		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_setDeviceListOpenCL in library.");
 
+	if (!(PROC_TYPE Internal::VRay_VRayRenderer_setResumableRendering = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_setResumableRendering")))
+		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_setResumableRendering in library.");
+
+	if (!(PROC_TYPE Internal::VRay_VRayRenderer_denoiseNow = GET_PROC_ADDR(hLib, "VRay_VRayRenderer_denoiseNow")))
+		PROC_IMPORT_FAIL("Cannot find VRay_VRayRenderer_denoiseNow in library.");
+
 
 	// LicenseManager
 	if (!(PROC_TYPE Internal::VRay_LicenseManager_releaseLicense = GET_PROC_ADDR(hLib, "VRay_LicenseManager_releaseLicense")))
@@ -686,6 +699,15 @@ void VRay::VRayInit::initialize(const char* libraryFileName) {
 
 	if (!(PROC_TYPE Internal::VRayImage_create = GET_PROC_ADDR(hLib, "VRayImage_create")))
 		PROC_IMPORT_FAIL("Cannot find VRayImage_create in library.");
+
+	if (!(PROC_TYPE Internal::VRayImage_createFromBmp = GET_PROC_ADDR(hLib, "VRayImage_createFromBmp")))
+		PROC_IMPORT_FAIL("Cannot find VRayImage_createFromBmp in library.");
+
+	if (!(PROC_TYPE Internal::VRayImage_createFromPng = GET_PROC_ADDR(hLib, "VRayImage_createFromPng")))
+		PROC_IMPORT_FAIL("Cannot find VRayImage_createFromPng in library.");
+
+	if (!(PROC_TYPE Internal::VRayImage_createFromJpeg = GET_PROC_ADDR(hLib, "VRayImage_createFromJpeg")))
+		PROC_IMPORT_FAIL("Cannot find VRayImage_createFromJpeg in library.");
 
 	if (!(PROC_TYPE Internal::VRayImage_getSize = GET_PROC_ADDR(hLib, "VRayImage_getSize")))
 		PROC_IMPORT_FAIL("Cannot find VRayImage_getSize in library.");
@@ -965,6 +987,7 @@ namespace Internal {
 
 			case TYPE_GENERAL_LIST:
 				value.constructOnly_<ValueList, TYPE_GENERAL_LIST>();
+				value.interpretAs_<ValueList>().reserve(count);
 				for (unsigned i = 0; i < count; ++i)
 					value.interpretAs_<ValueList>().push_back(get());
 
@@ -1025,7 +1048,7 @@ namespace Internal {
 			Type type = static_cast<Type>(plist[0]);
 			if (type == LIST_TYPE) {
 				size_t count = plist[1];
-				T* data = reinterpret_cast<T*>(plist);
+				T* data = reinterpret_cast<T*>(plist+2);
 				typedList.assign(data, data + count);
 				return true;
 			}
@@ -1064,6 +1087,7 @@ namespace Internal {
 					const std::string& str = val.interpretAs_<const std::string>();
 					const int* istr = reinterpret_cast<const int*>(str.c_str());
 					size_t len = str.size();
+					buf.reserve(2 + 1 + len/sizeof(int));
 					buf.push_back(static_cast<int>(len));
 
 					while (len > sizeof(int) - 1) {
@@ -1139,6 +1163,7 @@ namespace Internal {
 			case TYPE_INT_LIST: {
 					const IntList& list = val.interpretAs_<const IntList>();
 					const int count = static_cast<int>(list.size());
+					buf.reserve(2 + count);
 					buf.push_back(count);
 					IntList::const_iterator iter = list.begin();
 					for (int i = 0; i < count; ++i)
@@ -1149,6 +1174,7 @@ namespace Internal {
 			case TYPE_FLOAT_LIST: {
 					const FloatList& list = val.interpretAs_<const FloatList>();
 					const int count = static_cast<int>(list.size());
+					buf.reserve(2 + count);
 					buf.push_back(count);
 					FloatList::const_iterator iter = list.begin();
 					for (int i = 0; i < count; ++i)
@@ -1159,6 +1185,7 @@ namespace Internal {
 			case TYPE_COLOR_LIST: {
 					const ColorList& list = val.interpretAs_<const ColorList>();
 					const int count = static_cast<int>(list.size());
+					buf.reserve(2 + 3*count);
 					buf.push_back(count);
 					ColorList::const_iterator iter = list.begin();
 					for (int i = 0; i < count; ++i) {
@@ -1173,6 +1200,7 @@ namespace Internal {
 			case TYPE_VECTOR_LIST: {
 					const VectorList& list = val.interpretAs_<const VectorList>();
 					const int count = static_cast<int>(list.size());
+					buf.reserve(2 + 3*count);
 					buf.push_back(count);
 					VectorList::const_iterator iter = list.begin();
 					for (int i = 0; i < count; ++i) {
@@ -1251,7 +1279,39 @@ namespace Internal {
 			if (subFileInfos) delete[] subFileInfos;
 		}
 	};
+
+	struct LicenseServerSettings_Internal {
+		const char *serverName;
+		const char *proxyName;
+		const char *username;
+		const char *password;
+		const char *serverName1;
+		const char *serverName2;
+
+		int serverPort;
+		int proxyPort;
+		int serverPort1;
+		int serverPort2;
+
+		LicenseServerSettings_Internal(const LicenseServerSettings& settings) {
+			serverName = settings.serverName.c_str();
+			proxyName = settings.proxyName.c_str();
+			username = settings.username.c_str();
+			password = settings.password.c_str();
+			serverName1 = settings.serverName1.c_str();
+			serverName2 = settings.serverName2.c_str();
+
+			serverPort = settings.serverPort;
+			serverPort1 = settings.serverPort1;
+			serverPort2 = settings.serverPort2;
+		}
+	};
 } // namespace Internal
+
+inline int setLicenseServers(const LicenseServerSettings& settings) {
+	Internal::LicenseServerSettings_Internal internalSettings(settings);
+	return Internal::VRay_LicenseManager_setLicenseServers(&internalSettings);
+}
 
 inline std::string LicenseError::toString() const {
 	char* str = Internal::VRay_getLicenseErrorTextStringFromErrorCode(errs);
@@ -1332,6 +1392,9 @@ inline void Value::copyValue(const Value& value) {
 		break;
 	case TYPE_COLOR:
 		constructWithValue_<Color, TYPE_COLOR>(value.interpretAs_<Color>());
+		break;
+	case TYPE_ACOLOR:
+		constructWithValue_<AColor, TYPE_ACOLOR>(value.interpretAs_<AColor>());
 		break;
 	case TYPE_MATRIX:
 		constructWithValue_<Matrix, TYPE_MATRIX>(value.interpretAs_<Matrix>());
@@ -1703,10 +1766,6 @@ inline ValueList Value::getValueList() const {
 
 inline std::string Value::getString() const {
 	return type == TYPE_STRING ? interpretAs_<std::string>() : std::string();
-}
-
-inline InstanceId Value::getInstanceId() const {
-	return type == TYPE_OBJECT ? interpretAs_<InstanceId>() : NO_ID;
 }
 
 inline Plugin Value::getPlugin() const {
@@ -2249,73 +2308,78 @@ inline const int *ProxyReadData::getUVValueIndices(int setIndex) const {
 }
 
 inline void VRayRenderer::renderStartCallback(void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->renderStartDelegate(*renderer);
 }
 
 inline void VRayRenderer::imageReadyCallback(void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->imageReadyDelegate(*renderer);
 }
 
 inline void VRayRenderer::rendererCloseCallback(void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->rendererCloseDelegate(*renderer);
 }
 
 inline void VRayRenderer::rtImageUpdatedCallback(int, int, VRayImage* img, void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->rtImageUpdatedDelegate(*renderer, img);
 }
 
 inline void VRayRenderer::dumpMessageCallback(const char* msg, int level, void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->dumpMessageDelegate(*renderer, msg, level);
 }
 
 inline void VRayRenderer::bucketInitCallback(int x, int y, int width, int height, const char* host, void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->bucketInitDelegate(*renderer, x, y, width, height, host);
 }
 
 inline void VRayRenderer::bucketReadyCallback(int x, int y, int, int, const char* host, VRayImage* img, void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->bucketReadyDelegate(*renderer, x, y, host, img);
 }
 
 inline void VRayRenderer::bucketFailedCallback(int x, int y, int width, int height, const char* host, void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->bucketFailedDelegate(*renderer, x, y, width, height, host);
 }
 
 inline void VRayRenderer::sequenceStartCallback(void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->sequenceStartDelegate(*renderer);
 }
 
 inline void VRayRenderer::sequenceDoneCallback(void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->sequenceDoneDelegate(*renderer);
 }
 
 inline void VRayRenderer::progressCallback(const char* msg, int progress, int total, void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->progressDelegate(*renderer, msg, progress, total);
 }
 
 inline void VRayRenderer::renderViewChangedCallback(const char* propName, void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->renderViewChangedDelegate(*renderer, propName);
 }
 
 inline void VRayRenderer::renderLastCallback(int flags, void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->renderLastDelegate(*renderer, flags);
 }
 
 inline void VRayRenderer::vfbClosedCallback(void* r) {
-	VRayRenderer* &renderer = reinterpret_cast<VRayRenderer*&>(r);
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
 	renderer->vfbClosedDelegate(*renderer);
+}
+
+inline void VRayRenderer::postEffectsUpdatedCallback(void* r) {
+	VRayRenderer* renderer = static_cast<VRayRenderer*>(r);
+	renderer->postEffectsUpdatedDelegate(*renderer);
 }
 
 inline void VRayRenderer::createInstance(const RendererOptions* options) {
@@ -2463,21 +2527,13 @@ inline InstanceId VRayRenderer::getPluginId_internal(const char* pluginName) con
 	return Internal::VRay_VRayRenderer_getPluginID(getNativeRenderer(), pluginName);
 }
 
-inline InstanceId VRayRenderer::getPluginId(const char* pluginName) const {
-	return getPluginId_internal(pluginName);
-}
-
-inline InstanceId VRayRenderer::getPluginId(const std::string& pluginName) const {
-	return getPluginId_internal(pluginName.c_str());
-}
-
 inline const char* VRayRenderer::getPluginName_internal(InstanceId pluginID) const {
 	const char* pluginName = Internal::VRay_VRayRenderer_getPluginName(getNativeRenderer(), pluginID);
 	return pluginName ? pluginName : "";
 }
 
-inline const char* VRayRenderer::getPluginName(InstanceId pluginID) const {
-	return getPluginName_internal(pluginID);
+inline bool VRayRenderer::setPluginName(InstanceId pluginID, const char* name) const {
+	return !Internal::VRay_VRayRenderer_renamePluginByID(getNativeRenderer(), pluginID, name);
 }
 
 inline bool VRayRenderer::setRenderMode(RendererOptions::RenderMode mode) {
@@ -2499,12 +2555,16 @@ inline RendererOptions VRayRenderer::getOptions() {
 	return result;
 }
 
+inline bool VRayRenderer::serializeScene() {
+	return !Internal::VRay_VRayRenderer_serializeScene(getNativeRenderer());
+}
+
 inline bool VRayRenderer::reset() {
 	return !!Internal::VRay_VRayRenderer_reset(getNativeRenderer(), NULL);
 }
 
 inline bool VRayRenderer::reset(const RendererOptions &options) {
-	return !!Internal::VRay_VRayRenderer_reset(getNativeRenderer(), &options);
+	return !!Internal::VRay_VRayRenderer_reset(getNativeRenderer(), options.prepare());
 }
 
 inline bool VRayRenderer::setImprovedDefaultSettings() {
@@ -2579,10 +2639,6 @@ inline bool VRayRenderer::pause() const {
 
 inline bool VRayRenderer::resume() const {
 	return !!Internal::VRay_VRayRenderer_pauseRT(getNativeRenderer(), false);
-}
-
-inline bool VRayRenderer::isPaused() const {
-	return !!Internal::VRay_VRayRenderer_getPauseRTStatus(getNativeRenderer());
 }
 
 inline int VRayRenderer::getWidth() const {
@@ -2687,10 +2743,6 @@ inline void VRayRenderer::start() const {
 
 inline void VRayRenderer::startSync() const {
 	Internal::VRay_VRayRenderer_startSync(getNativeRenderer());
-}
-
-inline void VRayRenderer::run() const {
-	Internal::VRay_VRayRenderer_renderImage(getNativeRenderer());
 }
 
 inline void VRayRenderer::renderSequence() const {
@@ -2810,10 +2862,6 @@ inline bool VRayRenderer::isImageReady() const {
 	return !!Internal::VRay_VRayRenderer_isImageReady(getNativeRenderer());
 }
 
-inline bool VRayRenderer::isRendering() const {
-	return !!Internal::VRay_VRayRenderer_isRendering(getNativeRenderer());
-}
-
 inline bool VRayRenderer::isAborted() const {
 	return !!Internal::VRay_VRayRenderer_isAborted(getNativeRenderer());
 }
@@ -2840,18 +2888,6 @@ inline bool VRayRenderer::waitForSequenceDone(const int timeout) const {
 
 inline std::vector<std::string> VRayRenderer::getPluginNames() const {
 	return getStringVector(Internal::VRay_VRayRenderer_getPluginNames(getNativeRenderer()));
-}
-
-inline std::vector<InstanceId> VRayRenderer::getPluginIds() const {
-	return getPluginIdsOfType(getNativeRenderer());
-}
-
-inline std::vector<InstanceId> VRayRenderer::getPluginIds(const char* pluginClassName) const {
-	return getPluginIdsOfType(getNativeRenderer(), pluginClassName);
-}
-
-inline std::vector<InstanceId> VRayRenderer::getPluginIds(const std::string& pluginClassName) const {
-	return getPluginIdsOfType(getNativeRenderer(), pluginClassName.c_str());
 }
 
 inline std::vector<Plugin> VRayRenderer::getPlugins() const {
@@ -3057,7 +3093,7 @@ inline void VRayRenderer::setOnSequenceDone(void(*callback)(VRayRenderer&, void*
 template<class T, void (T::*TMethod)(VRayRenderer&, void*)>
 void VRayRenderer::setOnSequenceDone(T& cls, const void* userData) {
 	sequenceDoneDelegate = Delegate1::from_method<T, TMethod>(&cls, const_cast<void*>(userData));
-	Internal::VRay_VRayRenderer_setSequenceDoneCallback(getNativeRenderer(), &sequenceStartCallback, this);
+	Internal::VRay_VRayRenderer_setSequenceDoneCallback(getNativeRenderer(), &sequenceDoneCallback, this);
 }
 
 inline void VRayRenderer::setOnProgress(void(*callback)(VRayRenderer&, const char* msg, int elementNumber, int elementsCount, void*), const void* userData) {
@@ -3104,6 +3140,17 @@ void VRayRenderer::setOnVFBClosed(T& cls, const void* userData) {
 	Internal::VRay_VRayRenderer_setVFBClosedCallback(getNativeRenderer(), &vfbClosedCallback, this);
 }
 
+inline void VRayRenderer::setOnPostEffectsUpdated(void(*callback)(VRayRenderer&, void*), const void* userData) {
+	postEffectsUpdatedDelegate = Delegate1::from_function(callback, const_cast<void*>(userData));
+	Internal::VRay_VRayRenderer_setPostEffectsUpdatedCallback(getNativeRenderer(), callback ? &postEffectsUpdatedCallback : NULL, this);
+}
+
+template<class T, void (T::*TMethod)(VRayRenderer&, void*)>
+void VRayRenderer::setOnPostEffectsUpdated(T& cls, const void* userData) {
+	postEffectsUpdatedDelegate = Delegate1::from_method<T, TMethod>(&cls, const_cast<void*>(userData));
+	Internal::VRay_VRayRenderer_setPostEffectsUpdatedCallback(getNativeRenderer(), &postEffectsUpdatedCallback, this);
+}
+
 inline float VRayRenderer::setRTImageUpdateDifference(float difference) {
 	return Internal::VRay_VRayRenderer_setRTImageUpdateDifference(getNativeRenderer(), difference);
 }
@@ -3132,10 +3179,6 @@ inline Plugin VRayRenderer::getPlugin_internal(InstanceId pluginID) const {
 	return pluginExists_internal(pluginID) ? Plugin(*const_cast<VRayRenderer*>(this), pluginID) : Plugin();
 }
 
-inline Plugin VRayRenderer::getPlugin(InstanceId pluginID) const {
-	return getPlugin_internal(pluginID);
-}
-
 template<class T>
 T VRayRenderer::getPlugin(const char *pluginName) const {
 	return plugin_cast<T>(Plugin(*const_cast<VRayRenderer*>(this), pluginName));
@@ -3150,11 +3193,6 @@ template<class T>
 T VRayRenderer::getPlugin_internal(InstanceId pluginID) const {
 	const char* type = getPluginType(pluginID);
 	return plugin_cast<T>(!strcmp(type, T::getType()) ? Plugin(*const_cast<VRayRenderer*>(this), pluginID) : Plugin());
-}
-
-template<class T>
-T VRayRenderer::getPlugin(InstanceId pluginID) const {
-	return getPlugin_internal(pluginID);
 }
 
 inline PluginMeta VRayRenderer::getPluginMeta(const std::string &pluginClassName) const {
@@ -3254,53 +3292,17 @@ inline bool VRayRenderer::removePlugin(const Plugin& plugin) {
 	return !Internal::VRay_VRayRenderer_deletePluginByID(getNativeRenderer(), plugin.id, autoCommit);
 }
 
+inline bool VRayRenderer::removePlugin(const std::string& pluginName) {
+	return !Internal::VRay_VRayRenderer_deletePlugin(getNativeRenderer(), pluginName.c_str(), autoCommit);
+}
+
+inline bool VRayRenderer::removePlugin(const char* pluginName) {
+	return !Internal::VRay_VRayRenderer_deletePlugin(getNativeRenderer(), pluginName, autoCommit);
+}
+
 inline bool VRayRenderer::replacePlugin(const Plugin& oldPlugin, const Plugin& newPlugin) {
 	return !Internal::VRay_VRayRenderer_replacePluginByID(getNativeRenderer(), oldPlugin.id, newPlugin.id, autoCommit);
 }
-
-#ifndef VRAY_NOTHROW
-inline Plugin VRayRenderer::getPlugin(const char* pluginName, bool throw_flag) const {
-	if (pluginExists(pluginName))
-		return Plugin(*const_cast<VRayRenderer*>(this), pluginName);
-	if (throw_flag)
-		throw PluginUnavailableErr();
-	return Plugin();
-}
-
-inline Plugin VRayRenderer::getPlugin(const std::string& pluginName, bool throw_flag) const {
-	if (pluginExists(pluginName))
-		return Plugin(*const_cast<VRayRenderer*>(this), pluginName);
-	if (throw_flag)
-		throw PluginUnavailableErr();
-	return Plugin();
-}
-
-inline Plugin VRayRenderer::getPlugin(InstanceId pluginID, bool throw_flag) const {
-	if (pluginExists_internal(pluginID))
-		return Plugin(*const_cast<VRayRenderer*>(this), pluginID);
-	if (throw_flag)
-		throw PluginUnavailableErr();
-	return Plugin();
-}
-
-inline Plugin VRayRenderer::pickPlugin(int x, int y, bool throw_flag) const {
-	const InstanceId pluginID = Internal::VRay_VRayRenderer_pickPluginByXY(getNativeRenderer(), x, y, -1);
-
-	if (throw_flag && pluginID == NO_ID)
-		throw PluginUnavailableErr();
-
-	return Plugin(*const_cast<VRayRenderer*>(this), pluginID);
-}
-
-inline Plugin VRayRenderer::pickPlugin(int x, int y, int timeout, bool throw_flag) const {
-	const InstanceId pluginID = Internal::VRay_VRayRenderer_pickPluginByXY(getNativeRenderer(), x, y, timeout);
-
-	if (throw_flag && pluginID == NO_ID)
-		throw PluginUnavailableErr();
-
-	return Plugin(*const_cast<VRayRenderer*>(this), pluginID);
-}
-#endif // VRAY_NOTHROW
 
 inline bool VRayRenderer::pluginExists(const char* pluginName) const {
 	return !!Internal::VRay_VRayRenderer_pluginExists(getNativeRenderer(), pluginName);
@@ -3312,10 +3314,6 @@ inline bool VRayRenderer::pluginExists(const std::string& pluginName) const {
 
 inline bool VRayRenderer::pluginExists_internal(InstanceId pluginID) const {
 	return !!Internal::VRay_VRayRenderer_pluginExistsByID(getNativeRenderer(), pluginID);
-}
-
-inline bool VRayRenderer::pluginExists(InstanceId pluginID) const {
-	return pluginExists_internal(pluginID);
 }
 
 inline bool VRayRenderer::getAutoCommit() const {
@@ -3448,7 +3446,6 @@ inline std::vector<T> VRayRenderer::getPluginsOfType(VRayRenderer &renderer, con
 	int count;
 	InstanceId* ids = static_cast<InstanceId*>(Internal::VRay_VRayRenderer_getPluginIDsOfType(renderer.getNativeRenderer(), pluginType, &count));
 	std::vector<T> plugins(count);
-	InstanceId* idsEnd = ids + count;
 	for (int i = 0; i < count; ++i) {
 		plugins[i] = plugin_cast<T>(Plugin(renderer, ids[i]));
 	}
@@ -3811,6 +3808,14 @@ inline bool VRayRenderer::saveCausticsFile(const char* fileName) {
 	return !!Internal::VRay_VRayRenderer_saveCausticsFile(getNativeRenderer(), fileName);
 }
 
+inline bool VRayRenderer::setResumableRendering(bool enable, const ResumableRenderingOptions *options) {
+	return !!Internal::VRay_VRayRenderer_setResumableRendering(getNativeRenderer(), enable, options);
+}
+
+inline bool VRayRenderer::denoiseNow() {
+	return !!Internal::VRay_VRayRenderer_denoiseNow(getNativeRenderer());
+}
+
 namespace Internal {
 	struct OCLDevInfo {
 		char *name;
@@ -3936,6 +3941,14 @@ inline bool Plugin::isValid() const {
 
 inline const char* Plugin::getName() const {
 	return pRenderer->getPluginName_internal(id);
+}
+
+inline bool Plugin::setName(const char* newName) {
+	return pRenderer->setPluginName(id, newName);
+}
+
+inline bool Plugin::setName(const std::string& newName) {
+	return setName(newName.c_str());
 }
 
 inline const char* Plugin::getType() const {
@@ -4989,12 +5002,9 @@ inline Jpeg* VRayImage::getJpeg(size_t& length, const VRayRenderer& renderer, in
 	return reinterpret_cast<Jpeg*>(bufAddr);
 }
 
-inline MemoryBuffer* VRayImage::toBitmapData(size_t& size, bool preserveAlpha, bool invertChannels, int stride) const {
+inline MemoryBuffer* VRayImage::toBitmapData(size_t& size, bool preserveAlpha, bool swapChannels, bool revertY, int stride) const {
 	byte* data = NULL;
-	size = Internal::VRayImage_toBitmapData(this, preserveAlpha, &data, invertChannels, stride);
-	if(size == 0) {
-		return NULL;
-	}
+	size = Internal::VRayImage_toBitmapData(this, preserveAlpha, &data, (swapChannels << 0) | (revertY << 1), stride);
 	return reinterpret_cast<MemoryBuffer*>(data);
 }
 
@@ -5004,6 +5014,30 @@ inline VRayImage* VRayImage::clone() const {
 
 inline VRayImage* VRayImage::create(int width, int height) {
 	return Internal::VRayImage_create(width, height);
+}
+
+inline VRayImage* VRayImage::createFromBmp(const void* buffer, size_t size) {
+	return Internal::VRayImage_createFromBmp(static_cast<const byte*>(buffer), size, NULL);
+}
+
+inline VRayImage* VRayImage::createFromBmp(const VRayRenderer& renderer, const void* buffer, size_t size) {
+	return Internal::VRayImage_createFromBmp(static_cast<const byte*>(buffer), size, renderer.getNativeRenderer());
+}
+
+inline VRayImage* VRayImage::createFromPng(const VRayRenderer& renderer, const void* buffer, size_t size) {
+	return Internal::VRayImage_createFromPng(static_cast<const byte*>(buffer), size, renderer.getNativeRenderer());
+}
+
+inline VRayImage* VRayImage::createFromPng(const void* buffer, size_t size) {
+	return Internal::VRayImage_createFromPng(static_cast<const byte*>(buffer), size, NULL);
+}
+
+inline VRayImage* VRayImage::createFromJpeg(const VRayRenderer& renderer, const void* buffer, size_t size) {
+	return Internal::VRayImage_createFromJpeg(static_cast<const byte*>(buffer), size, renderer.getNativeRenderer());
+}
+
+inline VRayImage* VRayImage::createFromJpeg(const void* buffer, size_t size) {
+	return Internal::VRayImage_createFromJpeg(static_cast<const byte*>(buffer), size, NULL);
 }
 
 inline int VRayImage::getWidth() const {
@@ -5270,9 +5304,6 @@ inline size_t RenderElement::getData(const RenderElement& alpha, void** data, Pi
 
 inline size_t RenderElement::getData(const Plugin& alpha, void** data, PixelFormat format, bool rgbOrder, const ImageRegion* rgn) const {
 	return getData_internal(alpha.getId(), data, format, rgbOrder, rgn);
-}
-inline size_t RenderElement::getData(InstanceId alpha, void** data, PixelFormat format, bool rgbOrder, const ImageRegion* rgn) const {
-	return getData_internal(alpha, data, format, rgbOrder, rgn);
 }
 
 inline void RenderElement::releaseData(void* data) {

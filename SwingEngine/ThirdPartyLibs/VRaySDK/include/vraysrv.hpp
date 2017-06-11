@@ -93,7 +93,7 @@ namespace VRay {
 		MessageError = 9999,	///< 0..9999 - error messages
 		MessageWarning = 19999,	///< 10000..19999 - warning messages
 		MessageInfo = 29999,	///< 20000..29999 - info messages
-								///< 30000+ - debug messages (not generated on normal builds)
+		MessageDebug = 30000	///< >30000 - debug messages
 	};
 
 	union LicenseError {
@@ -145,7 +145,7 @@ namespace VRay {
 
 	inline std::ostream& operator <<(std::ostream& stream, const LicenseError& err) {
 		char* str = ::VRay_getLicenseErrorTextStringFromErrorCode(err.errs);
-		stream << str;
+		stream << std::string(str ? str : "");
 		::C_memory_free(str);
 		return stream;
 	}
@@ -167,13 +167,22 @@ namespace VRay {
 			int flags;
 			struct {
 				bool noRenderLicensePreCheck : 1; ///< if set appsdk will not check for render license before rendering is started
+				bool changeCurrentDirectory : 1;  ///< change the current dir to remoteScenePath
+				bool keepSceneInMemory : 1; ///< do not write temporary vrscene-file, keep all the data in memory
+				bool overwriteLocalCacheSettings : 1; ///< true to override any local cache settings on the render servers with the value from the client machine.
 			};
 		};
 		std::string remoteScenePath;
 		std::string pluginLibraryPath; ///< specifies additional plugin library paths
 		std::string gpuPluginPath;     ///< rt_cuda and rt_opencl plugins search path
+		enum {
+			CACHE_NO_LIMIT = 0,
+			CACHE_HOUR_LIMIT = 1,
+			CACHE_GB_LIMIT = 2,
+		} cachedAssetsLimitType;
+		float cachedAssetsLimitValue; ///< Value for the cache limit (hours or GB).
 
-		ServerOptions() : portNumber(), numThreads(), flags() {}
+		ServerOptions() : portNumber(), numThreads(), flags(), cachedAssetsLimitType(), cachedAssetsLimitValue() {}
 
 	private:
 		const ServerOptions* prepare() const {
@@ -575,7 +584,7 @@ namespace VRay {
 		#ifndef VRAY_NOTHROW
 			if (licErr.error())
 				throw InstantiationErr(licErr.toString());
-			else
+			if (!serverNative)
 				throw InstantiationErr();
 		#endif
 		}
