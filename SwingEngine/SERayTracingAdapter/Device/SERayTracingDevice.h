@@ -41,6 +41,12 @@ enum SERayTracingDeviceRenderMode
     RTDRM_MAX
 };
 
+enum SERTDeviceRenderElementType
+{
+    RTDRET_RawTotalLighting,
+    RTDRET_Max
+};
+
 struct SE_RAY_TRACING_ADAPTER_API SERayTracingDeviceDescription
 {
     unsigned int ImageWidth;
@@ -61,8 +67,11 @@ class SERTDeviceStaticMesh;
 class SERTDeviceSceneNode;
 class SERTDeviceMaterial;
 class SERTDeviceBakeView;
+class SERTDeviceRenderElement;
 
 struct SERTDeviceBakeViewDescription;
+
+enum SERTDeviceImageFileType;
 
 typedef void (SERayTracingDevice::*RayTracingDeviceInitialize)(SERayTracingDeviceDescription* deviceDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceTerminate)();
@@ -96,6 +105,10 @@ typedef SERTDeviceMaterialHandle* (SERayTracingDevice::*RayTracingDeviceCreateMa
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteMaterial)(SERTDeviceMaterial* material);
 typedef SERTDeviceBakeViewHandle* (SERayTracingDevice::*RayTracingDeviceCreateBakeView)(SERTDeviceBakeView* bakeView, SERTDeviceBakeViewDescription* bakeViewDesc);
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteBakeView)(SERTDeviceBakeView* bakeView);
+typedef void (SERayTracingDevice::*RayTracingDeviceAddRenderElement)(SERTDeviceRenderElementType renderElementType);
+typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRenderElement)(SERTDeviceRenderElement* renderElement);
+typedef SERTDeviceRenderElement* (SERayTracingDevice::*RayTracingDeviceGetRenderElement)(SERTDeviceRenderElementType renderElementType);
+typedef void (SERayTracingDevice::*RayTracingDeviceSaveRenderElementToFile)(SERTDeviceRenderElement* renderElement, const std::string& fileName, SERTDeviceImageFileType fileType);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -156,6 +169,11 @@ public:
     inline  SERTDeviceBakeViewHandle* CreateBakeView(SERTDeviceBakeView* bakeView, SERTDeviceBakeViewDescription* bakeViewDesc);
     inline  void DeleteBakeView(SERTDeviceBakeView* bakeView);
 
+    inline  void AddRenderElement(SERTDeviceRenderElementType renderElementType);
+    inline  void DeleteRenderElement(SERTDeviceRenderElement* renderElement);
+    inline  SERTDeviceRenderElement* GetRenderElement(SERTDeviceRenderElementType renderElementType);
+    inline  void SaveRenderElementToFile(SERTDeviceRenderElement* renderElement, const std::string& fileName, SERTDeviceImageFileType fileType);
+
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
     // ------------------- Delegate Interface ------------------- //
@@ -215,6 +233,9 @@ protected:
     RayTracingDeviceDeleteMaterial                      _DeleteMaterial;
     RayTracingDeviceCreateBakeView                      _CreateBakeView;
     RayTracingDeviceDeleteBakeView                      _DeleteBakeView;
+    RayTracingDeviceAddRenderElement                    _AddRenderElement;
+    RayTracingDeviceDeleteRenderElement                 _DeleteRenderElement;
+    RayTracingDeviceSaveRenderElementToFile             _SaveRenderElementToFile;
 
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;
@@ -231,6 +252,8 @@ protected:
 
     SERayTracingDeviceDescription mDeviceDesc;
     SERayTracingDeviceVendor mDeviceVendor;
+
+    SERTDeviceRenderElement* mRenderElements[RTDRET_Max];
 };
 
 typedef SESmartPointer<SERayTracingDevice> SERayTracingDevicePtr;

@@ -14,6 +14,14 @@ namespace Swing
 class SERayTracingDevice;
 class SERayTracingDeviceBitmap;
 
+enum SERTDeviceImageFileType
+{
+    RTDIFT_BMP,
+    RTDIFT_JPG,
+    RTDIFT_PNG,
+    RTDIFT_MAX
+};
+
 //----------------------------------------------------------------------------
 // Author: Che Sun
 // Date: 04/05/2017

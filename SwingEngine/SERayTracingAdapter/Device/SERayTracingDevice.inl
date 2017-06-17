@@ -270,3 +270,26 @@ void SERayTracingDevice::DumpMessageCallback(void* rtDevice, const char* msg, in
     }
 }
 //----------------------------------------------------------------------------
+void SERayTracingDevice::AddRenderElement(SERTDeviceRenderElementType renderElementType)
+{
+    if( !mRenderElements[(int)renderElementType] )
+    {
+        (this->*_AddRenderElement)(renderElementType);
+    }
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::DeleteRenderElement(SERTDeviceRenderElement* renderElement)
+{
+    (this->*_DeleteRenderElement)(renderElement);
+}
+//----------------------------------------------------------------------------
+SERTDeviceRenderElement* SERayTracingDevice::GetRenderElement(SERTDeviceRenderElementType renderElementType)
+{
+    return mRenderElements[(int)renderElementType];
+}
+//----------------------------------------------------------------------------
+void SERayTracingDevice::SaveRenderElementToFile(SERTDeviceRenderElement* renderElement, const std::string& fileName, SERTDeviceImageFileType fileType)
+{
+    (this->*_SaveRenderElementToFile)(renderElement, fileName, fileType);
+}
+//----------------------------------------------------------------------------

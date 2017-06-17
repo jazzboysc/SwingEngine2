@@ -21,6 +21,7 @@ SERayTracingDeviceImage::~SERayTracingDeviceImage()
     {
         mImageHandle->RTDevice->DeleteRTImage(this);
         SE_DELETE mImageHandle;
+        mImageHandle = nullptr;
     }
 }
 //----------------------------------------------------------------------------

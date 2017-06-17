@@ -7,17 +7,14 @@
 #include "SERayTracingAdapterLIB.h"
 #include "SEReferencable.h"
 #include "SERayTracingDeviceResource.h"
+#include "SERayTracingDeviceImage.h"
 
 namespace Swing
 {
 
 class SERayTracingDevice;
 
-enum SERTDeviceRenderElementType
-{
-    RTDRET_RawTotalLighting,
-    RTDRET_Max
-};
+enum SERTDeviceRenderElementType;
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -29,10 +26,10 @@ public:
     SERTDeviceRenderElement(SERTDeviceRenderElementType type);
     virtual ~SERTDeviceRenderElement();
 
-    void CreateDeviceResource(SERayTracingDevice& device);
-
     SERTDeviceRenderElementType GetRenderElementType() const;
     SERTDeviceRenderElementHandle* GetRenderElementHandle();
+
+    void SaveRenderElementToFile(const std::string& fileName, SERTDeviceImageFileType fileType);
 
 protected:
     SERTDeviceRenderElementType mRenderElementType;

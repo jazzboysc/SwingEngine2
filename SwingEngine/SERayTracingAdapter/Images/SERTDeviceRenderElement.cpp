@@ -18,16 +18,9 @@ SERTDeviceRenderElement::~SERTDeviceRenderElement()
 {
     if( mRenderElementHandle )
     {
-        // TODO:
+        mRenderElementHandle->RTDevice->DeleteRenderElement(this);
         SE_DELETE mRenderElementHandle;
-    }
-}
-//----------------------------------------------------------------------------
-void SERTDeviceRenderElement::CreateDeviceResource(SERayTracingDevice&)
-{
-    if( !mRenderElementHandle )
-    {
-        // TODO:
+        mRenderElementHandle = nullptr;
     }
 }
 //----------------------------------------------------------------------------
@@ -39,5 +32,13 @@ SERTDeviceRenderElementType SERTDeviceRenderElement::GetRenderElementType() cons
 SERTDeviceRenderElementHandle* SERTDeviceRenderElement::GetRenderElementHandle()
 {
     return mRenderElementHandle;
+}
+//----------------------------------------------------------------------------
+void SERTDeviceRenderElement::SaveRenderElementToFile(const std::string& fileName, SERTDeviceImageFileType fileType)
+{
+    if( mRenderElementHandle )
+    {
+        mRenderElementHandle->RTDevice->SaveRenderElementToFile(this, fileName, fileType);
+    }
 }
 //----------------------------------------------------------------------------

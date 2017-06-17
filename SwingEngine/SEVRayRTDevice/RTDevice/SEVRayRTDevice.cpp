@@ -70,6 +70,9 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteMaterial, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(CreateBakeView, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteBakeView, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(AddRenderElement, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRenderElement, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(SaveRenderElementToFile, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -738,6 +741,21 @@ void SEVRayRTDevice::__DeleteBakeView(SERTDeviceBakeView* bakeView)
             bakeViewHandle->mUVWGenChannel = nullptr;
         }
     }
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__AddRenderElement(SERTDeviceRenderElementType renderElementType)
+{
+
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__DeleteRenderElement(SERTDeviceRenderElement* renderElement)
+{
+
+}
+//----------------------------------------------------------------------------
+void SEVRayRTDevice::__SaveRenderElementToFile(SERTDeviceRenderElement* renderElement, const std::string& fileName, SERTDeviceImageFileType fileType)
+{
+
 }
 //----------------------------------------------------------------------------
 

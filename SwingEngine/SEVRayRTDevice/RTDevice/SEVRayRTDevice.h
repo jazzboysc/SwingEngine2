@@ -75,6 +75,10 @@ private:
     SERTDeviceBakeViewHandle* __CreateBakeView(SERTDeviceBakeView* bakeView, SERTDeviceBakeViewDescription* bakeViewDesc);
     void __DeleteBakeView(SERTDeviceBakeView* bakeView);
 
+    void __AddRenderElement(SERTDeviceRenderElementType renderElementType);
+    void __DeleteRenderElement(SERTDeviceRenderElement* renderElement);
+    void __SaveRenderElementToFile(SERTDeviceRenderElement* renderElement, const std::string& fileName, SERTDeviceImageFileType fileType);
+
 private:
 
     template <class T>
