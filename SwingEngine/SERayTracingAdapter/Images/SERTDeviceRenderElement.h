@@ -28,6 +28,7 @@ public:
 
     SERTDeviceRenderElementType GetRenderElementType() const;
     SERTDeviceRenderElementHandle* GetRenderElementHandle();
+    void SetRenderElementHandle(SERTDeviceRenderElementHandle* handle);
 
     void SaveRenderElementToFile(const std::string& fileName, SERTDeviceImageFileType fileType);
 

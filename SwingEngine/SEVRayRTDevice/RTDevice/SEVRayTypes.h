@@ -14,6 +14,7 @@ class VRayRenderer;
 struct VRayImage;
 class Bmp;
 class Plugin;
+class RenderElement;
 
     namespace Plugins
     {

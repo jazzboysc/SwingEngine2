@@ -86,6 +86,15 @@ struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceBakeViewHandle : public SERTDeviceBak
     SEVRayRTDeviceBakeViewHandle();
     ~SEVRayRTDeviceBakeViewHandle();
 };
+//----------------------------------------------------------------------------
+struct SE_VRAY_RT_DEVICE_API SEVRayRTDeviceRenderElementHandle : public SERTDeviceRenderElementHandle
+{
+    VRay::RenderElement* mRenderElement;
+
+    SEVRayRTDeviceRenderElementHandle();
+    ~SEVRayRTDeviceRenderElementHandle();
+};
+//----------------------------------------------------------------------------
 
 }
 

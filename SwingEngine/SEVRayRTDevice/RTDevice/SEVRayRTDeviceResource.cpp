@@ -99,3 +99,13 @@ SEVRayRTDeviceBakeViewHandle::~SEVRayRTDeviceBakeViewHandle()
 {
 }
 //----------------------------------------------------------------------------
+SEVRayRTDeviceRenderElementHandle::SEVRayRTDeviceRenderElementHandle()
+    :
+    mRenderElement(nullptr)
+{
+}
+//----------------------------------------------------------------------------
+SEVRayRTDeviceRenderElementHandle::~SEVRayRTDeviceRenderElementHandle()
+{
+}
+//----------------------------------------------------------------------------

@@ -12,6 +12,7 @@
 #include "SECoordinateSystemAdapter.h"
 #include "SERTDeviceSceneNode.h"
 #include "SERTDeviceBakeView.h"
+#include "SERTDeviceRenderElement.h"
 
 #ifdef _WIN32
 #pragma warning(disable:4189)
@@ -33,6 +34,16 @@ const SE_Int32 SEVRayRTDevice::gsRenderMode[RTDRM_MAX - 1] =
     RendererOptions::RENDER_MODE_PRODUCTION,
     RendererOptions::RENDER_MODE_PRODUCTION_CUDA,
     RendererOptions::RENDER_MODE_PRODUCTION_OPENCL
+};
+
+const SE_Int32 SEVRayRTDevice::gsRenderElementType[RTDRET_Max - 1] =
+{
+    RenderElement::Type::LIGHTING,
+    RenderElement::Type::GI,
+    RenderElement::Type::TOTALLIGHT,
+    RenderElement::Type::RAWLIGHT,
+    RenderElement::Type::RAWGI,
+    RenderElement::Type::RAWTOTALLIGHT
 };
 
 //----------------------------------------------------------------------------
@@ -745,17 +756,74 @@ void SEVRayRTDevice::__DeleteBakeView(SERTDeviceBakeView* bakeView)
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__AddRenderElement(SERTDeviceRenderElementType renderElementType)
 {
+    RenderElements reManager = mVRayRenderer->getRenderElements();
+    RenderElement::Type reType = (RenderElement::Type)gsRenderElementType[(int)renderElementType];
+    reManager.addNew(reType, nullptr, nullptr);
 
+    SE_ASSERT( mRenderElements[(int)renderElementType] == nullptr );
+    if( !mRenderElements[(int)renderElementType] )
+    {
+        mRenderElements[(int)renderElementType] = SE_NEW SERTDeviceRenderElement(renderElementType);
+
+        SEVRayRTDeviceRenderElementHandle* renderElementHandle = SE_NEW SEVRayRTDeviceRenderElementHandle();
+        renderElementHandle->RTDevice = this;
+
+        RenderElement re = reManager.getByType(reType);
+        if( re )
+        {
+            renderElementHandle->mRenderElement = new VRay::RenderElement();
+            (*renderElementHandle->mRenderElement) = re;
+        }
+
+        mRenderElements[(int)renderElementType]->SetRenderElementHandle(renderElementHandle);
+    }
 }
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__DeleteRenderElement(SERTDeviceRenderElement* renderElement)
 {
-
+    if( renderElement )
+    {
+        SEVRayRTDeviceRenderElementHandle* renderElementHandle = static_cast<SEVRayRTDeviceRenderElementHandle*>(renderElement->GetRenderElementHandle());
+        if( renderElementHandle )
+        {
+            delete renderElementHandle->mRenderElement;
+            renderElementHandle->mRenderElement = nullptr;
+        }
+    }
 }
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__SaveRenderElementToFile(SERTDeviceRenderElement* renderElement, const std::string& fileName, SERTDeviceImageFileType fileType)
 {
+    if( renderElement )
+    {
+        SEVRayRTDeviceRenderElementHandle* renderElementHandle = static_cast<SEVRayRTDeviceRenderElementHandle*>(renderElement->GetRenderElementHandle());
+        if( renderElementHandle && renderElementHandle->mRenderElement && (*renderElementHandle->mRenderElement) == true )
+        {
+            VRayImage* image = renderElementHandle->mRenderElement->getImage();
+            if( image )
+            {
+                switch( fileType )
+                {
+                case Swing::RTDIFT_BMP:
+                    image->saveToBmpFile(fileName.c_str());
+                    break;
 
+                case Swing::RTDIFT_JPG:
+                    image->saveToJpegFile(fileName.c_str());
+                    break;
+
+                case Swing::RTDIFT_PNG:
+                    image->saveToPngFile(fileName.c_str());
+                    break;
+
+                default:
+                    break;
+                }
+
+                delete image;
+            }
+        }
+    }
 }
 //----------------------------------------------------------------------------
 

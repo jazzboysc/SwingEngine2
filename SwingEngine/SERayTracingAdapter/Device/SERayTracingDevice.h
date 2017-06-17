@@ -43,6 +43,12 @@ enum SERayTracingDeviceRenderMode
 
 enum SERTDeviceRenderElementType
 {
+    RTDRET_Unknown = 0,
+    RTDRET_Lighting,
+    RTDRET_GI,
+    RTDRET_TotalLighting,
+    RTDRET_RawLighting,
+    RTDRET_RawGI,
     RTDRET_RawTotalLighting,
     RTDRET_Max
 };

@@ -34,6 +34,15 @@ SERTDeviceRenderElementHandle* SERTDeviceRenderElement::GetRenderElementHandle()
     return mRenderElementHandle;
 }
 //----------------------------------------------------------------------------
+void SERTDeviceRenderElement::SetRenderElementHandle(SERTDeviceRenderElementHandle* handle)
+{
+    SE_ASSERT( mRenderElementHandle == nullptr );
+    if( !mRenderElementHandle )
+    {
+        mRenderElementHandle = handle;
+    }
+}
+//----------------------------------------------------------------------------
 void SERTDeviceRenderElement::SaveRenderElementToFile(const std::string& fileName, SERTDeviceImageFileType fileType)
 {
     if( mRenderElementHandle )
