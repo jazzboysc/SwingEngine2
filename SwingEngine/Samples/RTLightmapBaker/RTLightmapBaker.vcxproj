@@ -135,7 +135,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>SECored.lib;SEAssetUtilityd.lib;SEApplicationd.lib;SERenderingEngined.lib;SERayTracingAdapterd.lib;SEVRayWin32Applicationd.lib;SEVRayRTDeviced.lib;libprotobufd.lib;zlibd.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\SDK\Lib\Debug;..\..\ThirdPartyLibs\Lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\SDK\Lib\Debug;..\..\ThirdPartyLibs\Lib\Debug;..\..\ThirdPartyLibs\protobuf\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -215,7 +215,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>SECore.lib;SEAssetUtility.lib;SEApplication.lib;SERenderingEngine.lib;SERayTracingAdapter.lib;SEVRayWin32Application.lib;SEVRayRTDevice.lib;libprotobuf.lib;zlib.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\SDK\Lib\Release;..\..\ThirdPartyLibs\Lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\SDK\Lib\Release;..\..\ThirdPartyLibs\Lib\Release;..\..\ThirdPartyLibs\protobuf\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
