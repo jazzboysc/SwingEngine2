@@ -206,22 +206,22 @@ void RTLightmapBaker::OnRTImageUpdated(SERayTracingDevice& rtDevice, SERayTracin
         //bool res = img->SaveToBmpFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\test.bmp", false, false);
 
         SERTDeviceRenderElement* reDiffuse = mRayTracingDevice->GetRenderElement(RTDRET_Diffuse);
-        //if( reDiffuse )
-        //{
-        //    reDiffuse->SaveRenderElementToFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\reDiffuse.bmp", RTDIFT_BMP);
-        //}
+        if( reDiffuse )
+        {
+            reDiffuse->SaveRenderElementToFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\reDiffuse.bmp", RTDIFT_BMP);
+        }
 
         SERTDeviceRenderElement* reLighting = mRayTracingDevice->GetRenderElement(RTDRET_Lighting);
-        //if( reLighting )
-        //{
-        //    reLighting->SaveRenderElementToFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\reLighting.bmp", RTDIFT_BMP);
-        //}
+        if( reLighting )
+        {
+            reLighting->SaveRenderElementToFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\reLighting.bmp", RTDIFT_BMP);
+        }
 
         SERTDeviceRenderElement* reGI = mRayTracingDevice->GetRenderElement(RTDRET_GI);
-        //if( reGI )
-        //{
-        //    reGI->SaveRenderElementToFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\reGI.bmp", RTDIFT_BMP);
-        //}
+        if( reGI )
+        {
+            reGI->SaveRenderElementToFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\reGI.bmp", RTDIFT_BMP);
+        }
 
         mRayTracingDevice->GenerateLightMapFromRenderElements(reDiffuse, reLighting, reGI, "test.tga", RTDIFT_TGA);
     }

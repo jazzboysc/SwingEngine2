@@ -682,7 +682,7 @@ SERTDeviceMaterialHandle* SEVRayRTDevice::__CreateMaterial(SERTDeviceMaterial* m
 
         materialHandle->mBRDF = new BRDFDiffuse();
         *(materialHandle->mBRDF) = mVRayRenderer->newPlugin<BRDFDiffuse>();
-        materialHandle->mBRDF->set_color(Color(0.0f, 0.6f, 0.6f));
+        materialHandle->mBRDF->set_color(Color(0.3f, 0.5f, 0.7f));
 
         materialHandle->mMaterial = new MtlSingleBRDF();
         *(materialHandle->mMaterial) = mVRayRenderer->newPlugin<MtlSingleBRDF>();
@@ -853,8 +853,11 @@ void SEVRayRTDevice::__GenerateLightMapFromRenderElements(SERTDeviceRenderElemen
 
             if( diffuseImage && lightingImage && giImage )
             {
+                // Do not release these pixel buffers since they are pointing to the original buffers.
                 size_t diffusePixelCount, lightingPixelCount, giPixelCount;
                 AColor* diffusePixels = diffuseImage->getPixelData(diffusePixelCount);
+                Color colorOffset(0.001f, 0.001f, 0.001f);
+                diffuseImage->addColor(colorOffset);
                 AColor* lightingPixels = lightingImage->getPixelData(lightingPixelCount);
                 AColor* giPixels = giImage->getPixelData(giPixelCount);
 
@@ -864,6 +867,7 @@ void SEVRayRTDevice::__GenerateLightMapFromRenderElements(SERTDeviceRenderElemen
                 int width = diffuseImage->getWidth();
                 int height = diffuseImage->getHeight();
 
+                // Recover raw total lighting, do not assign a material diffuse color that has zero component, which will make recovery operation failure.
                 for( size_t i = 0; i < diffusePixelCount; ++i )
                 {
                     rawTotalLightingRGB[3*i    ] = (lightingPixels[i].color.r + giPixels[i].color.r) / diffusePixels[i].color.r;
@@ -875,9 +879,6 @@ void SEVRayRTDevice::__GenerateLightMapFromRenderElements(SERTDeviceRenderElemen
                 SEImageIO::WriteImage(dstFileName, rawTotalLightingRGB, 0, width, height,
                     width, height, 0, 0);
 
-                delete diffusePixels;
-                delete lightingPixels;
-                delete giPixels;
                 SE_DELETE[] rawTotalLightingRGB;
             }
 
