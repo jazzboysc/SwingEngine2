@@ -99,6 +99,10 @@ void RTLightmapBaker::Initialize(SEApplicationDescription* ApplicationDesc)
     mRTDeviceMesh01BakeView = SE_NEW SERTDeviceBakeView();
     mRTDeviceMesh01BakeView->CreateDeviceResource(*mRayTracingDevice, &bakeViewDesc);
 
+    mRayTracingDevice->AddRenderElement(RTDRET_Diffuse);
+    mRayTracingDevice->AddRenderElement(RTDRET_Lighting);
+    mRayTracingDevice->AddRenderElement(RTDRET_GI);
+
     mRayTracingDevice->Render();
 }
 //----------------------------------------------------------------------------
@@ -197,12 +201,29 @@ void RTLightmapBaker::OnRTImageUpdated(SERayTracingDevice& rtDevice, SERayTracin
 {
     printf("Image updated: %u \n", ++mFrameNumber);
 
-    //if( mFrameNumber == 20 )
-    //{
-    //    bool res = img->SaveToBmpFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\test.bmp", false, false);
-    //    //bool res = img->SaveToBmpFile("test.bmp", false, false);
-    //    int stopHere = 0;
-    //}
+    if( mFrameNumber == 10 )
+    {
+        //bool res = img->SaveToBmpFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\test.bmp", false, false);
+
+        SERTDeviceRenderElement* reDiffuse = mRayTracingDevice->GetRenderElement(RTDRET_Diffuse);
+        if( reDiffuse )
+        {
+            reDiffuse->SaveRenderElementToFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\reDiffuse.bmp", RTDIFT_BMP);
+        }
+
+        SERTDeviceRenderElement* reLighting = mRayTracingDevice->GetRenderElement(RTDRET_Lighting);
+        if( reLighting )
+        {
+            reLighting->SaveRenderElementToFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\reLighting.bmp", RTDIFT_BMP);
+        }
+
+        SERTDeviceRenderElement* reGI = mRayTracingDevice->GetRenderElement(RTDRET_GI);
+        if( reGI )
+        {
+            reGI->SaveRenderElementToFile("F:\\Work\\SwingEngine2\\SwingEngine\\Bin\\reGI.bmp", RTDIFT_BMP);
+        }
+
+    }
     UpdateImage(img);
 }
 //----------------------------------------------------------------------------

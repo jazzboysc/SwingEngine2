@@ -38,6 +38,7 @@ const SE_Int32 SEVRayRTDevice::gsRenderMode[RTDRM_MAX - 1] =
 
 const SE_Int32 SEVRayRTDevice::gsRenderElementType[RTDRET_Max - 1] =
 {
+    RenderElement::Type::DIFFUSE,
     RenderElement::Type::LIGHTING,
     RenderElement::Type::GI,
     RenderElement::Type::TOTALLIGHT,
@@ -169,6 +170,12 @@ void SEVRayRTDevice::__Terminate()
     {
         SEMutex::Destroy(mImageOpMutex);
         mImageOpMutex = nullptr;
+    }
+
+    for( int i = 0; i < RTDRET_Max; ++i )
+    {
+        SE_DELETE mRenderElements[i];
+        mRenderElements[i] = nullptr;
     }
 }
 //----------------------------------------------------------------------------
@@ -756,14 +763,15 @@ void SEVRayRTDevice::__DeleteBakeView(SERTDeviceBakeView* bakeView)
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__AddRenderElement(SERTDeviceRenderElementType renderElementType)
 {
+    int reIndex = (int)renderElementType - 1;
     RenderElements reManager = mVRayRenderer->getRenderElements();
-    RenderElement::Type reType = (RenderElement::Type)gsRenderElementType[(int)renderElementType];
+    RenderElement::Type reType = (RenderElement::Type)gsRenderElementType[reIndex];
     reManager.addNew(reType, nullptr, nullptr);
 
-    SE_ASSERT( mRenderElements[(int)renderElementType] == nullptr );
-    if( !mRenderElements[(int)renderElementType] )
+    SE_ASSERT( mRenderElements[reIndex] == nullptr );
+    if( !mRenderElements[reIndex] )
     {
-        mRenderElements[(int)renderElementType] = SE_NEW SERTDeviceRenderElement(renderElementType);
+        mRenderElements[reIndex] = SE_NEW SERTDeviceRenderElement(renderElementType);
 
         SEVRayRTDeviceRenderElementHandle* renderElementHandle = SE_NEW SEVRayRTDeviceRenderElementHandle();
         renderElementHandle->RTDevice = this;
@@ -775,7 +783,7 @@ void SEVRayRTDevice::__AddRenderElement(SERTDeviceRenderElementType renderElemen
             (*renderElementHandle->mRenderElement) = re;
         }
 
-        mRenderElements[(int)renderElementType]->SetRenderElementHandle(renderElementHandle);
+        mRenderElements[reIndex]->SetRenderElementHandle(renderElementHandle);
     }
 }
 //----------------------------------------------------------------------------

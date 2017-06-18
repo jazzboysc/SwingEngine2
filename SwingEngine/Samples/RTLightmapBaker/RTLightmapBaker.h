@@ -12,6 +12,7 @@
 #include "SERTDeviceSingleBRDFMaterial.h"
 #include "SERTDeviceSceneNode.h"
 #include "SERTDeviceBakeView.h"
+#include "SERTDeviceRenderElement.h"
 
 namespace Swing
 {

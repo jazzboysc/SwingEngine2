@@ -11,10 +11,6 @@ SERayTracingDevice::SERayTracingDevice()
     :
     mDeviceVendor(RTDV_Unknown)
 {
-    for( int i = 0; i < RTDRET_Max; ++i )
-    {
-        mRenderElements[i] = nullptr;
-    }
 }
 //----------------------------------------------------------------------------
 SERayTracingDevice::~SERayTracingDevice()

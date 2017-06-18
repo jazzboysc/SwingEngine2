@@ -44,6 +44,7 @@ enum SERayTracingDeviceRenderMode
 enum SERTDeviceRenderElementType
 {
     RTDRET_Unknown = 0,
+    RTDRET_Diffuse,
     RTDRET_Lighting,
     RTDRET_GI,
     RTDRET_TotalLighting,
@@ -259,7 +260,7 @@ protected:
     SERayTracingDeviceDescription mDeviceDesc;
     SERayTracingDeviceVendor mDeviceVendor;
 
-    SERTDeviceRenderElement* mRenderElements[RTDRET_Max];
+    SERTDeviceRenderElement* mRenderElements[RTDRET_Max - 1];
 };
 
 typedef SESmartPointer<SERayTracingDevice> SERayTracingDevicePtr;

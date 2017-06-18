@@ -4,6 +4,11 @@
 //----------------------------------------------------------------------------
 void SERayTracingDevice::Initialize(SERayTracingDeviceDescription* deviceDesc)
 {
+    for( int i = 0; i < RTDRET_Max; ++i )
+    {
+        mRenderElements[i] = nullptr;
+    }
+
     mDeviceDesc = *deviceDesc;
     (this->*_Initialize)(deviceDesc);
 }
@@ -272,7 +277,7 @@ void SERayTracingDevice::DumpMessageCallback(void* rtDevice, const char* msg, in
 //----------------------------------------------------------------------------
 void SERayTracingDevice::AddRenderElement(SERTDeviceRenderElementType renderElementType)
 {
-    if( !mRenderElements[(int)renderElementType] )
+    if( !mRenderElements[(int)renderElementType - 1] )
     {
         (this->*_AddRenderElement)(renderElementType);
     }
@@ -285,7 +290,7 @@ void SERayTracingDevice::DeleteRenderElement(SERTDeviceRenderElement* renderElem
 //----------------------------------------------------------------------------
 SERTDeviceRenderElement* SERayTracingDevice::GetRenderElement(SERTDeviceRenderElementType renderElementType)
 {
-    return mRenderElements[(int)renderElementType];
+    return mRenderElements[(int)renderElementType - 1];
 }
 //----------------------------------------------------------------------------
 void SERayTracingDevice::SaveRenderElementToFile(SERTDeviceRenderElement* renderElement, const std::string& fileName, SERTDeviceImageFileType fileType)
