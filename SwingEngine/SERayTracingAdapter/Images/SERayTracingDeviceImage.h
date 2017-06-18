@@ -19,6 +19,7 @@ enum SERTDeviceImageFileType
     RTDIFT_BMP,
     RTDIFT_JPG,
     RTDIFT_PNG,
+    RTDIFT_TGA,
     RTDIFT_MAX
 };
 

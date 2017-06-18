@@ -13,6 +13,7 @@
 #include "SERTDeviceSceneNode.h"
 #include "SERTDeviceBakeView.h"
 #include "SERTDeviceRenderElement.h"
+#include "SEImageIO.h"
 
 #ifdef _WIN32
 #pragma warning(disable:4189)
@@ -836,9 +837,55 @@ void SEVRayRTDevice::__SaveRenderElementToFile(SERTDeviceRenderElement* renderEl
 }
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__GenerateLightMapFromRenderElements(SERTDeviceRenderElement* diffuseRE, SERTDeviceRenderElement* lightingRE,
-    SERTDeviceRenderElement* giRE, const std::string& dstFileName, SERTDeviceImageFileType dstFileType)
+    SERTDeviceRenderElement* giRE, const std::string& dstFileName, SERTDeviceImageFileType)
 {
+    if( diffuseRE && lightingRE && giRE )
+    {
+        SEVRayRTDeviceRenderElementHandle* diffuseREHandle = static_cast<SEVRayRTDeviceRenderElementHandle*>(diffuseRE->GetRenderElementHandle());
+        SEVRayRTDeviceRenderElementHandle* lightingREHandle = static_cast<SEVRayRTDeviceRenderElementHandle*>(lightingRE->GetRenderElementHandle());
+        SEVRayRTDeviceRenderElementHandle* giREHandle = static_cast<SEVRayRTDeviceRenderElementHandle*>(giRE->GetRenderElementHandle());
 
+        if( diffuseREHandle && lightingREHandle && giREHandle )
+        {
+            VRayImage* diffuseImage = diffuseREHandle->mRenderElement->getImage();
+            VRayImage* lightingImage = lightingREHandle->mRenderElement->getImage();
+            VRayImage* giImage = giREHandle->mRenderElement->getImage();
+
+            if( diffuseImage && lightingImage && giImage )
+            {
+                size_t diffusePixelCount, lightingPixelCount, giPixelCount;
+                AColor* diffusePixels = diffuseImage->getPixelData(diffusePixelCount);
+                AColor* lightingPixels = lightingImage->getPixelData(lightingPixelCount);
+                AColor* giPixels = giImage->getPixelData(giPixelCount);
+
+                SE_ASSERT(diffusePixels && lightingPixels && giPixels && diffusePixelCount == lightingPixelCount && lightingPixelCount == giPixelCount);
+
+                float* rawTotalLightingRGB = SE_NEW float[3*diffusePixelCount];
+                int width = diffuseImage->getWidth();
+                int height = diffuseImage->getHeight();
+
+                for( size_t i = 0; i < diffusePixelCount; ++i )
+                {
+                    rawTotalLightingRGB[3*i    ] = (lightingPixels[i].color.r + giPixels[i].color.r) / diffusePixels[i].color.r;
+                    rawTotalLightingRGB[3*i + 1] = (lightingPixels[i].color.g + giPixels[i].color.g) / diffusePixels[i].color.g;
+                    rawTotalLightingRGB[3*i + 2] = (lightingPixels[i].color.b + giPixels[i].color.b) / diffusePixels[i].color.b;
+                }
+
+                // Write RGB image to file.
+                SEImageIO::WriteImage(dstFileName, rawTotalLightingRGB, 0, width, height,
+                    width, height, 0, 0);
+
+                delete diffusePixels;
+                delete lightingPixels;
+                delete giPixels;
+                SE_DELETE[] rawTotalLightingRGB;
+            }
+
+            delete diffuseImage;
+            delete lightingImage;
+            delete giImage;
+        }
+    }
 }
 //----------------------------------------------------------------------------
 

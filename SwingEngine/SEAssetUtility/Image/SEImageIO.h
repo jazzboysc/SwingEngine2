@@ -17,6 +17,7 @@ namespace Swing
 class SE_ASSET_UTILITY_API SEImageIO
 {
 public:
+     // Write RGB image to file.
     static void WriteImage(const std::string& name, float* pixels, 
         float* alpha, int xRes, int yRes, int totalXRes, int totalYRes, 
         int xOffset, int yOffset);
