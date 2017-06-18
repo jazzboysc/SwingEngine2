@@ -85,6 +85,7 @@ void SEVRayRTDevice::InsertRayTracingDeviceFunctions()
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(AddRenderElement, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(DeleteRenderElement, SEVRayRTDevice);
     SE_INSERT_RAY_TRACING_DEVICE_FUNC(SaveRenderElementToFile, SEVRayRTDevice);
+    SE_INSERT_RAY_TRACING_DEVICE_FUNC(GenerateLightMapFromRenderElements, SEVRayRTDevice);
 }
 //----------------------------------------------------------------------------
 
@@ -834,7 +835,12 @@ void SEVRayRTDevice::__SaveRenderElementToFile(SERTDeviceRenderElement* renderEl
     }
 }
 //----------------------------------------------------------------------------
+void SEVRayRTDevice::__GenerateLightMapFromRenderElements(SERTDeviceRenderElement* diffuseRE, SERTDeviceRenderElement* lightingRE,
+    SERTDeviceRenderElement* giRE, const std::string& dstFileName, SERTDeviceImageFileType dstFileType)
+{
 
+}
+//----------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------
 void SEVRayRTDevice::__OnRenderStart(VRay::VRayRenderer&, void*)

@@ -298,3 +298,9 @@ void SERayTracingDevice::SaveRenderElementToFile(SERTDeviceRenderElement* render
     (this->*_SaveRenderElementToFile)(renderElement, fileName, fileType);
 }
 //----------------------------------------------------------------------------
+void SERayTracingDevice::GenerateLightMapFromRenderElements(SERTDeviceRenderElement* diffuseRE, SERTDeviceRenderElement* lightingRE,
+    SERTDeviceRenderElement* giRE, const std::string& dstFileName, SERTDeviceImageFileType dstFileType)
+{
+    (this->*_GenerateLightMapFromRenderElements)(diffuseRE, lightingRE, giRE, dstFileName, dstFileType);
+}
+//----------------------------------------------------------------------------

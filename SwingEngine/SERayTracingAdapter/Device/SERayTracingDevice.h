@@ -116,6 +116,8 @@ typedef void (SERayTracingDevice::*RayTracingDeviceAddRenderElement)(SERTDeviceR
 typedef void (SERayTracingDevice::*RayTracingDeviceDeleteRenderElement)(SERTDeviceRenderElement* renderElement);
 typedef SERTDeviceRenderElement* (SERayTracingDevice::*RayTracingDeviceGetRenderElement)(SERTDeviceRenderElementType renderElementType);
 typedef void (SERayTracingDevice::*RayTracingDeviceSaveRenderElementToFile)(SERTDeviceRenderElement* renderElement, const std::string& fileName, SERTDeviceImageFileType fileType);
+typedef void (SERayTracingDevice::*RayTracingDeviceGenerateLightMapFromRenderElements)(SERTDeviceRenderElement* diffuseRE, SERTDeviceRenderElement* lightingRE, 
+    SERTDeviceRenderElement* giRE, const std::string& dstFileName, SERTDeviceImageFileType dstFileType);
 
 //----------------------------------------------------------------------------
 // Author: Che Sun
@@ -181,6 +183,9 @@ public:
     inline  SERTDeviceRenderElement* GetRenderElement(SERTDeviceRenderElementType renderElementType);
     inline  void SaveRenderElementToFile(SERTDeviceRenderElement* renderElement, const std::string& fileName, SERTDeviceImageFileType fileType);
 
+    inline  void GenerateLightMapFromRenderElements(SERTDeviceRenderElement* diffuseRE, SERTDeviceRenderElement* lightingRE,
+        SERTDeviceRenderElement* giRE, const std::string& dstFileName, SERTDeviceImageFileType dstFileType);
+
     inline SERayTracingDeviceVendor GetDeviceVendor();
 
     // ------------------- Delegate Interface ------------------- //
@@ -208,42 +213,42 @@ public:
     // ---------------------------------------------------------- //
 
 protected:
-    RayTracingDeviceInitialize                          _Initialize;
-    RayTracingDeviceTerminate                           _Terminate;
-    RayTracingDeviceLoadNativeScene                     _LoadNativeScene;
-    RayTracingDeviceCreateRTImage                       _CreateRTImage;
-    RayTracingDeviceDeleteRTImage                       _DeleteRTImage;
-    RayTracingDeviceCreateRTBitmap                      _CreateRTBitmap;
-    RayTracingDeviceDeleteRTBitmap                      _DeleteRTBitmap;
-    RayTracingDeviceGetImageSize                        _GetImageSize;
-    RayTracingDeviceSetImageSize                        _SetImageSize;
-    RayTracingDeviceRender                              _Render;
-    RayTracingDeviceGetImage                            _GetImage;
-    RayTracingDeviceRTBitmapGetPixels                   _RTBitmapGetPixels;
-    RayTracingDeviceRTBitmapGetInfoHeader               _RTBitmapGetInfoHeader;
-    RayTracingDeviceRTImageSaveToBmpFile                _RTImageSaveToBmpFile;
-    RayTracingDeviceCreateRTDeviceCamera                _CreateRTDeviceCamera;
-    RayTracingDeviceDeleteRTDeviceCamera                _DeleteRTDeviceCamera;
-    RayTracingDeviceSetTransformFromCamera              _SetTransformFromCamera;
-    RayTracingDeviceCreateRTDeviceLightRectangle        _CreateRTDeviceLightRectangle;
-    RayTracingDeviceDeleteRTDeviceLightRectangle        _DeleteRTDeviceLightRectangle;
-    RayTracingDeviceCreateRTDeviceSkyLight              _CreateRTDeviceSkyLight;
-    RayTracingDeviceDeleteRTDeviceSkyLight              _DeleteRTDeviceSkyLight;
-    RayTracingDeviceCreateRTDeviceStaticMesh            _CreateRTDeviceStaticMesh;
-    RayTracingDeviceDeleteRTDeviceStaticMesh            _DeleteRTDeviceStaticMesh;
-    RayTracingDeviceCreateSceneNode                     _CreateSceneNode;
-    RayTracingDeviceDeleteSceneNode                     _DeleteSceneNode;
-    RayTracingDeviceSceneNodeSetTransform               _SceneNodeSetTransform;
-    RayTracingDeviceSceneNodeSetGeometry                _SceneNodeSetGeometry;
-    RayTracingDeviceSceneNodeSetMaterial                _SceneNodeSetMaterial;
-    RayTracingDeviceCreateMaterial                      _CreateMaterial;
-    RayTracingDeviceDeleteMaterial                      _DeleteMaterial;
-    RayTracingDeviceCreateBakeView                      _CreateBakeView;
-    RayTracingDeviceDeleteBakeView                      _DeleteBakeView;
-    RayTracingDeviceAddRenderElement                    _AddRenderElement;
-    RayTracingDeviceDeleteRenderElement                 _DeleteRenderElement;
-    RayTracingDeviceSaveRenderElementToFile             _SaveRenderElementToFile;
-
+    RayTracingDeviceInitialize                             _Initialize;
+    RayTracingDeviceTerminate                              _Terminate;
+    RayTracingDeviceLoadNativeScene                        _LoadNativeScene;
+    RayTracingDeviceCreateRTImage                          _CreateRTImage;
+    RayTracingDeviceDeleteRTImage                          _DeleteRTImage;
+    RayTracingDeviceCreateRTBitmap                         _CreateRTBitmap;
+    RayTracingDeviceDeleteRTBitmap                         _DeleteRTBitmap;
+    RayTracingDeviceGetImageSize                           _GetImageSize;
+    RayTracingDeviceSetImageSize                           _SetImageSize;
+    RayTracingDeviceRender                                 _Render;
+    RayTracingDeviceGetImage                               _GetImage;
+    RayTracingDeviceRTBitmapGetPixels                      _RTBitmapGetPixels;
+    RayTracingDeviceRTBitmapGetInfoHeader                  _RTBitmapGetInfoHeader;
+    RayTracingDeviceRTImageSaveToBmpFile                   _RTImageSaveToBmpFile;
+    RayTracingDeviceCreateRTDeviceCamera                   _CreateRTDeviceCamera;
+    RayTracingDeviceDeleteRTDeviceCamera                   _DeleteRTDeviceCamera;
+    RayTracingDeviceSetTransformFromCamera                 _SetTransformFromCamera;
+    RayTracingDeviceCreateRTDeviceLightRectangle           _CreateRTDeviceLightRectangle;
+    RayTracingDeviceDeleteRTDeviceLightRectangle           _DeleteRTDeviceLightRectangle;
+    RayTracingDeviceCreateRTDeviceSkyLight                 _CreateRTDeviceSkyLight;
+    RayTracingDeviceDeleteRTDeviceSkyLight                 _DeleteRTDeviceSkyLight;
+    RayTracingDeviceCreateRTDeviceStaticMesh               _CreateRTDeviceStaticMesh;
+    RayTracingDeviceDeleteRTDeviceStaticMesh               _DeleteRTDeviceStaticMesh;
+    RayTracingDeviceCreateSceneNode                        _CreateSceneNode;
+    RayTracingDeviceDeleteSceneNode                        _DeleteSceneNode;
+    RayTracingDeviceSceneNodeSetTransform                  _SceneNodeSetTransform;
+    RayTracingDeviceSceneNodeSetGeometry                   _SceneNodeSetGeometry;
+    RayTracingDeviceSceneNodeSetMaterial                   _SceneNodeSetMaterial;
+    RayTracingDeviceCreateMaterial                         _CreateMaterial;
+    RayTracingDeviceDeleteMaterial                         _DeleteMaterial;
+    RayTracingDeviceCreateBakeView                         _CreateBakeView;
+    RayTracingDeviceDeleteBakeView                         _DeleteBakeView;
+    RayTracingDeviceAddRenderElement                       _AddRenderElement;
+    RayTracingDeviceDeleteRenderElement                    _DeleteRenderElement;
+    RayTracingDeviceSaveRenderElementToFile                _SaveRenderElementToFile;
+    RayTracingDeviceGenerateLightMapFromRenderElements     _GenerateLightMapFromRenderElements;
 
     SERayTracingDeviceDelegate1  RenderStartDelegate;
     SERayTracingDeviceDelegate1  ImageReadyDelegate;

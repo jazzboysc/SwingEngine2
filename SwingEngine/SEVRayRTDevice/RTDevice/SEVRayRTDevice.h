@@ -79,6 +79,9 @@ private:
     void __DeleteRenderElement(SERTDeviceRenderElement* renderElement);
     void __SaveRenderElementToFile(SERTDeviceRenderElement* renderElement, const std::string& fileName, SERTDeviceImageFileType fileType);
 
+    void __GenerateLightMapFromRenderElements(SERTDeviceRenderElement* diffuseRE, SERTDeviceRenderElement* lightingRE,
+        SERTDeviceRenderElement* giRE, const std::string& dstFileName, SERTDeviceImageFileType dstFileType);
+
 private:
 
     template <class T>
