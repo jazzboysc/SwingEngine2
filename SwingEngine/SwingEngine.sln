@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SwingEngine", "SwingEngine", "{5937E8BD-BA18-4AE7-9CF7-98A0B3C6C760}"
 EndProject
@@ -53,6 +53,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "D3D11Sample", "Samples\D3D1
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEApplication", "SEApplication\SEApplication.vcxproj", "{48051409-BA7C-4C07-945B-9BB12DA362E7}"
 	ProjectSection(ProjectDependencies) = postProject
+		{A2E95141-F9B1-4ADB-8100-186B11CDC69C} = {A2E95141-F9B1-4ADB-8100-186B11CDC69C}
 		{C5A06471-1CF8-435D-B9F2-6B6CB60C8C73} = {C5A06471-1CF8-435D-B9F2-6B6CB60C8C73}
 	EndProjectSection
 EndProject
@@ -728,5 +729,8 @@ Global
 		{74F50F5A-3D3F-45BE-A115-55844EB4EB9D} = {CF0DDF29-2EBE-4B58-969B-18457FF7BABE}
 		{2375B14E-D049-4C64-8A86-025CA2D9DE4D} = {E6B6EBA4-8D0C-43E5-8C1C-67C3787C0627}
 		{C216A8DA-8A7B-4052-8E3D-639512BEE791} = {9D9BCC5C-B1AA-419D-B65E-13CF51482F3C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A644891-C339-4855-9CF7-E15B8E30BCA6}
 	EndGlobalSection
 EndGlobal
